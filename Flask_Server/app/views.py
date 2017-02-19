@@ -1,19 +1,19 @@
-from flask import render_template, flash, redirect, request
+from flask import render_template, flash, redirect, request, url_for
 from app import app
 from .forms import LoginForm,RegistrationForm
+from flask.ext.login import LoginManager, UserMixin, login_required
 
-@app.route('/')
+
+
+@app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 def index():
     form = LoginForm()
-
-    if form.validate_on_submit():
-        flash('Login requested for OpenID="%s", remember_me=%s' %
-              (form.UserID.data, str(form.remember_me.data)))
-        return redirect('/index')
+    if request.method == 'POST' and form.validate():
+        flash('The login access is success')
+        return redirect(url_for('temp'))
 
     return render_template('index.html',title='Home',form=form,content='Hello, world!')
-
 
 @app.route('/reg', methods=['GET', 'POST'])
 def reg():
@@ -25,3 +25,9 @@ def reg():
         flash('Thanks for registering')
         return redirect(url_for('login'))
     return render_template('registration.html',title='Registration',form=form)
+
+@app.route('/test', methods=['GET', 'POST'])
+def temp():
+    return render_template('test.html')
+
+
