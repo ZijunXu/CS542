@@ -1,7 +1,8 @@
 from flask import render_template, flash, redirect, request, url_for
+from flask_login import login_user
 from app import app
+from .database import User
 from .forms import LoginForm,RegistrationForm
-from flask.ext.login import LoginManager, UserMixin, login_required
 
 
 
@@ -10,16 +11,20 @@ from flask.ext.login import LoginManager, UserMixin, login_required
 def index():
     form = LoginForm()
     if request.method == 'POST' and form.validate():
-        flash('The login access is success')
-        return redirect(url_for('temp'))
+        user = User.query.filter_by(name=form.username.data).first()
+        if user is not None and user.verify_password(form.password.data):
+            login_user(user, form.remember_me.data)
+            return redirect(request.args.get('next') or url_for('temp'))
+        flash('The login access is unsuccess')
+        return redirect(url_for('index'))
 
-    return render_template('index.html',title='Home',form=form,content='Hello, world!')
+    return render_template('index.html', title='Home', form=form, content='Hello, world!')
 
 @app.route('/reg', methods=['GET', 'POST'])
 def reg():
     form = RegistrationForm()
     if request.method == 'POST' and form.validate():
-        user = User(form.username.data, form.email.data,
+        user = User(form.userame.data, form.email.data,
                     form.password.data)
         db_session.add(user)
         flash('Thanks for registering')
