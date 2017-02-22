@@ -1,3 +1,6 @@
+# ignore the api data
+API_MODULE/DATA/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
