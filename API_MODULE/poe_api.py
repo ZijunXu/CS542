@@ -1,6 +1,8 @@
 import requests
 import json
 import os
+import time
+
 
 class get_data_api:
     def __init__(self):
@@ -30,9 +32,7 @@ class get_data_api:
         r = requests.get(api_url+self.user_id)
         data = r.json()
         file_name = data['next_change_id']
-        print(file_name)
-        self.record_last_user_id(file_name)
-        self.user_id = file_name
+        print("Current id: ", self.user_id + " next id: ", file_name)
         temp = []
         for account in data['stashes']:
             # player with public stashes and has items
@@ -42,14 +42,17 @@ class get_data_api:
                     if 'note' in item:
                         item['owner'] = account['accountName']
                         temp.append(item)
-        with open(os.getcwd() + '/data/'+file_name+'.json', 'a') as outfile:
-            json.dump(temp, outfile, indent=2)
-
+        if len(temp) != 0:
+            with open(os.getcwd() + '/data/'+self.user_id+'.json', 'a') as outfile:
+                json.dump(temp, outfile, indent=2)
+        self.record_last_user_id(file_name)
+        self.user_id = file_name
 
 if __name__ == "__main__":
     # notice, if we try too many times, the server will reject our request then reponed nothing
     print("Start the script")
     a = get_data_api()
-    times = 500
+    times = 1
     while times != 0:
         a.get_api_response()
+
