@@ -43,8 +43,9 @@ class get_data_api:
                         item['owner'] = account['accountName']
                         temp.append(item)
         if len(temp) != 0:
-            with open(os.getcwd() + '/data/'+self.user_id+'.json', 'a') as outfile:
-                json.dump(temp, outfile, indent=2)
+            for n in temp:
+                with open(os.getcwd() + '/data/'+self.user_id+'.json', 'a') as outfile:
+                    json.dump(n, outfile, indent=2)
         self.record_last_user_id(file_name)
         self.user_id = file_name
 
@@ -55,4 +56,3 @@ if __name__ == "__main__":
     times = 1
     while times != 0:
         a.get_api_response()
-

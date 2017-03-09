@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <title>{{ title }}</title>
+  </head>
+  <body>
+      <h1>Item Query</h1>
+      <form action="" method="post" name="login">
+          {{ form.hidden_tag() }}
+          <p>
+              Item Name:<br>
+              {{ form.name(size=40) }}<br>
+          </p>
+
+          <p>
+              Item Type Line:<br>
+              {{ form.typeLine(size=40) }}<br>
+          </p>
+
+          <p>
+              Item Level:<br>
+              {{ form.ilvl(size=40) }}<br>
+          </p>
+
+          <p>
+              Item Socket Numbers:<br>
+              {{ form.socketnumber(size=40) }}<br>
+          </p>
+
+          <p>
+              Item Required Level:<br>
+              {{ form.requirements_lvl(size=40) }}<br>
+          </p>
+
+          <p>
+              Item Required STR:<br>
+              {{ form.requirements_str(size=40) }}<br>
+          </p>
+
+          <p>
+              Item Required INT:<br>
+              {{ form.requirements_int(size=40) }}<br>
+          </p>
+
+          <p>
+              Item Require DEX:<br>
+              {{ form.requirements_dex(size=40) }}<br>
+          </p>
+
+          <p>
+              Item in which league:<br>
+              {{ form.league(size=40) }}<br>
+          </p>
+
+          <p>
+              Item Explicit Mods:<br>
+              {{ form.explicitMods(size=40) }}<br>
+          </p>
+
+          <p>{{ form.corrupted }} Corrupted Item</p>
+          <p>{{ form.verified }} Verified Item</p>
+          <p>{{ form.identified }} Identified Item</p>
+          <p>{{ form.supported }} Support Skill Gem</p>
+          <p><input type="submit" value="Search Item"></p>
+      </form>
+  </body>
+</html>

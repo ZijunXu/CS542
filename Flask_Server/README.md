@@ -1,4 +1,8 @@
 # Backend
+- remember to install MongoDB and Start MongoDB
+`sudo service mongod start`
+- in order to test the item query part you need to import some of the data into the MongoDB which gathered by API module.
+- `mongoimport --db test --collection item --drop --file PATH-TO-JSON-FILE` 
 
 ### Project current structure
 ```
@@ -11,6 +15,7 @@
 │   ├── templates                       # folder for the templates
 │   │   ├── index.html
 │   │   ├── registration.html
+│   │   ├── query.html
 │   │   └── test.html
 │   └── views.py                        # Control view
 ├── app.db                              # Relational database
