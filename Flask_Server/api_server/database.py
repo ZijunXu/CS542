@@ -1,4 +1,4 @@
-from app import db
+from api_server import db
 from werkzeug.security import generate_password_hash, check_password_hash
 import flask_login
 from . import login_manager
@@ -26,6 +26,8 @@ class User(db.Model, flask_login.UserMixin):
     def __repr__(self):
         return '<Role %r>' % self.name
 
+    def as_dict(self):
+        return {c.name:getattr(self,c.name) for c in self.__table__.columns}
 
 @login_manager.user_loader
 def load_user(username):
