@@ -9,6 +9,9 @@ todos = {"123":123}
 
 class Login(Resource):
     """the content validation should be done in the front-end"""
+    def __init__(self):
+
+
     def get(self, login_form):
         """Usage:
         login_form is what we get to validate in the database
@@ -38,8 +41,8 @@ class Register(Resource):
 
 
 
-api.add_resource(Login, '/<string:todo_id>')
-api.add_resource(Register, '/<string:todo_id>')
+api.add_resource(Login, '/login')
+api.add_resource(Register, '/reg')
 
 @app.errorhandler(404)
 def not_found(error=None):
