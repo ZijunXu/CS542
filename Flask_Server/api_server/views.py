@@ -9,14 +9,14 @@ from .forms import LoginForm, RegistrationForm, ItemQueryForm
 class Login(Resource):
     """the content validation should be done in the front-end"""
 
-    def get(self, login_form):
+    def post(self):
         """
         Usage:
         login_form is what we get to validate in the database
         login_form should has the following value
         username,password
         """
-        form = LoginForm.from_json(login_form)
+        form = LoginForm.from_json(request.get_json())
         if form.validate_on_submit():
             user = User.query.filter_by(name=form.username.data).first()
             if user is not None and user.verify_password(form.password.data):
@@ -29,14 +29,14 @@ class Login(Resource):
 class Register(Resource):
     """the content validation should be done in the front-end"""
 
-    def get(self, register_form):
+    def post(self):
         """
         Usage:
         register_form is what we get to insert into the database
         register_form should has the following value
         name,email,password
         """
-        form = RegistrationForm.from_json(register_form)
+        form = RegistrationForm.from_json(request.get_json())
         if form.validate_on_submit():
             user = User(name=form.username.data, email=form.email.data, password=form.password.data)
             db.session.add(user)
@@ -44,8 +44,8 @@ class Register(Resource):
         return jsonify({"register_status": False, "Wrong_Field": True})
 
 
-api.add_resource(Login, '/login')
-api.add_resource(Register, '/reg')
+api.add_resource(Login, '/api/authenticate')
+api.add_resource(Register, '/api/reg')
 
 
 @app.errorhandler(404)

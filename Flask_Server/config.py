@@ -3,7 +3,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config:
-    WTF_CSRF_ENABLED = True
+    WTF_CSRF_ENABLED = False
     SECRET_KEY = 'this-place-we-should-put-some-random-key'
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
