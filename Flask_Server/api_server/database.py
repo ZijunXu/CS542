@@ -1,10 +1,7 @@
 from api_server import db
 from werkzeug.security import generate_password_hash, check_password_hash
-import flask_login
-from . import login_manager
 
-
-class User(db.Model, flask_login.UserMixin):
+class User(db.Model):
     __tablename__='user'
     id = db.Column(db.Integer,primary_key=True)
     name = db.Column(db.String(64))
@@ -28,7 +25,3 @@ class User(db.Model, flask_login.UserMixin):
 
     def as_dict(self):
         return {c.name:getattr(self,c.name) for c in self.__table__.columns}
-
-@login_manager.user_loader
-def load_user(username):
-    return User.query.get(username)
