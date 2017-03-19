@@ -38,8 +38,8 @@
             return $http.put('/api/users/' + user.id, user).then(handleSuccess, handleError('Error updating user'));
         }
 
-        function Delete(id) {
-            return $http.delete('/api/users/' + id).then(handleSuccess, handleError('Error deleting user'));
+        function Delete(username) {
+            return $http.delete('/api/users/' + username).then(handleSuccess, handleError('Error deleting user'));
         }
 
         // private functions

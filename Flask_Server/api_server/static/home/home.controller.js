@@ -34,8 +34,8 @@
                 });
         }
 
-        function deleteUser(id) {
-            UserService.Delete(id)
+        function deleteUser(username) {
+            UserService.Delete(username)
             .then(function () {
                 loadAllUsers();
             });

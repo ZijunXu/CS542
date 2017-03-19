@@ -11,6 +11,7 @@ class Login(Resource):
     front-end transfer the json to the back-end
     and back-end will do the validation again
     """
+
     def post(self):
         """
         Usage:
@@ -32,6 +33,7 @@ class Register(Resource):
     front-end transfer the json to the back-end
     and back-end will do the validation again
     """
+
     def post(self):
         """
         Usage:
@@ -44,11 +46,11 @@ class Register(Resource):
             user = User(name=form.username.data, email=form.email.data, password=form.password.data)
             db.session.add(user)
             return jsonify({"register_status": True})
-        return jsonify({"register_status": False,"message":"Something Wrong on the server side"})
+        return jsonify({"register_status": False, "message": "Something Wrong on the server side"})
 
 
 class User_List(Resource):
-    def get(self,username=None):
+    def get(self, username=None):
         """
         get all the users
         """
@@ -56,6 +58,11 @@ class User_List(Resource):
             return jsonify(User.query.filter_by(name=username).first().as_dict())
         else:
             return jsonify([n.as_dict() for n in User.query.all()])
+
+    def delete(self, username):
+        user = User.query.filter_by(name=username).first()
+        db.session.delete(user)
+        return jsonify({'status': "Delete Success"})
 
 
 api.add_resource(Login, '/api/authenticate')

@@ -4,7 +4,7 @@
 <ul>
     <li ng-repeat="user in vm.allUsers">
         {{user.name}},{{user.email}}
-        - <a ng-click="vm.deleteUser(user.id)">Delete</a>
+        - <a ng-click="vm.deleteUser(user.name)">Delete</a>
     </li>
 </ul>
 <p>&nbsp;</p>
