@@ -10,8 +10,8 @@
     function config($routeProvider, $locationProvider) {
         $routeProvider
             .when('/', {
-                controller: 'HomeController',
-                templateUrl: '/static/home/home.view.html',
+                controller: 'itemController',
+                templateUrl: '/static/search_item/item_search.view.html',
                 controllerAs: 'vm'
             })
 
