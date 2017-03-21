@@ -5855,6 +5855,14 @@ a.th {
     max-width: 800px
 }
 
+@font-face {
+    font-family: "GeneralFoundicons";
+    src: url("../fonts/general_foundicons.eot");
+    src: url("../fonts/general_foundicons.eot?#iefix") format("embedded-opentype"), url("../fonts/general_foundicons.woff") format("woff"), url("../fonts/general_foundicons.ttf") format("truetype"), url("../fonts/general_foundicons.svg#GeneralFoundicons") format("svg");
+    font-weight: normal;
+    font-style: normal
+}
+
 [class*="foundicon-"] {
     display: inline;
     width: auto;
@@ -6061,6 +6069,14 @@ a.th {
     content: "\f02e"
 }
 
+@font-face {
+    font-family: "SocialFoundicons";
+    src: url("../fonts/social_foundicons.eot");
+    src: url("../fonts/social_foundicons.eot?#iefix") format("embedded-opentype"), url("../fonts/social_foundicons.woff") format("woff"), url("../fonts/social_foundicons.ttf") format("truetype"), url("../fonts/social_foundicons.svg#SocialFoundicons") format("svg");
+    font-weight: normal;
+    font-style: normal
+}
+
 .social[class*="foundicon-"] {
     display: inline;
     width: auto;
@@ -6260,8 +6276,27 @@ a.th {
     color: #999
 }
 
+.chosen-container-single .chosen-single span:first {
+    display: block;
+    overflow: hidden;
+    margin-right: 26px;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
 .chosen-container-single .chosen-single-with-deselect span {
     margin-right: 38px
+}
+
+.chosen-container-single .chosen-single abbr {
+    position: absolute;
+    top: 6px;
+    right: 26px;
+    display: block;
+    width: 12px;
+    height: 12px;
+    background: url('chosen-sprite.png') -42px 1px no-repeat;
+    font-size: 1px
 }
 
 .chosen-container-single .chosen-single abbr:hover {
@@ -6281,12 +6316,41 @@ a.th {
     height: 100%
 }
 
+.chosen-container-single .chosen-single div b {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url('chosen-sprite.png') no-repeat 0 2px
+}
+
 .chosen-container-single .chosen-search {
     position: relative;
     z-index: 1010;
     margin: 0;
     padding: 3px 4px;
     white-space: nowrap
+}
+
+.chosen-container-single .chosen-search input[type="text"] {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 1px 0;
+    padding: 4px 20px 4px 5px;
+    width: 100%;
+    height: auto;
+    outline: 0;
+    border: 1px solid #aaa;
+    background: white url('chosen-sprite.png') no-repeat 100% -20px;
+    background: url('chosen-sprite.png') no-repeat 100% -20px, -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(1%, #eee), color-stop(15%, #fff));
+    background: url('chosen-sprite.png') no-repeat 100% -20px, -webkit-linear-gradient(#eee 1%, #fff 15%);
+    background: url('chosen-sprite.png') no-repeat 100% -20px, -moz-linear-gradient(#eee 1%, #fff 15%);
+    background: url('chosen-sprite.png') no-repeat 100% -20px, -o-linear-gradient(#eee 1%, #fff 15%);
+    background: url('chosen-sprite.png') no-repeat 100% -20px, linear-gradient(#eee 1%, #fff 15%);
+    font-size: 1em;
+    font-family: sans-serif;
+    line-height: normal;
+    border-radius: 0
 }
 
 .chosen-container-single .chosen-drop {
@@ -6427,6 +6491,17 @@ a.th {
     color: #333;
     line-height: 13px;
     cursor: default
+}
+
+.chosen-container-multi .chosen-choices li.search-choice .search-choice-close {
+    position: absolute;
+    top: 4px;
+    right: 3px;
+    display: block;
+    width: 12px;
+    height: 12px;
+    background: url('chosen-sprite.png') -42px 1px no-repeat;
+    font-size: 1px
 }
 
 .chosen-container-multi .chosen-choices li.search-choice .search-choice-close:hover {
@@ -6579,12 +6654,31 @@ a.th {
     border-right: none
 }
 
+.chosen-rtl .chosen-search input[type="text"] {
+    padding: 4px 5px 4px 20px;
+    background: white url('chosen-sprite.png') no-repeat -30px -20px;
+    background: url('chosen-sprite.png') no-repeat -30px -20px, -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(1%, #eee), color-stop(15%, #fff));
+    background: url('chosen-sprite.png') no-repeat -30px -20px, -webkit-linear-gradient(#eee 1%, #fff 15%);
+    background: url('chosen-sprite.png') no-repeat -30px -20px, -moz-linear-gradient(#eee 1%, #fff 15%);
+    background: url('chosen-sprite.png') no-repeat -30px -20px, -o-linear-gradient(#eee 1%, #fff 15%);
+    background: url('chosen-sprite.png') no-repeat -30px -20px, linear-gradient(#eee 1%, #fff 15%);
+    direction: rtl
+}
+
 .chosen-rtl.chosen-container-single .chosen-single div b {
     background-position: 6px 2px
 }
 
 .chosen-rtl.chosen-container-single.chosen-with-drop .chosen-single div b {
     background-position: -12px 2px
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 144dpi) {
+    .chosen-rtl .chosen-search input[type="text"], .chosen-container-single .chosen-single abbr, .chosen-container-single .chosen-single div b, .chosen-container-single .chosen-search input[type="text"], .chosen-container-multi .chosen-choices .search-choice .search-choice-close, .chosen-container .chosen-results-scroll-down span, .chosen-container .chosen-results-scroll-up span {
+        background-image: url('chosen-sprite@2x.png') !important;
+        background-size: 52px 37px !important;
+        background-repeat: no-repeat !important
+    }
 }
 
 .chosen-container-single .chosen-single {
@@ -6669,6 +6763,18 @@ a.th {
     z-index: 10000
 }
 
+.socketLink0, .socketLink2, .socketLink4 {
+    background-image: url("../sockets/Socket_Link_Horizontal.png");
+    width: 37.72819px;
+    height: 15.21298px
+}
+
+.socketLink1, .socketLink3 {
+    background-image: url("../sockets/Socket_Link_Vertical.png");
+    width: 15.21298px;
+    height: 37.72819px
+}
+
 .socketLink0 {
     left: 28px;
     top: 16px
@@ -6700,6 +6806,22 @@ a.th {
     float: left
 }
 
+.socketS {
+    background-image: url("../sockets/str.png")
+}
+
+.socketD {
+    background-image: url("../sockets/dex.png")
+}
+
+.socketI {
+    background-image: url("../sockets/int.png")
+}
+
+.socketG {
+    background-image: url("../sockets/gen.png")
+}
+
 .socketRight {
     float: right
 }
@@ -6710,6 +6832,82 @@ a.th {
     background-position: right center;
     background-size: 20px;
     background-repeat: no-repeat
+}
+
+.currency-chromatic {
+    background-image: url("/static/currency/chromatic.png")
+}
+
+.currency-alteration {
+    background-image: url("/static/currency/alteration.png")
+}
+
+.currency-jewellers {
+    background-image: url("/static/currency/jewellers.png")
+}
+
+.currency-chance {
+    background-image: url("/static/currency/chance.png")
+}
+
+.currency-chisel {
+    background-image: url("/static/currency/chisel.png")
+}
+
+.currency-fusing {
+    background-image: url("/static/currency/fusing.png")
+}
+
+.currency-alchemy {
+    background-image: url("/static/currency/alchemy.png")
+}
+
+.currency-scouring {
+    background-image: url("/static/currency/scouring.png")
+}
+
+.currency-blessed {
+    background-image: url("/static/currency/blessed.png")
+}
+
+.currency-chaos {
+    background-image: url("/static/currency/chaos.png")
+}
+
+.currency-regret {
+    background-image: url("/static/currency/regret.png")
+}
+
+.currency-regal {
+    background-image: url("/static/currency/regal.png")
+}
+
+.currency-gcp {
+    background-image: url("/static/currency/gcp.png")
+}
+
+.currency-divine {
+    background-image: url("/static/currency/divine.png")
+}
+
+.currency-exalted {
+    background-image: url("/static/currency/exalted.png")
+}
+
+.currency-mirror {
+    background-image: url("/static/currency/mirror.png")
+}
+
+.currency-vaal {
+    background-image: url("/static/currency/vaal.png")
+}
+
+.currency-coin {
+    background-image: url("/static/currency/coin.png")
+}
+
+.currency-silver {
+    background-image: url("/static/currency/silver.png")
 }
 
 .header-bg, .footer-bg, .subheader-bg, .subfooter-bg {
@@ -7598,6 +7796,11 @@ input.sockets-w {
     float: right
 }
 
+.allanpls {
+    background-image: url("/static/allanpls.png");
+    background-repeat: no-repeat
+}
+
 .live-search-box a {
     color: white
 }
@@ -7676,8 +7879,56 @@ input.sockets-w {
     -webkit-box-sizing: content-box
 }
 
+#cboxOverlay {
+    background: url(images/overlay.png) repeat 0 0
+}
+
 #colorbox {
     outline: 0
+}
+
+#cboxTopLeft {
+    width: 21px;
+    height: 21px;
+    background: url(images/controls.png) no-repeat -101px 0
+}
+
+#cboxTopRight {
+    width: 21px;
+    height: 21px;
+    background: url(images/controls.png) no-repeat -130px 0
+}
+
+#cboxBottomLeft {
+    width: 21px;
+    height: 21px;
+    background: url(images/controls.png) no-repeat -101px -29px
+}
+
+#cboxBottomRight {
+    width: 21px;
+    height: 21px;
+    background: url(images/controls.png) no-repeat -130px -29px
+}
+
+#cboxMiddleLeft {
+    width: 21px;
+    background: url(images/controls.png) left top repeat-y
+}
+
+#cboxMiddleRight {
+    width: 21px;
+    background: url(images/controls.png) right top repeat-y
+}
+
+#cboxTopCenter {
+    height: 21px;
+    background: url(images/border.png) 0 0 repeat-x
+}
+
+#cboxBottomCenter {
+    height: 21px;
+    background: url(images/border.png) 0 -29px repeat-x
 }
 
 #cboxContent {
@@ -7714,6 +7965,14 @@ input.sockets-w {
     color: #949494
 }
 
+#cboxLoadingOverlay {
+    background: url(images/loading_background.png) no-repeat center center
+}
+
+#cboxLoadingGraphic {
+    background: url(images/loading.gif) no-repeat center center
+}
+
 #cboxPrevious, #cboxNext, #cboxSlideshow, #cboxClose {
     border: 0;
     padding: 0;
@@ -7734,12 +7993,42 @@ input.sockets-w {
     color: #0092ef
 }
 
+#cboxPrevious {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: url(images/controls.png) no-repeat -75px 0;
+    width: 25px;
+    height: 25px;
+    text-indent: -9999px
+}
+
 #cboxPrevious:hover {
     background-position: -75px -25px
 }
 
+#cboxNext {
+    position: absolute;
+    bottom: 0;
+    left: 27px;
+    background: url(images/controls.png) no-repeat -50px 0;
+    width: 25px;
+    height: 25px;
+    text-indent: -9999px
+}
+
 #cboxNext:hover {
     background-position: -50px -25px
+}
+
+#cboxClose {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: url(images/controls.png) no-repeat -25px 0;
+    width: 25px;
+    height: 25px;
+    text-indent: -9999px
 }
 
 #cboxClose:hover {

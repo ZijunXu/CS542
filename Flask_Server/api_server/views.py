@@ -3,6 +3,11 @@ from flask_restful import Resource
 from api_server import app, db, mongo, api
 from .database import User
 from .forms import LoginForm, RegistrationForm, ItemQueryForm
+from flask_httpauth import HTTPTokenAuth
+
+
+auth = HTTPTokenAuth(scheme='Token')
+
 
 
 class Login(Resource):
@@ -23,7 +28,8 @@ class Login(Resource):
         if form.validate_on_submit():
             user = User.query.filter_by(name=form.username.data).first()
             if user is not None and user.verify_password(form.password.data):
-                return jsonify({"login_status": True})
+                token = user.generate_auth_token()
+                return jsonify({"login_status": True, 'token': token.decode('ascii')})
         return jsonify({"login_status": False})
 
 
@@ -33,7 +39,6 @@ class Register(Resource):
     front-end transfer the json to the back-end
     and back-end will do the validation again
     """
-
     def post(self):
         """
         Usage:
@@ -50,9 +55,13 @@ class Register(Resource):
 
 
 class User_List(Resource):
+    decorators = [auth.login_required]
+
     def get(self, username=None):
         """
-        get all the users
+        Usage:
+        if provide username, query that single user
+        if note provide username, query all the users
         """
         if username:
             return jsonify(User.query.filter_by(name=username).first().as_dict())
@@ -60,10 +69,13 @@ class User_List(Resource):
             return jsonify([n.as_dict() for n in User.query.all()])
 
     def delete(self, username):
+        """
+        Usage:
+        delete the user with the same username
+        """
         user = User.query.filter_by(name=username).first()
         db.session.delete(user)
         return jsonify({'status': "Delete Success"})
-
 
 api.add_resource(Login, '/api/authenticate')
 api.add_resource(Register, '/api/reg')
