@@ -1,4 +1,4 @@
-﻿﻿(function () {
+﻿(function () {
     'use strict';
 
     angular
@@ -9,7 +9,7 @@
     config.$inject = ['$routeProvider', '$locationProvider'];
     function config($routeProvider, $locationProvider) {
         $routeProvider
-            .when('/', {
+            .when('/search', {
                 controller: 'itemController',
                 templateUrl: '/static/search_item/item_search.view.html',
                 controllerAs: 'vm'
@@ -27,7 +27,13 @@
                 controllerAs: 'vm'
             })
 
-            .otherwise({ redirectTo: '/login' });
+             .when('/', {
+                controller: 'HomeController',
+                templateUrl: '/static/home/home.view.html',
+                controllerAs: 'vm'
+            })
+
+            .otherwise({ redirectTo: '/' });
     }
 
     run.$inject = ['$rootScope', '$location', '$cookies', '$http'];
@@ -43,7 +49,7 @@
             var restrictedPage = $.inArray($location.path(), ['/login', '/register']) === -1;
             var loggedIn = $rootScope.globals.currentUser;
             if (restrictedPage && !loggedIn) {
-                $location.path('/login');
+                $location.path('/');
             }
         });
     }
