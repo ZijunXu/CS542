@@ -5,12 +5,12 @@
         .module('app')
         .controller('itemController', itemController);
 
-    itemController.$inject = ['SearchService', '$rootScope'];
-    function itemController(SearchService, $rootScope) {
+    itemController.$inject = ['UserService', '$rootScope'];
+    function itemController(UserService, $rootScope) {
         var vm = this;
-
+        vm.user = null;
         vm.item = null;
-        //vm.allUsers = [];
+        vm.allUsers = [];
         //vm.deleteUser = deleteUser;
 
         initController();
@@ -20,19 +20,19 @@
             loadAllUsers();
         }
 
-        // function loadCurrentUser() {
-        //     UserService.GetByUsername($rootScope.globals.currentUser.username)
-        //         .then(function (user) {
-        //             vm.user = user;
-        //         });
-        // }
-        //
-        // function loadAllUsers() {
-        //     UserService.GetAll()
-        //         .then(function (users) {
-        //             vm.allUsers = users;
-        //         });
-        // }
+         function loadCurrentUser() {
+             UserService.GetByUsername($rootScope.globals.currentUser.username)
+                 .then(function (user) {
+                     vm.user = user;
+                 });
+         }
+
+         function loadAllUsers() {
+             UserService.GetAll()
+                 .then(function (users) {
+                     vm.allUsers = users;
+                 });
+         }
         //
         // function deleteUser(username) {
         //     UserService.Delete(username)

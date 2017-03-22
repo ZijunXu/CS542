@@ -4,31 +4,7 @@
 <div id="content">
     <div class="row">
         <div class="large-12 column">
-
-            <div class="row form-choose-action">
-                <div class="large-12 columns">
-                    <ul class="button-group">
-                        <li><a href="#" id="search-btn" class="active button tiny secondary"
-                               onclick="return false;">Search for items</a></li>
-                        <li><a href="#" id="import-btn" class="button tiny secondary" onclick="return false;">Import
-                            item data</a></li>
-                        <li class="right"><a href="/" class="button tiny secondary">Reset</a></li>
-                    </ul>
-                </div>
-                <hr/>
-            </div>
             <form class="custom" id="import" ng-submit="vm.search()" role="form">
-                <div class="row">
-                    <div class="large-12 columns"><p>To import an item hover over it in game and press Ctrl+C,
-                        then click on the textarea below and press Ctrl+V.</p>
-                        <p>Note that importer will try to fill as many fields as it can so be ready to adjust
-                            search parameters.</p></div>
-                </div>
-                <div class="row">
-                    <div class="large-12 columns"><textarea name="data"
-                                                            placeholder="Paste item data here."></textarea>
-                    </div>
-                </div>
                 <div class="row">
                     <div class="large-12 columns">
                         <div class="large-1 columns">
@@ -63,12 +39,6 @@
                         <div class="large-1 columns"><label class="right inline">Uppercut&nbsp;%</label></div>
                         <div class="large-3 columns"><input type="text" value="125" name="uppercut"></div>
                         <div class="large-4 columns"></div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="large-12 columns">
-                        <div class="large-2 large-offset-10 columns"><input type="submit" class="search button"
-                                                                            value="Import!"></div>
                     </div>
                 </div>
             </form>
