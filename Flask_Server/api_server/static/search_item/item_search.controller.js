@@ -5,8 +5,8 @@
         .module('app')
         .controller('itemController', itemController);
 
-    itemController.$inject = ['UserService', '$rootScope'];
-    function itemController(UserService, $rootScope) {
+    itemController.$inject = ['UserService', '$rootScope','SearchService'];
+    function itemController(UserService, $rootScope, SearchService, $location) {
         var vm = this;
         vm.user = null;
         vm.item = null;

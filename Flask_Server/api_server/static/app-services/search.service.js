@@ -21,8 +21,8 @@
             return $http.get('/api/*******/').then(handleSuccess, handleError('Error getting item back'));
         }
 
-        function PostItem(id) {
-            return $http.post('/api/*******/' + id).then(handleSuccess, handleError('Error posting item by content'));
+        function PostItem(search) {
+            return $http.post('/api/*******/',search).then(handleSuccess, handleError('Error posting item by content'));
         }
 
         // private functions

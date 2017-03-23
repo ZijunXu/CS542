@@ -9,40 +9,23 @@
         .controller('HomeController', HomeController);
 
     HomeController.$inject = ['SearchService', '$rootScope'];
-    function HomeController(SearchService, $rootScope) {
+    function HomeController(SearchService,$rootScope,$location) {
         var vm = this;
 
-        vm.item = null;
-        //vm.allUsers = [];
-        //vm.deleteUser = deleteUser;
+        vm.search = search();
 
-        initController();
-
-        function initController() {
-            loadCurrentUser();
-            loadAllUsers();
+        function search() {
+            SearchService.PostItem(vm.search)
+                .then(function (response) {
+                    if (response.search_status) {
+                        //use response to update page
+                        $location.path('/login');
+                    } else {
+                        FlashService.Error(response.message);
+                        vm.dataLoading = false;
+                    }
+                });
         }
-
-        // function loadCurrentUser() {
-        //     UserService.GetByUsername($rootScope.globals.currentUser.username)
-        //         .then(function (user) {
-        //             vm.user = user;
-        //         });
-        // }
-        //
-        // function loadAllUsers() {
-        //     UserService.GetAll()
-        //         .then(function (users) {
-        //             vm.allUsers = users;
-        //         });
-        // }
-        //
-        // function deleteUser(username) {
-        //     UserService.Delete(username)
-        //     .then(function () {
-        //         loadAllUsers();
-        //     });
-        // }
     }
 
 })();
