@@ -37,15 +37,15 @@ class User(db.Model):
         try:
             data = s.loads(token)
         except SignatureExpired:
-            return None # valid token, but expired
+            return None  # valid token, but expired
         except BadSignature:
-            return None # invalid token
+            return None  # invalid token
         user = User.query.get(data['id'])
         return user
 
 class Search(db.Model):
-    __tablename__='Search'
-    id = db.Column(db.Integer,primary_key=True, ForeignKey(User.id))
+    __tablename__ = 'Search'
+    id = db.Column(db.Integer, db.ForeignKey('User.id'), primary_key=True)
     item = db.Column(db.String(64))
 
 class Currency(db.Model):

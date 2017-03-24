@@ -12,6 +12,6 @@ mongo = PyMongo(app)
 api = Api(app)
 wtforms_json.init()
 
-app.add_url_rule('/','index',lambda:app.send_static_file('index.html'))
+app.add_url_rule('/', 'index', lambda: app.send_static_file('index.html'))
 from api_server import views
 
