@@ -1,34 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Item search</title>
-    <link rel="stylesheet" href="app-content/item.main.css">
-</head>
-<body>
+<h1 align="center">POE TRADER</h1>
+<h2 align="center">Item Search</h2>
+<p><a href="#!/login" class="btn btn-primary">Sign in or Sign up</a></p>
 <div id="content">
     <div class="row">
         <div class="large-12 column">
-
-            <div class="row form-choose-action">
-                <div class="large-12 columns">
-                    <ul class="button-group">
-                        <li><a href="#" id="search-btn" class="active button tiny secondary"
-                               onclick="return false;">Search for items</a></li>
-                        <li><a href="#" id="import-btn" class="button tiny secondary" onclick="return false;">Import
-                            item data</a></li>
-                        <li class="right"><a href="/" class="button tiny secondary">Reset</a></li>
-                    </ul>
-                </div>
-                <hr/>
-            </div>
-            <form action="/import" method="POST" class="custom" id="import" style="display:none">
-                <div class="row">
-                    <div class="large-12 columns"><p>To import an item hover over it in game and press Ctrl+C,
-                        then click on the textarea below and press Ctrl+V.</p>
-                        <p>Note that importer will try to fill as many fields as it can so be ready to adjust
-                            search parameters.</p></div>
-                </div>
+            <form class="custom" id="import" ng-submit="vm.search()" role="form">
                 <div class="row">
                     <div class="large-12 columns"><textarea name="data"
                                                             placeholder="Paste item data here."></textarea>
@@ -70,14 +46,9 @@
                         <div class="large-4 columns"></div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="large-12 columns">
-                        <div class="large-2 large-offset-10 columns"><input type="submit" class="search button"
-                                                                            value="Import!"></div>
-                    </div>
-                </div>
             </form>
-            <form action="/search" method="POST" class="custom" id="search">
+            <form id="search" class="custom" ng-submit="vm.search()" role="form">
+            <!--<form action="/search" method="POST" class="custom" id="search">-->
                 <div class="row">
                     <div class="large-12 columns">
                         <div class="large-1 columns">
@@ -154,7 +125,7 @@
                 <div class="row">
                     <div class="large-12 columns">
                         <div class="large-1 columns"><label class="right inline">Name</label></div>
-                        <div class="large-11 columns"><input type="text" name="name" class="long" value=""
+                        <div class="large-11 columns"><input type="text" name="name" ng-model="vm.search.name"
                                                              id="name"/></div>
                     </div>
                 </div>
@@ -169,7 +140,7 @@
                                 <div class="large-6 columns" id="prop-dmg">
                                     <ul class="button-group ul-2">
                                         <li><input type="text" name="dmg_min" class="num" placeholder="min"
-                                                   value=""></li>
+                                                   value="" ng-model="vm.test1"></li>
                                         <li><input type="text" name="dmg_max" class="num" placeholder="max"
                                                    value=""></li>
                                     </ul>
@@ -866,5 +837,3 @@
     <!--</p></li>-->
     <!--</ol>-->
 </div>
-</body>
-</html>

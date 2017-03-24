@@ -17,11 +17,11 @@ class RegistrationForm(FlaskForm):
     confirm = PasswordField('Repeat Password', validators=[DataRequired()])
     accept_tos = BooleanField('I accept the TOS', validators=[DataRequired()])
 
-    def validata_email(self, field):
+    def validate_email(self, field):
         if User.query.filter_by(email=field.data).first():
             raise ValueError('Email already used')
 
-    def validata_username(self, field):
+    def validate_username(self, field):
         if User.query.filter_by(name=field.data).first():
             raise ValueError('Username already used')
 
