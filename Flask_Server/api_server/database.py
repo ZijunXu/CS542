@@ -42,3 +42,20 @@ class User(db.Model):
             return None # invalid token
         user = User.query.get(data['id'])
         return user
+
+class Search(db.Model):
+    __tablename__='Search'
+    id = db.Column(db.Integer,primary_key=True, ForeignKey(User.id))
+    item = db.Column(db.String(64))
+
+class Currency(db.Model):
+    __tablename__='Currency'
+    id = db.Column(db.Integer,primary_key=True)
+    sell_item = db.Column(db.String(64))
+    buy_item = db.Column(db.String(64))
+    sell_number = db.Column(db.Integer)
+    buy_number = db.Column(db.Integer)
+
+
+
+
