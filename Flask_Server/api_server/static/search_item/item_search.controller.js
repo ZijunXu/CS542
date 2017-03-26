@@ -5,12 +5,14 @@
         .module('app')
         .controller('itemController', itemController);
 
-    itemController.$inject = ['UserService', '$rootScope','SearchService'];
+    itemController.$inject = ['UserService', '$rootScope','SearchService','$location'];
     function itemController(UserService, $rootScope, SearchService, $location) {
         var vm = this;
-        vm.user = null;
-        vm.item = null;
+        //vm.user = null;
+        vm.item={};
+        vm.item.name = vm.item.name;
         vm.allUsers = [];
+        vm.search = search;
         //vm.deleteUser = deleteUser;
 
         initController();
@@ -40,6 +42,20 @@
         //         loadAllUsers();
         //     });
         // }
+
+        function search() {
+            SearchService.PostItem(vm.name)
+                .then(function (response) {
+                    if (response.data!=null) {
+                        //use response to update page
+                         console.log(response.data)
+                        $location.path('/login');
+                    } else {
+                        FlashService.Error(response.message);
+                        vm.dataLoading = false;
+                    }
+                });
+        }
     }
 
 })();

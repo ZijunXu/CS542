@@ -33,6 +33,12 @@
                 controllerAs: 'vm'
             })
 
+             .when('/currency', {
+                controller: 'CurrencyController',
+                templateUrl: '/static/currency/currency.view.html',
+                controllerAs: 'vm'
+            })
+
             .otherwise({ redirectTo: '/' });
     }
 

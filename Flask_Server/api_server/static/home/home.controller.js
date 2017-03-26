@@ -12,13 +12,14 @@
     function HomeController(SearchService,$rootScope,$location) {
         var vm = this;
 
-        vm.search = search();
+        vm.search = search;
 
         function search() {
-            SearchService.PostItem(vm.search)
+            SearchService.PostItem(vm.name)
                 .then(function (response) {
-                    if (response.search_status) {
+                    if (response.data!=null) {
                         //use response to update page
+                         console.log(response.data)
                         $location.path('/login');
                     } else {
                         FlashService.Error(response.message);
