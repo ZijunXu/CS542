@@ -8,10 +8,9 @@
         .module('app')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['SearchService', '$rootScope'];
-    function HomeController(SearchService,$rootScope,$location) {
+    HomeController.$inject = ['SearchService', '$rootScope','$location'];
+    function HomeController(SearchService, $rootScope, $location) {
         var vm = this;
-
         vm.search = search;
 
         function search() {
@@ -19,8 +18,9 @@
                 .then(function (response) {
                     if (response.data!=null) {
                         //use response to update page
-                         console.log(response.data)
-                        $location.path('/login');
+                         console.log(response.data);
+                         result(response.data);// 研究下
+                        $location.path('/item');
                     } else {
                         FlashService.Error(response.message);
                         vm.dataLoading = false;

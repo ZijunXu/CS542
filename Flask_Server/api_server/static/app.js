@@ -9,6 +9,12 @@
     config.$inject = ['$routeProvider', '$locationProvider'];
     function config($routeProvider, $locationProvider) {
         $routeProvider
+             .when('/', {
+                controller: 'HomeController',
+                templateUrl: '/static/home/home.view.html',
+                controllerAs: 'vm'
+            })
+
             .when('/search', {
                 controller: 'itemController',
                 templateUrl: '/static/search_item/item_search.view.html',
@@ -27,15 +33,15 @@
                 controllerAs: 'vm'
             })
 
-             .when('/', {
-                controller: 'HomeController',
-                templateUrl: '/static/home/home.view.html',
-                controllerAs: 'vm'
-            })
-
              .when('/currency', {
                 controller: 'CurrencyController',
                 templateUrl: '/static/currency/currency.view.html',
+                controllerAs: 'vm'
+            })
+
+            .when('/item', {
+                controller: 'ItemResultController',
+                templateUrl: '/static/item_result/item_result.view.html',
                 controllerAs: 'vm'
             })
 
