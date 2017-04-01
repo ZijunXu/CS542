@@ -1,10 +1,11 @@
-from api_server import db, app
+from Flask_Server.api_server import db, app
 from werkzeug.security import generate_password_hash, check_password_hash
 from itsdangerous import (TimedJSONWebSignatureSerializer as Serializer, BadSignature, SignatureExpired)
 
+
 class User(db.Model):
-    __tablename__='user'
-    id = db.Column(db.Integer,primary_key=True)
+    __tablename__ = 'user'
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
     email = db.Column(db.String(64), unique=True)
     password = db.Column(db.String(128))
@@ -25,7 +26,7 @@ class User(db.Model):
         return '<Role %r>' % self.name
 
     def as_dict(self):
-        return {c.name:getattr(self, c.name) for c in self.__table__.columns}
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
     def generate_auth_token(self, expiration=600):
         s = Serializer(app.config['SECRET_KEY'], expires_in=expiration)
@@ -37,8 +38,8 @@ class User(db.Model):
         try:
             data = s.loads(token)
         except SignatureExpired:
-            return None # valid token, but expired
+            return None  # valid token, but expired
         except BadSignature:
-            return None # invalid token
+            return None  # invalid token
         user = User.query.get(data['id'])
         return user

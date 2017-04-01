@@ -1,3 +1,4 @@
+from pymongo import MongoClient
 import requests
 import json
 import os
@@ -9,8 +10,8 @@ class get_data_api:
         # get the user id from last api query
         self.user_id = self.get_last_user_id()
         # create the folder for storing the data
-        if not os.path.exists(os.getcwd()+'/data/'):
-            os.makedirs(os.getcwd()+'/data')
+        if not os.path.exists(os.getcwd() + '/data/'):
+            os.makedirs(os.getcwd() + '/data')
 
     def get_last_user_id(self):
         # set the last user id
@@ -24,12 +25,12 @@ class get_data_api:
     def record_last_user_id(self, data):
         # record the user id
         with open('last_user.json', 'w') as outfile:
-            json.dump({"last_user":data}, outfile)
+            json.dump({"last_user": data}, outfile)
 
     def get_api_response(self):
         # we only store the items that have price note
         api_url = "http://api.pathofexile.com/public-stash-tabs/?id="
-        r = requests.get(api_url+self.user_id)
+        r = requests.get(api_url + self.user_id)
         data = r.json()
         file_name = data['next_change_id']
         print("Current id: ", self.user_id + " next id: ", file_name)
@@ -43,16 +44,25 @@ class get_data_api:
                         item['owner'] = account['accountName']
                         temp.append(item)
         if len(temp) != 0:
-            for n in temp:
-                with open(os.getcwd() + '/data/'+self.user_id+'.json', 'a') as outfile:
-                    json.dump(n, outfile, indent=2)
+            client = MongoClient('mongodb://localhost:27017/')
+            db = client.project_542
+            posts = db.posts
+            posts.insert_many(temp)
+
+            '''for n in temp:
+                with open(os.getcwd() + '/data/' + self.user_id + '.json', 'a') as outfile:
+                    json.dump(n, outfile, indent=2)'''
         self.record_last_user_id(file_name)
         self.user_id = file_name
 
-if __name__ == "__main__":
-    # notice, if we try too many times, the server will reject our request then reponed nothing
-    print("Start the script")
-    a = get_data_api()
-    times = 1
-    while times != 0:
-        a.get_api_response()
+        # if __name__ == "__main__":
+        # notice, if we try too many times, the server will reject our request then reponed nothing
+
+
+print("Start the script")
+a = get_data_api()
+times = 1
+while times != 0:
+    a.get_api_response()
+    # 50817645-53901223-50376868-58618547-54519374
+    # 7210962-7812332-7136262-8503897-7930844

@@ -2,6 +2,7 @@ aniso8601==1.2.0
 appdirs==1.4.0
 click==6.7
 Flask==0.12
+Flask-HTTPAuth==3.2.2
 Flask-Login==0.4.0
 Flask-PyMongo==0.4.1
 Flask-RESTful==0.3.5
@@ -20,4 +21,5 @@ requests==2.13.0
 six==1.10.0
 SQLAlchemy==1.1.5
 Werkzeug==0.11.15
+wtforms_json==0.3.1
 WTForms==2.1

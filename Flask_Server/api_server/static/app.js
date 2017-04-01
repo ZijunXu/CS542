@@ -27,13 +27,13 @@
                 controllerAs: 'vm'
             })
 
-             .when('/', {
+            .when('/', {
                 controller: 'HomeController',
                 templateUrl: '/static/home/home.view.html',
                 controllerAs: 'vm'
             })
 
-            .otherwise({ redirectTo: '/' });
+            .otherwise({redirectTo: '/'});
     }
 
     run.$inject = ['$rootScope', '$location', '$cookies', '$http'];

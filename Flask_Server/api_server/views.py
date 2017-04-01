@@ -1,13 +1,11 @@
 from flask import request, jsonify
 from flask_restful import Resource
-from api_server import app, db, mongo, api
+from Flask_Server.api_server import app, db, mongo, api
 from .database import User
 from .forms import LoginForm, RegistrationForm, ItemQueryForm
 from flask_httpauth import HTTPTokenAuth
 
-
 auth = HTTPTokenAuth(scheme='Token')
-
 
 
 class Login(Resource):
@@ -39,6 +37,7 @@ class Register(Resource):
     front-end transfer the json to the back-end
     and back-end will do the validation again
     """
+
     def post(self):
         """
         Usage:
@@ -76,6 +75,7 @@ class User_List(Resource):
         user = User.query.filter_by(name=username).first()
         db.session.delete(user)
         return jsonify({'status': "Delete Success"})
+
 
 api.add_resource(Login, '/api/authenticate')
 api.add_resource(Register, '/api/reg')

@@ -5,7 +5,7 @@
         .module('app')
         .controller('itemController', itemController);
 
-    itemController.$inject = ['UserService', '$rootScope','SearchService'];
+    itemController.$inject = ['UserService', '$rootScope', 'SearchService'];
     function itemController(UserService, $rootScope, SearchService, $location) {
         var vm = this;
         vm.user = null;
@@ -20,19 +20,20 @@
             loadAllUsers();
         }
 
-         function loadCurrentUser() {
-             UserService.GetByUsername($rootScope.globals.currentUser.username)
-                 .then(function (user) {
-                     vm.user = user;
-                 });
-         }
+        function loadCurrentUser() {
+            UserService.GetByUsername($rootScope.globals.currentUser.username)
+                .then(function (user) {
+                    vm.user = user;
+                });
+        }
 
-         function loadAllUsers() {
-             UserService.GetAll()
-                 .then(function (users) {
-                     vm.allUsers = users;
-                 });
-         }
+        function loadAllUsers() {
+            UserService.GetAll()
+                .then(function (users) {
+                    vm.allUsers = users;
+                });
+        }
+
         //
         // function deleteUser(username) {
         //     UserService.Delete(username)
