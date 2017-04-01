@@ -8,15 +8,12 @@ from flask_httpauth import HTTPTokenAuth
 
 auth = HTTPTokenAuth(scheme='Token')
 
-
-
 class Login(Resource):
     """
     the content validation should be done in the both ends
     front-end transfer the json to the back-end
     and back-end will do the validation again
     """
-
     def post(self):
         """
         Usage:
