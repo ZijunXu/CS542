@@ -1,0 +1,133 @@
+<div class="row">
+    <div class="large-12 columns">
+        <h3 class="title">
+            Currency market&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <span class="backtopoetrade"><a href="#!/currency_search">Go back to item trades</a></span>
+        </h3>
+    </div>
+    <hr class="smallhr">
+</div>
+<div class="row" id="contentstart">
+    <div class="large-12 columns" style="margin-bottom: 0.5em">
+        <div style="height: 90px">
+
+        </div>
+    </div>
+    <hr class="smallhr">
+</div>
+
+<div id="content">
+
+    <div class="row">
+        <div class="large-12 column">
+            <div class="row form-choose-action">
+                <div class="large-12 columns">
+                    <ul class="button-group">
+                        <li><a href="#!/currency_search" class="active button tiny secondary">Currency search</a></li>
+                        <li><a href="#!/currency_post" class=" button tiny secondary">Currency post</a></li>
+                    </ul>
+                </div>
+                <hr>
+            </div>
+
+            <!--<form action="/search" method="GET" class="custom" id="search">-->
+                <form class="custom" id="import" ng-submit="vm.search()" role="form">
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <div class="large-1 columns">
+                                <label class="right inline" for="league">League</label>
+                            </div>
+                            <div class="large-3 columns">
+                                <select name="league" data-customforms="disabled" class="league chosen"
+                                        style="display: none;">
+
+                                    <option value="Legacy">Legacy</option>
+
+                                    <option value="Hardcore Legacy">Hardcore Legacy</option>
+
+                                    <option value="Standard">Standard</option>
+
+                                    <option value="Hardcore">Hardcore</option>
+
+                                </select>
+                                <div class="chosen-container chosen-container-single" style="width: 100%;" title=""><a
+                                        class="chosen-single" tabindex="-1"><span>Hardcore Legacy</span>
+                                    <div><b></b></div>
+                                </a>
+                                    <div class="chosen-drop">
+                                        <div class="chosen-search"><input type="text" autocomplete="off"></div>
+                                        <ul class="chosen-results"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="large-4 columns"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="large-12 columns"><h5>What do you want?</h5></div>
+                    </div>
+                    <div class="row" id="currency-want">
+
+
+                    </div>
+                    <!--<input type="hidden" id="currency-want-input" name="want">-->
+
+                    <div class="row">
+                        <div class="large-12 columns"><h5>What do you have?</h5></div>
+                    </div>
+                    <div class="row" id="currency-have">
+
+                    </div>
+                    <!--<input type="hidden" id="currency-have-input" name="have">-->
+
+                    <div class="row">
+                        <hr>
+                        <div class="large-12 columns">
+                            <div class="large-2 columns"><a class="button tiny secondary" href="#!/currency_search">Reset</a></div>
+                            <div class="large-2 large-offset-8 columns">
+                                <input type="submit" class="search button" value="Search!">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <script>
+                    $("body").on("click", ".currency-selectable", function () {
+                        var o = $(this);
+                        if (o.hasClass("currency-selected")) {
+                            o.removeClass("currency-selected");
+                        } else {
+                            o.addClass("currency-selected");
+                        }
+                    });
+                    function selected_currency(selector) {
+                        var result = "";
+                        $(selector + " .currency-selected").each(function (i, e) {
+                            result += $(e).data("id") + "-";
+                        });
+                        return result.slice(0, -1);
+                    }
+                    $("#search").submit(function () {
+                        $("#currency-want-input").val(selected_currency("#currency-want"));
+                        $("#currency-have-input").val(selected_currency("#currency-have"));
+                        $.cookie("league", $("#search .league").val(), {expires: 10000});
+                        return true;
+                    });
+
+
+                    var league = $("#search .league");
+                    var options = $('#search .league option');
+                    var values = $.map(options, function (option) {
+                        return option.value;
+                    });
+                    if ($.inArray($.cookie("league"), values) != -1) {
+                        league.val($.cookie("league"));
+                        league.trigger("chosen:updated");
+                    }
+
+                </script>
+        </div>
+    </div>
+
+
+</div>

@@ -15,9 +15,15 @@
                 controllerAs: 'vm'
             })
 
-            .when('/search', {
+            .when('/item_search', {
                 controller: 'itemController',
-                templateUrl: '/static/search_item/item_search.view.html',
+                templateUrl: '/static/item/item_search.view.html',
+                controllerAs: 'vm'
+            })
+
+             .when('/item_result', {
+                controller: 'ItemResultController',
+                templateUrl: '/static/item/item_result.view.html',
                 controllerAs: 'vm'
             })
 
@@ -33,15 +39,27 @@
                 controllerAs: 'vm'
             })
 
-             .when('/currency', {
-                controller: 'CurrencyController',
-                templateUrl: '/static/currency/currency.view.html',
+             .when('/currency_search', {
+                controller: 'CurrencySearchController',
+                templateUrl: '/static/currency/currency_search.view.html',
                 controllerAs: 'vm'
             })
 
-            .when('/item', {
-                controller: 'ItemResultController',
-                templateUrl: '/static/item_result/item_result.view.html',
+             .when('/currency_result', {
+                controller: 'CurrencyResultController',
+                templateUrl: '/static/currency/currency_result.view.html',
+                controllerAs: 'vm'
+            })
+
+             .when('/currency_post', {
+                controller: 'CurrencyPostController',
+                templateUrl: '/static/currency/currency_post.view.html',
+                controllerAs: 'vm'
+            })
+
+            .when('/history', {
+                controller: 'HistoryController',
+                templateUrl: '/static/item/history.view.html',
                 controllerAs: 'vm'
             })
 

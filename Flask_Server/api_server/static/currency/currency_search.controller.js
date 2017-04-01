@@ -1,26 +1,26 @@
 /**
- * Created by you on 2017/3/21.
+ * Created by you on 2017/3/26.
  */
 (function () {
     'use strict';
 
     angular
         .module('app')
-        .controller('HomeController', HomeController);
+        .controller('CurrencySearchController', CurrencySearchController);
 
-    HomeController.$inject = ['SearchService', '$rootScope','$location','ItemResultService'];
-    function HomeController(SearchService, $rootScope, $location, ItemResultService) {
+    CurrencySearchController.$inject = ['SearchService', '$rootScope','$location','CurrencyResultService'];
+    function CurrencySearchController(SearchService, $rootScope, $location, CurrencyResultService) {
         var vm = this;
         vm.search = search;
 
         function search() {
-            SearchService.SearchItem(vm.name)
+            SearchService.SearchCurrency(vm.what)
                 .then(function (response) {
                     if (response.data!=null) {
                         //use response to update page
                          console.log(response.data);
-                         ItemResultService.SetItem(response.data);
-                        $location.path('/item_result');
+                         CurrencyResultService.SetCurrency(response.data);
+                        $location.path('/currency_result');
                     } else {
                         FlashService.Error(response.message);
                         vm.dataLoading = false;

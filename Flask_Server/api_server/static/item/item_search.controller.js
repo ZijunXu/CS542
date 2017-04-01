@@ -44,7 +44,7 @@
         // }
 
         function search() {
-            SearchService.PostItem(vm.name)
+            SearchService.SearchItem(vm.name)
                 .then(function (response) {
                     if (response.data!=null) {
                         //use response to update page
