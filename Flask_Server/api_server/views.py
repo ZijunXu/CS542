@@ -7,7 +7,6 @@ from flask_httpauth import HTTPTokenAuth
 
 auth = HTTPTokenAuth(scheme='Token')
 
-
 @auth.verify_token
 def verify_token(token):
     # first try to authenticate by token
@@ -24,7 +23,6 @@ class UserLogin(Resource):
     front-end transfer the json to the back-end
     and back-end will do the validation again
     """
-
     def post(self):
         """
         Usage:
