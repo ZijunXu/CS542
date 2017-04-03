@@ -1,7 +1,7 @@
 from flask import request, jsonify, g
 from flask_restful import Resource
 from api_server import app, db, mongo, api
-from .database import User
+from .database import User, Currency_Post
 from .forms import LoginForm, RegistrationForm, ItemQueryForm
 from flask_httpauth import HTTPTokenAuth
 
@@ -132,10 +132,12 @@ class UserTrade(Resource):
         trade = User.query.filter_by(id=tradeid).first().as_dict()
 
 
-class Currency(Resource):
+class Post_Currency(Resource):
     def post(self):
         data = request.get_json()
-        pass
+        postdata = Currency_Post(data['uid'], data['c1_item'], data['c2_item'], data['c1_number'], data['c2_number'])
+        postdata.save_to_db()
+        return postdata.json()
 
 
 api.add_resource(UserLogin, '/api/authenticate')
@@ -143,6 +145,9 @@ api.add_resource(UserRegister, '/api/reg')
 api.add_resource(UserQuery, '/api/users/<username>', '/api/users/')
 api.add_resource(GetToken, '/api/token')
 api.add_resource(ItemSearch, '/api/item')
+api.add_resource(Post_Currency, '/api/currency')
+
+
 
 
 # Handling the error

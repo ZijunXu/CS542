@@ -1,11 +1,12 @@
 from api_server import db, app
 from werkzeug.security import generate_password_hash, check_password_hash
 from itsdangerous import (TimedJSONWebSignatureSerializer as Serializer, BadSignature, SignatureExpired)
-
+import datetime
 
 class User(db.Model):
     __tablename__='User'
-    id = db.Column(db.Integer,primary_key=True)
+
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
     email = db.Column(db.String(64), unique=True)
     password = db.Column(db.String(128))
@@ -45,22 +46,29 @@ class User(db.Model):
         return user
 
 
-class Admin(User):
-    __tablename__ = 'Admin'
-    id = db.Column(db.Integer, db.ForeignKey('User.id'), primary_key=True)
+
+class Currency(db.Model):
+    __tablename__ = 'Currency'
+    cid = db.Column(db.Integer, primary_key=True)
+    cname = db.Column(db.String(64), unique=True, nullable=True)
+
+    def save_to_db(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self):
+        db.session.delete(self)
+        db.session.commit()
+
+    def json(self):
+        return {'Currency ID': self.cid, 'Currency Name': self.cname}
 
 
-class Search(db.Model):
-    __tablename__='Search'
-    sid = db.Column(db.Integer, primary_key=True)  #Search history ID
-    id = db.Column(db.Integer, db.ForeignKey('User.id'))
-    item = db.Column(db.String(64))
-    time = db.Column(db.DateTime)
 
-    def __repr__(self):
-        return '<Search %r>' % self.sid
+#test for github
 
-class Post(db.Model):
+
+class Currency_Post(db.Model):
     __tablename__='Post'
     tid = db.Column(db.Integer, primary_key=True)  # Post transaction ID
     uid = db.Column(db.Integer, db.ForeignKey('User.id'))  #UserID
@@ -70,17 +78,17 @@ class Post(db.Model):
     c2_number = db.Column(db.Integer)
     time = db.Column(db.DateTime)
 
-    def __repr__(self):
-        return '<Post %r>' % self.tid
+    def __init__(self, uid, c1_item, c2_item, c1_number, c2_number):
+        self.uid = uid
+        self.c1_item = c1_item
+        self.c2_item = c2_item
+        self.c1_number = c1_number
+        self.c2_number = c2_number
+        self.time = datetime.datetime.now()
 
-class Currency(db.Model):
-    __tablename__ = 'Currency'
-    cid = db.Column(db.Integer, primary_key=True)
-    cname = db.Column(db.String(64), unique=True, nullable=True)
+    def save_to_db(self):
+        db.session.add(self)
+        db.session.commit()
 
-    def __repr__(self):
-        return '<Currency %r>' % self.cid
-
-
-
-#test for github
+    def json(self):
+        return {"tid": self.tid}
