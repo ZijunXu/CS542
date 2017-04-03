@@ -42,26 +42,26 @@ class get_data_api:
                     if 'note' in item:
                         item['owner'] = account['accountName']
                         temp.append(item)
+
         if len(temp) != 0:
             client = MongoClient('mongodb://localhost:27017/')
             db = client.project_542
             posts = db.posts
             posts.insert_many(temp)
 
-            '''
-            for n in temp:
-                with open(os.getcwd() + '/data/' + self.user_id + '.json', 'a') as outfile:
-                    json.dump(n, outfile, indent=2)
-            '''
         self.record_last_user_id(file_name)
         self.user_id = file_name
+            #for n in temp:
+            #    with open(os.getcwd() + '/data/' + self.user_id + '.json', 'a') as outfile:
+            #        json.dump(n, outfile, indent=2)
 
- if __name__ == "__main__":
+
+
+
+if __name__ == "__main__":
      # notice, if we try too many times, the server will reject our request then reponed nothing
-    print("Start the script")
-    a = get_data_api()
-    times = 1
-    while times != 0:
-        a.get_api_response()
-        # 50817645-53901223-50376868-58618547-54519374
-        # 7210962-7812332-7136262-8503897-7930844
+     print("Start the script")
+     a = get_data_api()
+     times = 1
+     while times != 0:
+         a.get_api_response()

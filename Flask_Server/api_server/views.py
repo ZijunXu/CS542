@@ -62,6 +62,9 @@ class UserRegister(Resource):
 
 
 class UserQuery(Resource):
+    """
+    this is the functions for the admin
+    """
     # decorators = [auth.login_required]
 
     def get(self, username=None):
@@ -98,7 +101,12 @@ class GetToken(Resource):
 
 
 class ItemSearch(Resource):
-    def get(self):
+    """
+    we need to first determine whether the user is login or not
+    if user login we record the search
+    else we do not
+    """
+    def post(self):
         form = ItemQueryForm.from_json(request.get_json())
         if form.validate_on_submit():
             results = mongo.db.item.find(form)
