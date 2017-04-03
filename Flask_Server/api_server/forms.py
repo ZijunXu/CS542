@@ -48,4 +48,3 @@ class ItemQueryForm(FlaskForm):
     league = StringField('League', validators=[Length(1, 64)])
 
     explicitMods = StringField('Explicit Mods', validators=[Length(1, 64)])
-
