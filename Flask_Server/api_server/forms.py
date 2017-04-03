@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, BooleanField, PasswordField
-from wtforms.validators import DataRequired, Email, Length, EqualTo
+from wtforms import StringField, BooleanField, PasswordField, IntegerField
+from wtforms.validators import DataRequired, Email, Length, EqualTo, NumberRange
 from .database import User
 
 
@@ -24,6 +24,13 @@ class RegistrationForm(FlaskForm):
     def validate_username(self, field):
         if User.query.filter_by(name=field.data).first():
             raise ValueError('Username already used')
+
+
+class PostTradeForm(FlaskForm):
+    c1_item = StringField('Item1', validators=[NumberRange(min=1, max=999)])   # The item user wants to sell
+    c2_item = StringField('Item2', validators=[NumberRange(min=1, max=999)])     # The item user wants to get
+    c1_number = IntegerField('Item1 Qty', validators=[Length(1, 64)])
+    c2_number = IntegerField('Item2 Qty', validators=[Length(1, 64)])
 
 
 class ItemQueryForm(FlaskForm):
