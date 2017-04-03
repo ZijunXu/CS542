@@ -17,22 +17,40 @@
 ```
 .
 ├── api_server
-│   ├── database.py                     # Relational Database
-│   ├── forms.py                        # Probably wont use this one anymore
-│   ├── __init__.py                     # initialization for the app
-│   ├── static                          # Angular.Js
+│   ├── database.py                      # Relational Database
+│   ├── forms.py
+│   ├── __init__.py                      # initialization for the app
+│   ├── mongoQuery.py
+│   ├── static                           # Angular.Js
 │   │   ├── app-content
-│   │   │   └── app.css
+│   │   │   ├── app.css
+│   │   │   └── item.main.css
 │   │   ├── app.js
 │   │   ├── app-services
 │   │   │   ├── authentication.service.js
+│   │   │   ├── currency_result.service.js
 │   │   │   ├── flash.service.js
-│   │   │   ├── user.service.js
-│   │   │   └── user.service.local-storage.js
+│   │   │   ├── item_result.service.js
+│   │   │   ├── search.service.js
+│   │   │   └── user.service.js
+│   │   ├── currency
+│   │   │   ├── currency_post.controller.js
+│   │   │   ├── currency_post.view.html
+│   │   │   ├── currency_result.controller.js
+│   │   │   ├── currency_result.view.html
+│   │   │   ├── currency_search.controller.js
+│   │   │   └── currency_search.view.html
 │   │   ├── home
 │   │   │   ├── home.controller.js
 │   │   │   └── home.view.html
 │   │   ├── index.html
+│   │   ├── item
+│   │   │   ├── history.controller.js
+│   │   │   ├── history.view.html
+│   │   │   ├── item_result.controller.js
+│   │   │   ├── item_result.view.html
+│   │   │   ├── item_search.controller.js
+│   │   │   └── item_search.view.html
 │   │   ├── login
 │   │   │   ├── login.controller.js
 │   │   │   └── login.view.html
@@ -40,13 +58,12 @@
 │   │   └── register
 │   │       ├── register.controller.js
 │   │       └── register.view.html
-│   └── views.py                        # Control the API
-├── app.db                              # Relational database
-├── config.py                           # Configuration for the app
+│   └── views.py
+├── app.db                             # database
+├── config.py                          # configuration for the server
 ├── README.md
 ├── requirements.txt
-├── run.py                              # run the server on 5000 port
-└── tmp
+└── run.py                             # run the server on 5000 port
 
 
 ```
@@ -54,18 +71,24 @@
 ```
 aniso8601==1.2.0
 appdirs==1.4.0
+cffi==1.9.1
 click==6.7
+cryptography==1.7.2
 Flask==0.12
-Flask-Login==0.4.0
+Flask-HTTPAuth==3.2.2
 Flask-PyMongo==0.4.1
 Flask-RESTful==0.3.5
 Flask-Script==2.0.5
 Flask-SQLAlchemy==2.1
 Flask-WTF==0.14.2
+idna==2.5
 itsdangerous==0.24
 Jinja2==2.9.5
 MarkupSafe==0.23
 packaging==16.8
+pyasn1==0.2.3
+pycparser==2.17
+PyJWT==1.4.2
 pymongo==3.4.0
 pyparsing==2.1.10
 python-dateutil==2.6.0
@@ -75,6 +98,7 @@ six==1.10.0
 SQLAlchemy==1.1.5
 Werkzeug==0.11.15
 WTForms==2.1
+WTForms-JSON==0.3.1
 
 ```
 ### ToDo
