@@ -131,6 +131,13 @@ class UserTrade(Resource):
     def get(self, tradeid = None):
         trade = User.query.filter_by(id=tradeid).first().as_dict()
 
+
+class Currency(Resource):
+    def post(self):
+        data = request.get_json()
+        pass
+
+
 api.add_resource(UserLogin, '/api/authenticate')
 api.add_resource(UserRegister, '/api/reg')
 api.add_resource(UserQuery, '/api/users/<username>', '/api/users/')
