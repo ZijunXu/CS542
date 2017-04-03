@@ -9,9 +9,21 @@
     config.$inject = ['$routeProvider', '$locationProvider'];
     function config($routeProvider, $locationProvider) {
         $routeProvider
-            .when('/search', {
+             .when('/', {
+                controller: 'HomeController',
+                templateUrl: '/static/home/home.view.html',
+                controllerAs: 'vm'
+            })
+
+            .when('/item_search', {
                 controller: 'itemController',
-                templateUrl: '/static/search_item/item_search.view.html',
+                templateUrl: '/static/item/item_search.view.html',
+                controllerAs: 'vm'
+            })
+
+             .when('/item_result', {
+                controller: 'ItemResultController',
+                templateUrl: '/static/item/item_result.view.html',
                 controllerAs: 'vm'
             })
 
@@ -26,10 +38,27 @@
                 templateUrl: '/static/register/register.view.html',
                 controllerAs: 'vm'
             })
+             .when('/currency_search', {
+                controller: 'CurrencySearchController',
+                templateUrl: '/static/currency/currency_search.view.html',
+                controllerAs: 'vm'
+            })
 
-            .when('/', {
-                controller: 'HomeController',
-                templateUrl: '/static/home/home.view.html',
+             .when('/currency_result', {
+                controller: 'CurrencyResultController',
+                templateUrl: '/static/currency/currency_result.view.html',
+                controllerAs: 'vm'
+            })
+
+             .when('/currency_post', {
+                controller: 'CurrencyPostController',
+                templateUrl: '/static/currency/currency_post.view.html',
+                controllerAs: 'vm'
+            })
+
+            .when('/history', {
+                controller: 'HistoryController',
+                templateUrl: '/static/item/history.view.html',
                 controllerAs: 'vm'
             })
 

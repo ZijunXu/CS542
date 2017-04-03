@@ -21,7 +21,7 @@
             AuthenticationService.Login(vm.username, vm.password, function (response) {
                 if (response.login_status) {
                     AuthenticationService.SetCredentials(vm.username, vm.password);
-                    $location.path('/search');
+                    $location.path('/item_search');
                 } else {
                     FlashService.Error(response.message);
                     vm.dataLoading = false;

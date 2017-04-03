@@ -4,6 +4,15 @@
 - in order to test the item query part you need to import some of the data into the MongoDB which gathered by API module.
 - `mongoimport --db test --collection item --drop --file PATH-TO-JSON-FILE`
 
+### Introduction to the REST
+ > this part is from Flsak Web Development
+- Client-Server: There must be a clear separation betweeen the clients and the server
+- Stateless: A client request must contain all the information that is necessary to carry it out. The server must not store any state about the client that persists from one requests to another.
+- Cache: Responses from the server can be labeled as cacheable or noncacheable so that clients(or intermediaries between clients and servers) can use a cache for optimization purposes.
+- Uniform Interface: The protocol by which clients access server resources must be consistent, well defined, and standardized. The commonly used uniform interface of REST web services is the HTTP protocol.
+- Layered System: Proxy servers, caches, or gateways can be inserted between clients and servers as necessary to improve performance, reliability, and scalability
+- Code on demand: Client can optionally download code from the server to execute in their context.
+
 ### Project current structure
 ```
 .
