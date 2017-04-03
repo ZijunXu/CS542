@@ -2,7 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_pymongo import PyMongo
 from flask_restful import Api
-from Flask_Server import config
+from config import config
 import wtforms_json
 
 app = Flask(__name__)

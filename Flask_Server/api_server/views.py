@@ -1,6 +1,6 @@
 from flask import request, jsonify, g
 from flask_restful import Resource
-from Flask_Server.api_server import app, db, mongo, api
+from api_server import app, db, mongo, api
 from .database import User
 from .forms import LoginForm, RegistrationForm, ItemQueryForm
 from flask_httpauth import HTTPTokenAuth
