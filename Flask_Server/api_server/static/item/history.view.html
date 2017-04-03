@@ -1,10 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<h2 align="center">Search History</h2>
+    <!--<table border="1">-->
+    <!--<tr>-->
+    <!--<th>Time</th>-->
+    <!--<th>Content</th>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td>1</td>-->
+    <!--&lt;!&ndash;<td>{{ x.content }}</td>&ndash;&gt;-->
+    <!--</tr>-->
+    <!--</table>-->
+    <table class="dataintable" style="">
+        <caption>{{vm.b}}</caption>
+        <tr>
+            <th>序号</th>
+            <th>商品</th>
+            <th>单价</th>
+            <th>操作</th>
+            <th>数量</th>
+            <th>金额</th>
+        </tr>
+        <tr ng-repeat="item in vm.items">
+            <td>{{$index + 1}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.price | currency}}</td>
+            <td><input ng-model="item.quantity"></td>
+            <td>{{item.quantity * item.price | currency}}</td>
+            <td>
+                <button ng-click="remove($index)">Remove</button>
+            </td>
+        </tr>
+    </table>
 
-</body>
-</html>
