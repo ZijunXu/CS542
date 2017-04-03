@@ -10,7 +10,6 @@
         var vm = this;
         //vm.user = null;
         vm.item={};
-        vm.item.name = vm.item.name;
         vm.allUsers = [];
         vm.search = search;
         //vm.deleteUser = deleteUser;
