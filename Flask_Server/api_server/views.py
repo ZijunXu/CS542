@@ -1,11 +1,13 @@
 from flask import request, jsonify, g
 from flask_restful import Resource
 from api_server import app, db, mongo, api
-from .database import User
-from .forms import LoginForm, RegistrationForm, ItemQueryForm
+from .database import User, Post
+from .forms import LoginForm, RegistrationForm, ItemQueryForm, PostTradeForm
 from flask_httpauth import HTTPTokenAuth
+import datetime
 
 auth = HTTPTokenAuth(scheme='Token')
+
 
 @auth.verify_token
 def verify_token(token):
@@ -15,6 +17,7 @@ def verify_token(token):
         return False
     g.user = user
     return True
+
 
 class UserLogin(Resource):
     """
@@ -28,7 +31,7 @@ class UserLogin(Resource):
         login_form is what we get to validate in the database
         login_form should has the following value
         username,password,remember_me(default as None)
-        return login status, if success return the token
+        return user status, if success return the token
         """
         form = LoginForm.from_json(request.get_json())
         if form.validate_on_submit():
@@ -102,8 +105,8 @@ class GetToken(Resource):
 
 class ItemSearch(Resource):
     """
-    we need to first determine whether the user is login or not
-    if user login we record the search
+    we need to first determine whether the user is user or not
+    if user user we record the search
     else we do not
     """
     def post(self):
@@ -114,7 +117,7 @@ class ItemSearch(Resource):
 
 
 class UserSearchHistory(Resource):
-    #decorators = auth.login_required
+    # decorators = [auth.login_required]
     def get(self, userid):
         if userid:
             result = User.query.filter_by(name=userid).first().as_dict()
@@ -123,21 +126,34 @@ class UserSearchHistory(Resource):
 
 class UserTrade(Resource):
     """
-    This is the api class for the user post, update, delete and get trade infomation
+    This is the api class for the user post, update, delete and get trade information
     TBD
     """
-    #decorators = auth.login_required
+    # decorators = [auth.login_required]
     def put(self, tradeid):
-        trade = User.query.filter_by(id=tradeid).first().as_dict()
+        form = PostTradeForm.from_json(request.get_json())
+        if form.validate_on_submit():
+            post = Post(uid=form.username.data, c1item=form.c1_item.data, c2item=form.c2_item.data, c1_number=form.c1_item.data, c2_number=form.c2_item.data, time = datetime.datetime.now())
+            db.session.update(post)
+            return jsonify({"update_status": True})
+        return jsonify({"update_status": False, "message": "Something Wrong on the server side"})
 
-    def post(self, tradeid):
-        trade = User.query.filter_by(id=tradeid).first().as_dict()
+    def post(self):
+        form = PostTradeForm.from_json(request.get_json())
+        if form.validate_on_submit():
+            post = Post(uid=form.username.data, c1item=form.c1_item.data, c2item=form.c2_item.data, c1_number=form.c1_item.data, c2_number=form.c2_item.data, time = datetime.datetime.now())
+            db.session.add(post)
+            return jsonify({"post_status": True})
+        return jsonify({"post_status": False, "message": "Something Wrong on the server side"})
 
     def delete(self, tradeid):
-        trade = User.query.filter_by(id=tradeid).first().as_dict()
+        trade = Post.query.filter_by(uid=tradeid).first()
+        db.session.delete(trade)
+        db.commit()
 
-    def get(self, tradeid = None):
-        trade = User.query.filter_by(id=tradeid).first().as_dict()
+    def get(self, userid):
+        if userid:
+            return jsonify(Post.query.filter_by(uid=userid).first().as_dict())
 
 
 class Currency(Resource):
