@@ -31,7 +31,7 @@ class UserLogin(Resource):
         login_form is what we get to validate in the database
         login_form should has the following value
         username,password,remember_me(default as None)
-        return login status, if success return the token
+        return user status, if success return the token
         """
         form = LoginForm.from_json(request.get_json())
         if form.validate_on_submit():
@@ -105,8 +105,8 @@ class GetToken(Resource):
 
 class ItemSearch(Resource):
     """
-    we need to first determine whether the user is login or not
-    if user login we record the search
+    we need to first determine whether the user is user or not
+    if user user we record the search
     else we do not
     """
     def post(self):

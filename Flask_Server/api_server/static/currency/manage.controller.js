@@ -1,27 +1,30 @@
 /**
- * Created by you on 2017/3/31.
+ * Created by you on 2017/4/4.
  */
 (function () {
     'use strict';
 
     angular
         .module('app')
-        .controller('CurrencyPostController', CurrencyPostController);
+        .controller('ManagePostController', ManagePostController);
 
-    CurrencyPostController.$inject = ['$rootScope','$location','MyPostService'];
-    function CurrencyPostController(CurrencyService, $rootScope, $location, MyPostService) {
+    ManagePostController.$inject = ['$rootScope','$location','CurrencyService'];
+    function ManagePostController(CurrencyService, $rootScope, $location) {
         var vm = this;
 
-        vm.my_post=my_post;
-        vm.post = post;
+        vm.b="金币";
+        vm.item="hhhhhhhhhhh";
 
-        function post() {
-            CurrencyService.PostCurrency(vm.what)
+        vm.update=update;
+        vm.Delete = Delete;
+
+        function Delete() {
+            CurrencyService.Delete(vm.what)
                 .then(function (response) {
                     if (response.data!=null) {
                         //use response to update page
                          alert("success!");
-                        $location.path('/currency_post');
+                        $location.path('/manage_post');
                     } else {
                         FlashService.Error(response.message);
                         vm.dataLoading = false;
@@ -29,14 +32,13 @@
                 });
         }
 
-         function my_post() {
-            CurrencyService.MyPost()
+         function update() {
+            CurrencyService.Update(vm.what)
                 .then(function (response) {
                     if (response.data!=null) {
                         //use response to update page
                          alert("success!");
-                        MyPostService.SetPost(response.data);
-                        $location.path('/my_post');
+                        $location.path('/manage_post');
                     } else {
                         FlashService.Error(response.message);
                         vm.dataLoading = false;

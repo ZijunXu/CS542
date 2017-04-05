@@ -1,8 +1,19 @@
 ﻿<h1 align="center">POE TRADER</h1>
 <h2 align="center">Item Search</h2>
-<div Style="float:left;width:100px;"><p><a href="#!/login" class="btn btn-primary">Logout</a></p></div>
-<div Style="float:left;width:130px;"><p><a href="#!/history" class="btn btn-primary">Your History</a></p></div>
-<div Style="float:left;"><p><a href="#!/currency_search" class="btn btn-primary">Currency</a></p></div>
+<div class="btn-group">
+    <button type="button" class="btn btn-primary">Menu</button>
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+        <span class="sr-only">切换下拉菜单</span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+        <li><a href="#!/history" ng-click="vm.history()">Your History</a></li>
+        <li><a href="#!/update_info">Update info</a></li>
+         <li><a href="#!/currency_search">Currency</a></li>
+        <li class="divider"></li>
+        <li><a href="#!/login">Logout</a></li>
+    </ul>
+</div>
 <div id="content">
     <div class="row">
         <div class="large-12 column">
@@ -15,7 +26,7 @@
                             <label class="right inline" for="league">League</label>
                         </div>
                         <div class="large-3 columns">
-                            <select name="league" data-customforms="disabled" class="league chosen">
+                            <select id="league" data-customforms="disabled" class="league chosen">
 
                                 <option value="Legacy">Legacy</option>
 

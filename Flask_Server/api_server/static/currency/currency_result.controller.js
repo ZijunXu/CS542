@@ -12,7 +12,7 @@
     function CurrencyResultController($rootScope, CurrencyResultService) {
         var vm = this;
 
-        vm.currency=CurrencyResultService.GetCurrency();
+        vm.posts=CurrencyResultService.GetCurrency();  //需监听
 
         // vm.result = result;
         //
@@ -23,7 +23,7 @@
         //             if (response.data!=null) {
         //                 //use response to update page
         //                  console.log(response.data);
-        //                 $location.path('/login');
+        //                 $location.path('/user');
         //             } else {
         //                 FlashService.Error(response.message);
         //                 vm.dataLoading = false;

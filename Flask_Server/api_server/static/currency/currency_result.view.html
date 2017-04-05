@@ -1,0 +1,19 @@
+<h2 align="center">Some posts you may interest</h2>
+<table class="dataintable" style="">
+    <caption>Currency</caption>
+    <tr>
+        <th>Seller ID</th>
+        <th>Have</th>
+        <th>Want</th>
+        <th>Amount(have)</th>
+        <th>Amount(want)</th>
+    </tr>
+    <tr ng-repeat="item in vm.posts">
+        <td>{{item.gameid}}</td>
+        <td>{{item.have}}</td>
+        <td>{{item.want}}</td>
+        <td>{{item.price1}</td>
+        <!--<td><input ng-model="item.quantity"></td>-->
+        <td>{{item.price2}}</td>
+    </tr>
+</table>

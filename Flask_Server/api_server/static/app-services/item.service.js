@@ -6,15 +6,14 @@
 
     angular
         .module('app')
-        .factory('SearchService', SearchService);
+        .factory('ItemService', ItemService);
 
-    SearchService.$inject = ['$http'];
-    function SearchService($http) {
+    ItemService.$inject = ['$http'];
+    function ItemService($http) {
         var service = {};
 
         service.SearchItem = SearchItem;
-        service.SearchCurrency = SearchCurrency;
-        service.PostCurrency = PostCurrency;
+        service.History = History;
 
         return service;
 
@@ -26,12 +25,8 @@
             return $http.post('/api/item', item).then(handleSuccess, handleError('Error posting item by content'));
         }
 
-        function SearchCurrency(currency) {
-            return $http.post('/api/*****', currency).then(handleSuccess, handleError('Error posting item by content'));
-        }
-
-        function PostCurrency(currency) {
-            return $http.post('/api/*****', currency).then(handleSuccess, handleError('Error posting item by content'));
+        function History() {
+            return $http.get('/api/history').then(handleSuccess, handleError('Error creating user'));
         }
 
         // private functions

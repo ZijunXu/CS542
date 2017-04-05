@@ -29,13 +29,13 @@
 
             .when('/login', {
                 controller: 'LoginController',
-                templateUrl: '/static/login/login.view.html',
+                templateUrl: '/static/user/login.view.html',
                 controllerAs: 'vm'
             })
 
             .when('/register', {
                 controller: 'RegisterController',
-                templateUrl: '/static/register/register.view.html',
+                templateUrl: '/static/user/register.view.html',
                 controllerAs: 'vm'
             })
              .when('/currency_search', {
@@ -62,6 +62,24 @@
                 controllerAs: 'vm'
             })
 
+            .when('/my_post', {
+                controller: 'MyPostController',
+                templateUrl: '/static/currency/my_post.view.html',
+                controllerAs: 'vm'
+            })
+
+            .when('/manage_post', {
+                controller: 'ManagePostController',
+                templateUrl: '/static/currency/manage.view.html',
+                controllerAs: 'vm'
+            })
+
+             .when('/update_info', {
+                controller: 'UpdateController',
+                templateUrl: '/static/user/update.view.html',
+                controllerAs: 'vm'
+            })
+
             .otherwise({redirectTo: '/'});
     }
 
@@ -74,7 +92,7 @@
         }
 
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
-            // redirect to login page if not logged in and trying to access a restricted page
+            // redirect to user page if not logged in and trying to access a restricted page
             var restrictedPage = $.inArray($location.path(), ['/login', '/register']) === -1;
             var loggedIn = $rootScope.globals.currentUser;
             if (restrictedPage && !loggedIn) {
