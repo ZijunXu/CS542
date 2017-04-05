@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="large-12 columns">
+        <h2>Manage your own post</h2>
+        <label for="id1">PostID: <input type="text" name="have" id="id1" class="form-control" ng-model="vm.postid_u"
+                                       required/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <button class="search button" ng-click="vm.update()">Update</button>
+        </label>
+        <table class="dataintable" style="">
+            <caption>{{vm.b}}</caption>
+            <tr>
+                <th>Have</th>
+                <th>Want</th>
+                <th>Amount(have)</th>
+                <th>Amount(want)</th>
+            </tr>
+            <tr>
+                <td><input ng-model="vm.item"></td>
+                <td><input ng-model="vm.item.want"></td>
+                <td><input ng-model="vm.item.price1"></td>
+                <td><input ng-model="vm.item.price2"></td>
+            </tr>
+        </table>
+
+        <label for="id2">PostID: <input type="text" name="have" id="id2" class="form-control" ng-model="vm.postid_d"
+                                       required/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <button class="search button" ng-click="vm.Delete()">Delete</button>
+        </label>
+
+    </div>
+</div>

@@ -134,9 +134,10 @@ class UserTrade(Resource):
         form = PostTradeForm.from_json(request.get_json())
         if form.validate_on_submit():
             post = Post(uid=form.username.data, c1item=form.c1_item.data, c2item=form.c2_item.data, c1_number=form.c1_item.data, c2_number=form.c2_item.data, time = datetime.datetime.now())
-            db.session.update(post)
-            return jsonify({"update_status": True})
-        return jsonify({"update_status": False, "message": "Something Wrong on the server side"})
+            db.session.add(post)
+            return jsonify({"post_status": True})
+        return jsonify({"post_status": False, "message": "Something Wrong on the server side"})
+
 
     def post(self):
         form = PostTradeForm.from_json(request.get_json())

@@ -12,7 +12,7 @@
         vm.login = login;
 
         (function initController() {
-            // reset login status
+            // reset user status
             AuthenticationService.ClearCredentials();
         })();
 

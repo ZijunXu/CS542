@@ -5,52 +5,36 @@
         .module('app')
         .controller('itemController', itemController);
 
-
-    itemController.$inject = ['UserService', '$rootScope','SearchService','$location'];
-    function itemController(UserService, $rootScope, SearchService, $location) {
+    itemController.$inject = ['ItemService', '$rootScope','$location','ItemResultService','HistoryService'];
+    function itemController(ItemService, $rootScope, $location, ItemResultService, HistoryService) {
         var vm = this;
-        //vm.user = null;
-        vm.item={};
-        vm.allUsers = [];
+
+        vm.history=history;
         vm.search = search;
-        //vm.deleteUser = deleteUser;
-
-        initController();
-
-        function initController() {
-            loadCurrentUser();
-            loadAllUsers();
-        }
-
-        function loadCurrentUser() {
-            UserService.GetByUsername($rootScope.globals.currentUser.username)
-                .then(function (user) {
-                    vm.user = user;
-                });
-        }
-
-        function loadAllUsers() {
-            UserService.GetAll()
-                .then(function (users) {
-                    vm.allUsers = users;
-                });
-        }
-
-        //
-        // function deleteUser(username) {
-        //     UserService.Delete(username)
-        //     .then(function () {
-        //         loadAllUsers();
-        //     });
-        // }
 
         function search() {
-            SearchService.SearchItem(vm.name)
+            ItemService.SearchItem(vm.name)
                 .then(function (response) {
                     if (response.data!=null) {
                         //use response to update page
-                         console.log(response.data)
-                        $location.path('/login');
+                         console.log(response.data);
+                         ItemResultService.SetItem(response.data);
+                        $location.path('/item_result');
+                    } else {
+                        FlashService.Error(response.message);
+                        vm.dataLoading = false;
+                    }
+                });
+        }
+
+         function history() {
+            ItemService.History()
+                .then(function (response) {
+                    if (response.data!=null) {
+                        //use response to update page
+                         console.log(response.data);
+                         HistoryService.SetHistory(response.data);
+                        $location.path('/history');
                     } else {
                         FlashService.Error(response.message);
                         vm.dataLoading = false;

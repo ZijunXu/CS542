@@ -8,13 +8,13 @@
         .module('app')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['SearchService', '$rootScope','$location','ItemResultService'];
-    function HomeController(SearchService, $rootScope, $location, ItemResultService) {
+    HomeController.$inject = ['ItemService', '$rootScope','$location','ItemResultService'];
+    function HomeController(ItemService, $rootScope, $location, ItemResultService) {
         var vm = this;
         vm.search = search;
 
         function search() {
-            SearchService.SearchItem(vm.name)
+            ItemService.SearchItem(vm.name)
                 .then(function (response) {
                     if (response.data!=null) {
                         //use response to update page
