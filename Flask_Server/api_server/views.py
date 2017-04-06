@@ -138,6 +138,7 @@ class UserTrade(Resource):
             return jsonify({"post_status": True})
         return jsonify({"post_status": False, "message": "Something Wrong on the server side"})
 
+
     def post(self):
         form = PostTradeForm.from_json(request.get_json())
         if form.validate_on_submit():
