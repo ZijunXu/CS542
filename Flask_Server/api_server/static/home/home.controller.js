@@ -11,6 +11,8 @@
     HomeController.$inject = ['ItemService', '$rootScope','$location','ItemResultService'];
     function HomeController(ItemService, $rootScope, $location, ItemResultService) {
         var vm = this;
+        vm.item="哈哈";
+
         vm.search = search;
 
         function search() {

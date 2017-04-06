@@ -24,8 +24,8 @@
             <div class="row form-choose-action">
                 <div class="large-12 columns">
                     <ul class="button-group">
-                        <li><a href="#!/currency_search" class="active button tiny secondary">Currency search</a></li>
-                        <li><a href="#!/currency_post" class=" button tiny secondary">Currency post</a></li>
+                        <li><a href="#!/currency_search" class=" button tiny secondary">Currency search</a></li>
+                        <li><a href="#!/currency_post" class="active button tiny secondary">Currency post</a></li>
                         <!--<li class=" button tiny secondary" ng-click="vm.my_post()">My post</li>-->
                         <li><a href="#!/my_post" class=" button tiny secondary" ng-click="vm.my_post()">My post</a></li>
                     </ul>
@@ -35,14 +35,43 @@
 
             <!--<form action="/search" method="GET" class="custom" id="search">-->
             <form class="custom" id="import" ng-submit="vm.post()" role="form">
+                <!--<div class="row">-->
+                    <!--<div class="large-12 columns">-->
+                        <!--<div class="large-1 columns">-->
+                            <!--<label class="right inline" for="league">League</label>-->
+                        <!--</div>-->
+                        <!--<div class="large-3 columns">-->
+                            <!--<select name="league"  id="league" data-customforms="disabled" class="league chosen"-->
+                                    <!--style="display: none;">-->
+
+                                <!--<option value="Legacy">Legacy</option>-->
+
+                                <!--<option value="Hardcore Legacy">Hardcore Legacy</option>-->
+
+                                <!--<option value="Standard">Standard</option>-->
+
+                                <!--<option value="Hardcore">Hardcore</option>-->
+
+                            <!--</select>-->
+                            <!--<div class="chosen-container chosen-container-single" style="width: 100%;" title=""><a-->
+                                    <!--class="chosen-single" tabindex="-1"><span>Hardcore Legacy</span>-->
+                                <!--<div><b></b></div>-->
+                            <!--</a>-->
+                                <!--<div class="chosen-drop">-->
+                                    <!--<div class="chosen-search"><input type="text" autocomplete="off"></div>-->
+                                    <!--<ul class="chosen-results"></ul>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                 <div class="row">
+                </div>
                 <div class="row">
                     <div class="large-12 columns">
                         <div class="large-1 columns">
                             <label class="right inline" for="league">League</label>
                         </div>
                         <div class="large-3 columns">
-                            <select id="league" data-customforms="disabled" class="league chosen"
-                                    style="display: none;">
+                            <select id="league" data-customforms="disabled" class="league chosen">
 
                                 <option value="Legacy">Legacy</option>
 
@@ -53,25 +82,16 @@
                                 <option value="Hardcore">Hardcore</option>
 
                             </select>
-                            <div class="chosen-container chosen-container-single" style="width: 100%;" title=""><a
-                                    class="chosen-single" tabindex="-1"><span>Hardcore Legacy</span>
-                                <div><b></b></div>
-                            </a>
-                                <div class="chosen-drop">
-                                    <div class="chosen-search"><input type="text" autocomplete="off"></div>
-                                    <ul class="chosen-results"></ul>
-                                </div>
-                            </div>
                         </div>
+
                         <div class="large-4 columns"></div>
                     </div>
                 </div>
 
-                 <label for="gameid">Your ID in game: <input type="text" name="gameid" id="gameid" class="form-control" ng-model="vm.gameid"
-                               required/></label>
-
                 <div class="row">
-                    <div class="large-12 columns">
+                    <div class="large-6 columns">
+                         <label for="gameid">Your ID in game: <input type="text" name="gameid" id="gameid" class="form-control" ng-model="vm.gameid"
+                               required/></label>
                         <h5>What do you have?</h5>
                         <label for="have">Currency: <input type="text" name="have" id="have" class="form-control" ng-model="vm.have"
                                required/></label>
@@ -81,7 +101,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="large-12 columns">
+                    <div class="large-6 columns">
                         <h5>What do you want?</h5>
                          <label for="want">Currency: <input type="text" name="want" id="want" class="form-control" ng-model="vm.want"
                                required/></label>

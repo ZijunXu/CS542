@@ -20,7 +20,7 @@
                 .then(function (response) {
                     if (response.register_status) {
                         FlashService.Success('Registration successful', true);
-                        $location.path('/login');
+                        $location.path('/item_search');
                     } else {
                         FlashService.Error(response.message);
                         vm.dataLoading = false;

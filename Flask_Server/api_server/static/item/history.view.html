@@ -10,24 +10,24 @@
     <!--</tr>-->
     <!--</table>-->
     <table class="dataintable" style="">
-        <caption>test</caption>
-        <tr>
-            <th>序号</th>
-            <th>商品</th>
-            <th>单价</th>
-            <th>操作</th>
-            <th>数量</th>
-            <th>金额</th>
-        </tr>
-        <tr ng-repeat="item in vm.items">
-            <td>{{$index + 1}}</td>
-            <td>{{item.name}}</td>
-            <td>{{item.price | currency}}</td>
-            <td><input ng-model="item.quantity"></td>
-            <td>{{item.quantity * item.price | currency}}</td>
-            <td>
-                <button ng-click="remove($index)">Remove</button>
-            </td>
-        </tr>
-    </table>
+    <caption>我的购物车</caption>
+    <tr>
+        <th>序号</th>
+        <th>商品</th>
+        <th>单价</th>
+        <th>操作</th>
+        <th>数量</th>
+        <th>金额</th>
+    </tr>
+    <tr ng-repeat="item in items">
+        <td>{{$index + 1}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.price | currency}}</td>
+        <td><input ng-model="item.quantity"></td>
+        <td>{{item.quantity * item.price | currency}}</td>
+        <td>
+            <button ng-click="remove($index)">Remove</button>
+        </td>
+    </tr>
+</table>
 
