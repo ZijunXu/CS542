@@ -1,5 +1,6 @@
 from flask import request, jsonify
-from api_server import app, db, mongo, api
+from . import main
+from . import db, mongo, api
 
 from .api_resources.UserLogin import UserLogin
 from .api_resources.UserRegister import UserRegister
@@ -16,7 +17,7 @@ api.add_resource(ItemSearch, "/api/item")
 
 
 # Handling the error
-@app.errorhandler(404)
+@main.errorhandler(404)
 def not_found(error=None):
     message = {"status": 404, "message": "Not found" + request.url, }
     res = jsonify(message)
