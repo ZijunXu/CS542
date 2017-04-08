@@ -1,6 +1,4 @@
-from flask import request, jsonify
-from . import main
-from . import db, mongo, api
+from . import api
 
 from .api_resources.UserLogin import UserLogin
 from .api_resources.UserRegister import UserRegister
@@ -14,12 +12,3 @@ api.add_resource(UserRegister, "/api/reg")
 api.add_resource(Admin, "/api/users/<username>", "/api/users/")
 api.add_resource(GetToken, "/api/token")
 api.add_resource(ItemSearch, "/api/item")
-
-
-# Handling the error
-@main.errorhandler(404)
-def not_found(error=None):
-    message = {"status": 404, "message": "Not found" + request.url, }
-    res = jsonify(message)
-    res.status_code = 404
-    return res

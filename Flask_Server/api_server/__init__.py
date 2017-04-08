@@ -19,6 +19,6 @@ def CreateApp(config_name):
     wtforms_json.init()
     app.register_blueprint(main)
     app.add_url_rule('/', 'index', lambda: app.send_static_file('index.html'))
-    from api_server import views
+    from api_server import assign_resources
     api.init_app(app)
     return app

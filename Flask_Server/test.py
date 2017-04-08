@@ -1,5 +1,13 @@
-from . import db
-from flask import current_app
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from config import config
+import datetime
+
+app = Flask(__name__)
+app.config.from_object(config['test'])
+db = SQLAlchemy(app)
+
+
 from werkzeug.security import generate_password_hash, check_password_hash
 from itsdangerous import (TimedJSONWebSignatureSerializer as Serializer, BadSignature, SignatureExpired)
 
@@ -30,12 +38,12 @@ class User(db.Model):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
     def generate_auth_token(self, expiration=600):
-        s = Serializer(current_app.config['SECRET_KEY'], expires_in=expiration)
+        s = Serializer(app.config['SECRET_KEY'], expires_in=expiration)
         return s.dumps({'id': self.id})
 
     @staticmethod
     def verify_auth_token(token):
-        s = Serializer(current_app.config['SECRET_KEY'])
+        s = Serializer(app.config['SECRET_KEY'])
         try:
             data = s.loads(token)
         except SignatureExpired:
@@ -81,3 +89,27 @@ class Currency(db.Model):
 
     def __repr__(self):
         return '<Currency %r>' % self.cid
+
+
+# Here you can specify your customize data!
+
+db.drop_all()
+db.create_all()
+db.session.add(User(name='a', email='a@a.com', password='a'))
+db.session.commit()
+db.session.add(User(name='b', email='b@b.com', password='b'))
+
+
+db.session.add(Admin(id=1))
+
+
+db.session.add(Search(id=1, item='NB', time=datetime.datetime.now()))
+db.session.add(Search(id=1, item='NB1', time=datetime.datetime.now()))
+db.session.add(Search(id=2, item='NB2', time=datetime.datetime.now()))
+
+
+db.session.add(Post(uid=1, c1_item='NB', c2_item='LGD', c1_number=1, c2_number=2, time=datetime.datetime.now()))
+db.session.add(Post(uid=1, c1_item='NB1', c2_item='LGD1', c1_number=2, c2_number=4, time=datetime.datetime.now()))
+db.session.add(Post(uid=2, c1_item='NB2', c2_item='LGD2', c1_number=4, c2_number=8, time=datetime.datetime.now()))
+
+db.session.add(Currency(cname='Wings'))

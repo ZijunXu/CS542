@@ -17,8 +17,8 @@ class DevelopmentConfig(Config):
 
 class TestConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'test_app.db')
-    SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'test.db')
+    SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'test_db_repository')
 
 
 config = {
