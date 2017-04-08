@@ -1,8 +1,8 @@
 from flask import request, jsonify, g
 from flask_restful import Resource
 from api_server import app, db, mongo, api
-from .database import User, Post
-from .forms import LoginForm, RegistrationForm, ItemQueryForm, PostTradeForm
+from .database import User, Post, Search
+from .forms import LoginForm, RegistrationForm, ItemQueryForm, PostTradeForm, UserHistoryForm
 from flask_httpauth import HTTPTokenAuth
 import datetime
 
@@ -60,9 +60,9 @@ class UserRegister(Resource):
         return jsonify({"register_status": False, "message": form.errors})
 
 
-class UserUpdate(Resource):
+class UserAction(Resource):
     """
-    this is the API for user to update their information
+    this is the API for user
     """
     # decorators = [auth.login_required]
     def put(self):
@@ -77,6 +77,16 @@ class UserUpdate(Resource):
             db.session.update(new_user)
             return jsonify({"register_status": True})
         return jsonify({"register_status": False, "message": form.errors})
+
+    def get(self):
+        """
+        :return: user search history 
+        """
+        form = UserHistoryForm.from_json(request.get_json())
+        if form.validate_on_submit():
+            history = Search.query.filter_by(id=form.user_id, item=form.item_name)
+            return jsonify([n.as_dict() for n in history])
+        return jsonify({"search_status": False, "message": form.errors})
 
 
 class Admin(Resource):

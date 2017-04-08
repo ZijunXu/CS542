@@ -27,10 +27,16 @@ class RegistrationForm(FlaskForm):
 
 
 class PostTradeForm(FlaskForm):
-    c1_item = StringField('Item1', validators=[NumberRange(min=1, max=999)])   # The item user wants to sell
-    c2_item = StringField('Item2', validators=[NumberRange(min=1, max=999)])     # The item user wants to get
-    c1_number = IntegerField('Item1 Qty', validators=[Length(1, 64)])
-    c2_number = IntegerField('Item2 Qty', validators=[Length(1, 64)])
+    c1_item = StringField('Item1', validators=[Length(1, 64)])   # The item user wants to sell
+    c2_item = StringField('Item2', validators=[Length(1, 64)])     # The item user wants to get
+    c1_number = IntegerField('Item1 Qty', validators=[NumberRange(min=1, max=999)])
+    c2_number = IntegerField('Item2 Qty', validators=[NumberRange(min=1, max=999)])
+
+
+class UserHistoryForm(FlaskForm):
+    user_id = IntegerField('User ID')
+    item_name = StringField('Item', validators=[Length(1, 64)])
+
 
 
 class ItemQueryForm(FlaskForm):
