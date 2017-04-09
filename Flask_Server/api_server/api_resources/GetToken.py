@@ -1,6 +1,8 @@
-from flask import request, jsonify
+from flask import jsonify
 from flask_restful import Resource
 from flask_httpauth import HTTPTokenAuth
+from ..database import User
+
 auth = HTTPTokenAuth(scheme="Token")
 
 

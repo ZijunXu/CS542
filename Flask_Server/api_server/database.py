@@ -50,6 +50,9 @@ class Admin(User):
     __tablename__ = 'Admin'
     id = db.Column(db.Integer, db.ForeignKey('User.id'), primary_key=True)
 
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
 
 class Search(db.Model):
     __tablename__='Search'
@@ -60,6 +63,10 @@ class Search(db.Model):
 
     def __repr__(self):
         return '<Search %r>' % self.sid
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
 
 class Post(db.Model):
     __tablename__='Post'
@@ -74,6 +81,10 @@ class Post(db.Model):
     def __repr__(self):
         return '<Post %r>' % self.tid
 
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
+
 class Currency(db.Model):
     __tablename__ = 'Currency'
     cid = db.Column(db.Integer, primary_key=True)
@@ -81,3 +92,7 @@ class Currency(db.Model):
 
     def __repr__(self):
         return '<Currency %r>' % self.cid
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+

@@ -96,7 +96,6 @@ class Currency(db.Model):
 db.drop_all()
 db.create_all()
 db.session.add(User(name='a', email='a@a.com', password='a'))
-db.session.commit()
 db.session.add(User(name='b', email='b@b.com', password='b'))
 
 
@@ -113,3 +112,4 @@ db.session.add(Post(uid=1, c1_item='NB1', c2_item='LGD1', c1_number=2, c2_number
 db.session.add(Post(uid=2, c1_item='NB2', c2_item='LGD2', c1_number=4, c2_number=8, time=datetime.datetime.now()))
 
 db.session.add(Currency(cname='Wings'))
+db.session.commit()
