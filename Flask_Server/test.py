@@ -54,9 +54,13 @@ class User(db.Model):
         return user
 
 
-class Admin(User):
+class Admin(db.Model):
     __tablename__ = 'Admin'
-    id = db.Column(db.Integer, db.ForeignKey('User.id'), primary_key=True)
+    aid = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, db.ForeignKey('User.id'))
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
 
 class Search(db.Model):
@@ -68,6 +72,10 @@ class Search(db.Model):
 
     def __repr__(self):
         return '<Search %r>' % self.sid
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
 
 class Post(db.Model):
     __tablename__='Post'
@@ -82,6 +90,10 @@ class Post(db.Model):
     def __repr__(self):
         return '<Post %r>' % self.tid
 
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
+
 class Currency(db.Model):
     __tablename__ = 'Currency'
     cid = db.Column(db.Integer, primary_key=True)
@@ -90,26 +102,29 @@ class Currency(db.Model):
     def __repr__(self):
         return '<Currency %r>' % self.cid
 
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
 # Here you can specify your customize data!
 
 db.drop_all()
 db.create_all()
-db.session.add(User(name='a', email='a@a.com', password='a'))
+admin = User(name='a', email='a@a.com', password='a')
+db.session.add(admin)
 db.session.add(User(name='b', email='b@b.com', password='b'))
+db.session.commit()
 
-
-db.session.add(Admin(id=1))
-
+db.session.add(Admin(id=User.query.filter_by(email=admin.email).first().id))
+db.session.commit()
 
 db.session.add(Search(id=1, item='NB', time=datetime.datetime.now()))
 db.session.add(Search(id=1, item='NB1', time=datetime.datetime.now()))
 db.session.add(Search(id=2, item='NB2', time=datetime.datetime.now()))
-
+db.session.commit()
 
 db.session.add(Post(uid=1, c1_item='NB', c2_item='LGD', c1_number=1, c2_number=2, time=datetime.datetime.now()))
 db.session.add(Post(uid=1, c1_item='NB1', c2_item='LGD1', c1_number=2, c2_number=4, time=datetime.datetime.now()))
 db.session.add(Post(uid=2, c1_item='NB2', c2_item='LGD2', c1_number=4, c2_number=8, time=datetime.datetime.now()))
-
+db.session.commit()
 db.session.add(Currency(cname='Wings'))
 db.session.commit()

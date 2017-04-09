@@ -46,9 +46,10 @@ class User(db.Model):
         return user
 
 
-class Admin(User):
+class Admin(db.Model):
     __tablename__ = 'Admin'
-    id = db.Column(db.Integer, db.ForeignKey('User.id'), primary_key=True)
+    aid = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, db.ForeignKey('User.id'))
 
     def as_dict(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
