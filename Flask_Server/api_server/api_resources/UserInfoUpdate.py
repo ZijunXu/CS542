@@ -20,5 +20,5 @@ class UserInfoUpdate(Resource):
         if form.validate_on_submit():
             new_user = User(name=form.username.data, email=form.email.data, password=form.password.data)
             db.session.update(new_user)
-            return jsonify({"register_status": True})
-        return jsonify({"register_status": False, "message": form.errors})
+            return jsonify({"update_status": True})
+        return jsonify({"update_status": False, "message": form.errors})

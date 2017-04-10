@@ -1,16 +1,24 @@
-from flask import jsonify
+from flask import request, jsonify
 from flask_restful import Resource
-from . import db
-from ..database import User, Search
+from api_server import db
+from ..forms import UserHistoryForm
+from ..database import Search
 import datetime
 
 
 class UserSearchHistory(Resource):
     # decorators = [auth.login_required]
-    def get(self, userid):
-        if userid:
-            result = User.query.filter_by(name=userid).first().as_dict()
-            return jsonify(result)
+    def get(self):
+        form = UserHistoryForm.from_json(request.get_json())
+        if request.get_json() == None:
+            history = Search.query.all()
+            return jsonify([n.as_dict() for n in history])
+        else:
+            if form.validate_on_submit():
+                history = Search.query.filter_by(id=form.user_id, item=form.item_name)
+                return jsonify([n.as_dict() for n in history])
+            return jsonify({"search_status": False, "message": form.errors})
+
 
     def post(self, data):
         """
