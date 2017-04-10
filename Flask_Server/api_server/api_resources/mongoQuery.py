@@ -1,17 +1,28 @@
+from flask import request, jsonify
 from pymongo import MongoClient
-import pprint
+from flask_restful import Resource
+from ..forms import ItemQueryForm
 
-client = MongoClient()
-client = MongoClient('mongodb://localhost:27017/')
 
-db = client.project_542
-'''all data are stored in the posts collection of the project_542 database'''
-posts = db.posts
-for post in posts.find({"$and": [{'ilvl':  {"$gte": 39, "$lt": 42}}, {'corrupted': False},
-                                 {'explicitMods': {"$all": ['10% increased Damage', '12% increased Area Damage']}}]}):
-    pprint.pprint(post)
+class mongoQuery(Resource):
+    def __init__(self):
+        client = MongoClient()
+        client = MongoClient('mongodb://localhost:27017/')
+        self.db = client.project_542
 
-# for post in posts.find({"$allnd": [{'ilvl':  {"$gte": 39, "$lt": 42}}, {'corrupted': False},
-#                                  {'explicitMods': '10% increased Damage'}, {'explicitModes': '12% increased Area Damage'},
-#                                  {'name': '<<set:MS>><<set:M>><<set:S>>Rapture Splinter'}]}):
-#     pprint.pprint(post)
+    def get(self):
+        form = ItemQueryForm.from_json(request.get_json())
+        if form.validate_on_submit():
+            posts = self.db.posts.find({"$and": [{'ilvl':  {"$gte": 39, "$lt": 42}}]})
+            ans = []
+            for n in posts:
+                n['_id'] = str(n['_id'])
+                ans.append(n)
+            return jsonify(ans)
+        else:
+            posts = self.db.posts.find().limit(20)
+            ans = []
+            for n in posts:
+                n['_id'] = str(n['_id'])
+                ans.append(n)
+            return jsonify(ans)
