@@ -9,7 +9,6 @@ from .api_resources.UserPost import UserPost
 from .api_resources.CurrencySearch import CurrencySearch
 from .api_resources.mongoQuery import mongoQuery
 
-
 api.add_resource(UserLogin, "/api/authenticate")
 api.add_resource(UserRegister, "/api/reg")
 api.add_resource(UserSearchHistory, "/api/user/search")

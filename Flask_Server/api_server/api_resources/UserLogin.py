@@ -10,6 +10,7 @@ class UserLogin(Resource):
     front-end transfer the json to the back-end
     and back-end will do the validation again
     """
+
     def post(self):
         form = LoginForm.from_json(request.get_json())
         if form.validate_on_submit():

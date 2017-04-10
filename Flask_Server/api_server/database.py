@@ -5,8 +5,8 @@ from itsdangerous import (TimedJSONWebSignatureSerializer as Serializer, BadSign
 
 
 class User(db.Model):
-    __tablename__='User'
-    id = db.Column(db.Integer,primary_key=True)
+    __tablename__ = 'User'
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
     email = db.Column(db.String(64), unique=True)
     password = db.Column(db.String(128))
@@ -56,8 +56,8 @@ class Admin(db.Model):
 
 
 class Search(db.Model):
-    __tablename__='Search'
-    sid = db.Column(db.Integer, primary_key=True)  #Search history ID
+    __tablename__ = 'Search'
+    sid = db.Column(db.Integer, primary_key=True)  # Search history ID
     id = db.Column(db.Integer, db.ForeignKey('User.id'))
     item = db.Column(db.String(64))
     time = db.Column(db.DateTime)
@@ -70,11 +70,11 @@ class Search(db.Model):
 
 
 class Post(db.Model):
-    __tablename__='Post'
+    __tablename__ = 'Post'
     tid = db.Column(db.Integer, primary_key=True)  # Post transaction ID
-    uid = db.Column(db.Integer, db.ForeignKey('User.id'))  #UserID
-    c1_item = db.Column(db.Integer, db.ForeignKey('Currency.cid'))    # The item user wants to sell
-    c2_item = db.Column(db.Integer, db.ForeignKey('Currency.cid'))     # The item user wants to get
+    uid = db.Column(db.Integer, db.ForeignKey('User.id'))  # UserID
+    c1_item = db.Column(db.Integer, db.ForeignKey('Currency.cid'))  # The item user wants to sell
+    c2_item = db.Column(db.Integer, db.ForeignKey('Currency.cid'))  # The item user wants to get
     c1_number = db.Column(db.Integer)
     c2_number = db.Column(db.Integer)
     time = db.Column(db.DateTime)
@@ -96,4 +96,3 @@ class Currency(db.Model):
 
     def as_dict(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
-

@@ -7,6 +7,7 @@ class CurrencySearch(Resource):
     """
     this is the api for the currency part
     """
+
     def get(self, name):
         if name == None:
             return jsonify([n.as_dict() for n in Currency.query.all()])

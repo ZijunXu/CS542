@@ -1,7 +1,6 @@
 import sys
 from api_server import CreateApp
 
-
 if len(sys.argv) == 1:
     app = CreateApp('dev')
 elif len(sys.argv) == 2:

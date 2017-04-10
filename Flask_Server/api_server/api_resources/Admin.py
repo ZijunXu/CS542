@@ -8,6 +8,7 @@ class Admin(Resource):
     """
     this is the functions only for the admin
     """
+
     # decorators = [auth.login_required]
 
     def get(self, username=None):

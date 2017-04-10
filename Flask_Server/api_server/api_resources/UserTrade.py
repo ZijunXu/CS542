@@ -10,6 +10,7 @@ class UserTrade(Resource):
     """
     This is the api class for the user post, update, delete and get trade information
     """
+
     # decorators = [auth.login_required]
     def put(self, tradeid):
         """
@@ -19,7 +20,8 @@ class UserTrade(Resource):
         """
         form = PostTradeForm.from_json(request.get_json())
         if form.validate_on_submit():
-            post = Post(uid=form.username.data, c1item=form.c1_item.data, c2item=form.c2_item.data, c1_number=form.c1_item.data, c2_number=form.c2_item.data, time = datetime.datetime.now())
+            post = Post(uid=form.username.data, c1item=form.c1_item.data, c2item=form.c2_item.data,
+                        c1_number=form.c1_item.data, c2_number=form.c2_item.data, time=datetime.datetime.now())
             db.session.add(post)
             return jsonify({"post_status": True})
         return jsonify({"post_status": False, "message": "Something Wrong on the server side"})
@@ -31,7 +33,8 @@ class UserTrade(Resource):
         """
         form = PostTradeForm.from_json(request.get_json())
         if form.validate_on_submit():
-            post = Post(uid=form.username.data, c1item=form.c1_item.data, c2item=form.c2_item.data, c1_number=form.c1_item.data, c2_number=form.c2_item.data, time = datetime.datetime.now())
+            post = Post(uid=form.username.data, c1item=form.c1_item.data, c2item=form.c2_item.data,
+                        c1_number=form.c1_item.data, c2_number=form.c2_item.data, time=datetime.datetime.now())
             db.session.add(post)
             return jsonify({"post_status": True})
         return jsonify({"post_status": False, "message": "Something Wrong on the server side"})

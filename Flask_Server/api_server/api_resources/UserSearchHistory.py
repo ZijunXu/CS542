@@ -19,7 +19,6 @@ class UserSearchHistory(Resource):
                 return jsonify([n.as_dict() for n in history])
             return jsonify({"search_status": False, "message": form.errors})
 
-
     def post(self, data):
         """
         :param data: the data from the user query 
