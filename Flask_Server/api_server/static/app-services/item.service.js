@@ -8,8 +8,8 @@
         .module('app')
         .factory('ItemService', ItemService);
 
-    ItemService.$inject = ['$http'];
-    function ItemService($http) {
+    ItemService.$inject = ['$http', '$httpParamSerializerJQLike'];
+    function ItemService($http, $httpParamSerializerJQLike) {
         var service = {};
 
         service.SearchItem = SearchItem;
@@ -22,7 +22,16 @@
         // }
 
         function SearchItem(item) {
-            return $http.post('/api/item', item).then(handleSuccess, handleError('Error posting item by content'));
+            alert(item);
+            return $http({
+                url: '/api/item',
+                method: 'POST',
+                data: $httpParamSerializerJQLike({owner: item}),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(handleSuccess, handleError('Error posting item by content'));
+            //$http.post('/api/item', {owner: item})
         }
 
         function History() {

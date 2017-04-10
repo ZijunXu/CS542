@@ -11,16 +11,18 @@
     HomeController.$inject = ['ItemService', '$rootScope','$location','ItemResultService'];
     function HomeController(ItemService, $rootScope, $location, ItemResultService) {
         var vm = this;
-        vm.item="哈哈";
+        vm.lists=["either","Yes","No"];
+        vm.item={name:vm.name,corrupted:vm.corrupted};
 
         vm.search = search;
 
         function search() {
-            ItemService.SearchItem(vm.name)
+            ItemService.SearchItem(vm.item)
                 .then(function (response) {
+                     alert(response);
                     if (response.data!=null) {
                         //use response to update page
-                         console.log(response.data);
+                         alert(response.data);
                          ItemResultService.SetItem(response.data);
                         $location.path('/item_result');
                     } else {
