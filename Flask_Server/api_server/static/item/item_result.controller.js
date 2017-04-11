@@ -12,7 +12,8 @@
     function ItemResultController($rootScope, ItemResultService) {
         var vm = this;
 
-        vm.item=ItemResultService.GetItem();
+        vm.items=ItemResultService.GetItem();
+        alert("what?");
 
         // vm.result = result;
         //

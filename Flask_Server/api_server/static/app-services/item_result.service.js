@@ -12,8 +12,10 @@
     function ItemResultService($rootScope) {
         var service = {};
 
-        service.item=null;
+        service.item=[];
+
         service.SetItem = SetItem;
+
         service.GetItem = GetItem;
 
         return service;
@@ -24,6 +26,7 @@
 
         function SetItem(item) {
             service.item=item;
+            //console(service.item[1]._id);
         }
 
     }

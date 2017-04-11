@@ -1,5 +1,4 @@
 ﻿(function () {
-    'use strict';
 
     angular
         .module('app')
@@ -9,7 +8,7 @@
     function itemController(ItemService, $location, ItemResultService, HistoryService,$window) {
         var vm = this;
 
-        vm.test2="呵呵";
+        vm.dd="呵呵";
 
         vm.history = history;
         vm.search = search;

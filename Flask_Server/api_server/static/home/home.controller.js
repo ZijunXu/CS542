@@ -2,7 +2,6 @@
  * Created by you on 2017/3/21.
  */
 (function () {
-    'use strict';
 
     angular
         .module('app')
@@ -11,20 +10,22 @@
     HomeController.$inject = ['ItemService', '$rootScope','$location','ItemResultService'];
     function HomeController(ItemService, $rootScope, $location, ItemResultService) {
         var vm = this;
-        vm.lists=["either","Yes","No"];
-        vm.item={name:vm.name,corrupted:vm.corrupted};
+        // vm.lists=["either","Yes","No"];
+        // vm.item={name:vm.name};
 
         vm.search = search;
 
         function search() {
             ItemService.SearchItem(vm.item)
                 .then(function (response) {
-                     alert(response);
-                    if (response.data!=null) {
+                    if (response!=null) {
                         //use response to update page
-                         alert(response.data);
-                         ItemResultService.SetItem(response.data);
-                        $location.path('/item_result');
+                         //$location.path('/item_result');
+                         alert(response[1]._id);
+                         vm.items=response;
+                         console(items[1]._id);
+                        //ItemResultService.SetItem(response);
+                        //$location.path('/item_result');
                     } else {
                         FlashService.Error(response.message);
                         vm.dataLoading = false;

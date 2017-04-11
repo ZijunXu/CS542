@@ -22,10 +22,10 @@
         // }
 
         function SearchItem(item) {
-            alert(item);
+            //alert(item);
             return $http({
                 url: '/api/item',
-                method: 'POST',
+                method: 'GET',
                 data: $httpParamSerializerJQLike({owner: item}),
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
