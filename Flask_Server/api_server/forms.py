@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, BooleanField, PasswordField, IntegerField
+from wtforms import StringField, BooleanField, PasswordField, IntegerField, FloatField
 from wtforms.validators import DataRequired, Email, Length, EqualTo, NumberRange
 from .database import User
 
@@ -40,24 +40,52 @@ class UserHistoryForm(FlaskForm):
 
 
 class ItemQueryForm(FlaskForm):
-    name = StringField('Itemname', validators=[Length(1, 64)])
+    name = StringField('Item Name', validators=[Length(1, 64)])
+    typeLine = StringField('Item Type Line', validators=[Length(1, 64)])
+    league = StringField('League', validators=[Length(1, 64)])
 
     corrupted = BooleanField('Item Corrupted', validators=[DataRequired()])
     verified = BooleanField('Item Verified', validators=[DataRequired()])
     identified = BooleanField('Item Identified', validators=[DataRequired()])
 
-    typeLine = StringField('Item Type Line', validators=[Length(1, 64)])
-    ilvl = StringField('Item Level', validators=[Length(1, 64)])
+    min_ilvl = IntegerField('Min Item Level', validators=[NumberRange(0, 100)])
+    max_ilvl = IntegerField('Max Item Level', validators=[NumberRange(0, 100)])
+
+    min_socket_number = IntegerField('Min Socket Number', validators=[NumberRange(0, 6)])
+    max_socket_number = IntegerField('Max Socket Number', validators=[NumberRange(0, 6)])
+
+    min_link_number = IntegerField('Link Number', validators=[NumberRange(0, 6)])
+    max_link_number = IntegerField('Link Number', validators=[NumberRange(0, 6)])
 
     supported = BooleanField('Support Skill Gem', validators=[DataRequired()])
 
-    socketnumber = StringField('Socket Number', validators=[Length(1, 64)])
+    # inside the requirement of the document in mongodb
+    min_requirements_int = IntegerField('Min INT Requirement', validators=[NumberRange(0, 500)])
+    max_requirements_int = IntegerField('Max INT Requirement', validators=[NumberRange(0, 500)])
+    min_requirements_dex = IntegerField('Min DEX Requirement', validators=[NumberRange(0, 500)])
+    max_requirements_dex = IntegerField('Max DEX Requirement', validators=[NumberRange(0, 500)])
+    min_requirements_str = IntegerField('Min STR Requirement', validators=[NumberRange(0, 500)])
+    max_requirements_str = IntegerField('Max STR Requirement', validators=[NumberRange(0, 500)])
+    min_requirements_lvl = IntegerField('Min Level Requirement', validators=[NumberRange(0, 100)])
+    max_requirements_lvl = IntegerField('Max Level Requirement', validators=[NumberRange(0, 100)])
 
-    requirements_int = StringField('INT Requirement', validators=[Length(1, 64)])
-    requirements_dex = StringField('DEX Requirement', validators=[Length(1, 64)])
-    requirements_str = StringField('STR Requirement', validators=[Length(1, 64)])
-    requirements_lvl = StringField('LVL Requirement', validators=[Length(1, 64)])
+    # inside the properties of the document in mongodb
+    # for weapon
+    physical_damage = FloatField('Physical Damage', validators=[NumberRange(0, 1000)])
+    elemental_damage = FloatField('Elemental Damage', validators=[NumberRange(0, 1000)])
+    critical_strike_chance = FloatField('Critical Strike Chance', validators=[NumberRange(0, 100)])
+    attacks_per_Second = FloatField('Attacks per Second', validators=[NumberRange(0, 10)])
 
-    league = StringField('League', validators=[Length(1, 64)])
+    # for armour
+    min_armour = FloatField('Min Armour', validators=[NumberRange(0, 1500)])
+    max_armour = FloatField('Max Armour', validators=[NumberRange(0, 1500)])
+    min_evasion = FloatField('Min Evasion', validators=[NumberRange(0, 1500)])
+    max_evasion = FloatField('Max Evasion', validators=[NumberRange(0, 1500)])
+    min_shiled = FloatField('Min Shiled', validators=[NumberRange(0, 1500)])
+    max_shiled = FloatField('Max Shiled', validators=[NumberRange(0, 1500)])
 
-    explicitMods = StringField('Explicit Mods', validators=[Length(1, 64)])
+    # there is a lot of them
+    # need a better methods
+    lower_bound_explicitMods = FloatField('Explicit Mods', validators=[Length(1, 64)])
+    upper_bound_explicitMods = FloatField('Explicit Mods', validators=[Length(1, 64)])
+    explicitMods = StringField('Item explicitMods', validators=[Length(1, 64)])
