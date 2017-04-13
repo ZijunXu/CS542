@@ -25,7 +25,7 @@
             //alert(item);
             return $http({
                 url: '/api/item',
-                method: 'GET',
+                method: 'POST',
                 data: $httpParamSerializerJQLike({owner: item}),
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -35,10 +35,14 @@
         }
 
         function History() {
-            return $http.get('/api/history').then(handleSuccess, handleError('Error creating user'));
+              return $http({
+                url: '/api/user/search',
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(handleSuccess, handleError('Error posting item by content'));
         }
-
-        // private functions
 
         function handleSuccess(res) {
             return res.data;

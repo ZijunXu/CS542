@@ -135,8 +135,8 @@
                 <div class="row">
                     <div class="large-12 columns">
                         <div class="large-1 columns"><label class="right inline">Name</label></div>
-                        <div class="large-11 columns"><input type="text" name="name" ng-model="vm.dd"
-                                                             id="name"/>{{vm.dd}}</div>
+                        <div class="large-11 columns"><input type="text" name="name" ng-model="vm.name"
+                                                             id="name"/></div>
                     </div>
                 </div>
                 <div class="row">
@@ -586,7 +586,7 @@
                 <div class="row">
                     <hr/>
                     <div class="large-12 columns">
-                        <div class="large-2 columns"><a class="button tiny secondary" href="#!/item_search">Reset</a>
+                        <div class="large-2 columns"><p class="button tiny secondary" ng-click="vm.reloadRoute()">Reset</p>
                         </div>
                         <div class="large-2 large-offset-8 columns"><input type="submit" class="search button"
                                                                            accesskey="s" value="Search!"></div>

@@ -11,23 +11,21 @@
     ItemResultService.$inject = ['$rootScope'];
     function ItemResultService($rootScope) {
         var service = {};
+        service.items=[];
 
-        service.item=[];
-
-        service.SetItem = SetItem;
-
-        service.GetItem = GetItem;
+        // service.SetItem = SetItem;
+        // service.GetItem = GetItem;
 
         return service;
 
-        function GetItem() {
-            return service.item;
-        }
-
-        function SetItem(item) {
-            service.item=item;
-            //console(service.item[1]._id);
-        }
+        // function GetItem() {
+        //     return service.item;
+        // }
+        //
+        // function SetItem(item) {
+        //     service.item=item;
+        //     //console(service.item[1]._id);
+        // }
 
     }
 

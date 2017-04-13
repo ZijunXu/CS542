@@ -8,19 +8,23 @@
         .module('app')
         .controller('CurrencyPostController', CurrencyPostController);
 
-    CurrencyPostController.$inject = ['$rootScope','$location','MyPostService'];
-    function CurrencyPostController(CurrencyService, $rootScope, $location, MyPostService) {
+    CurrencyPostController.$inject = ['$rootScope', '$location', 'MyPostService', 'CurrencyService','$window'];
+    function CurrencyPostController(CurrencyService, $rootScope, $location, MyPostService,$window) {
         var vm = this;
 
-        vm.my_post=my_post;
+        vm.my_post = my_post;
         vm.post = post;
+
+        vm.reloadRoute = function () {
+            $window.location.reload();
+        };
 
         function post() {
             CurrencyService.PostCurrency(vm.what)
                 .then(function (response) {
-                    if (response.data!=null) {
+                    if (response.data != null) {
                         //use response to update page
-                         alert("success!");
+                        alert("success!");
                         $location.path('/currency_post');
                     } else {
                         FlashService.Error(response.message);
@@ -29,12 +33,12 @@
                 });
         }
 
-         function my_post() {
+        function my_post() {
             CurrencyService.MyPost()
                 .then(function (response) {
-                    if (response.data!=null) {
+                    if (response.data != null) {
                         //use response to update page
-                         alert("success!");
+                        alert("success!");
                         MyPostService.SetPost(response.data);
                         $location.path('/my_post');
                     } else {

@@ -12,8 +12,6 @@
     function ManagePostController(CurrencyService, $rootScope, $location) {
         var vm = this;
 
-        vm.b = "钻石王";
-        vm.item = "hhhhhhhhhhh";
         vm.what = "hhhhhhhhhhh";
         vm.update = update;
         vm.Delete = Delete;

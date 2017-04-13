@@ -8,10 +8,10 @@
         .module('app')
         .controller('UpdateController', UpdateController);
 
-    UpdateController.$inject = ['UserService', '$location', '$rootScope', 'FlashService'];
-    function UpdateController(UserService, $location, $rootScope, FlashService) {
+    UpdateController.$inject = ['UserService', '$location', 'FlashService'];
+    function UpdateController(UserService, $location, FlashService) {
         var vm = this;
-
+        vm.update_info={};
         vm.updateinfo = updateinfo;
 
         function updateinfo() {
@@ -19,7 +19,7 @@
             UserService.Update(vm.update_info)
                 .then(function (response) {
                     if (response.register_status) {
-                        FlashService.Success('Registration successful', true);
+                        FlashService.Success('Update successful', true);
                         $location.path('/item_search');
                     } else {
                         FlashService.Error(response.message);

@@ -574,28 +574,13 @@
                 <div class="row">
                     <hr/>
                     <div class="large-12 columns">
-                        <div class="large-2 columns"><a class="button tiny secondary" accesskey="r" href="/">Reset</a>
+                        <div class="large-2 columns"><p class="button tiny secondary" accesskey="r" ng-click="vm.reloadRoute()">Reset</p>
                         </div>
                         <div class="large-2 large-offset-8 columns"><input type="submit" class="search button"
                                                                            accesskey="s" value="Search!"></div>
                     </div>
                 </div>
             </form>
-
-            <table class="dataintable" style="">
-                <caption>我的购物车</caption>
-                <tr>
-                    <th>序号</th>
-                    <th>商品</th>
-                    <th>单价</th>
-                </tr>
-                <tr ng-repeat="item in vm.items">
-                    <td>{{item._id}}</td>
-                    <td>1</td>
-                    <td>2</td>
-                </tr>
-            </table>
-
 
             <!--<script>-->
             <!--CHOSEN_PARAMS = {search_contains: true, width: "100%"};-->

@@ -256,13 +256,13 @@
 <!--</div>-->
 
 <table class="dataintable" style="">
-    <caption>我的购物车</caption>
+    <caption>{{vm.test}}</caption>
     <tr>
-        <th>序号</th>
-        <th>商品</th>
-        <th>单价</th>
+        <th>id</th>
+        <th>min</th>
+        <th>max</th>
     </tr>
-    <tr ng-repeat="item in vm.items">
+    <tr ng-repeat="item in itemsresult">
         <td>{{item._id}}</td>
         <td>1</td>
         <td>2</td>

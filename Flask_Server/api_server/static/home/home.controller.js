@@ -7,25 +7,27 @@
         .module('app')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['ItemService', '$rootScope','$location','ItemResultService'];
-    function HomeController(ItemService, $rootScope, $location, ItemResultService) {
+    HomeController.$inject = ['ItemService', '$rootScope','$location','$window'];
+    function HomeController(ItemService, $rootScope, $location, $window) {
         var vm = this;
-        // vm.lists=["either","Yes","No"];
-        // vm.item={name:vm.name};
 
+        vm.lists=["either","Yes","No"];
+
+        vm.item={name:vm.name};
         vm.search = search;
+
+        vm.reloadRoute = function () {
+            $window.location.reload();
+        };
 
         function search() {
             ItemService.SearchItem(vm.item)
                 .then(function (response) {
                     if (response!=null) {
                         //use response to update page
-                         //$location.path('/item_result');
-                         alert(response[1]._id);
-                         vm.items=response;
-                         console(items[1]._id);
-                        //ItemResultService.SetItem(response);
-                        //$location.path('/item_result');
+                        $rootScope.itemsresult=response;
+                        alert($rootScope.itemsresult);
+                        $location.path('/item_result');
                     } else {
                         FlashService.Error(response.message);
                         vm.dataLoading = false;
