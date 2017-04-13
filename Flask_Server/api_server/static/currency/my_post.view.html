@@ -28,56 +28,27 @@
                 <caption>My Post</caption>
                 <tr>
                     <th>Have</th>
-                    <th>Want</th>
                     <th>Amount(have)</th>
+                    <th>Want</th>
                     <th>Amount(want)</th>
+                    <th>Tid</th>
+                    <th>Time</th>
+                    <th>Uid</th>
                 </tr>
-                <tr ng-repeat="item in vm.posts">
-                    <td>{{item.have}}</td>
-                    <td>{{item.want}}</td>
-                    <td>{{item.price1}</td>
-                    <!--<td><input ng-model="item.quantity"></td>-->
-                    <td>{{item.price2}}</td>
+                <tr ng-repeat="item in myposts">
+                    <td>{{item.c1_item}}</td>
+                    <td>{{item.c1_number}}</td>
+                    <td>{{item.c2_item}</td>
+                    <td>{{item.c2_number}}</td>
+                    <td>{{item.tid}</td>
+                    <td>{{item.time}}</td>
+                    <td>{{item.uid}}</td>
                 </tr>
             </table>
 
-            <div Style="float:left;width:100px;"><p><a href="#!/manage_post" class="btn btn-primary">Manage</a></p></div>
+            <div Style="float:left;width:100px;"><p><a href="#!/manage_post" class="btn btn-primary">Manage</a></p>
+            </div>
 
-            <!--<script>-->
-            <!--$("body").on("click", ".currency-selectable", function () {-->
-            <!--var o = $(this);-->
-            <!--if (o.hasClass("currency-selected")) {-->
-            <!--o.removeClass("currency-selected");-->
-            <!--} else {-->
-            <!--o.addClass("currency-selected");-->
-            <!--}-->
-            <!--});-->
-            <!--function selected_currency(selector) {-->
-            <!--var result = "";-->
-            <!--$(selector + " .currency-selected").each(function (i, e) {-->
-            <!--result += $(e).data("id") + "-";-->
-            <!--});-->
-            <!--return result.slice(0, -1);-->
-            <!--}-->
-            <!--$("#search").submit(function () {-->
-            <!--$("#currency-want-input").val(selected_currency("#currency-want"));-->
-            <!--$("#currency-have-input").val(selected_currency("#currency-have"));-->
-            <!--$.cookie("league", $("#search .league").val(), {expires: 10000});-->
-            <!--return true;-->
-            <!--});-->
-
-
-            <!--var league = $("#search .league");-->
-            <!--var options = $('#search .league option');-->
-            <!--var values = $.map(options, function (option) {-->
-            <!--return option.value;-->
-            <!--});-->
-            <!--if ($.inArray($.cookie("league"), values) != -1) {-->
-            <!--league.val($.cookie("league"));-->
-            <!--league.trigger("chosen:updated");-->
-            <!--}-->
-
-            <!--</script>-->
         </div>
     </div>
 

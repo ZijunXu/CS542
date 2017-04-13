@@ -8,8 +8,8 @@
         .module('app')
         .factory('CurrencyService', CurrencyService);
 
-    CurrencyService.$inject = ['$http'];
-    function CurrencyService($http) {
+    CurrencyService.$inject = ['$http','$httpParamSerializerJQLike'];
+    function CurrencyService($http,$httpParamSerializerJQLike) {
         var service = {};
 
         service.SearchCurrency = SearchCurrency;
@@ -20,24 +20,58 @@
 
         return service;
 
-        function SearchCurrency(currency) {
-            return $http.post('/api/*****', currency).then(handleSuccess, handleError('Error posting item by content'));
+         function SearchCurrency(currency) {
+            return $http({
+                url: '/api/currency',
+                method: 'GET',
+                data: $httpParamSerializerJQLike(currency),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(handleSuccess, handleError('Error searching currency'));
         }
 
         function PostCurrency(currency) {
-            return $http.post('/api/*****', currency).then(handleSuccess, handleError('Error posting item by content'));
+            return $http({
+                url: '/api/*****',
+                method: 'POST',
+                data: $httpParamSerializerJQLike(currency),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(handleSuccess, handleError('Error posting currency'));
         }
 
-        function MyPost() {
-            return $http.get('/api/*****').then(handleSuccess, handleError('Error posting item by content'));
+         function MyPost() {
+            return $http({
+                url: '/api/user/post',
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(handleSuccess, handleError('Error seeking mypost'));
         }
 
-         function Update(post) {
-            return $http.put('/api/*****', post).then(handleSuccess, handleError('Error posting item by content'));
+          function Update(post) {
+            return $http({
+                url: '/api/*****',
+                method: 'POST',
+                data: $httpParamSerializerJQLike(post),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(handleSuccess, handleError('Error updating your post'));
         }
 
         function Delete(id) {
-            return $http.delete('/api/*****'+id).then(handleSuccess, handleError('Error posting item by content'));
+            return $http({
+                url: '/api/*****',
+                method: 'DELETE',
+                data: $httpParamSerializerJQLike(id),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(handleSuccess, handleError('Error deleting your post'));
         }
 
         // private functions

@@ -5,8 +5,8 @@
         .module('app')
         .factory('UserService', UserService);
 
-    UserService.$inject = ['$http'];
-    function UserService($http) {
+    UserService.$inject = ['$http', '$httpParamSerializerJQLike'];
+    function UserService($http, $httpParamSerializerJQLike) {
         var service = {};
 
         service.Create = Create;
@@ -18,8 +18,20 @@
             return $http.post('/api/reg', user).then(handleSuccess, handleError('Error creating user'));
         }
 
-        function Update(user) {
-            return $http.put('/api/users/' + user.id, user).then(handleSuccess, handleError('Error updating user'));
+        // function Update(user) {
+        //     return $http.put('/api/users/' + user.id, user).then(handleSuccess, handleError('Error updating user'));
+        // }
+
+        function Update(update) {
+            //alert(item);
+            return $http({
+                url: '/api/update',
+                method: 'PUT',
+                data: $httpParamSerializerJQLike(update),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(handleSuccess, handleError('Error updating user info'));
         }
 
         // private functions
@@ -30,7 +42,7 @@
 
         function handleError(error) {
             return function () {
-                return { success: false, message: error };
+                return {success: false, message: error};
             };
         }
     }

@@ -32,8 +32,7 @@
         function history() {
             ItemService.History()
                 .then(function (response) {
-                    alert(response);
-                    if (response.data != null) {
+                    if (response != null) {
                         //use response to update page
                         $rootScope.history=response;
                         $location.path('/history');

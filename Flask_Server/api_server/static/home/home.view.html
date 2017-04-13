@@ -4,46 +4,46 @@
 <div id="content">
     <div class="row">
         <div class="large-12 column">
-            <form class="custom" id="import" ng-submit="vm.search()" role="form">
-                <div class="row">
-                </div>
-                <div class="row">
-                    <div class="large-12 columns">
-                        <div class="large-1 columns">
-                            <label class="right inline" for="league">League</label>
-                        </div>
-                        <div class="large-3 columns">
-                            <select id="league" data-customforms="disabled" class="league chosen">
+            <!--<form class="custom" id="import" ng-submit="vm.search()" role="form">-->
+                <!--<div class="row">-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                    <!--<div class="large-12 columns">-->
+                        <!--<div class="large-1 columns">-->
+                            <!--<label class="right inline" for="league">League</label>-->
+                        <!--</div>-->
+                        <!--<div class="large-3 columns">-->
+                            <!--<select id="league" data-customforms="disabled" class="league chosen">-->
 
-                                <option value="Legacy">Legacy</option>
+                                <!--<option value="Legacy">Legacy</option>-->
 
-                                <option value="Hardcore Legacy">Hardcore Legacy</option>
+                                <!--<option value="Hardcore Legacy">Hardcore Legacy</option>-->
 
-                                <option value="Standard">Standard</option>
+                                <!--<option value="Standard">Standard</option>-->
 
-                                <option value="Hardcore">Hardcore</option>
+                                <!--<option value="Hardcore">Hardcore</option>-->
 
-                            </select>
-                        </div>
-                        <div class="large-1 columns"><label class="right inline">Mode</label></div>
-                        <div class="large-3 columns"><select name="mode" data-customforms="disabled"
-                                                             class="chosen" id="mode">
-                            <option value="upgrade">Upgrade</option>
-                            <option value="undercut">Undercut/uppercut</option>
-                        </select></div>
-                        <div class="large-4 columns"></div>
-                    </div>
-                </div>
-                <div class="row" id="undercut">
-                    <div class="large-12 columns">
-                        <div class="large-1 columns"><label class="right inline">Undercut&nbsp;%</label></div>
-                        <div class="large-3 columns"><input type="text" value="85" name="undercut"></div>
-                        <div class="large-1 columns"><label class="right inline">Uppercut&nbsp;%</label></div>
-                        <div class="large-3 columns"><input type="text" value="125" name="uppercut"></div>
-                        <div class="large-4 columns"></div>
-                    </div>
-                </div>
-            </form>
+                            <!--</select>-->
+                        <!--</div>-->
+                        <!--<div class="large-1 columns"><label class="right inline">Mode</label></div>-->
+                        <!--<div class="large-3 columns"><select name="mode" data-customforms="disabled"-->
+                                                             <!--class="chosen" id="mode">-->
+                            <!--<option value="upgrade">Upgrade</option>-->
+                            <!--<option value="undercut">Undercut/uppercut</option>-->
+                        <!--</select></div>-->
+                        <!--<div class="large-4 columns"></div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="row" id="undercut">-->
+                    <!--<div class="large-12 columns">-->
+                        <!--<div class="large-1 columns"><label class="right inline">Undercut&nbsp;%</label></div>-->
+                        <!--<div class="large-3 columns"><input type="text" value="85" name="undercut"></div>-->
+                        <!--<div class="large-1 columns"><label class="right inline">Uppercut&nbsp;%</label></div>-->
+                        <!--<div class="large-3 columns"><input type="text" value="125" name="uppercut"></div>-->
+                        <!--<div class="large-4 columns"></div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</form>-->
             <form id="search" class="custom" ng-submit="vm.search()" role="form">
                 <!--<form action="/search" method="POST" class="custom" id="search">-->
                 <div class="row">
@@ -459,7 +459,7 @@
                         <div class="large-6 columns"><label class="right inline">Corrupted</label></div>
                         <div class="large-6 columns"><select name="corrupted" data-customforms="disabled"
                                                              class="chosen" ng-model="vm.corrupted"
-                                                             ng-options="x for x in lists">
+                                                             ng-options="x for x in vm.lists">
                             <!--<option value="">either</option>-->
                             <!--<option value="1">Yes</option>-->
                             <!--<option value="0">No</option>-->

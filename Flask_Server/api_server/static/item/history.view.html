@@ -1,11 +1,15 @@
 <h2 align="center">Search History</h2>
-<table border="1">
+<table align="center" border="2">
     <tr>
-        <th>Time</th>
+        <th>ID</th>
         <th>Content</th>
+        <th>SID</th>
+        <th>Time</th>
     </tr>
     <tr ng-repeat="item in history">
+        <td>{{item.id}}</td>
+        <td>{{item.item}}</td>
+        <td>{{item.sid}}</td>
         <td>{{item.time}}</td>
-        <td>{{item.content}}</td>
     </tr>
 </table>

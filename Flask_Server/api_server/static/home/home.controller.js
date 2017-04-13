@@ -10,10 +10,10 @@
     HomeController.$inject = ['ItemService', '$rootScope','$location','$window'];
     function HomeController(ItemService, $rootScope, $location, $window) {
         var vm = this;
-
+        vm.corrupted="either";
         vm.lists=["either","Yes","No"];
+        vm.item={name:vm.name, corrupted:vm.corrupted};
 
-        vm.item={name:vm.name};
         vm.search = search;
 
         vm.reloadRoute = function () {

@@ -26,12 +26,11 @@
             return $http({
                 url: '/api/item',
                 method: 'POST',
-                data: $httpParamSerializerJQLike({owner: item}),
+                data: $httpParamSerializerJQLike(item),
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
-            }).then(handleSuccess, handleError('Error posting item by content'));
-            //$http.post('/api/item', {owner: item})
+            }).then(handleSuccess, handleError('Error searching item'));
         }
 
         function History() {
@@ -41,7 +40,7 @@
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
-            }).then(handleSuccess, handleError('Error posting item by content'));
+            }).then(handleSuccess, handleError('Error seeking history'));
         }
 
         function handleSuccess(res) {

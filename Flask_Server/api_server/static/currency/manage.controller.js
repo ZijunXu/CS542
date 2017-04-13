@@ -8,21 +8,21 @@
         .module('app')
         .controller('ManagePostController', ManagePostController);
 
-    ManagePostController.$inject = ['$rootScope', '$location', 'CurrencyService'];
-    function ManagePostController(CurrencyService, $rootScope, $location) {
+    ManagePostController.$inject = ['$rootScope', 'CurrencyService','$window'];
+    function ManagePostController(CurrencyService, $rootScope, $window) {
         var vm = this;
-
-        vm.what = "hhhhhhhhhhh";
+        vm.down={id:vm.postid_d};
+        vm.up = {id:vm.postid_u,have:vm.have, want:vm.want, price1:vm.price1,price2:vm.price2};
         vm.update = update;
         vm.Delete = Delete;
 
         function Delete() {
-            CurrencyService.Delete(vm.what)
+            CurrencyService.Delete(vm.down)
                 .then(function (response) {
-                    if (response.data != null) {
+                        if (response.delete_status) {
+                        FlashService.Success('Delete successful', true);
                         //use response to update page
-                        alert("success!");
-                        $location.path('/manage_post');
+                       $window.location.reload();
                     } else {
                         FlashService.Error(response.message);
                         vm.dataLoading = false;
@@ -31,12 +31,12 @@
         }
 
         function update() {
-            CurrencyService.Update(vm.what)
+            CurrencyService.Update(vm.up)
                 .then(function (response) {
-                    if (response.data != null) {
+                    if (response.update_status) {
+                        FlashService.Success('Update successful', true);
                         //use response to update page
-                        alert("success!");
-                        $location.path('/manage_post');
+                       $window.location.reload();
                     } else {
                         FlashService.Error(response.message);
                         vm.dataLoading = false;

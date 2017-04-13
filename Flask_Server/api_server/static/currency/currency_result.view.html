@@ -1,5 +1,5 @@
 <h2 align="center">Some posts you may interest</h2>
-<table class="dataintable" style="">
+<table align="center" class="dataintable" style="">
     <caption>Currency</caption>
     <tr>
         <th>Seller ID</th>
@@ -8,9 +8,9 @@
         <th>Amount(have)</th>
         <th>Amount(want)</th>
     </tr>
-    <tr ng-repeat="item in vm.posts">
-        <td>{{item.gameid}}</td>
-        <td>{{item.have}}</td>
+    <tr ng-repeat="item in posts">
+        <td>{{item.cid}}</td>
+        <td>{{item.cname}}</td>
         <td>{{item.want}}</td>
         <td>{{item.price1}</td>
         <!--<td><input ng-model="item.quantity"></td>-->

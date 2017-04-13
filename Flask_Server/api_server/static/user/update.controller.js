@@ -8,19 +8,20 @@
         .module('app')
         .controller('UpdateController', UpdateController);
 
-    UpdateController.$inject = ['UserService', '$location', 'FlashService'];
-    function UpdateController(UserService, $location, FlashService) {
+    UpdateController.$inject = ['UserService', 'FlashService','$window'];
+    function UpdateController(UserService, FlashService,$window) {
         var vm = this;
-        vm.update_info={};
+
+        vm.update_info={username:vm.username,password:vm.password,email:vm.email,confirm_password:vm.confirm};
         vm.updateinfo = updateinfo;
 
         function updateinfo() {
             vm.dataLoading = true;
             UserService.Update(vm.update_info)
                 .then(function (response) {
-                    if (response.register_status) {
+                    if (response.update_status) {
                         FlashService.Success('Update successful', true);
-                        $location.path('/item_search');
+                        $window.location.reload();
                     } else {
                         FlashService.Error(response.message);
                         vm.dataLoading = false;

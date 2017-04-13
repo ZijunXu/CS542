@@ -12,8 +12,6 @@
     function CurrencyResultController($rootScope, CurrencyResultService) {
         var vm = this;
 
-        vm.posts=CurrencyResultService.GetCurrency();  //需监听
-
         // vm.result = result;
         //
         // function result(item) {

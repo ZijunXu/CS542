@@ -12,7 +12,6 @@
     function MyPostController($rootScope, $location, MyPostService) {
         var vm = this;
 
-        vm.posts=MyPostService.GetPost();  //需监听
     }
 
 })();

@@ -11,6 +11,7 @@
     CurrencySearchController.$inject = ['CurrencyService', '$rootScope', '$location', 'MyPostService', '$window'];
     function CurrencySearchController(CurrencyService, $rootScope, $location, MyPostService, $window) {
         var vm = this;
+        vm.currency = {cid: vm.want, cname: vm.have};
 
         vm.my_post = my_post;
         vm.search = search;
@@ -20,12 +21,11 @@
         };
 
         function search() {
-            CurrencyService.SearchCurrency(vm.what)
+            CurrencyService.SearchCurrency(vm.currency)
                 .then(function (response) {
-                    if (response.data != null) {
+                    if (response != null) {
                         //use response to update page
-                        console.log(response.data);
-                        CurrencyResultService.SetCurrency(response.data);
+                        $rootScope.posts = response;
                         $location.path('/currency_result');
                     } else {
                         FlashService.Error(response.message);
@@ -34,13 +34,12 @@
                 });
         }
 
-        function my_post() {
+       function my_post() {
             CurrencyService.MyPost()
                 .then(function (response) {
-                    if (response.data != null) {
+                    if (response != null) {
                         //use response to update page
-                        alert("success!");
-                        MyPostService.SetPost(response.data);
+                        $rootScope.myposts = response;
                         $location.path('/my_post');
                     } else {
                         FlashService.Error(response.message);
