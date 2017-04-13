@@ -1,6 +1,6 @@
 from flask import request, jsonify
 from flask_restful import Resource
-from ..forms import RegistrationForm
+from ..forms import UpdateForm
 from ..database import User
 from api_server import db
 
@@ -16,9 +16,13 @@ class UserInfoUpdate(Resource):
         register_form should has the following value
         name, email, password
         """
-        form = RegistrationForm.from_json(request.get_json())
+        form = UpdateForm.from_json(request.get_json())
         if form.validate_on_submit():
-            new_user = User(name=form.username.data, email=form.email.data, password=form.password.data)
-            db.session.update(new_user)
+            current_user = User.query.filter_by(name=form.username.data).first()
+            if form.email.data:
+                current_user.email = form.email.data
+            if form.password.data:
+                current_user.password = form.password.data
+            db.session.commit()
             return jsonify({"update_status": True})
         return jsonify({"update_status": False, "message": form.errors})

@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, BooleanField, PasswordField, IntegerField, FloatField
+from wtforms import StringField, BooleanField, PasswordField, IntegerField, FloatField, DateTimeField
 from wtforms.validators import DataRequired, Email, Length, EqualTo, NumberRange
 from .database import User
 
@@ -14,8 +14,8 @@ class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[Length(1, 64)])
     email = StringField('Email Address', validators=[DataRequired(), Length(1, 64), Email()])
     password = PasswordField('New Password',
-                             validators=[DataRequired(), EqualTo('confirm', message='Passwords must match')])
-    confirm = PasswordField('Repeat Password', validators=[DataRequired()])
+                             validators=[DataRequired(), EqualTo('confirm_password', message='Passwords must match')])
+    confirm_password = PasswordField('Repeat Password', validators=[DataRequired()])
     accept_tos = BooleanField('I accept the TOS', validators=[DataRequired()])
 
     def validate_email(self, field):
@@ -27,7 +27,20 @@ class RegistrationForm(FlaskForm):
             raise ValueError('Username already used')
 
 
+class UpdateForm(FlaskForm):
+    username = StringField('Username', validators=[Length(1, 64)])
+    email = StringField('Email Address', validators=[DataRequired(), Length(1, 64), Email()])
+    password = PasswordField('New Password',
+                             validators=[DataRequired(), EqualTo('confirm_password', message='Passwords must match')])
+    confirm_password = PasswordField('Repeat Password', validators=[DataRequired()])
+
+    def validate_email(self, field):
+        if User.query.filter_by(email=field.data).first():
+            raise ValueError('Email already used')
+
+
 class PostTradeForm(FlaskForm):
+    user_id = IntegerField('User ID')
     c1_item = StringField('Item1', validators=[Length(1, 64)])  # The item user wants to sell
     c2_item = StringField('Item2', validators=[Length(1, 64)])  # The item user wants to get
     c1_number = IntegerField('Item1 Qty', validators=[NumberRange(min=1, max=999)])
@@ -37,6 +50,10 @@ class PostTradeForm(FlaskForm):
 class UserHistoryForm(FlaskForm):
     user_id = IntegerField('User ID')
     item_name = StringField('Item', validators=[Length(1, 64)])
+
+
+class CurrencySearchForm(FlaskForm):
+    currency_name = StringField('Currency', validators=[DataRequired(), Length(1, 64)])
 
 
 class ItemQueryForm(FlaskForm):
@@ -81,8 +98,8 @@ class ItemQueryForm(FlaskForm):
     max_armour = FloatField('Max Armour', validators=[NumberRange(0, 1500)])
     min_evasion = FloatField('Min Evasion', validators=[NumberRange(0, 1500)])
     max_evasion = FloatField('Max Evasion', validators=[NumberRange(0, 1500)])
-    min_shiled = FloatField('Min Shiled', validators=[NumberRange(0, 1500)])
-    max_shiled = FloatField('Max Shiled', validators=[NumberRange(0, 1500)])
+    min_shield = FloatField('Min Shield', validators=[NumberRange(0, 1500)])
+    max_shield = FloatField('Max Shield', validators=[NumberRange(0, 1500)])
 
     # there is a lot of them
     # need a better methods
