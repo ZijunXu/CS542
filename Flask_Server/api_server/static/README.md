@@ -16,5 +16,5 @@ Listed all: 查询item，注册，登录，管理员的一套牛逼操作，历�
 ● (to)删除自己的发布：transid<br>
 back-end需生成独特的userid和transid
 ## To do
-list: 验证，鉴权，监听，装包/拆包，通信，页面修改，样式修改，localstorage.<br>
-main problem: token, communication, view.
+list: 验证，鉴权，通信，页面修改，样式修改，localstorage.<br>
+main problem: token, communication.
