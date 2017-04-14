@@ -93,7 +93,7 @@ class get_data_api:
                                     I += 1
                                 else:
                                     other += 1
-                            item['sockets'] = {'link': group_ans, 'socket_number': str(socket), 'D': str(D), 'S': str(S), 'I': str(I), 'Other': "0"}
+                            item['sockets'] = {'link': group_ans, 'socket_number': socket, 'D': D, 'S': S, 'I': I, 'Other': 0}
 
                         temp.append(item)
 

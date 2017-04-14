@@ -15,10 +15,10 @@ def parser(form):
         query_and.append({"corrupted": form.corrupted.data})
 
     if form.verified.data:
-        query_and.append({"corrupted": form.verified.data})
+        query_and.append({"verified": form.verified.data})
 
     if form.identified.data:
-        query_and.append({"corrupted": form.identified.data})
+        query_and.append({"identified": form.identified.data})
 
     if form.min_ilvl.data:
         if form.max_ilvl.data:
@@ -49,7 +49,7 @@ def parser(form):
         query_and.append({"sockets.I": {"$gte": form.min_int_socket.data}})
 
     if form.min_other_socket:
-        query_and.append({"sockets.I": {"$gte": form.min_int_socket.data}})
+        query_and.append({"sockets.Other": {"$gte": form.min_other_socket.data}})
 
 
     # requirements
