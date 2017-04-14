@@ -71,8 +71,13 @@ class ItemQueryForm(FlaskForm):
     min_socket_number = IntegerField('Min Socket Number', validators=[NumberRange(0, 6)])
     max_socket_number = IntegerField('Max Socket Number', validators=[NumberRange(0, 6)])
 
-    min_link_number = IntegerField('Link Number', validators=[NumberRange(0, 6)])
-    max_link_number = IntegerField('Link Number', validators=[NumberRange(0, 6)])
+    min_link_number = IntegerField('Min Link Number', validators=[NumberRange(0, 6)])
+    max_link_number = IntegerField('Max Link Number', validators=[NumberRange(0, 6)])
+
+    min_str_socket = IntegerField('Min STR Sockets Number', validators=[NumberRange(0, 6)])
+    min_dex_socket = IntegerField('Min DEX Sockets Number', validators=[NumberRange(0, 6)])
+    min_int_socket = IntegerField('Min INT Sockets Number', validators=[NumberRange(0, 6)])
+    min_other_socket = IntegerField('Min White Sockets Number', validators=[NumberRange(0, 6)])
 
     supported = BooleanField('Support Skill Gem', validators=[DataRequired()])
 

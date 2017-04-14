@@ -62,12 +62,39 @@ class get_data_api:
                                         prop['values'] = float(prop['values'][0][0][:-1])
                                     elif "-" in prop['values'][0][0]:
                                         atk = [float(n) for n in prop['values'][0][0].split('-')]
-                                        prop['values'] = sum(atk)/len(atk)
+                                        prop['values'] = sum(atk) / len(atk)
                                     else:
                                         try:
                                             prop['values'] = float(prop['values'][0][0])
                                         except:
                                             prop['values'] = prop['values'][0][0]
+
+                        # set the socket into the format that we actually want
+                        if 'sockets' in item:
+                            group = {}
+                            socket = 0
+                            D = 0
+                            S = 0
+                            I = 0
+                            other = 0
+                            group_ans = []
+                            for n in item['sockets']:
+                                socket += 1
+                                if n['group'] in group:
+                                    group[n['group']] += 1
+                                else:
+                                    group[n['group']] = 1
+                                group_ans = [count_link[1] for count_link in group.items()]
+                                if n['attr'] == 'D':
+                                    D += 1
+                                elif n['attr'] == 'S':
+                                    S += 1
+                                elif n['attr'] == 'I':
+                                    I += 1
+                                else:
+                                    other += 1
+                            item['sockets'] = {'link': group_ans, 'socket_number': str(socket), 'D': str(D), 'S': str(S), 'I': str(I), 'Other': "0"}
+
                         temp.append(item)
 
         if len(temp) != 0:
@@ -75,22 +102,20 @@ class get_data_api:
             db = client.project_542
             posts = db.posts
             posts.insert_many(temp)
-            print('Now MongoDB has %8i documents'%posts.count())
+            print('Now MongoDB has %8i documents' % posts.count())
             print("==================")
 
         self.record_last_user_id(file_name)
         self.user_id = file_name
-            #for n in temp:
-            #    with open(os.getcwd() + '/data/' + self.user_id + '.json', 'a') as outfile:
-            #        json.dump(n, outfile, indent=2)
-
-
+        # for n in temp:
+        #    with open(os.getcwd() + '/data/' + self.user_id + '.json', 'a') as outfile:
+        #        json.dump(n, outfile, indent=2)
 
 
 if __name__ == "__main__":
-     # notice, if we try too many times, the server will reject our request then reponed nothing
-     print("Start the script")
-     a = get_data_api()
-     times = 1
-     while times != 0:
-         a.get_api_response()
+    # notice, if we try too many times, the server will reject our request then reponed nothing
+    print("Start the script")
+    a = get_data_api()
+    times = 1
+    while times != 0:
+        a.get_api_response()
