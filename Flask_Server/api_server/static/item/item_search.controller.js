@@ -4,12 +4,13 @@
         .module('app')
         .controller('itemController', itemController);
 
-    itemController.$inject = ['ItemService', '$location', '$window','$rootScope'];
-    function itemController(ItemService, $location, $window, $rootScope) {
+    itemController.$inject = ['ItemService', '$location', '$window','$rootScope','AuthenticationService'];
+    function itemController(ItemService, $location, $window, $rootScope, AuthenticationService) {
         var vm = this;
 
         vm.history = history;
         vm.search = search;
+        vm.logout = logout;
 
         vm.reloadRoute = function () {
             $window.location.reload();
@@ -41,6 +42,14 @@
                         vm.dataLoading = false;
                     }
                 });
+        }
+
+        function logout() {
+            if (AuthenticationService.isLogged) {
+                AuthenticationService.isLogged = false;
+                delete localStorage.token;
+                $location.path("/");
+            }
         }
 
     }

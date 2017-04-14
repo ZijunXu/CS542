@@ -8,27 +8,10 @@
         .module('app')
         .controller('CurrencyResultController', CurrencyResultController);
 
-    CurrencyResultController.$inject = ['$location', '$rootScope','CurrencyResultService'];
-    function CurrencyResultController($rootScope, CurrencyResultService) {
+    CurrencyResultController.$inject = ['$location', '$rootScope'];
+    function CurrencyResultController($rootScope) {
         var vm = this;
 
-        // vm.result = result;
-        //
-        // function result(item) {
-        //
-        //     SearchService.PostItem(vm.name)
-        //         .then(function (response) {
-        //             if (response.data!=null) {
-        //                 //use response to update page
-        //                  console.log(response.data);
-        //                 $location.path('/user');
-        //             } else {
-        //                 FlashService.Error(response.message);
-        //                 vm.dataLoading = false;
-        //             }
-        //         });
-        //
-        // }
     }
 
 })();

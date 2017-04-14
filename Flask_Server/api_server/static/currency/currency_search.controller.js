@@ -8,8 +8,8 @@
         .module('app')
         .controller('CurrencySearchController', CurrencySearchController);
 
-    CurrencySearchController.$inject = ['CurrencyService', '$rootScope', '$location', 'MyPostService', '$window'];
-    function CurrencySearchController(CurrencyService, $rootScope, $location, MyPostService, $window) {
+    CurrencySearchController.$inject = ['CurrencyService', '$rootScope', '$location', '$window'];
+    function CurrencySearchController(CurrencyService, $rootScope, $location, $window) {
         var vm = this;
         vm.currency = {cid: vm.want, cname: vm.have};
 

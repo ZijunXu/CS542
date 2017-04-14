@@ -8,8 +8,8 @@
         .module('app')
         .controller('CurrencyPostController', CurrencyPostController);
 
-    CurrencyPostController.$inject = ['$rootScope', '$location', 'MyPostService', 'CurrencyService', '$window', 'FlashService'];
-    function CurrencyPostController(CurrencyService, $rootScope, $location, MyPostService, $window, FlashService) {
+    CurrencyPostController.$inject = ['$rootScope', '$location', 'CurrencyService', '$window', 'FlashService'];
+    function CurrencyPostController(CurrencyService, $rootScope, $location, $window, FlashService) {
         var vm = this;
         vm.cpost = {gameid: vm.gameid, have: vm.have, price1: vm.price1, want: vm.want, price2: vm.price2}
         vm.my_post = my_post;

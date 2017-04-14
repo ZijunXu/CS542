@@ -11,16 +11,18 @@
 
         vm.login = login;
 
-        (function initController() {
-            // reset user status
-            AuthenticationService.ClearCredentials();
-        })();
+        // (function initController() {
+        //     // reset user status
+        //     AuthenticationService.ClearCredentials();
+        // })();
 
         function login() {
             vm.dataLoading = true;
             AuthenticationService.Login(vm.username, vm.password, function (response) {
                 if (response.login_status) {
-                    AuthenticationService.SetCredentials(vm.username, vm.password);
+                    AuthenticationService.isLogged = true;
+                    localStorage.token = response.token;
+                    //AuthenticationService.SetCredentials(vm.username, vm.password);
                     $location.path('/item_search');
                 } else {
                     FlashService.Error(response.message);
