@@ -8,8 +8,8 @@
         .module('app')
         .controller('MyPostController', MyPostController);
 
-    MyPostController.$inject = ['$rootScope','$location','MyPostService'];
-    function MyPostController($rootScope, $location, MyPostService) {
+    MyPostController.$inject = ['$rootScope','$location'];
+    function MyPostController($rootScope, $location) {
         var vm = this;
 
     }

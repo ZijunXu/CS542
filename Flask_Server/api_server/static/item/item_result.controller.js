@@ -8,8 +8,8 @@
         .module('app')
         .controller('ItemResultController', ItemResultController);
 
-    ItemResultController.$inject = ['$location', '$scope', 'ItemResultService', '$timeout','$rootScope'];
-    function ItemResultController(ItemResultService, $timeout, $scope,$rootScope) {
+    ItemResultController.$inject = [ '$scope', '$timeout','$rootScope'];
+    function ItemResultController( $timeout, $scope,$rootScope) {
         // $scope.user = {name: "Fox"};
         //
         // $scope.updated = -1;
