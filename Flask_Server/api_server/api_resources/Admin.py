@@ -4,6 +4,7 @@ from ..database import User
 from ..forms import RegistrationForm
 from api_server import db
 import sys
+from .GetToken import auth
 
 
 class Admin(Resource):
@@ -11,7 +12,7 @@ class Admin(Resource):
     this is the functions only for the admin
     """
 
-    # decorators = [auth.login_required]
+    decorators = [auth.login_required]
 
     def get(self, username=None):
         """

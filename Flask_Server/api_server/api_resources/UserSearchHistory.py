@@ -5,10 +5,12 @@ from ..forms import UserHistoryForm
 from ..database import Search
 import datetime
 import sys
+from .GetToken import auth
 
 
 class UserSearchHistory(Resource):
-    # decorators = [auth.login_required]
+    decorators = [auth.login_required]
+
     def get(self, sid=None):
         if sid:
             return jsonify({"retrive_search_status": False, "message": "Wrong usage"})
