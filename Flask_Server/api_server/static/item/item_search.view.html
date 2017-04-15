@@ -15,6 +15,422 @@
     </ul>
 </div>
 
+<div id="content">
+    <div class="row">
+        <div class="large-12 column">
+
+            <form id="search" class="custom" ng-submit="vm.search()" role="form">
+                <div class="row">
+                    <div class="large-12 columns">
+                        <div class="large-1 columns">
+                            <label class="right inline" for="league">League</label>
+                        </div>
+                        <div class="large-3 columns">
+                            <select id="league" name="league" data-customforms="disabled"
+                                    class="league chosen" ng-model="vm.league"
+                                    ng-options="x for x in vm.list1">
+                            </select>
+                        </div>
+                        <div class="large-1 columns"><label class="right inline" for="type">Type</label></div>
+                        <div class="large-3 columns">
+                            <select id="type" name="type" data-customforms="disabled"
+                                    class="league chosen" ng-model="vm.type"
+                                    ng-options="x for x in vm.list2">
+                            </select>
+                        </div>
+                        <div class="large-4 columns"></div>
+                        <div class="large-1 columns"><label class="right inline" for="base">Base</label></div>
+                        <div class="large-3 columns">
+                            <select id="base" name="base" data-customforms="disabled"
+                                    class="league chosen" ng-model="vm.base"
+                                    ng-options="x for x in vm.list3">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <div class="large-1 columns"><label class="right inline">Name</label></div>
+                        <div class="large-11 columns"><input type="text" name="name" ng-model="vm.name"
+                                                             id="name"/></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 column">
+                        <!--Offense-->
+                        <div class="row">
+                            <div class="large-12 column">
+                                <h5>Offense</h5>
+                            </div>
+                        </div>
+                        <!--First Row of Offense-->
+                        <div class="row">
+                            <div class="large-4 columns">
+                                <div class="large-6 columns"><label class="right inline">Damage</label></div>
+                                <div class="large-6 columns" id="prop-dmg">
+                                    <ul class="button-group ul-2">
+                                        <li><input type="text" name="dmg_min" class="num" placeholder="min"
+                                                   value="" ng-model="vm.damage_min"></li>
+                                        <li><input type="text" name="dmg_max" class="num" placeholder="max"
+                                                   value="" ng-model="vm.damage_max"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="large-4 columns">
+                                <div class="large-6 columns"><label class="right inline">APS</label></div>
+                                <div class="large-6 columns" id="prop-aps">
+                                    <ul class="button-group ul-2">
+                                        <li><input type="text" name="aps_min" class="num" placeholder="min"
+                                                   value="" ng-model="vm.APS_min"></li>
+                                        <li><input type="text" name="aps_max" class="num" placeholder="max"
+                                                   value="" ng-model="vm.APS_max"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="large-4 columns">
+                                <div class="large-6 columns"><label class="right inline">Crit. Strike</label>
+                                </div>
+                                <div class="large-6 columns" id="prop-crit">
+                                    <ul class="button-group ul-2">
+                                        <li><input type="text" name="crit_min" class="num" placeholder="min"
+                                                   value="" ng-model="vm.crit_min"></li>
+                                        <li><input type="text" name="crit_max" class="num" placeholder="max"
+                                                   value="" ng-model="vm.crit_max"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Second Row of Offense-->
+                        <div class="row">
+                            <div class="large-4 columns">
+                                <div class="large-6 columns"><label class="right inline">DPS</label></div>
+                                <div class="large-6 columns" id="prop-dps">
+                                    <ul class="button-group ul-2">
+                                        <li><input type="text" name="dps_min" class="num" placeholder="min"
+                                                   value="" ng-model="vm.dps_min"></li>
+                                        <li><input type="text" name="dps_max" class="num" placeholder="max"
+                                                   value="" ng-model="vm.dps_max"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="large-4 columns">
+                                <div class="large-6 columns"><label class="right inline">eDPS</label></div>
+                                <div class="large-6 columns" id="prop-edps">
+                                    <ul class="button-group ul-2">
+                                        <li><input type="text" name="edps_min" class="num" placeholder="min"
+                                                   value="" ng-model="vm.edps_min"></li>
+                                        <li><input type="text" name="edps_max" class="num" placeholder="max"
+                                                   value="" ng-model="vm.edps_max"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="large-4 columns"></div>
+                        </div>
+                        <!--Defense-->
+                        <div class="row">
+                            <div class="large-12 column">
+                                <h5>Defense</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-4 columns">
+                                <div class="large-6 columns"><label class="right inline">Armour</label></div>
+                                <div class="large-6 columns">
+                                    <ul class="button-group ul-2">
+                                        <li><input type="text" name="armour_min" class="num" placeholder="min"
+                                                   value="" ng-model="vm.armour_min"></li>
+                                        <li><input type="text" name="armour_max" class="num" placeholder="max"
+                                                   value="" ng-model="vm.armour_max"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="large-4 columns">
+                                <div class="large-6 columns"><label class="right inline">Evasion</label></div>
+                                <div class="large-6 columns">
+                                    <ul class="button-group ul-2">
+                                        <li><input type="text" name="evasion_min" class="num" placeholder="min"
+                                                   value="" ng-model="vm.evasion_min"></li>
+                                        <li><input type="text" name="evasion_max" class="num" placeholder="max"
+                                                   value="" ng-model="vm.evasion_max"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="large-4 columns">
+                                <div class="large-6 columns"><label class="right inline">Shield</label></div>
+                                <div class="large-6 columns">
+                                    <ul class="button-group ul-2">
+                                        <li><input type="text" name="shield_min" class="num" placeholder="min"
+                                                   value="" ng-model="vm.shield_min"></li>
+                                        <li><input type="text" name="shield_max" class="num" placeholder="max"
+                                                   value="" ng-model="vm.shield_max"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-4 columns">
+                                <div class="large-6 columns"><label class="right inline">Block</label></div>
+                                <div class="large-6 columns">
+                                    <ul class="button-group ul-2">
+                                        <li><input type="text" name="block_min" class="num" placeholder="min"
+                                                   value="" ng-model="vm.block_min"></li>
+                                        <li><input type="text" name="block_max" class="num" placeholder="max"
+                                                   value="" ng-model="vm.block_max"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Sockets-->
+                        <div class="row">
+                            <div class="large-12 column">
+                                <h5>Sockets</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-4 columns">
+                                <div class="large-6 column"><label class="inline right">Sockets</label></div>
+                                <div class="large-6 column">
+                                    <ul class="button-group ul-2">
+                                        <li><input type="text" name="sockets_min" class="num" placeholder="min"
+                                                   value="" ng-model="vm.sockets_min"></li>
+                                        <li><input type="text" name="sockets_max" class="num" placeholder="max"
+                                                   value="" ng-model="vm.sockets_max"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="large-4 columns">
+                                <div class="large-6 column"><label class="inline right">Links</label></div>
+                                <div class="large-6 column">
+                                    <ul class="button-group ul-2">
+                                        <li><input type="text" name="link_min" class="num" placeholder="min" value=""
+                                                   ng-model="vm.link_min">
+                                        </li>
+                                        <li><input type="text" name="link_max" class="num" placeholder="max" value=""
+                                                   ng-model="vm.link_max">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="large-4 columns"></div>
+                        </div>
+                        <div class="row">
+                            <div class="large-4 columns">
+                                <div class="large-6 column"><label class="inline right">Colors</label></div>
+                                <div class="large-6 column" id="prop-Colors">
+                                    <ul class="button-group ul-4">
+                                        <li><input class="sockets-r" type="text" placeholder="R" name="sockets_r"
+                                                   value="" ng-model="vm.CR"></li>
+                                        <li><input class="sockets-g" type="text" placeholder="G" name="sockets_g"
+                                                   value="" ng-model="vm.CG"></li>
+                                        <li><input class="sockets-b" type="text" placeholder="B" name="sockets_b"
+                                                   value="" ng-model="vm.CB"></li>
+                                        <li><input class="sockets-w" type="text" placeholder="W" name="sockets_w"
+                                                   value="" ng-model="vm.CW"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="large-4 columns">
+                                <div class="large-6 column"><label class="inline right">Linked</label></div>
+                                <div class="large-6 column" id="prop-Linked">
+                                    <ul class="button-group ul-4">
+                                        <li><input class="sockets-r" type="text" placeholder="R" name="linked_r"
+                                                   value="" ng-model="vm.LR"></li>
+                                        <li><input class="sockets-g" type="text" placeholder="G" name="linked_g"
+                                                   value="" ng-model="vm.LG"></li>
+                                        <li><input class="sockets-b" type="text" placeholder="B" name="linked_b"
+                                                   value="" ng-model="vm.LB"></li>
+                                        <li><input class="sockets-w" type="text" placeholder="W" name="linked_w"
+                                                   value="" ng-model="vm.LW"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="large-4 columns"></div>
+                        </div>
+                        <!--Requirements-->
+                        <div class="row">
+                            <div class="large-12 column">
+                                <h5>Requirements</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-3 columns">
+                                <div class="large-6 columns"><label class="right inline">Level</label></div>
+                                <div class="large-6 columns">
+                                    <ul class="button-group ul-2">
+                                        <li><input type="text" name="rlevel_min" class="num" placeholder="min" value=""
+                                                   ng-model="vm.rlevel_min">
+                                        </li>
+                                        <li><input type="text" name="rlevel_max" class="num" placeholder="max" value=""
+                                                   ng-model="vm.rlevel_max">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="large-3 columns">
+                                <div class="large-6 columns"><label class="right inline">Strength</label></div>
+                                <div class="large-6 columns">
+                                    <ul class="button-group ul-2">
+                                        <li><input type="text" name="rstr_min" class="num" placeholder="min" value=""
+                                                   ng-model="vm.rstr_min">
+                                        </li>
+                                        <li><input type="text" name="rstr_max" class="num" placeholder="max" value=""
+                                                   ng-model="vm.rstr_max">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="large-3 columns">
+                                <div class="large-6 columns"><label class="right inline">Dexterity</label></div>
+                                <div class="large-6 columns">
+                                    <ul class="button-group ul-2">
+                                        <li><input type="text" name="rdex_min" class="num" placeholder="min" value=""
+                                                   ng-model="vm.rdex_min">
+                                        </li>
+                                        <li><input type="text" name="rdex_max" class="num" placeholder="max" value=""
+                                                   ng-model="vm.rdex_max">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="large-3 columns">
+                                <div class="large-6 columns"><label class="right inline">Intelligence</label></div>
+                                <div class="large-6 columns">
+                                    <ul class="button-group ul-2">
+                                        <li><input type="text" name="rint_min" class="num" placeholder="min" value=""
+                                                   ng-model="vm.rint_min">
+                                        </li>
+                                        <li><input type="text" name="rint_max" class="num" placeholder="max" value=""
+                                                   ng-model="vm.rint_max">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Mods-->
+                        <div class="row" id="prop-mods">
+                            <div class="large-12 column">
+                                <h5>Mods</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-12 column">
+                                <div class="large-12 column">
+                                    <a href="#" class="button small right secondary"
+                                       onclick="explicit_add_group();return false;" id="btn-add-filter-group">Add filter
+                                        group</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Misc-->
+
+
+                        <div class="row">
+                            <div class="large-12 column">
+                                <h5>Misc</h5>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="large-4 columns">
+                                <div class="large-6 columns"><label class="right inline">Seller</label></div>
+                                <div class="large-6 columns"><input name="seller" type="text" placeholder="name"
+                                                                    value="" ng-model="vm.seller"/></div>
+                            </div>
+                            <div class="large-4 columns">
+                                <div class="large-4 columns"><label class="right inline">Currency</label></div>
+                                <div class="large-8 columns">
+                                    <select name="buyout_currency" data-customforms="disabled"
+                                            class="chosen" ng-model="vm.currency"
+                                            ng-options="x for x in vm.list4">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="large-4 columns"></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="large-4 columns">
+                                <div class="large-6 columns"><label class="right inline">Quality</label></div>
+                                <div class="large-6 columns" id="prop-q">
+                                    <ul class="button-group ul-2">
+                                        <li><input type="text" name="q_min" class="num" placeholder="min" value="" ng-model="vm.q_min"></li>
+                                        <li><input type="text" name="q_max" class="num" placeholder="max" value="" ng-model="vm.q_max"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="large-4 columns">
+                                <div class="large-6 columns"><label class="right inline">Level/Tier</label></div>
+                                <div class="large-6 columns" id="prop-level">
+                                    <ul class="button-group ul-2">
+                                        <li><input type="text" name="level_min" class="num" placeholder="min" value="" ng-model="vm.level_min">
+                                        </li>
+                                        <li><input type="text" name="level_max" class="num" placeholder="max" value="" ng-model="vm.level_max">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="large-4 columns">
+                                <div class="large-6 columns"><label class="right inline">Itemlevel</label></div>
+                                <div class="large-6 columns" id="prop-ilvl">
+                                    <ul class="button-group ul-2">
+                                        <li><input type="text" name="ilvl_min" class="num" placeholder="min" value="" ng-model="vm.ilvl_min">
+                                        </li>
+                                        <li><input type="text" name="ilvl_max" class="num" placeholder="max" value="" ng-model="vm.ilvl_max">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-4 columns">
+                                <div class="large-6 columns"><label class="right inline">Rarity</label></div>
+                                <div class="large-6 columns">
+                                     <select name="rarity" data-customforms="disabled"
+                                            class="chosen" ng-model="vm.rarity"
+                                            ng-options="x for x in vm.list5">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="large-4 columns">
+                                <div class="large-6 columns"><label class="right inline">Identified</label></div>
+                                <div class="large-6 columns">
+                                    <select name="identified" data-customforms="disabled"
+                                            class="chosen" ng-model="vm.identified"
+                                            ng-options="x for x in vm.list6">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="large-4 columns">
+                                <div class="large-6 columns"><label class="right inline">Corrupted</label></div>
+                                <div class="large-6 columns">
+                                    <select name="corrupted" data-customforms="disabled"
+                                            class="chosen" ng-model="vm.corrupted"
+                                            ng-options="x for x in vm.list7">
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row buyout-value">
+                </div>
+                <div class="row">
+                    <hr/>
+                    <div class="large-12 columns">
+                        <div class="large-2 columns"><p class="button tiny secondary" accesskey="r"
+                                                        ng-click="vm.reloadRoute()">Reset</p>
+                        </div>
+                        <div class="large-2 large-offset-8 columns"><input type="submit" class="search button"
+                                                                           accesskey="s" value="Search!"></div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
 
 
 <!--<ol class="joyride-list" data-joyride>-->
