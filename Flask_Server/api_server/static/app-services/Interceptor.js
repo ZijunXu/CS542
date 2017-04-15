@@ -20,7 +20,7 @@
             request: function (config) {
                 if (localStorage.token) {
                     config.headers.Authorization = "Bearer "+localStorage.token;
-                    console.log(config.headers.token);
+                    console.log(config.headers.Authorization);
                 }
                 return config;
             },
