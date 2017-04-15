@@ -22,11 +22,10 @@
                 if (response.login_status) {
                     AuthenticationService.isLogged = true;
                     localStorage.token = response.token;
-                    //AuthenticationService.SetCredentials(vm.username, vm.password);
-                    if(response.status)
+                    //if(response.status)
                     $location.path('/item_search');
-                    else
-                        $location.path('/admin');
+                    //else
+                        //$location.path('/admin');
                 } else {
                     FlashService.Error(response.message);
                     vm.dataLoading = false;
