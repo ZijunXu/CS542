@@ -86,6 +86,20 @@
                 access: {requiredLogin: true}
             })
 
+            .when('/admin', {
+                controller: 'AdminController',
+                templateUrl: '/static/user/admin.view.html',
+                controllerAs: 'vm',
+                access: {requiredLogin: true}
+            })
+
+            .when('/admanage', {
+                controller: 'AdmanageController',
+                templateUrl: '/static/user/admanage.view.html',
+                controllerAs: 'vm',
+                access: {requiredLogin: true}
+            })
+
             .otherwise({redirectTo: '/'});
     }
 
