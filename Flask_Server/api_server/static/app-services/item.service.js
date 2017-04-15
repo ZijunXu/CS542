@@ -17,10 +17,6 @@
 
         return service;
 
-        // function GetItem() {
-        //     return $http.get('/api/*******/').then(handleSuccess, handleError('Error getting item back'));
-        // }
-
         function SearchItem(item) {
             //alert(item);
             return $http({
