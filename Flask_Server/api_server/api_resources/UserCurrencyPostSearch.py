@@ -5,17 +5,13 @@ from ..database import Currency
 from ..forms import CurrencySearchForm
 
 
-class CurrencySearch(Resource):
+class UserCurrencyPostSearch(Resource):
     """
     this is the api for the currency part
     """
-
     def get(self, currency_name=None):
         if not currency_name:
             return jsonify([n.as_dict() for n in Currency.query.all()])
-        else:
-            ret = Currency.query.filter_by(cnanme=currency_name).first().as_dict()
-            return jsonify(ret)
 
     def post(self):
         form = CurrencySearchForm.from_json(request.get_json())

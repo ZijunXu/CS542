@@ -66,19 +66,19 @@
   ```
 
 
-- ## UserSearchHistory
-  - route: /api/user/search
-  - method: POST, GET, DELETE
+- ## UserItemSearchHistory
+  - route: /api/user/search, /api/user/search/<sid>
+  - method: GET, DELETE, all of them required as a login user
   - Description:
-    - GET: this method is temporarily for test, return all of the search history, but in the future we request the token for user specification
+    - GET:
 
       ```bash
-      curl -i http://localhost:5000/api/user/search
+      curl -H "Authorization: Bearer eyJpYXQiOjE0OTI0NjE3NTIsImFsZyI6IkhTMjU2IiwiZXhwIjoxNDkyNDYyMzUyfQ.eyJpZCI6MX0.qRxQ3G6otiZinXvZeh3REAafW4a780AkT93WqXvsp64" -i http://localhost:5000/api/user/search
       HTTP/1.0 200 OK
       Content-Type: application/json
-      Content-Length: 310
+      Content-Length: 207
       Server: Werkzeug/0.11.15 Python/3.5.2
-      Date: Thu, 13 Apr 2017 13:28:53 GMT
+      Date: Mon, 17 Apr 2017 20:36:23 GMT
 
       [
         {
@@ -92,108 +92,23 @@
           "item": "NB1",
           "sid": 2,
           "time": "Sun, 09 Apr 2017 17:31:03 GMT"
-        },
-        {
-          "id": 2,
-          "item": "NB2",
-          "sid": 3,
-          "time": "Sun, 09 Apr 2017 17:31:03 GMT"
         }
       ]
-
-      ```
-
-    - POST: add a new search history record for a user
-
-      ```bash
-      curl -i -H "Content-Type: application/json" -X POST -d '{"user_id":"2","item_name":"NB2","time":"Sun, 09 Apr 2017 17:31:03 GMT"}' http://localhost:5000/api/user/search
-      HTTP/1.0 200 OK
-      Content-Type: application/json
-      Content-Length: 36
-      Server: Werkzeug/0.11.15 Python/3.5.2
-      Date: Thu, 13 Apr 2017 13:46:47 GMT
-
-      {
-        "record_history_status": true
-      }
       ```
 
     - DELETE: Deleting a users search history record, request token for user specification
 
       ```bash
-      curl -X delete  http://localhost:5000/api/user/search/4
+      curl  -H "Authorization: Bearer eyJpYXQiOjE0OTI0NjE3NTIsImFsZyI6IkhTMjU2IiwiZXhwIjoxNDkyNDYyMzUyfQ.eyJpZCI6MX0.qRxQ3G6otiZinXvZeh3REAafW4a780AkT93WqXvsp64" -X delete  http://localhost:5000/api/user/search/2
       {
-        "delete_status": "Success"
+        "delete_history_status": "Success"
       }
       ```
 
-- ## UserPostHistory
-  - route: /api/user/post
+- ## UserCurrencyPostManagement
+  - route: /api/user/post, /api/user/post/<tid>
   - method: POST, GET, DELETE
-  - Description:
-    - GET: this method is temporarily for test, return all of the user posts, but in the future we request the token for user specification
-      ```bash
-      curl -i http://localhost:5000/api/user/post
-      HTTP/1.0 200 OK
-      Content-Type: application/json
-      Content-Length: 519
-      Server: Werkzeug/0.11.15 Python/3.5.2
-      Date: Thu, 13 Apr 2017 14:05:04 GMT
 
-      [
-        {
-          "c1_item": "NB",
-          "c1_number": 1,
-          "c2_item": "LGD",
-          "c2_number": 2,
-          "tid": 1,
-          "time": "Sun, 09 Apr 2017 17:31:03 GMT",
-          "uid": 1
-        },
-        {
-          "c1_item": "NB1",
-          "c1_number": 2,
-          "c2_item": "LGD1",
-          "c2_number": 4,
-          "tid": 2,
-          "time": "Sun, 09 Apr 2017 17:31:03 GMT",
-          "uid": 1
-        },
-        {
-          "c1_item": "NB2",
-          "c1_number": 4,
-          "c2_item": "LGD2",
-          "c2_number": 8,
-          "tid": 3,
-          "time": "Sun, 09 Apr 2017 17:31:03 GMT",
-          "uid": 2
-        }
-      ]
-      ```
-
-    - POST: add a new post record for a user
-
-      ```bash
-      curl -i -H "Content-Type: application/json" -X POST -d '{"c1_item":"WINGS","c2_item":"CDEC","c1_number":"1","c2_number":"5","user_id":2,"time":"Sun, 09 Apr 2017 17:31:03 GMT"}' http://localhost:5000/api/user/post
-      HTTP/1.0 200 OK
-      Content-Type: application/json
-      Content-Length: 36
-      Server: Werkzeug/0.11.15 Python/3.5.2
-      Date: Thu, 13 Apr 2017 14:17:54 GMT
-
-      {
-        "record_history_status": true
-      }
-      ```
-
-    - DELETE: Deleting a users search history record, request token for user specification
-
-      ```bash
-      curl -X delete  http://localhost:5000/api/user/post/4
-      {
-        "delete_status": "Success"
-      }
-      ```
 
 - ## Admin
   - route: /api/admin/
@@ -255,9 +170,9 @@
       }
       ```
 
-- ## CurrencySearch
-  - route: /api/currency/
-  - method: POST, GET, DELETE
+- ## UserCurrencyPostSearch
+  - route: /api/currency/<currency_name>, /api/currency
+  - method: POST, GET
   - Description:
     - GET: this only a temporary method for testing, this return all of the currency
 
