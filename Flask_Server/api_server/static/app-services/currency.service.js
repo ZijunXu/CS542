@@ -21,6 +21,7 @@
         return service;
 
          function SearchCurrency(currency) {
+             //console.log(currency);
             return $http({
                 url: '/api/currency',
                 method: 'GET',
@@ -32,8 +33,9 @@
         }
 
         function PostCurrency(currency) {
+             console.log(currency);
             return $http({
-                url: '/api/*****',
+                url: '/api/user/post',
                 method: 'POST',
                 data: $httpParamSerializerJQLike(currency),
                 headers: {
@@ -54,8 +56,8 @@
 
           function Update(post) {
             return $http({
-                url: '/api/*****',
-                method: 'POST',
+                url: '/api/user/post',
+                method: 'PUT',
                 data: $httpParamSerializerJQLike(post),
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -65,9 +67,9 @@
 
         function Delete(id) {
             return $http({
-                url: '/api/*****',
+                url: '/api/user/post',
                 method: 'DELETE',
-                data: $httpParamSerializerJQLike(id),
+                data: $httpParamSerializerJQLike({tid:id}),
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }

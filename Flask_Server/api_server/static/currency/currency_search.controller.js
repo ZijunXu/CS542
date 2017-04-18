@@ -11,7 +11,6 @@
     CurrencySearchController.$inject = ['CurrencyService', '$rootScope', '$location', '$window'];
     function CurrencySearchController(CurrencyService, $rootScope, $location, $window) {
         var vm = this;
-        vm.currency = {cid: vm.want, cname: vm.have};
 
         vm.my_post = my_post;
         vm.search = search;
@@ -21,8 +20,8 @@
         };
 
         function search() {
-            console.log(vm.currency);
-            CurrencyService.SearchCurrency(vm.currency)
+            console.log(vm.cs);
+            CurrencyService.SearchCurrency(vm.cs)
                 .then(function (response) {
                     if (response != null) {
                         //use response to update page

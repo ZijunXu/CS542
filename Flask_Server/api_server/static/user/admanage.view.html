@@ -17,24 +17,60 @@
                 <td>{{item.email}}</td>
                 <td>{{item.id}}</td>
                 <td>{{item.name}}</td>
-                <td>{{item.passwordhs}}</td>
+                <td>{{item.password_hash}}</td>
             </tr>
         </table>
 
         <div class="large-6 columns">
             <label for="id1">Delete user: <input type="text" name="have" id="id1" class="form-control"
-                                                 ng-model="vm.deleteid"
+                                                 ng-model="vm.deletename"
                                                  required/>
-                <button class="search button" ng-click="vm.Deleteid()">Delete</button>
+                <button class="search button" ng-click="vm.Deleteuser()">Delete</button>
             </label>
         </div>
 
-        <div class="large-6 columns">
-            <label for="id1">Delete post: <input type="text" name="have" id="post" class="form-control"
-                                                 ng-model="vm.deletepost"
-                                                 required/>
-                <button class="search button" ng-click="vm.Deletepost()">Delete</button>
-            </label>
+        <div class="col-sm-4 col-sm-offset-4">
+            <form name="form" ng-submit="vm.createuser()" role="form">
+
+                <div class="form-group" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required }">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" class="form-control" ng-model="vm.user.email" required/>
+                    <span ng-show="form.email.$dirty && form.email.$error.required"
+                          class="help-block">Email is required</span>
+                </div>
+
+                <div class="form-group"
+                     ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" class="form-control" ng-model="vm.user.name"
+                           required/>
+                    <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
+                </div>
+
+                <div class="form-group"
+                     ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" class="form-control"
+                           ng-model="vm.user.password"
+                           required/>
+                    <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+                </div>
+
+                <div class="form-group"
+                     ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+                    <label for="password">Confirm Password</label>
+                    <input type="password" name="confirmpassword" id="confirmpassword" class="form-control"
+                           ng-model="vm.user.confirm_password" required/>
+                    <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Create
+                    </button>
+                    <img ng-if="vm.dataLoading"
+                         src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+                </div>
+            </form>
         </div>
 
     </div>

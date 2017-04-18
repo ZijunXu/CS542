@@ -11,15 +11,14 @@
     ManagePostController.$inject = ['$rootScope', 'CurrencyService','$window'];
     function ManagePostController(CurrencyService, $rootScope, $window) {
         var vm = this;
-        vm.down={id:vm.postid_d};
-        vm.up = {id:vm.postid_u,have:vm.have, want:vm.want, price1:vm.price1,price2:vm.price2};
+
         vm.update = update;
         vm.Delete = Delete;
 
         function Delete() {
-            CurrencyService.Delete(vm.down)
+            CurrencyService.Delete(vm.deleteid)
                 .then(function (response) {
-                        if (response.delete_status) {
+                        if (response.delete_post_status=="Success") {
                         FlashService.Success('Delete successful', true);
                         //use response to update page
                        $window.location.reload();
@@ -31,9 +30,9 @@
         }
 
         function update() {
-            CurrencyService.Update(vm.up)
+            CurrencyService.Update(vm.updater)
                 .then(function (response) {
-                    if (response.update_status) {
+                    if (response.post_status) {
                         FlashService.Success('Update successful', true);
                         //use response to update page
                        $window.location.reload();

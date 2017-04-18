@@ -14,17 +14,15 @@
     AdmanageController.$inject = ['$rootScope', 'AdminService', '$window'];
     function AdmanageController(AdminService, $rootScope, $window) {
         var vm = this;
-        vm.did = {id: vm.deleteid};
-        vm.dpo = {id: vm.deletepost};
 
         vm.get = get;
-        vm.Deleteid = Deleteid;
-        vm.Deletepost = Deletepost;
+        vm.Deleteuser = Deleteuser;
+        vm.createuser = createuser;
 
-        function Deleteid() {
-            CurrencyService.Deleteid(vm.did)
+        function Deleteuser() {
+            CurrencyService.Deleteid(vm.deletename)
                 .then(function (response) {
-                    if (response.delete_status) {
+                    if (response.delete_status=="Success") {
                         FlashService.Success('Delete successful', true);
                         //use response to update page
                         $window.location.reload();
@@ -35,11 +33,11 @@
                 });
         }
 
-        function Deletepost() {
-            CurrencyService.Deletepost(vm.dpo)
+        function createuser() {
+            CurrencyService.Update(vm.user)
                 .then(function (response) {
-                    if (response.delete_status) {
-                        FlashService.Success('Delete successful', true);
+                    if (response.register_status) {
+                        FlashService.Success('Create successful', true);
                         //use response to update page
                         $window.location.reload();
                     } else {

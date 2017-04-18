@@ -11,7 +11,7 @@
     CurrencyPostController.$inject = ['$rootScope', '$location', 'CurrencyService', '$window', 'FlashService'];
     function CurrencyPostController(CurrencyService, $rootScope, $location, $window, FlashService) {
         var vm = this;
-        vm.cpost = {gameid: vm.gameid, have: vm.have, price1: vm.price1, want: vm.want, price2: vm.price2}
+
         vm.my_post = my_post;
         vm.post = post;
 
@@ -20,7 +20,7 @@
         };
 
         function post() {
-            CurrencyService.PostCurrency(vm.cpost)
+            CurrencyService.PostCurrency(vm.cup)
                 .then(function (response) {
                     //use response to update page
                     if (response.post_status) {
