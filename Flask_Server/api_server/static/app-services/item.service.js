@@ -41,7 +41,7 @@
         }
 
          function removeHistory(sid) {
-            return $http.delete('/api/user/search'+sid).then(handleSuccess, handleError('Error creating user'));
+            return $http.delete('/api/user/search/'+sid).then(handleSuccess, handleError('Error creating user'));
         }
 
         function handleSuccess(res) {

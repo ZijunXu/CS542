@@ -18,7 +18,7 @@
             var sid = $rootScope.history[index].sid;
              ItemService.removeHistory(sid)
                 .then(function (response) {
-                    if (response.delete_history_status=="Success") {
+                    if (response.delete_history_status == "Success") {
                         //use response to update page
                         $rootScope.history = response;
                          $window.location.reload();
