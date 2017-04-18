@@ -14,11 +14,12 @@
 
         service.SearchItem = SearchItem;
         service.History = History;
+        service.removeHistory = removeHistory;
 
         return service;
 
         function SearchItem(item) {
-            //alert(item);
+            console.log(item);
             return $http({
                 url: '/api/item',
                 method: 'POST',
@@ -37,6 +38,10 @@
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             }).then(handleSuccess, handleError('Error seeking history'));
+        }
+
+         function removeHistory(sid) {
+            return $http.delete('/api/user/search'+sid).then(handleSuccess, handleError('Error creating user'));
         }
 
         function handleSuccess(res) {

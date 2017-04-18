@@ -29,7 +29,7 @@
         <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
             <label for="password">Confirm Password</label>
             <input type="password" name="confirmpassword" id="confirmpassword" class="form-control"
-                   ng-model="vm.user.confirm" required/>
+                   ng-model="vm.user.confirm_password" required/>
             <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
         </div>
 

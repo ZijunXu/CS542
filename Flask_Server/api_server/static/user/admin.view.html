@@ -28,14 +28,14 @@
                         </div>
                         <div class="large-3 columns">
                             <select id="league" name="league" data-customforms="disabled"
-                                    class="league chosen" ng-model="vm.league"
+                                    class="league chosen" ng-model="vm.item.league"
                                     ng-options="x for x in vm.list1">
                             </select>
                         </div>
                         <div class="large-1 columns"><label class="right inline" for="type">Type</label></div>
                         <div class="large-3 columns">
                             <select id="type" name="type" data-customforms="disabled"
-                                    class="league chosen" ng-model="vm.type"
+                                    class="league chosen" ng-model="vm.item.typeLine"
                                     ng-options="x for x in vm.list2">
                             </select>
                         </div>
@@ -43,7 +43,7 @@
                         <div class="large-1 columns"><label class="right inline" for="base">Base</label></div>
                         <div class="large-3 columns">
                             <select id="base" name="base" data-customforms="disabled"
-                                    class="league chosen" ng-model="vm.base"
+                                    class="league chosen" ng-model="vm.item.base"
                                     ng-options="x for x in vm.list3">
                             </select>
                         </div>
@@ -52,7 +52,7 @@
                 <div class="row">
                     <div class="large-12 columns">
                         <div class="large-1 columns"><label class="right inline">Name</label></div>
-                        <div class="large-11 columns"><input type="text" name="name" ng-model="vm.name"
+                        <div class="large-11 columns"><input type="text" name="name" ng-model="vm.item.name"
                                                              id="name"/></div>
                     </div>
                 </div>
@@ -139,9 +139,9 @@
                                 <div class="large-6 columns">
                                     <ul class="button-group ul-2">
                                         <li><input type="text" name="armour_min" class="num" placeholder="min"
-                                                   value="" ng-model="vm.armour_min"></li>
+                                                   value="" ng-model="vm.item.min_armour"></li>
                                         <li><input type="text" name="armour_max" class="num" placeholder="max"
-                                                   value="" ng-model="vm.armour_max"></li>
+                                                   value="" ng-model="vm.item.max_armour"></li>
                                     </ul>
                                 </div>
                             </div>
@@ -150,9 +150,9 @@
                                 <div class="large-6 columns">
                                     <ul class="button-group ul-2">
                                         <li><input type="text" name="evasion_min" class="num" placeholder="min"
-                                                   value="" ng-model="vm.evasion_min"></li>
+                                                   value="" ng-model="vm.item.min_evasion"></li>
                                         <li><input type="text" name="evasion_max" class="num" placeholder="max"
-                                                   value="" ng-model="vm.evasion_max"></li>
+                                                   value="" ng-model="vm.item.max_evasion"></li>
                                     </ul>
                                 </div>
                             </div>
@@ -161,9 +161,9 @@
                                 <div class="large-6 columns">
                                     <ul class="button-group ul-2">
                                         <li><input type="text" name="shield_min" class="num" placeholder="min"
-                                                   value="" ng-model="vm.shield_min"></li>
+                                                   value="" ng-model="vm.item.min_shield"></li>
                                         <li><input type="text" name="shield_max" class="num" placeholder="max"
-                                                   value="" ng-model="vm.shield_max"></li>
+                                                   value="" ng-model="vm.item.max_shield"></li>
                                     </ul>
                                 </div>
                             </div>
@@ -174,9 +174,9 @@
                                 <div class="large-6 columns">
                                     <ul class="button-group ul-2">
                                         <li><input type="text" name="block_min" class="num" placeholder="min"
-                                                   value="" ng-model="vm.block_min"></li>
+                                                   value="" ng-model="vm.item.block_min"></li>
                                         <li><input type="text" name="block_max" class="num" placeholder="max"
-                                                   value="" ng-model="vm.block_max"></li>
+                                                   value="" ng-model="vm.item.block_max"></li>
                                     </ul>
                                 </div>
                             </div>
@@ -193,9 +193,9 @@
                                 <div class="large-6 column">
                                     <ul class="button-group ul-2">
                                         <li><input type="text" name="sockets_min" class="num" placeholder="min"
-                                                   value="" ng-model="vm.sockets_min"></li>
+                                                   value="" ng-model="vm.item.min_socket_number"></li>
                                         <li><input type="text" name="sockets_max" class="num" placeholder="max"
-                                                   value="" ng-model="vm.sockets_max"></li>
+                                                   value="" ng-model="vm.item.max_socket_number"></li>
                                     </ul>
                                 </div>
                             </div>
@@ -204,10 +204,10 @@
                                 <div class="large-6 column">
                                     <ul class="button-group ul-2">
                                         <li><input type="text" name="link_min" class="num" placeholder="min" value=""
-                                                   ng-model="vm.link_min">
+                                                   ng-model="vm.item.min_link_number">
                                         </li>
                                         <li><input type="text" name="link_max" class="num" placeholder="max" value=""
-                                                   ng-model="vm.link_max">
+                                                   ng-model="vm.item.max_link_number">
                                         </li>
                                     </ul>
                                 </div>
@@ -220,13 +220,13 @@
                                 <div class="large-6 column" id="prop-Colors">
                                     <ul class="button-group ul-4">
                                         <li><input class="sockets-r" type="text" placeholder="R" name="sockets_r"
-                                                   value="" ng-model="vm.CR"></li>
+                                                   value="" ng-model="vm.item.CR"></li>
                                         <li><input class="sockets-g" type="text" placeholder="G" name="sockets_g"
-                                                   value="" ng-model="vm.CG"></li>
+                                                   value="" ng-model="vm.item.CG"></li>
                                         <li><input class="sockets-b" type="text" placeholder="B" name="sockets_b"
-                                                   value="" ng-model="vm.CB"></li>
+                                                   value="" ng-model="vm.item.CB"></li>
                                         <li><input class="sockets-w" type="text" placeholder="W" name="sockets_w"
-                                                   value="" ng-model="vm.CW"></li>
+                                                   value="" ng-model="vm.item.CW"></li>
                                     </ul>
                                 </div>
                             </div>
@@ -235,13 +235,13 @@
                                 <div class="large-6 column" id="prop-Linked">
                                     <ul class="button-group ul-4">
                                         <li><input class="sockets-r" type="text" placeholder="R" name="linked_r"
-                                                   value="" ng-model="vm.LR"></li>
+                                                   value="" ng-model="vm.item.LR"></li>
                                         <li><input class="sockets-g" type="text" placeholder="G" name="linked_g"
-                                                   value="" ng-model="vm.LG"></li>
+                                                   value="" ng-model="vm.item.LG"></li>
                                         <li><input class="sockets-b" type="text" placeholder="B" name="linked_b"
-                                                   value="" ng-model="vm.LB"></li>
+                                                   value="" ng-model="vm.item.LB"></li>
                                         <li><input class="sockets-w" type="text" placeholder="W" name="linked_w"
-                                                   value="" ng-model="vm.LW"></li>
+                                                   value="" ng-model="vm.item.LW"></li>
                                     </ul>
                                 </div>
                             </div>
@@ -259,10 +259,10 @@
                                 <div class="large-6 columns">
                                     <ul class="button-group ul-2">
                                         <li><input type="text" name="rlevel_min" class="num" placeholder="min" value=""
-                                                   ng-model="vm.rlevel_min">
+                                                   ng-model="vm.item.min_requirements_lvl">
                                         </li>
                                         <li><input type="text" name="rlevel_max" class="num" placeholder="max" value=""
-                                                   ng-model="vm.rlevel_max">
+                                                   ng-model="vm.item.max_requirements_lvl">
                                         </li>
                                     </ul>
                                 </div>
@@ -272,10 +272,10 @@
                                 <div class="large-6 columns">
                                     <ul class="button-group ul-2">
                                         <li><input type="text" name="rstr_min" class="num" placeholder="min" value=""
-                                                   ng-model="vm.rstr_min">
+                                                   ng-model="vm.item.min_requirements_str">
                                         </li>
                                         <li><input type="text" name="rstr_max" class="num" placeholder="max" value=""
-                                                   ng-model="vm.rstr_max">
+                                                   ng-model="vm.item.max_requirements_str">
                                         </li>
                                     </ul>
                                 </div>
@@ -285,10 +285,10 @@
                                 <div class="large-6 columns">
                                     <ul class="button-group ul-2">
                                         <li><input type="text" name="rdex_min" class="num" placeholder="min" value=""
-                                                   ng-model="vm.rdex_min">
+                                                   ng-model="vm.item.min_requirements_dex">
                                         </li>
                                         <li><input type="text" name="rdex_max" class="num" placeholder="max" value=""
-                                                   ng-model="vm.rdex_max">
+                                                   ng-model="vm.item.max_requirements_dex">
                                         </li>
                                     </ul>
                                 </div>
@@ -298,10 +298,10 @@
                                 <div class="large-6 columns">
                                     <ul class="button-group ul-2">
                                         <li><input type="text" name="rint_min" class="num" placeholder="min" value=""
-                                                   ng-model="vm.rint_min">
+                                                   ng-model="vm.item.min_requirements_int">
                                         </li>
                                         <li><input type="text" name="rint_max" class="num" placeholder="max" value=""
-                                                   ng-model="vm.rint_max">
+                                                   ng-model="vm.item.max_requirements_int">
                                         </li>
                                     </ul>
                                 </div>
@@ -335,13 +335,13 @@
                             <div class="large-4 columns">
                                 <div class="large-6 columns"><label class="right inline">Seller</label></div>
                                 <div class="large-6 columns"><input name="seller" type="text" placeholder="name"
-                                                                    value="" ng-model="vm.seller"/></div>
+                                                                    value="" ng-model="vm.item.seller"/></div>
                             </div>
                             <div class="large-4 columns">
                                 <div class="large-4 columns"><label class="right inline">Currency</label></div>
                                 <div class="large-8 columns">
                                     <select name="buyout_currency" data-customforms="disabled"
-                                            class="chosen" ng-model="vm.currency"
+                                            class="chosen" ng-model="vm.item.currency"
                                             ng-options="x for x in vm.list4">
                                     </select>
                                 </div>
@@ -354,8 +354,8 @@
                                 <div class="large-6 columns"><label class="right inline">Quality</label></div>
                                 <div class="large-6 columns" id="prop-q">
                                     <ul class="button-group ul-2">
-                                        <li><input type="text" name="q_min" class="num" placeholder="min" value="" ng-model="vm.q_min"></li>
-                                        <li><input type="text" name="q_max" class="num" placeholder="max" value="" ng-model="vm.q_max"></li>
+                                        <li><input type="text" name="q_min" class="num" placeholder="min" value="" ng-model="vm.item.quality_min"></li>
+                                        <li><input type="text" name="q_max" class="num" placeholder="max" value="" ng-model="vm.item.quality_max"></li>
                                     </ul>
                                 </div>
                             </div>
@@ -363,9 +363,9 @@
                                 <div class="large-6 columns"><label class="right inline">Level/Tier</label></div>
                                 <div class="large-6 columns" id="prop-level">
                                     <ul class="button-group ul-2">
-                                        <li><input type="text" name="level_min" class="num" placeholder="min" value="" ng-model="vm.level_min">
+                                        <li><input type="text" name="level_min" class="num" placeholder="min" value="" ng-model="vm.item.LT_min">
                                         </li>
-                                        <li><input type="text" name="level_max" class="num" placeholder="max" value="" ng-model="vm.level_max">
+                                        <li><input type="text" name="level_max" class="num" placeholder="max" value="" ng-model="vm.item.LT_max">
                                         </li>
                                     </ul>
                                 </div>
@@ -374,9 +374,9 @@
                                 <div class="large-6 columns"><label class="right inline">Itemlevel</label></div>
                                 <div class="large-6 columns" id="prop-ilvl">
                                     <ul class="button-group ul-2">
-                                        <li><input type="text" name="ilvl_min" class="num" placeholder="min" value="" ng-model="vm.ilvl_min">
+                                        <li><input type="text" name="ilvl_min" class="num" placeholder="min" value="" ng-model="vm.item.min_ilvl">
                                         </li>
-                                        <li><input type="text" name="ilvl_max" class="num" placeholder="max" value="" ng-model="vm.ilvl_max">
+                                        <li><input type="text" name="ilvl_max" class="num" placeholder="max" value="" ng-model="vm.item.max_ilvl">
                                         </li>
                                     </ul>
                                 </div>
@@ -387,7 +387,7 @@
                                 <div class="large-6 columns"><label class="right inline">Rarity</label></div>
                                 <div class="large-6 columns">
                                      <select name="rarity" data-customforms="disabled"
-                                            class="chosen" ng-model="vm.rarity"
+                                            class="chosen" ng-model="vm.item.rarity"
                                             ng-options="x for x in vm.list5">
                                     </select>
                                 </div>
@@ -396,7 +396,7 @@
                                 <div class="large-6 columns"><label class="right inline">Identified</label></div>
                                 <div class="large-6 columns">
                                     <select name="identified" data-customforms="disabled"
-                                            class="chosen" ng-model="vm.identified"
+                                            class="chosen" ng-model="vm.item.identified"
                                             ng-options="x for x in vm.list6">
                                     </select>
                                 </div>
@@ -405,7 +405,7 @@
                                 <div class="large-6 columns"><label class="right inline">Corrupted</label></div>
                                 <div class="large-6 columns">
                                     <select name="corrupted" data-customforms="disabled"
-                                            class="chosen" ng-model="vm.corrupted"
+                                            class="chosen" ng-model="vm.item.corrupted"
                                             ng-options="x for x in vm.list7">
                                     </select>
                                 </div>

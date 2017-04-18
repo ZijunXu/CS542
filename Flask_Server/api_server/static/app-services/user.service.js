@@ -18,21 +18,22 @@
             return $http.post('/api/reg', user).then(handleSuccess, handleError('Error creating user'));
         }
 
-        // function Update(user) {
-        //     return $http.put('/api/users/' + user.id, user).then(handleSuccess, handleError('Error updating user'));
-        // }
-
         function Update(update) {
-            //alert(item);
-            return $http({
-                url: '/api/update',
-                method: 'PUT',
-                data: $httpParamSerializerJQLike(update),
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            }).then(handleSuccess, handleError('Error updating user info'));
+             console.log(update);
+            return $http.put('/api/user/update', update).then(handleSuccess, handleError('Error updating user'));
         }
+
+        // function Update(update) {
+        //     //alert(item);
+        //     return $http({
+        //         url: '/api/user/update',
+        //         method: 'PUT',
+        //         data: $httpParamSerializerJQLike(update),
+        //         headers: {
+        //             'Content-Type': 'application/x-www-form-urlencoded'
+        //         }
+        //     }).then(handleSuccess, handleError('Error updating user info'));
+        // }
 
         // private functions
 

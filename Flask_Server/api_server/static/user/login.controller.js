@@ -11,11 +11,6 @@
 
         vm.login = login;
 
-        // (function initController() {
-        //     // reset user status
-        //     AuthenticationService.ClearCredentials();
-        // })();
-
         function login() {
             vm.dataLoading = true;
             AuthenticationService.Login(vm.username, vm.password, function (response) {

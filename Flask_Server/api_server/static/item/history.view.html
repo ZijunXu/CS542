@@ -5,11 +5,15 @@
         <th>Content</th>
         <th>SID</th>
         <th>Time</th>
+        <th>Delete</th>
     </tr>
     <tr ng-repeat="item in history">
         <td>{{item.id}}</td>
         <td>{{item.item}}</td>
         <td>{{item.sid}}</td>
         <td>{{item.time}}</td>
+        <td>
+            <button ng-click="vm.remove($index)">Remove</button>
+        </td>
     </tr>
 </table>

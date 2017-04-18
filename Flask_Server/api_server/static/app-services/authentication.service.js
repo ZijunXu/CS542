@@ -5,8 +5,8 @@
         .module('app')
         .factory('AuthenticationService', AuthenticationService);
 
-    AuthenticationService.$inject = ['$http', '$rootScope'];
-    function AuthenticationService($http, $rootScope) {
+    AuthenticationService.$inject = ['$http'];
+    function AuthenticationService($http) {
         var service = {};
         service.isLogged = false;
         service.Login = Login;
@@ -19,7 +19,7 @@
              ----------------------------------------------*/
             $http.post('/api/authenticate', {username: username, password: password})
                 .then(function successCallback(response) {
-                        console.log(response.data);
+                        //console.log(response.status);
                         callback(response.data);
                     },
                     function errorCallback(response) {

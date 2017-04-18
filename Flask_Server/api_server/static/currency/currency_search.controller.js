@@ -21,6 +21,7 @@
         };
 
         function search() {
+            console.log(vm.currency);
             CurrencyService.SearchCurrency(vm.currency)
                 .then(function (response) {
                     if (response != null) {
