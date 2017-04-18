@@ -1,4 +1,4 @@
-from flask import request, jsonify
+from flask import request, jsonify,g
 from flask_restful import Resource
 from ..forms import UpdateForm
 from ..database import User
@@ -19,7 +19,7 @@ class UserInfoUpdate(Resource):
         """
         form = UpdateForm.from_json(request.get_json())
         if form.validate_on_submit():
-            current_user = User.query.filter_by(name=form.username.data).first()
+            current_user = User.query.filter_by(id=g.user.id).first()
             if form.email.data:
                 current_user.email = form.email.data
             if form.password.data:

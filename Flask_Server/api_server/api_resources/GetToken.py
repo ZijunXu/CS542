@@ -7,7 +7,7 @@ auth = HTTPTokenAuth(scheme='Bearer')
 
 
 @auth.verify_token
-def verify_token(token):
+def verify_token(token, password):
     # first try to authenticate by token
     user = User.verify_auth_token(token)
     if not user:

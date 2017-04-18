@@ -1,7 +1,9 @@
-from flask import request, jsonify
+from flask import request, jsonify, g
 from pymongo import MongoClient
 from flask_restful import Resource
 from ..forms import ItemQueryForm, UserHistoryForm
+from ..database import Search
+from api_server import db
 from .mongoSearchFormParser import parser
 import datetime
 
@@ -24,6 +26,8 @@ class ItemSearch(Resource):
             for n in posts:
                 n["_id"] = str(n["_id"])
                 ans.append(n)
+            if g.user:
+                self.add_to_history(form)
             return jsonify(ans)
         else:
             posts = self.db.posts.find().limit(20)
@@ -33,17 +37,10 @@ class ItemSearch(Resource):
                 ans.append(n)
             return jsonify(ans)
 
-    def add_to_history(self):
-            """
-            :param data: the data from the user query 
-            :return: add new search history to the db
-            """
-            if sid:
-                return jsonify({"new_search_status": False, "message": "Wrong usage"})
-            form = UserHistoryForm.from_json(request.get_json())
-            if form.validate_on_submit():
-                # form.user_id should be token, then we translate the token into user_id
-                search_history = Search(item=form.item_name.data, time=datetime.datetime.now(), id=form.user_id.data)
+    def add_to_history(self, form):
+            if form.validate():
+                search_history = Search(item=form.item_name.data, time=datetime.datetime.now(), id=g.user.id)
                 db.session.add(search_history)
-                return jsonify({"record_history_status": True})
-            return jsonify({"record_history_status": False, "message": form.errors})
+                db.session.commit()
+                return True
+            return False
