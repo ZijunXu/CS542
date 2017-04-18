@@ -12,7 +12,6 @@
     function UpdateController(UserService, FlashService, $window) {
         var vm = this;
 
-        vm.update_info = {password: vm.password, email: vm.email, confirm_password: vm.confirm};
         vm.updateinfo = updateinfo;
 
         function updateinfo() {
