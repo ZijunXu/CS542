@@ -2,7 +2,7 @@ from flask import request, jsonify
 from flask_restful import Resource
 from ..database import Post
 from ..database import Currency
-from ..forms import CurrencySearchForm
+from ..forms import PostTradeForm
 
 
 class UserCurrencyPostSearch(Resource):
@@ -14,8 +14,8 @@ class UserCurrencyPostSearch(Resource):
             return jsonify([n.as_dict() for n in Currency.query.all()])
 
     def post(self):
-        form = CurrencySearchForm.from_json(request.get_json())
+        form = PostTradeForm.from_json(request.get_json())
         if form.validate_on_submit():
-            search_currency_post = Post.query.filter_by(c1_item=form.currency_name.data)
+            search_currency_post = Post.query.filter_by(c2_item=form.c2_item.data)
             return jsonify([n.as_dict() for n in search_currency_post])
         return jsonify({"post_search_status": False, "message": form.errors})

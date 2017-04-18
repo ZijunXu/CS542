@@ -22,12 +22,18 @@ class UserCurrencyPostManagement(Resource):
         """
         form = PostTradeForm.from_json(request.get_json())
         if form.validate_on_submit():
-            post = Post(uid=g.user.id, c1item=form.c1_item.data, c2item=form.c2_item.data,
-                        c1_number=form.c1_item.data, c2_number=form.c2_item.data, time=datetime.datetime.now())
-            db.session.update(post)
-            db.session.commit()
-            return jsonify({"post_status": True})
-        return jsonify({"post_status": False, "message": "Something Wrong on the server side"})
+            old_post = Post.query.filter_by(tid=tid).first()
+            if old_post:
+                old_post.c1_item = form.c1_item.data
+                old_post.c2_item = form.c2_item.data
+                old_post.c1_number = form.c1_number.data
+                old_post.c2_number = form.c2_number.data
+                old_post.time = datetime.datetime.now()
+                db.session.commit()
+                return jsonify({"post_update_status": True})
+            else:
+                return jsonify({"post_update_status": False, "Message": "Trade Not Exists"})
+        return jsonify({"post_update_status": False, "message": "Something Wrong on the server side"})
 
     def post(self, tid=None):
         """
