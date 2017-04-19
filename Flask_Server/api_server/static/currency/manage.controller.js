@@ -9,7 +9,7 @@
         .controller('ManagePostController', ManagePostController);
 
     ManagePostController.$inject = ['$rootScope', 'CurrencyService','$window'];
-    function ManagePostController(CurrencyService, $rootScope, $window) {
+    function ManagePostController($rootScope,CurrencyService,$window) {
         var vm = this;
 
         vm.update = update;

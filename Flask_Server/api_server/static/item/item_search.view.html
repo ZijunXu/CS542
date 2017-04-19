@@ -27,14 +27,14 @@
                         </div>
                         <div class="large-3 columns">
                             <select id="league" name="league" data-customforms="disabled"
-                                    class="league chosen" ng-model="vm.item.league"
+                                    class="league chosen" ng-model="vm.item.league" ng-init="vm.item.league='Legacy'"
                                     ng-options="x for x in vm.list1">
                             </select>
                         </div>
                         <div class="large-1 columns"><label class="right inline" for="type">Type</label></div>
                         <div class="large-3 columns">
                             <select id="type" name="type" data-customforms="disabled"
-                                    class="league chosen" ng-model="vm.item.typeLine"
+                                    class="league chosen" ng-model="vm.item.typeLine" ng-init="vm.item.typeLine='any'"
                                     ng-options="x for x in vm.list2">
                             </select>
                         </div>
@@ -42,7 +42,7 @@
                         <div class="large-1 columns"><label class="right inline" for="base">Base</label></div>
                         <div class="large-3 columns">
                             <select id="base" name="base" data-customforms="disabled"
-                                    class="league chosen" ng-model="vm.item.base"
+                                    class="league chosen" ng-model="vm.item.base" ng-init="vm.item.base='any'"
                                     ng-options="x for x in vm.list3">
                             </select>
                         </div>
@@ -340,7 +340,7 @@
                                 <div class="large-4 columns"><label class="right inline">Currency</label></div>
                                 <div class="large-8 columns">
                                     <select name="buyout_currency" data-customforms="disabled"
-                                            class="chosen" ng-model="vm.item.currency"
+                                            class="chosen" ng-model="vm.item.currency" ng-init="vm.item.currency='Select'"
                                             ng-options="x for x in vm.list4">
                                     </select>
                                 </div>
@@ -386,7 +386,7 @@
                                 <div class="large-6 columns"><label class="right inline">Rarity</label></div>
                                 <div class="large-6 columns">
                                      <select name="rarity" data-customforms="disabled"
-                                            class="chosen" ng-model="vm.item.rarity"
+                                            class="chosen" ng-model="vm.item.rarity" ng-init="vm.item.rarity='any'"
                                             ng-options="x for x in vm.list5">
                                     </select>
                                 </div>
@@ -395,7 +395,7 @@
                                 <div class="large-6 columns"><label class="right inline">Identified</label></div>
                                 <div class="large-6 columns">
                                     <select name="identified" data-customforms="disabled"
-                                            class="chosen" ng-model="vm.item.identified"
+                                            class="chosen" ng-model="vm.item.identified" ng-init="vm.item.identified='either'"
                                             ng-options="x for x in vm.list6">
                                     </select>
                                 </div>
@@ -404,7 +404,7 @@
                                 <div class="large-6 columns"><label class="right inline">Corrupted</label></div>
                                 <div class="large-6 columns">
                                     <select name="corrupted" data-customforms="disabled"
-                                            class="chosen" ng-model="vm.item.corrupted"
+                                            class="chosen" ng-model="vm.item.corrupted" ng-init="vm.item.corrupted='either'"
                                             ng-options="x for x in vm.list7">
                                     </select>
                                 </div>

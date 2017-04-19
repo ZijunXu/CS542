@@ -12,7 +12,7 @@
         .controller('AdmanageController', AdmanageController);
 
     AdmanageController.$inject = ['$rootScope', 'AdminService', '$window'];
-    function AdmanageController(AdminService, $rootScope, $window) {
+    function AdmanageController($rootScope, AdminService, $window) {
         var vm = this;
 
         vm.get = get;

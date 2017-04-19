@@ -7,13 +7,13 @@
     itemController.$inject = ['ItemService', '$location', '$window', '$rootScope', 'AuthenticationService'];
     function itemController(ItemService, $location, $window, $rootScope, AuthenticationService) {
         var vm = this;
-        vm.league = "Legacy";
-        vm.type = "any";
-        vm.base = "any";
-        vm.currency = "Select";
-        vm.rarity = "any";
-        vm.identified = "either";
-        vm.corrupted = "either";
+        // vm.league = "Legacy";
+        // vm.type = "any";
+        // vm.base = "any";
+        // vm.currency = "Select";
+        // vm.rarity = "any";
+        // vm.identified = "either";
+        // vm.corrupted = "either";
         vm.list1 = ["Legacy", "Hardcore Legacy", "Standard", "Hardcore"];
         vm.list2 = ["any", "Generic One-Handed Weapon", "Generic Two-Handed Weapon", "Bow", "Claw", "Dagger", "One Hand Axe", "One Hand Mace", "One Hand Sword"
             , "Sceptre", "Staff", "Two Hand Axe", "Two Hand Mace", "Two Hand Sword", "Wand", "Body Armour", "Boots", "Gloves", "Helmet", "Shield", "Amulet", "Belt"

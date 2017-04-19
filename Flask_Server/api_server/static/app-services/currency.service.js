@@ -67,12 +67,8 @@
 
         function Delete(id) {
             return $http({
-                url: '/api/user/post',
+                url: '/api/user/post/'+id,
                 method: 'DELETE',
-                data: $httpParamSerializerJQLike({tid:id}),
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
             }).then(handleSuccess, handleError('Error deleting your post'));
         }
 
