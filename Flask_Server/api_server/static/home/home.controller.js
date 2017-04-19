@@ -90,7 +90,7 @@
                     if (response != null) {
                         //use response to update page
                         $rootScope.itemsresult = response;
-                        //alert($rootScope.itemsresult);
+                        console.log($rootScope.itemsresult);
                         $location.path('/item_result');
                     } else {
                         FlashService.Error(response.message);
