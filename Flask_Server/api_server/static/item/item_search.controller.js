@@ -55,7 +55,7 @@
         function history() {
             ItemService.History()
                 .then(function (response) {
-                    if (response != null) {
+                    if (typeof(response.retrieve_search_status) == "undefined") {
                         //use response to update page
                         $rootScope.history = response;
                         $location.path('/history');

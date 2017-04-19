@@ -34,10 +34,10 @@
                 });
         }
 
-       function my_post() {
+        function my_post() {
             CurrencyService.MyPost()
                 .then(function (response) {
-                    if (response != null) {
+                    if (typeof(response.retrieve_post_status) == "undefined") {
                         //use response to update page
                         $rootScope.myposts = response;
                         $location.path('/my_post');

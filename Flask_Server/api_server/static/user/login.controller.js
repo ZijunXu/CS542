@@ -17,10 +17,10 @@
                 if (response.login_status) {
                     AuthenticationService.isLogged = true;
                     localStorage.token = response.token;
-                    //if(response.status)
-                    $location.path('/item_search');
-                    //else
-                        //$location.path('/admin');
+                    if(response.Admin)
+                    $location.path('/admin');
+                    else
+                        $location.path('/item_search');
                 } else {
                     FlashService.Error(response.message);
                     vm.dataLoading = false;
