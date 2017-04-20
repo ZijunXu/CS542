@@ -1,23 +1,36 @@
-<div class="row">
-    <div class="large-12 columns">
-        <h3 class="title">
-            Currency market&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <span class="backtopoetrade"><a href="#!/item_search">Go back to item trades</a></span>
-        </h3>
-    </div>
-    <hr class="smallhr">
-</div>
-<div class="row" id="contentstart">
-    <div class="large-12 columns" style="margin-bottom: 0.5em">
-        <div style="height: 90px">
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="#!/" class="navbar-brand">POE</a>
+        </div>
+        <div class="nav navbar-nav">
+            <li><a href="#">about</a></li>
+            <li><a href="#">contact</a></li>
 
         </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#!/history" ng-click="vm.history()">Your History</a></li>
+                    <li><a href="#!/update_info">Update info</a></li>
+                    <li><a href="#!/item_search">Item Trade</a></li>
+                    <li><a href="#!/currency_search">Currency</a></li>
+                </ul>
+            </li>
+            <li><a ng-click="vm.logout()">Logout</a></li>
+        </ul>
     </div>
-    <hr class="smallhr">
+</nav>
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>POE TRADER</h1>
+        <p>Currency market</p>
+    </div>
 </div>
 
-<div id="content">
-
+<div class="container">
     <div class="row">
         <div class="large-12 column">
             <div class="row form-choose-action">
@@ -85,6 +98,13 @@
                 </form>
         </div>
     </div>
-
-
 </div>
+
+
+
+
+
+
+
+
+

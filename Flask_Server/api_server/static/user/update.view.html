@@ -1,8 +1,38 @@
-<div align="center" class="col-sm-6 col-sm-offset-3">
-    <h2>Update your info</h2>
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="#!/" class="navbar-brand">POE</a>
+        </div>
+        <div class="nav navbar-nav">
+            <li><a href="#">about</a></li>
+            <li><a href="#">contact</a></li>
+
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#!/history" ng-click="vm.history()">Your History</a></li>
+                    <li><a href="#!/update_info">Update info</a></li>
+                    <li><a href="#!/item_search">Item Trade</a></li>
+                    <li><a href="#!/currency_search">Currency</a></li>
+                </ul>
+            </li>
+            <li><a ng-click="vm.logout()">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="jumbotron">
+    <div class="container">
+    </div>
 </div>
-<div class="col-sm-4 col-sm-offset-4">
-    <form name="form" ng-submit="vm.updateinfo()" role="form">
+
+<div class="container">
+    <div class="row">
+        <div class="col col-lg-4 col-lg-offset-4">
+            <h2>Update your info</h2>
+            <form name="form" ng-submit="vm.updateinfo()" role="form">
 
         <div class="form-group" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required }">
             <label for="email">Email</label>
@@ -29,4 +59,14 @@
             <a href="#!/item_search" class="btn btn-link">Cancel</a>
         </div>
     </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="col-sm-4 col-sm-offset-4">
+
 </div>

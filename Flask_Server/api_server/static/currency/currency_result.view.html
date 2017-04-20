@@ -1,18 +1,58 @@
-<h2 align="center">Some posts you may interest</h2>
-<table align="center" class="dataintable" style="">
-    <caption>Currency</caption>
-    <tr>
-        <th>Seller ID</th>
-        <th>Have</th>
-        <th>Want</th>
-        <th>Amount(have)</th>
-        <th>Amount(want)</th>
-    </tr>
-    <tr ng-repeat="item in posts">
-        <td>{{item.cid}}</td>
-        <td>{{item.cname}}</td>
-        <td>{{item.want}}</td>
-        <td>{{item.price1}</td>
-        <td>{{item.price2}}</td>
-    </tr>
-</table>
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="#!/" class="navbar-brand">POE</a>
+        </div>
+        <div class="nav navbar-nav">
+            <li><a href="#">about</a></li>
+            <li><a href="#">contact</a></li>
+
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#!/history" ng-click="vm.history()">Your History</a></li>
+                    <li><a href="#!/update_info">Update info</a></li>
+                    <li><a href="#!/item_search">Item Trade</a></li>
+                    <li><a href="#!/currency_search">Currency</a></li>
+                </ul>
+            </li>
+            <li><a ng-click="vm.logout()">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-3">Search result</h1>
+    <p class="lead">Here is what you are looking for.</p>
+  </div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<table class="table table-bordered table-hover">
+                <caption>Currency</caption>
+                    <thead class="thead-default">
+                    <tr>
+                        <th>Seller ID</th>
+                        <th>Have</th>
+                        <th>Want</th>
+                        <th>Amount(have)</th>
+                        <th>Amount(want)</th>
+                    </tr>
+                    </thead>
+                    <tr ng-repeat="item in posts">
+                        <td>{{item.cid}}</td>
+                        <td>{{item.cname}}</td>
+                        <td>{{item.want}}</td>
+                        <td>{{item.price1}</td>
+                        <td>{{item.price2}}</td>
+                    </tr>
+            </table>
+		</div>
+	</div>
+</div>
+
