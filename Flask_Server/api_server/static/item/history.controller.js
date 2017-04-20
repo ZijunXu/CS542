@@ -8,8 +8,8 @@
         .module('app')
         .controller('HistoryController', HistoryController);
 
-    HistoryController.$inject = ['$rootScope', 'ItemService', '$window'];
-    function HistoryController($rootScope, ItemService, $window) {
+    HistoryController.$inject = ['$rootScope', 'ItemService', 'FlashService'];
+    function HistoryController($rootScope, ItemService, FlashService) {
         var vm = this;
 
         vm.remove = remove;
@@ -20,8 +20,8 @@
                 .then(function (response) {
                     if (response.delete_history_status == "Success") {
                         //use response to update page
-                        $rootScope.history.splice(index, 1);
-                        $window.location.reload();
+                        FlashService.Success('Delete successful', true);
+                        $rootScope.history.splice(index,1);
                     } else {
                         FlashService.Error(response.message);
                         vm.dataLoading = false;

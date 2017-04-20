@@ -8,8 +8,8 @@
         .module('app')
         .controller('ManagePostController', ManagePostController);
 
-    ManagePostController.$inject = ['$rootScope', 'CurrencyService','$window'];
-    function ManagePostController($rootScope,CurrencyService,$window) {
+    ManagePostController.$inject = ['CurrencyService','$window', 'FlashService'];
+    function ManagePostController(CurrencyService, $window, FlashService) {
         var vm = this;
 
         vm.update = update;

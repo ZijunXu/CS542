@@ -11,8 +11,8 @@
         .module('app')
         .controller('AdmanageController', AdmanageController);
 
-    AdmanageController.$inject = ['$rootScope', 'AdminService', '$window'];
-    function AdmanageController($rootScope, AdminService, $window) {
+    AdmanageController.$inject = ['FlashService', 'AdminService', '$window'];
+    function AdmanageController(FlashService, AdminService, $window) {
         var vm = this;
 
         vm.get = get;
@@ -20,12 +20,12 @@
         vm.createuser = createuser;
 
         function Deleteuser() {
-            CurrencyService.Deleteid(vm.deletename)
+            AdminService.Deletename(vm.deletename)
                 .then(function (response) {
                     if (response.delete_status=="Success") {
                         FlashService.Success('Delete successful', true);
+                         $window.location.reload();
                         //use response to update page
-                        $window.location.reload();
                     } else {
                         FlashService.Error(response.message);
                         vm.dataLoading = false;
@@ -34,7 +34,7 @@
         }
 
         function createuser() {
-            CurrencyService.Update(vm.user)
+            AdminService.Create(vm.user)
                 .then(function (response) {
                     if (response.register_status) {
                         FlashService.Success('Create successful', true);
