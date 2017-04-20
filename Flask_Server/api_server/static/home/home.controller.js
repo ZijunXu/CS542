@@ -91,6 +91,14 @@
                         //use response to update page
                         $rootScope.itemsresult = response;
                         console.log($rootScope.itemsresult);
+                        for (var i = 0, len = $rootScope.itemsresult.length; i < len; i++) {
+                            if ($rootScope.itemsresult[i].name == "") {
+                                $rootScope.itemsresult[i].name = "None";
+                            }else{
+                                var temp=$rootScope.itemsresult[i].name.split(">>");
+                                $rootScope.itemsresult[i].name=temp[temp.length-1];
+                            }
+                        }
                         $location.path('/item_result');
                     } else {
                         FlashService.Error(response.message);

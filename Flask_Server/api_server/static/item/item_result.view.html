@@ -32,14 +32,14 @@
 				  </thead>
 				  <tbody>
 				    <tr style="height:220px" ng-repeat="item in itemsresult">
-				        <td><img src="http://web.poecdn.com/image/Art/2DItems/Weapons/TwoHandWeapons/Bows/SarkhamsReach.png?scale=1&w=2&h=4&v=f333c2e4005ee20a84270731baa5fa6a3"></td>
-				        <td><b>Name:xxx</b><br>
-				        	<b>Exiled to the sea; what a joke.</b><br>
-				            <b>I'm more free than I've ever been.</b><br>
-				            <b>Captain Weylam"Rot-tooth</b><br>
-				            <b>Roth of the Black Crest</b><br>
-				        <td align="middle" style="vertical-align:middle">{{item._id}}</td>
-				        <td align="middle" style="vertical-align:middle">{{item.id}}</td>
+				        <td><img src={{item.icon}}></td>
+				        <td><b>Name: {{item.name}}</b><br>
+				        	<b>{{item.explicitMods[0]}}</b><br>
+				            <b>{{item.explicitMods[1]}}</b><br>
+				            <b>{{item.explicitMods[2]}}</b><br>
+				            <b>{{item.explicitMods[3]}}</b><br>
+				        <td align="middle" style="vertical-align:middle">{{item.properties[0].values}}</td>
+				        <td align="middle" style="vertical-align:middle">{{item.properties[1].values}}</td>
 				        <td align="middle" style="vertical-align:middle">{{item.typeLine}}</td>
 				        <td align="middle" style="vertical-align:middle">123</td>
 				        <td align="middle" style="vertical-align:middle">123</td>
