@@ -7,13 +7,7 @@
     itemController.$inject = ['ItemService', '$location', '$window', '$rootScope', 'AuthenticationService'];
     function itemController(ItemService, $location, $window, $rootScope, AuthenticationService) {
         var vm = this;
-        // vm.league = "Legacy";
-        // vm.type = "any";
-        // vm.base = "any";
-        // vm.currency = "Select";
-        // vm.rarity = "any";
-        // vm.identified = "either";
-        // vm.corrupted = "either";
+
         vm.list1 = ["Legacy", "Hardcore Legacy", "Standard", "Hardcore"];
         vm.list2 = ["any", "Generic One-Handed Weapon", "Generic Two-Handed Weapon", "Bow", "Claw", "Dagger", "One Hand Axe", "One Hand Mace", "One Hand Sword"
             , "Sceptre", "Staff", "Two Hand Axe", "Two Hand Mace", "Two Hand Sword", "Wand", "Body Armour", "Boots", "Gloves", "Helmet", "Shield", "Amulet", "Belt"
@@ -24,11 +18,6 @@
         vm.list5 = ["any", "Normal", "Magic", "Rare", "Unique", "Relic"];
         vm.list6 = ["either", "Yes", "No"];
         vm.list7 = ["either", "Yes", "No"];
-
-        // vm.item.attacks_per_Second = (vm.APS_min + vm.APS_max) / 2;
-        // vm.item.critical_strike_chance = (vm.crit_min + vm.crit_max) / 2;
-        // vm.item.physical_damage = (vm.dps_min + vm.dps_max) / 2;
-        // vm.item.elemental_damage = (vm.edps_min + vm.edps_max) / 2;
 
         vm.history = history;
         vm.search = search;

@@ -10,13 +10,7 @@
     HomeController.$inject = ['ItemService', '$rootScope', '$location', '$window'];
     function HomeController(ItemService, $rootScope, $location, $window) {
         var vm = this;
-        // vm.league = "Legacy";
-        // vm.type = "any";
-        // vm.base = "any";
-        // vm.currency = "Select";
-        // vm.rarity = "any";
-        // vm.identified = "either";
-        // vm.corrupted = "either";
+
         vm.list1 = ["Legacy", "Hardcore Legacy", "Standard", "Hardcore"];
         vm.list2 = ["any", "Generic One-Handed Weapon", "Generic Two-Handed Weapon", "Bow", "Claw", "Dagger", "One Hand Axe", "One Hand Mace", "One Hand Sword"
             , "Sceptre", "Staff", "Two Hand Axe", "Two Hand Mace", "Two Hand Sword", "Wand", "Body Armour", "Boots", "Gloves", "Helmet", "Shield", "Amulet", "Belt"
@@ -30,10 +24,16 @@
 
         // var item = {
         //     name: "zz",
-        //     attacks_per_Second: (vm.APS_min + vm.APS_max) / 2,
-        //     critical_strike_chance: (vm.crit_min + vm.crit_max) / 2,
-        //     physical_damage: (vm.dps_min + vm.dps_max) / 2,
-        //     elemental_damage: (vm.edps_min + vm.edps_max) / 2,
+        //     damage_min,
+        //     damage_max,
+        //     APS_min,
+        //     APS_max,
+        //     crit_min,
+        //     crit_max,
+        //     dps_min,
+        //     dps_max,
+        //     edps_min,
+        //     edps_max,
         //     min_armour: vm.armour_min,
         //     max_armour: vm.armour_max,
         //     min_evasion: vm.evasion_min,
@@ -94,9 +94,9 @@
                         for (var i = 0, len = $rootScope.itemsresult.length; i < len; i++) {
                             if ($rootScope.itemsresult[i].name == "") {
                                 $rootScope.itemsresult[i].name = "None";
-                            }else{
-                                var temp=$rootScope.itemsresult[i].name.split(">>");
-                                $rootScope.itemsresult[i].name=temp[temp.length-1];
+                            } else {
+                                var temp = $rootScope.itemsresult[i].name.split(">>");
+                                $rootScope.itemsresult[i].name = temp[temp.length - 1];
                             }
                         }
                         $location.path('/item_result');

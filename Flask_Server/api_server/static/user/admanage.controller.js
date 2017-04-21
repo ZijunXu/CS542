@@ -14,6 +14,7 @@
     AdmanageController.$inject = ['FlashService', 'AdminService', '$window'];
     function AdmanageController(FlashService, AdminService, $window) {
         var vm = this;
+        vm.present=true;
 
         vm.get = get;
         vm.Deleteuser = Deleteuser;
@@ -51,6 +52,7 @@
             AdminService.GetAll()
                 .then(function (response) {
                     if (response != null) {
+                        vm.present=false;
                         vm.users = response;
                     } else {
                         FlashService.Error(response.message);

@@ -28,11 +28,6 @@
         vm.list6 = ["either", "Yes", "No"];
         vm.list7 = ["either", "Yes", "No"];
 
-        // vm.item.attacks_per_Second = (vm.APS_min + vm.APS_max) / 2;
-        // vm.item.critical_strike_chance = (vm.crit_min + vm.crit_max) / 2;
-        // vm.item.physical_damage = (vm.dps_min + vm.dps_max) / 2;
-        // vm.item.elemental_damage = (vm.edps_min + vm.edps_max) / 2;
-
         vm.history = history;
         vm.search = search;
         vm.logout = logout;
