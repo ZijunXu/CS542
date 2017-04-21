@@ -78,6 +78,7 @@ class Post(db.Model):
     c1_number = db.Column(db.Integer)
     c2_number = db.Column(db.Integer)
     league = db.Column(db.String(64))
+    name = db.Column(db.String(64))
     time = db.Column(db.DateTime)
 
     def __repr__(self):

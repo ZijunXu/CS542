@@ -84,7 +84,9 @@ class Post(db.Model):
     c1_number = db.Column(db.Integer)
     c2_number = db.Column(db.Integer)
     league = db.Column(db.String(64))
+    name = db.Column(db.String(64))
     time = db.Column(db.DateTime)
+
 
     def __repr__(self):
         return '<Post %r>' % self.tid
@@ -133,10 +135,10 @@ db.session.add(Search(id=5, item='quality max: 10, corrupted: No, identified: No
 db.session.commit()
 
 db.session.add(Post(uid=1, c1_item='Orb', c2_item='LGD', c1_number=1, c2_number=2, league='Standard', time=datetime.datetime.now()))
-db.session.add(Post(uid=1, c1_item='Fusing', c2_item='Orb of Alchemy', c1_number=2, c2_number=4, league='Standard', time=datetime.datetime.now()))
-db.session.add(Post(uid=2, c1_item='Scouring', c2_item='Eber key', c1_number=4, c2_number=8, league='Standard', time=datetime.datetime.now()))
-db.session.add(Post(uid=2, c1_item='Shaper set', c2_item='Eber key', c1_number=7, c2_number=1, league='Standard', time=datetime.datetime.now()))
-db.session.add(Post(uid=2, c1_item='Blessing', c2_item='Blessed orb', c1_number=7, c2_number=1, league='Standard', time=datetime.datetime.now()))
+db.session.add(Post(uid=1, c1_item='Fusing', c2_item='Orb of Alchemy', c1_number=2, c2_number=4, league='Standard', name='abc', time=datetime.datetime.now()))
+db.session.add(Post(uid=2, c1_item='Scouring', c2_item='Eber key', c1_number=4, c2_number=8, league='Standard',  name='c', time=datetime.datetime.now()))
+db.session.add(Post(uid=2, c1_item='Shaper set', c2_item='Eber key', c1_number=7, c2_number=1, league='Standard',  name='c', time=datetime.datetime.now()))
+db.session.add(Post(uid=2, c1_item='Blessing', c2_item='Blessed orb', c1_number=7, c2_number=1, league='Standard',  name='c',time=datetime.datetime.now()))
 db.session.commit()
 
 db.session.add(Currency(cname='Orb', cid=1))

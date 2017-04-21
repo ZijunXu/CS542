@@ -43,10 +43,11 @@ class UserCurrencyPostManagement(Resource):
         """
         if tid:
             return jsonify({"new_post_status": False, "message": "Wrong usage"})
+        print(request.get_json())
         form = PostTradeForm.from_json(request.get_json())
         if form.validate_on_submit():
             post = Post(uid=g.user.id, c1_item=form.c1_item.data, c2_item=form.c2_item.data,
-                        c1_number=form.c1_number.data, c2_number=form.c2_number.data, time=datetime.datetime.now())
+                        c1_number=form.c1_number.data, c2_number=form.c2_number.data, league=form.league.data, name=form.user_name.data, time=datetime.datetime.now())
             db.session.add(post)
             db.session.commit()
             return jsonify({"post_status": True})
