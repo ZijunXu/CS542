@@ -1,60 +1,154 @@
 <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-3">Search result</h1>
-    <p class="lead">Here is what you are looking for.</p>
-  </div>
+    <div class="container">
+        <h1 class="display-3">Search result</h1>
+        <p class="lead">Here is what you are looking for.</p>
+    </div>
 </div>
 
 <div class="container">
-	<div class="row">
-		<div class="col-lg-12">
-			<table class="table table-bordered table-hover">
-				  <thead class="thead-default">
-				    <col width="110">
-				    <col width="250">
-				    <tr>
-				        <th>Photo</th>
-				        <th>Name</th>
-				        <th>Quality</th>
-				        <th>Phys</th>
-				        <th>Elem</th>
-				        <th>APS</th>
-				        <th>DPS</th>
-				        <th>pDPS</th>
-				        <th>eDPS</th>
-				        <th>Armour</th>
-				        <th>Evasion</th>
-				        <th>Shield</th>
-				        <th>Block</th>
-				        <th>Crit</th>
-				        <th>Level</th>
-				    </tr>
-				  </thead>
-				  <tbody>
-				    <tr style="height:220px" ng-repeat="item in itemsresult">
-				        <td><img src={{item.icon}}></td>
-				        <td><b>Name: {{item.name}}</b><br>
-				        	<b>{{item.explicitMods[0]}}</b><br>
-				            <b>{{item.explicitMods[1]}}</b><br>
-				            <b>{{item.explicitMods[2]}}</b><br>
-				            <b>{{item.explicitMods[3]}}</b><br>
-				        <td align="middle" style="vertical-align:middle">{{item.properties[0].values}}</td>
-				        <td align="middle" style="vertical-align:middle">{{item.properties[1].values}}</td>
-				        <td align="middle" style="vertical-align:middle">{{item.typeLine}}</td>
-				        <td align="middle" style="vertical-align:middle">123</td>
-				        <td align="middle" style="vertical-align:middle">123</td>
-				        <td align="middle" style="vertical-align:middle">123</td>
-				        <td align="middle" style="vertical-align:middle">123</td>
-				        <td align="middle" style="vertical-align:middle">123</td>
-				        <td align="middle" style="vertical-align:middle">123</td>
-				        <td align="middle" style="vertical-align:middle">123</td>
-				        <td align="middle" style="vertical-align:middle">123</td>
-				        <td align="middle" style="vertical-align:middle">123</td>
-				        <td align="middle" style="vertical-align:middle">123</td>
-				    </tr>
-				  </tbody>
-			</table>
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-bordered table-hover">
+                <thead class="thead-default">
+                <col width="110">
+                <col width="250">
+                <tr>
+                    <th>Look</th>
+                    <th>Name</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr style="height:220px" ng-repeat="item in itemsresult">
+                    <td><img src={{item.icon}}></td>
+                    <td><b>Name: {{item.name}}</b><br>
+                        <b>{{item.explicitMods[0]}}</b><br>
+                        <b>{{item.explicitMods[1]}}</b><br>
+                        <b>{{item.explicitMods[2]}}</b><br>
+                        <b>{{item.explicitMods[3]}}</b><br>
+                    </td>
+                    <td align="middle" style="vertical-align:middle">
+                        <table class="table table-bordered table-hover">
+                            <tr>
+                                <th>Quality</th>
+                            </tr>
+                            <tr>
+                                <td align="middle" style="vertical-align:middle">{{item.properties[0].values}}</td>
+                            </tr>
+                            <tr>
+                                <th>Armour</th>
+                            </tr>
+                            <tr>
+                                <td align="middle" style="vertical-align:middle">123</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td align="middle" style="vertical-align:middle">
+                        <table class="table table-bordered table-hover">
+                            <tr>
+                                <th>Phys</th>
+                            </tr>
+                            <tr>
+                                <td align="middle" style="vertical-align:middle">{{item.properties[1].values}}</td>
+                            </tr>
+                            <tr>
+                                <th>Evasion</th>
+                            </tr>
+                            <tr>
+                                <td align="middle" style="vertical-align:middle">123</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td align="middle" style="vertical-align:middle">
+                        <table class="table table-bordered table-hover">
+                            <tr>
+                                <th>Elem</th>
+                            </tr>
+                            <tr>
+                                <td align="middle" style="vertical-align:middle">{{item.typeLine}}</td>
+                            </tr>
+                            <tr>
+                                <th>Shield</th>
+                            </tr>
+                            <tr>
+                                <td align="middle" style="vertical-align:middle">123</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td align="middle" style="vertical-align:middle">
+                        <table class="table table-bordered table-hover">
+                            <tr>
+                                <th>APS</th>
+                            </tr>
+                            <tr>
+                                <td align="middle" style="vertical-align:middle">123</td>
+                            </tr>
+                            <tr>
+                                <th>Block</th>
+                            </tr>
+                            <tr>
+                                <td align="middle" style="vertical-align:middle">123</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td align="middle" style="vertical-align:middle">
+                        <table class="table table-bordered table-hover">
+                            <tr>
+                                <th>DPS</th>
+                            </tr>
+                            <tr>
+                                <td align="middle" style="vertical-align:middle">123</td>
+                            </tr>
+                            <tr>
+                                <th>Crit</th>
+                            </tr>
+                            <tr>
+                                <td align="middle" style="vertical-align:middle">123</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td align="middle" style="vertical-align:middle">
+                        <table class="table table-bordered table-hover">
+                            <tr>
+                                <th>pDPS</th>
+                            </tr>
+                            <tr>
+                                <td align="middle" style="vertical-align:middle">123</td>
+                            </tr>
+                            <tr>
+                                <th>Level</th>
+                            </tr>
+                            <tr>
+                                <td align="middle" style="vertical-align:middle">123</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td align="middle" style="vertical-align:middle">
+                        <table class="table table-bordered table-hover">
+                            <tr>
+                                <th>eDPS</th>
+                            </tr>
+                            <tr>
+                                <td align="middle" style="vertical-align:middle">123</td>
+                            </tr>
+                            <tr>
+                                <th>Owner</th>
+                            </tr>
+                            <tr>
+                                <td align="middle" style="vertical-align:middle">123</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
