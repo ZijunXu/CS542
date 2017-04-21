@@ -7,22 +7,47 @@
                                             required/>
                 <!--<button class="search button" ng-click="vm.update()">Update</button>-->
             </label>
+            <form name="form" ng-submit="vm.update()" role="form">
 
-            <table class="dataintable" style="">
-                <tr>
-                    <th>Have</th>
-                    <th>Want</th>
-                    <th>Amount(have)</th>
-                    <th>Amount(want)</th>
-                </tr>
-                <tr>
-                    <td><input ng-model="vm.updater.c1_item"></td>
-                    <td><input ng-model="vm.updater.c2_item"></td>
-                    <td><input ng-model="vm.updater.c1_number"></td>
-                    <td><input ng-model="vm.updater.c2_number"></td>
-                </tr>
-            </table>
-            <button class="search button" ng-click="vm.update()">Update</button>
+                <div class="form-group">
+                    <label>Name in poe</label>
+                    <input class="form-control" ng-model="vm.updater.user_name"/>
+                </div>
+
+                <div class="form-group">
+                    <label>Have</label>
+                    <input class="form-control" ng-model="vm.updater.c1_item"/>
+                </div>
+
+                <div class="form-group">
+                    <label>Want</label>
+                    <input class="form-control" ng-model="vm.updater.c2_item"/>
+                </div>
+
+                <div class="form-group">
+                    <label>Amount(have)</label>
+                    <input class="form-control" ng-model="vm.updater.c1_number"/>
+                </div>
+
+                <div class="form-group">
+                    <label>Amount(want)</label>
+                    <input class="form-control" ng-model="vm.updater.c2_number"/>
+                </div>
+
+                <div class="form-group">
+                    <label>League</label>
+                    <input class="form-control" ng-model="vm.updater.league"/>
+                </div>
+
+
+                <div class="form-actions">
+                    <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary"
+                            style="float: middle;">Update
+                    </button>
+                    <img ng-if="vm.dataLoading"
+                         src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+                </div>
+            </form>
         </div>
 
 

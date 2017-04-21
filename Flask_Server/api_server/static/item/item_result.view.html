@@ -9,29 +9,11 @@
     <div class="row">
         <div class="col-lg-12">
             <table class="table table-bordered table-hover">
-                <thead class="thead-default">
-                <col width="110">
-                <col width="250">
-                <tr>
-                    <th>Look</th>
-                    <th>Name</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                </thead>
                 <tbody>
                 <tr style="height:220px" ng-repeat="item in itemsresult">
                     <td><img src={{item.icon}}></td>
                     <td><b>Name: {{item.name}}</b><br>
-                        <b>{{item.explicitMods[0]}}</b><br>
-                        <b>{{item.explicitMods[1]}}</b><br>
-                        <b>{{item.explicitMods[2]}}</b><br>
-                        <b>{{item.explicitMods[3]}}</b><br>
+                        <b>{{item.Mods}}</b><br>
                     </td>
                     <td align="middle" style="vertical-align:middle">
                         <table class="table table-bordered table-hover">

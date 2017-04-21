@@ -32,7 +32,7 @@
         function update() {
             CurrencyService.Update(vm.updater,vm.tid)
                 .then(function (response) {
-                    if (response.post_status) {
+                    if (response.post_update_status) {
                         FlashService.Success('Update successful', true);
                         //use response to update page
                        $window.location.reload();

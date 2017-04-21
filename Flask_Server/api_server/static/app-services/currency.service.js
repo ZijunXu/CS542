@@ -24,7 +24,7 @@
              //console.log(currency);
             return $http({
                 url: '/api/currency',
-                method: 'GET',
+                method: 'POST',
                 data: $httpParamSerializerJQLike(currency),
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
