@@ -8,8 +8,8 @@
         .module('app')
         .factory('CurrencyService', CurrencyService);
 
-    CurrencyService.$inject = ['$http','$httpParamSerializerJQLike'];
-    function CurrencyService($http,$httpParamSerializerJQLike) {
+    CurrencyService.$inject = ['$http'];
+    function CurrencyService($http) {
         var service = {};
 
         service.SearchCurrency = SearchCurrency;
@@ -20,28 +20,12 @@
 
         return service;
 
-         function SearchCurrency(currency) {
-             //console.log(currency);
-            return $http({
-                url: '/api/currency',
-                method: 'POST',
-                data: $httpParamSerializerJQLike(currency),
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            }).then(handleSuccess, handleError('Error searching currency'));
+        function SearchCurrency(currency) {
+            return $http.post('/api/currency', currency).then(handleSuccess, handleError('Error searching currency'));
         }
 
-        function PostCurrency(currency) {
-             console.log(currency);
-            return $http({
-                url: '/api/user/post',
-                method: 'POST',
-                data: $httpParamSerializerJQLike(currency),
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            }).then(handleSuccess, handleError('Error posting currency'));
+         function PostCurrency(currency) {
+            return $http.post('/api/user/post', currency).then(handleSuccess, handleError('Error posting currency'));
         }
 
          function MyPost() {
@@ -54,15 +38,9 @@
             }).then(handleSuccess, handleError('Error seeking mypost'));
         }
 
-          function Update(post,tid) {
-            return $http({
-                url: '/api/user/post/'+tid,
-                method: 'PUT',
-                data: $httpParamSerializerJQLike(post),
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            }).then(handleSuccess, handleError('Error updating your post'));
+         function Update(post,tid) {
+             console.log(post);
+            return $http.put('/api/user/post/'+tid, post).then(handleSuccess, handleError('Error updating your post'));
         }
 
         function Delete(id) {

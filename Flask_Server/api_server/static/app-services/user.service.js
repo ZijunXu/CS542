@@ -5,8 +5,8 @@
         .module('app')
         .factory('UserService', UserService);
 
-    UserService.$inject = ['$http', '$httpParamSerializerJQLike'];
-    function UserService($http, $httpParamSerializerJQLike) {
+    UserService.$inject = ['$http'];
+    function UserService($http) {
         var service = {};
 
         service.Create = Create;
@@ -22,18 +22,6 @@
              console.log(update);
             return $http.put('/api/user/update', update).then(handleSuccess, handleError('Error updating user'));
         }
-
-        // function Update(update) {
-        //     //alert(item);
-        //     return $http({
-        //         url: '/api/user/update',
-        //         method: 'PUT',
-        //         data: $httpParamSerializerJQLike(update),
-        //         headers: {
-        //             'Content-Type': 'application/x-www-form-urlencoded'
-        //         }
-        //     }).then(handleSuccess, handleError('Error updating user info'));
-        // }
 
         // private functions
 

@@ -8,8 +8,8 @@
         .module('app')
         .factory('ItemService', ItemService);
 
-    ItemService.$inject = ['$http', '$httpParamSerializerJQLike'];
-    function ItemService($http, $httpParamSerializerJQLike) {
+    ItemService.$inject = ['$http'];
+    function ItemService($http) {
         var service = {};
 
         service.SearchItem = SearchItem;
@@ -18,16 +18,8 @@
 
         return service;
 
-        function SearchItem(item) {
-            console.log(item);
-            return $http({
-                url: '/api/item',
-                method: 'POST',
-                data: $httpParamSerializerJQLike(item),
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            }).then(handleSuccess, handleError('Error searching item'));
+         function SearchItem(item) {
+            return $http.post('/api/item', item).then(handleSuccess, handleError('Error updating user'));
         }
 
         function History() {
