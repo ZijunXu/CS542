@@ -52,7 +52,9 @@ if __name__ == '__main__':
     # {"Mods.X% increased Attack Speed": {"$gte": form.Mods.data}}
     ans = posts.find({"Mods.X% increased Attack Speed": {"$gte": 3}})
 
-    print(ans.count(),"=====")
+    # {"Price.Currency": form.currency_name.data, "Price.Number":}
+    ans = posts.find({"Price.Currency": 'chaos', "Price.Number": {"$gte": 1, "$lt": 5}})
+    print(ans.count(), "=====")
     ans = posts.find({"$and": [{"corrupted": False},
                                {"league": "Standard"},
                                {"identified": True},
@@ -68,5 +70,3 @@ if __name__ == '__main__':
 
     # {"name": form.name.data}
     # {"typeLine": form.typeLine.data}
-
-

@@ -138,6 +138,17 @@ class get_data_api:
                             item.pop('explicitMods', None)
 
                         item['Mods'] = temp_mods
+
+                        # Parse currency
+                        price = re.findall("\d+\.*\d*", item['note'])
+                        if price == []:
+                            price = 0
+                        else:
+                            price = float(price[0])
+                        currency = item['note'].split(' ')[-1]
+                        item.pop('note', None)
+                        item['Price'] = {'Currency': currency, 'Number': price}
+
                         temp.append(item)
 
         if len(temp) != 0:

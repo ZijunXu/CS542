@@ -63,15 +63,21 @@ class CurrencySearchForm(FlaskForm):
     c1_item = StringField('Currency 1', validators=[DataRequired(), Length(1, 64)])
     c2_item = StringField('Currency 2', validators=[DataRequired(), Length(1, 64)])
 
+
 class Mods(FlaskForm):
     mods_name = StringField('Mods Name', validators=[Length(1, 64)])
     mods_upper_bound = FloatField('Min', validators=[NumberRange(0, 1500)])
     mods_lower_bound = FloatField('Max', validators=[NumberRange(0, 1500)])
 
+
 class ItemQueryForm(FlaskForm):
     name = StringField('Item Name', validators=[Length(1, 64)])
     typeLine = StringField('Item Type Line', validators=[Length(1, 64)])
     league = StringField('League', validators=[Length(1, 64)])
+
+    currency_name = StringField('Currency Name', validators=[Length(1, 64)])
+    min_price = FloatField('Min price', validators=[NumberRange(0, 1000)])
+    max_price = FloatField('Max price', validators=[NumberRange(0, 1000)])
 
     corrupted = BooleanField('Item Corrupted', validators=[DataRequired()])
     verified = BooleanField('Item Verified', validators=[DataRequired()])
