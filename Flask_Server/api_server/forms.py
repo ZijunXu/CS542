@@ -31,7 +31,7 @@ class RegistrationForm(FlaskForm):
 class UpdateForm(FlaskForm):
     email = StringField('Email Address', validators=[Length(1, 64), Email(), Optional()])
     current_password = PasswordField('Current Password', validators=[DataRequired()])
-    new_password = PasswordField('New Password', validators=[EqualTo('confirm_password', message='Passwords must match'), Optional()])
+    new_password = PasswordField('New Password', validators=[EqualTo('confirm_new_password', message='Passwords must match'), Optional()])
     confirm_new_password = PasswordField('Repeat Password')
 
     def validate_email(self, field):
@@ -40,7 +40,7 @@ class UpdateForm(FlaskForm):
 
     def validate_current_password(self, field):
         temp = User.query.filter_by(id=g.user.id).first()
-        if not temp.verify_password(field):
+        if not temp.verify_password(field.data):
             raise ValueError('Wrong Password')
 
 

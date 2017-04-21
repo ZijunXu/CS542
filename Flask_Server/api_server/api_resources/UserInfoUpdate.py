@@ -20,11 +20,10 @@ class UserInfoUpdate(Resource):
         form = UpdateForm.from_json(request.get_json())
         if form.validate_on_submit():
             current_user = User.query.filter_by(id=g.user.id).first()
-            print(current_user.id, current_user.name, current_user.email)
             if form.email.data:
                 current_user.email = form.email.data
-            if form.current_password.data:
-                current_user.password = form.current_password.data
+            if form.new_password.data:
+                current_user.password = form.new_password.data
             db.session.commit()
             return jsonify({"update_status": True})
         return jsonify({"update_status": False, "message": form.errors})
