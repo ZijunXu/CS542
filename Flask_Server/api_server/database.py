@@ -77,6 +77,7 @@ class Post(db.Model):
     c2_item = db.Column(db.Integer, db.ForeignKey('Currency.cid'))  # The item user wants to get
     c1_number = db.Column(db.Integer)
     c2_number = db.Column(db.Integer)
+    league = db.Column(db.String(64))
     time = db.Column(db.DateTime)
 
     def __repr__(self):

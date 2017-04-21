@@ -3,6 +3,7 @@ import requests
 import json
 import os
 import time
+import re
 
 
 class get_data_api:
@@ -51,23 +52,32 @@ class get_data_api:
                         item['owner'] = account['accountName']
                         # set the value into int
                         if 'requirements' in item:
+                            temp_req = {}
                             for req in item['requirements']:
                                 req['values'] = int(req['values'][0][0])
+                                temp_req[req['name']] = req['values']
+                            item['requirements'] = temp_req
 
                         # set the value into float
                         if 'properties' in item:
+                            temp_prop = {}
                             for prop in item['properties']:
                                 if len(prop['values']) >= 1:
                                     if "%" in prop['values'][0][0]:
                                         prop['values'] = float(prop['values'][0][0][:-1])
+                                        temp_prop[prop['name']] = prop['values']
                                     elif "-" in prop['values'][0][0]:
                                         atk = [float(n) for n in prop['values'][0][0].split('-')]
                                         prop['values'] = sum(atk) / len(atk)
+                                        temp_prop[prop['name']] = prop['values']
                                     else:
                                         try:
                                             prop['values'] = float(prop['values'][0][0])
+                                            temp_prop[prop['name']] = prop['values']
                                         except:
                                             prop['values'] = prop['values'][0][0]
+                                            temp_prop[prop['name']] = prop['values']
+                            item['properties'] = temp_prop
 
                         # set the socket into the format that we actually want
                         if 'sockets' in item:
@@ -95,6 +105,39 @@ class get_data_api:
                                     other += 1
                             item['sockets'] = {'link': group_ans, 'socket_number': socket, 'D': D, 'S': S, 'I': I, 'Other': 0}
 
+                        # parsing the mods
+                        temp_mods = {}
+                        if 'implicitMods' in item:
+                            for n in item['implicitMods']:
+                                temp_number = re.findall("\d+\.*\d*", n)
+                                temp_string = re.sub("\d+\.*\d*","X",n)
+                                if len(temp_number) == 0:
+                                    temp_mods[temp_string] = 1
+                                else:
+                                    temp_mods[temp_string] = float(temp_number[0])
+                            item.pop('implicitMods', None)
+
+                        if 'craftedMods' in item:
+                            for n in item['craftedMods']:
+                                temp_number = re.findall("\d+\.*\d*", n)
+                                temp_string = re.sub("\d+\.*\d*","X",n)
+                                if len(temp_number) == 0:
+                                    temp_mods[temp_string] = 1
+                                else:
+                                    temp_mods[temp_string] = float(temp_number[0])
+                            item.pop('craftedMods', None)
+
+                        if 'explicitMods' in item:
+                            for n in item['explicitMods']:
+                                temp_number = re.findall("\d+\.*\d*", n)
+                                temp_string = re.sub("\d+\.*\d*","X",n)
+                                if len(temp_number) == 0:
+                                    temp_mods[temp_string] = 1
+                                else:
+                                    temp_mods[temp_string] = float(temp_number[0])
+                            item.pop('explicitMods', None)
+
+                        item['Mods'] = temp_mods
                         temp.append(item)
 
         if len(temp) != 0:

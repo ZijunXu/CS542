@@ -21,7 +21,7 @@ class ItemSearch(Resource):
         form = ItemQueryForm.from_json(request.get_json())
         if form.validate_on_submit():
             query_and = parser(form)
-            posts = self.db.posts.find({"$and": query_and})
+            posts = self.db.posts.find({"$and": query_and}).limit(50)
             ans = []
             for n in posts:
                 n["_id"] = str(n["_id"])
@@ -30,7 +30,7 @@ class ItemSearch(Resource):
                 self.add_to_history(form)
             return jsonify(ans)
         else:
-            posts = self.db.posts.find().limit(20)
+            posts = self.db.posts.find().limit(50)
             ans = []
             for n in posts:
                 n["_id"] = str(n["_id"])

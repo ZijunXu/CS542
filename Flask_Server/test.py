@@ -44,10 +44,10 @@ class User(db.Model):
         s = Serializer(app.config['SECRET_KEY'])
         try:
             data = s.loads(token)
-        except SignatureExpired:
-            return None  # valid token, but expired
-        except BadSignature:
-            return None  # invalid token
+        except SignatureExpired as e:
+            return e  # valid token, but expired
+        except BadSignature as e:
+            return e  # invalid token
         user = User.query.get(data['id'])
         return user
 
@@ -83,6 +83,7 @@ class Post(db.Model):
     c2_item = db.Column(db.Integer, db.ForeignKey('Currency.cid'))  # The item user wants to get
     c1_number = db.Column(db.Integer)
     c2_number = db.Column(db.Integer)
+    league = db.Column(db.String(64))
     time = db.Column(db.DateTime)
 
     def __repr__(self):
@@ -102,7 +103,6 @@ class Currency(db.Model):
 
     def as_dict(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
-
 
 # Here you can specify your customize data!
 
@@ -132,11 +132,11 @@ db.session.add(Search(id=4, item='scokets min: 7, rarity: Normal, identified: Ye
 db.session.add(Search(id=5, item='quality max: 10, corrupted: No, identified: No', time=datetime.datetime.now()))
 db.session.commit()
 
-db.session.add(Post(uid=1, c1_item='Orb', c2_item='LGD', c1_number=1, c2_number=2, time=datetime.datetime.now()))
-db.session.add(Post(uid=1, c1_item='Fusing', c2_item='Orb of Alchemy', c1_number=2, c2_number=4, time=datetime.datetime.now()))
-db.session.add(Post(uid=2, c1_item='Scouring', c2_item='Eber key', c1_number=4, c2_number=8, time=datetime.datetime.now()))
-db.session.add(Post(uid=2, c1_item='Shaper set', c2_item='Eber key', c1_number=7, c2_number=1, time=datetime.datetime.now()))
-db.session.add(Post(uid=2, c1_item='Blessing', c2_item='Blessed orb', c1_number=7, c2_number=1, time=datetime.datetime.now()))
+db.session.add(Post(uid=1, c1_item='Orb', c2_item='LGD', c1_number=1, c2_number=2, league='Standard', time=datetime.datetime.now()))
+db.session.add(Post(uid=1, c1_item='Fusing', c2_item='Orb of Alchemy', c1_number=2, c2_number=4, league='Standard', time=datetime.datetime.now()))
+db.session.add(Post(uid=2, c1_item='Scouring', c2_item='Eber key', c1_number=4, c2_number=8, league='Standard', time=datetime.datetime.now()))
+db.session.add(Post(uid=2, c1_item='Shaper set', c2_item='Eber key', c1_number=7, c2_number=1, league='Standard', time=datetime.datetime.now()))
+db.session.add(Post(uid=2, c1_item='Blessing', c2_item='Blessed orb', c1_number=7, c2_number=1, league='Standard', time=datetime.datetime.now()))
 db.session.commit()
 
 db.session.add(Currency(cname='Orb', cid=1))

@@ -16,6 +16,6 @@ class UserCurrencyPostSearch(Resource):
     def post(self):
         form = PostTradeForm.from_json(request.get_json())
         if form.validate_on_submit():
-            search_currency_post = Post.query.filter_by(c2_item=form.c2_item.data)
+            search_currency_post = Post.query.filter_by(c1_item=form.c1_item.data, c2_item=form.c2_item.data, league=form.league.data)
             return jsonify([n.as_dict() for n in search_currency_post])
         return jsonify({"post_search_status": False, "message": form.errors})

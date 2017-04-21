@@ -20,6 +20,7 @@ class UserInfoUpdate(Resource):
         form = UpdateForm.from_json(request.get_json())
         if form.validate_on_submit():
             current_user = User.query.filter_by(id=g.user.id).first()
+            print(current_user.id, current_user.name, current_user.email)
             if form.email.data:
                 current_user.email = form.email.data
             if form.password.data:

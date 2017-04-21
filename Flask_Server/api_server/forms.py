@@ -1,6 +1,7 @@
+from flask import g
 from flask_wtf import FlaskForm
-from wtforms import StringField, BooleanField, PasswordField, IntegerField, FloatField, DateTimeField
-from wtforms.validators import DataRequired, Email, Length, EqualTo, NumberRange
+from wtforms import StringField, BooleanField, PasswordField, IntegerField, FloatField, FieldList, FormField
+from wtforms.validators import DataRequired, Email, Length, EqualTo, NumberRange, Optional
 from .database import User
 
 
@@ -28,23 +29,28 @@ class RegistrationForm(FlaskForm):
 
 
 class UpdateForm(FlaskForm):
-    username = StringField('Username', validators=[Length(1, 64)])
-    email = StringField('Email Address', validators=[DataRequired(), Length(1, 64), Email()])
-    password = PasswordField('New Password',
-                             validators=[DataRequired(), EqualTo('confirm_password', message='Passwords must match')])
-    confirm_password = PasswordField('Repeat Password', validators=[DataRequired()])
+    email = StringField('Email Address', validators=[Length(1, 64), Email(), Optional()])
+    current_password = PasswordField('Current Password', validators=[DataRequired()])
+    new_password = PasswordField('New Password', validators=[EqualTo('confirm_password', message='Passwords must match'), Optional()])
+    confirm_new_password = PasswordField('Repeat Password')
 
     def validate_email(self, field):
         if User.query.filter_by(email=field.data).first():
             raise ValueError('Email already used')
 
+    def validate_current_password(self, field):
+        temp = User.query.filter_by(id=g.user.id).first()
+        if not temp.verify_password(field):
+            raise ValueError('Wrong Password')
+
 
 class PostTradeForm(FlaskForm):
-    user_id = IntegerField('User ID')
-    c1_item = StringField('Item1', validators=[Length(1, 64)])  # The item user wants to sell
-    c2_item = StringField('Item2', validators=[Length(1, 64)])  # The item user wants to get
-    c1_number = IntegerField('Item1 Qty', validators=[NumberRange(min=1, max=999)])
-    c2_number = IntegerField('Item2 Qty', validators=[NumberRange(min=1, max=999)])
+    user_name = StringField('Game ID', validators=[DataRequired(), Length(1, 64)])  # The item user wants to sell
+    c1_item = StringField('Currency 1', validators=[DataRequired(), Length(1, 64)])  # The item user wants to sell
+    c2_item = StringField('Currency 2', validators=[DataRequired(), Length(1, 64)])  # The item user wants to get
+    c1_number = IntegerField('Currency 1 Qty', validators=[DataRequired(), NumberRange(min=1, max=999)])
+    c2_number = IntegerField('Currency 2 Qty', validators=[DataRequired(), NumberRange(min=1, max=999)])
+    league = StringField('League', validators=[DataRequired(), Length(1, 64)])
 
 
 class UserHistoryForm(FlaskForm):
@@ -53,8 +59,14 @@ class UserHistoryForm(FlaskForm):
 
 
 class CurrencySearchForm(FlaskForm):
-    currency_name = StringField('Currency', validators=[DataRequired(), Length(1, 64)])
+    league = StringField('League', validators=[DataRequired(), Length(1, 64)])
+    c1_item = StringField('Currency 1', validators=[DataRequired(), Length(1, 64)])
+    c2_item = StringField('Currency 2', validators=[DataRequired(), Length(1, 64)])
 
+class Mods(FlaskForm):
+    mods_name = StringField('Mods Name', validators=[Length(1, 64)])
+    mods_upper_bound = FloatField('Min', validators=[NumberRange(0, 1500)])
+    mods_lower_bound = FloatField('Max', validators=[NumberRange(0, 1500)])
 
 class ItemQueryForm(FlaskForm):
     name = StringField('Item Name', validators=[Length(1, 64)])
@@ -107,7 +119,4 @@ class ItemQueryForm(FlaskForm):
     max_shield = FloatField('Max Shield', validators=[NumberRange(0, 1500)])
 
     # there is a lot of them
-    # need a better methods
-    lower_bound_explicitMods = FloatField('Explicit Mods', validators=[Length(1, 64)])
-    upper_bound_explicitMods = FloatField('Explicit Mods', validators=[Length(1, 64)])
-    explicitMods = StringField('Item explicitMods', validators=[Length(1, 64)])
+    Mods_content = FieldList(FormField(Mods), min_entries=0)

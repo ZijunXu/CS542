@@ -26,31 +26,33 @@ if __name__ == '__main__':
     # {"sockets.I": {"$gte": form.min_int_socket.data}}
     # {"sockets.Other": {"$gte": form.min_other_socket.data}}
     ans = posts.find({"sockets.S": {"$gte": 1}})
-    # {"requirements.name": "Dex", "requirements.values": {"$gte": form.min_requirements_dex.data,"$lt": form.max_requirements_dex.data}}
-    # {"requirements.name": "Dex", "requirements.values": {"$gte": form.min_requirements_dex.data}}
-    # {"requirements.name": "Str", "requirements.values": {"$gte": form.min_requirements_str.data,"$lt": form.max_requirements_str.data}}
-    # {"requirements.name": "Str", "requirements.values": {"$gte": form.min_requirements_str.data}}
-    # {"requirements.name": "Level", "requirements.values": {"$gte": form.min_requirements_lvl.data,"$lt": form.max_requirements_lvl.data}}
-    # {"requirements.name": "Level", "requirements.values": {"$gte": form.min_requirements_lvl.data}}
-    ans = posts.find({"requirements.name": "Int",
-                      "requirements.values": {"$gte": 1,
-                                              "$lt": 100}})
-    ans = posts.find({"requirements.name": "Level",
-                      "requirements.values": {"$gte": 1}})
-    # {"properties.name": "Physical Damage", "properties.values": {"$gte": form.physical_damage.data}}
-    # {"properties.name": "Elemental Damage","properties.values": {"$gte": form.elemental_damage.data}}
-    # {"properties.name": "Critical Strike Chance","properties.values": {"$gte": form.min_critical_strike_chance.data, "$lt": form.max_critical_strike_chance.data}}
-    # {"properties.name": "Critical Strike Chance", "properties.values": {"$gte": form.min_critical_strike_chance.data}}
-    # {"properties.name": "Attacks per Second","properties.values": {"$gte": form.min_attacks_per_second.data,"$lt": form.max_attacks_per_second.data}}
-    # {"properties.name": "Attacks per Second.data","properties.values": {"$gte": form.min_attacks_per_second.data}}
-    # {"properties.name": "Armour","properties.values": {"$gte": form.min_armour.data,"$lt": form.max_armour.data}}
-    # {"properties.name": "Armour", "properties.values": {"$gte": form.min_armour.data}}
-    # {"properties.name": "Evasion Rating","properties.values": {"$gte": form.min_evasion.data,"$lt": form.max_evasion.data}}
-    # {"properties.name": "Evasion Rating", "properties.values": {"$gte": form.min_evasion.data}}
-    # {"properties.name": "Energy Shield","properties.values": {"$gte": form.min_shield.data, "$lt": form.max_shield.data}}
-    # {"properties.name": "Energy Shield", "properties.values": {"$gte": form.min_shield.data}}
-    ans = posts.find({"properties.name": "Physical Damage", "properties.values": {"$gte": 10}})
-    print(ans.count())
+    # {"requirements.Dex": {"$gte": form.min_requirements_dex.data,"$lt": form.max_requirements_dex.data}}
+    # {"requirements.Dex": {"$gte": form.min_requirements_dex.data}}
+    # {"requirements.Str": {"$gte": form.min_requirements_str.data,"$lt": form.max_requirements_str.data}}
+    # {"requirements.Str": {"$gte": form.min_requirements_str.data}}
+    # {"requirements.Level": {"$gte": form.min_requirements_lvl.data,"$lt": form.max_requirements_lvl.data}}
+    # {"requirements.Level": {"$gte": form.min_requirements_lvl.data}}
+    ans = posts.find({"requirements.Int": {"$gte": 1,
+                                           "$lt": 100}})
+    ans = posts.find({"requirements.Level": {"$gte": 1}})
+    # {"properties.Physical Damage": {"$gte": form.physical_damage.data}}
+    # {"properties.Elemental Damage": {"$gte": form.elemental_damage.data}}
+    # {"properties.Critical Strike Chance": {"$gte": form.min_critical_strike_chance.data, "$lt": form.max_critical_strike_chance.data}}
+    # {"properties.Critical Strike Chance": {"$gte": form.min_critical_strike_chance.data}}
+    # {"properties.Attacks per Second": {"$gte": form.min_attacks_per_second.data,"$lt": form.max_attacks_per_second.data}}
+    # {"properties.Attacks per Second": {"$gte": form.min_attacks_per_second.data}}
+    # {"properties.Armour": {"$gte": form.min_armour.data,"$lt": form.max_armour.data}}
+    # {"properties.Armour": {"$gte": form.min_armour.data}}
+    # {"properties.Evasion Rating": {"$gte": form.min_evasion.data,"$lt": form.max_evasion.data}}
+    # {"properties.Evasion Rating": {"$gte": form.min_evasion.data}}
+    # {"properties.Energy Shield": {"$gte": form.min_shield.data, "$lt": form.max_shield.data}}
+    # {"properties.Energy Shield": {"$gte": form.min_shield.data}}
+    ans = posts.find({"properties.Physical Damage": {"$gte": 10}})
+
+    # {"Mods.X% increased Attack Speed": {"$gte": form.Mods.data}}
+    ans = posts.find({"Mods.X% increased Attack Speed": {"$gte": 3}})
+
+    print(ans.count(),"=====")
     ans = posts.find({"$and": [{"corrupted": False},
                                {"league": "Standard"},
                                {"identified": True},
@@ -59,9 +61,8 @@ if __name__ == '__main__':
                                {"sockets.socket_number": {"$gte": 0, "$lt": 6}},
                                {"sockets.link": 1},
                                {"sockets.S": {"$gte": 1}},
-                               {"requirements.name": "Int",
-                                "requirements.values": {"$gte": 1,
-                                                        "$lt": 100}},
+                               {"requirements.Int": {"$gte": 1,
+                                                     "$lt": 100}},
                                ]})
     print(ans.count())
 
