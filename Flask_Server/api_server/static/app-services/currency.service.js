@@ -54,9 +54,9 @@
             }).then(handleSuccess, handleError('Error seeking mypost'));
         }
 
-          function Update(post) {
+          function Update(post,tid) {
             return $http({
-                url: '/api/user/post',
+                url: '/api/user/post/'+tid,
                 method: 'PUT',
                 data: $httpParamSerializerJQLike(post),
                 headers: {

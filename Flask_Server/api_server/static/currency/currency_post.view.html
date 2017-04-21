@@ -50,19 +50,17 @@
                 <div class="row">
                     <div class="col col-lg-4">
                             <h5>Choose League</h5>
-                            <select id="league" data-customforms="disabled" class="league chosen">
-                                <option value="Legacy">Legacy</option>
-                                <option value="Hardcore Legacy">Hardcore Legacy</option>
-                                <option value="Standard">Standard</option>
-                                <option value="Hardcore">Hardcore</option>
-                            </select>
+                            <select id="league" name="league" data-customforms="disabled"
+                                class="league chosen" ng-model="vm.cup.league" ng-init="vm.cup.league='Legacy'"
+                                ng-options="x for x in vm.list1">
+                        </select>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col col-lg-4">
                         <h5>Your ID in game:</h5>
-                         <label for="gameid"><input type="text" name="gameid" id="gameid" class="form-control" ng-model="vm.cup.user_id"
+                         <label for="gameid"><input type="text" name="gameid" id="gameid" class="form-control" ng-model="vm.cup.user_name"
                                required/></label>
                         <h5>Currency you have:</h5>
                         <label for="have">Currency: <input type="text" name="have" id="have" class="form-control" ng-model="vm.cup.c1_item"

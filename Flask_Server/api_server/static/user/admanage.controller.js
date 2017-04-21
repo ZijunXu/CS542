@@ -11,8 +11,8 @@
         .module('app')
         .controller('AdmanageController', AdmanageController);
 
-    AdmanageController.$inject = ['FlashService', 'AdminService', '$window'];
-    function AdmanageController(FlashService, AdminService, $window) {
+    AdmanageController.$inject = ['FlashService', 'AdminService' ];
+    function AdmanageController(FlashService, AdminService) {
         var vm = this;
         vm.present=true;
 
@@ -25,7 +25,6 @@
                 .then(function (response) {
                     if (response.delete_status=="Success") {
                         FlashService.Success('Delete successful', true);
-                         $window.location.reload();
                         //use response to update page
                     } else {
                         FlashService.Error(response.message);
@@ -40,7 +39,6 @@
                     if (response.register_status) {
                         FlashService.Success('Create successful', true);
                         //use response to update page
-                        $window.location.reload();
                     } else {
                         FlashService.Error(response.message);
                         vm.dataLoading = false;

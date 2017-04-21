@@ -10,7 +10,8 @@
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                   aria-expanded="false">Menu <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="#!/history" ng-click="vm.history()">Your History</a></li>
                     <li><a href="#!/update_info">Update info</a></li>
@@ -37,7 +38,7 @@
             <div class="row form-choose-action">
                 <div class="col col-lg-4">
                     <ul class="button-group">
-                       <li><a href="#!/currency_search" class="active button tiny secondary">Currency search</a></li>
+                        <li><a href="#!/currency_search" class="active button tiny secondary">Currency search</a></li>
                         <li><a href="#!/currency_post" class=" button tiny secondary">Currency post</a></li>
                         <li><p class=" button tiny secondary" ng-click="vm.my_post()">My post</p></li>
                     </ul>
@@ -46,43 +47,44 @@
             </div>
 
             <form class="custom" id="import" ng-submit="vm.search()" role="form">
-                    <div class="row">
-                        <div class="col col-lg-4">
-                            <h5>Choose League</h5>
-                            <select id="league" data-customforms="disabled" class="league chosen">
-                                <option value="Legacy">Legacy</option>
-                                <option value="Hardcore Legacy">Hardcore Legacy</option>
-                                <option value="Standard">Standard</option>
-                                <option value="Hardcore">Hardcore</option>
-                            </select>
-                        </div>
+                <div class="row">
+                    <div class="col col-lg-4">
+                        <h5>Choose League</h5>
+                        <select id="league" name="league" data-customforms="disabled"
+                                class="league chosen" ng-model="vm.cs.league" ng-init="vm.cs.league='Legacy'"
+                                ng-options="x for x in vm.list1">
+                        </select>
                     </div>
+                </div>
 
-                    <div class="row">
-                        <div class="col col-lg-4">
-                            <h5>What Currency do you want?</h5>
-                              <label for="want1"><input type="text" name="want" id="want1" class="form-control" ng-model="vm.cs.curwant"
-                               required/></label>
-                        </div>
+                <div class="row">
+                    <div class="col col-lg-4">
+                        <h5>What Currency do you want?</h5>
+                        <label for="want1"><input type="text" name="want" id="want1" class="form-control"
+                                                  ng-model="vm.cs.c1_item"
+                                                  required/></label>
                     </div>
+                </div>
 
-                    <div class="row">
-                        <div class="col col-lg-4">
-                            <h5>What Currency do you have?</h5>
-                             <label for="have1"><input type="text" name="have" id="have1" class="form-control" ng-model="vm.cs.curhave" required/></label>
-                        </div>
+                <div class="row">
+                    <div class="col col-lg-4">
+                        <h5>What Currency do you have?</h5>
+                        <label for="have1"><input type="text" name="have" id="have1" class="form-control"
+                                                  ng-model="vm.cs.c2_item" required/></label>
                     </div>
+                </div>
 
-                    <div class="row">
-                        <hr>
-                        <div class="large-12 columns">
-                            <div class="large-2 columns"><p class="button tiny secondary" accesskey="r" ng-click="vm.reloadRoute()">Reset</p></div>
-                            <div class="large-2 large-offset-8 columns">
-                                <input type="submit" class="search button" value="Search!">
-                            </div>
+                <div class="row">
+                    <hr>
+                    <div class="large-12 columns">
+                        <div class="large-2 columns"><p class="button tiny secondary" accesskey="r"
+                                                        ng-click="vm.reloadRoute()">Reset</p></div>
+                        <div class="large-2 large-offset-8 columns">
+                            <input type="submit" class="search button" value="Search!">
                         </div>
                     </div>
-                </form>
+                </div>
+            </form>
         </div>
     </div>
 </div>

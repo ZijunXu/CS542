@@ -9,9 +9,9 @@
         .controller('CurrencyPostController', CurrencyPostController);
 
     CurrencyPostController.$inject = ['$rootScope', '$location', 'CurrencyService', '$window', 'FlashService'];
-    function CurrencyPostController($rootScope, $location, CurrencyService , $window, FlashService) {
+    function CurrencyPostController($rootScope, $location, CurrencyService, $window, FlashService) {
         var vm = this;
-
+        vm.list1 = ["Legacy", "Hardcore Legacy", "Standard", "Hardcore"];
         vm.my_post = my_post;
         vm.post = post;
 

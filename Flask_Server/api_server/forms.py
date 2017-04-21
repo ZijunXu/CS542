@@ -45,7 +45,7 @@ class UpdateForm(FlaskForm):
 
 
 class PostTradeForm(FlaskForm):
-    user_name = StringField('Game ID', validators=[DataRequired(), Length(1, 64)])  # The item user wants to sell
+    user_name = StringField('Game ID', validators=[DataRequired(), Length(1, 64)])  # USER NAME IN GAME
     c1_item = StringField('Currency 1', validators=[DataRequired(), Length(1, 64)])  # The item user wants to sell
     c2_item = StringField('Currency 2', validators=[DataRequired(), Length(1, 64)])  # The item user wants to get
     c1_number = IntegerField('Currency 1 Qty', validators=[DataRequired(), NumberRange(min=1, max=999)])

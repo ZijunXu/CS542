@@ -30,7 +30,7 @@
         }
 
         function update() {
-            CurrencyService.Update(vm.updater)
+            CurrencyService.Update(vm.updater,vm.tid)
                 .then(function (response) {
                     if (response.post_status) {
                         FlashService.Success('Update successful', true);

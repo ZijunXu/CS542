@@ -12,6 +12,7 @@
     function CurrencySearchController(CurrencyService, $rootScope, $location, $window) {
         var vm = this;
 
+        vm.list1 = ["Legacy", "Hardcore Legacy", "Standard", "Hardcore"];
         vm.my_post = my_post;
         vm.search = search;
 

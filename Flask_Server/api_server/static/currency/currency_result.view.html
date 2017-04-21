@@ -38,18 +38,22 @@
                     <thead class="thead-default">
                     <tr>
                         <th>Seller ID</th>
+                        <th>League</th>
                         <th>Have</th>
                         <th>Want</th>
                         <th>Amount(have)</th>
                         <th>Amount(want)</th>
+                        <th>Time</th>
                     </tr>
                     </thead>
                     <tr ng-repeat="item in posts">
-                        <td>{{item.cid}}</td>
-                        <td>{{item.cname}}</td>
-                        <td>{{item.want}}</td>
-                        <td>{{item.price1}}</td>
-                        <td>{{item.price2}}</td>
+                        <td>{{item.uid}}</td>
+                        <td>{{item.league}}</td>
+                        <td>{{item.c1_item}}</td>
+                        <td>{{item.c2_item}}</td>
+                        <td>{{item.c1_number}}</td>
+                        <td>{{item.c2_number}}</td>
+                        <td>{{item.time}}</td>
                     </tr>
             </table>
 		</div>

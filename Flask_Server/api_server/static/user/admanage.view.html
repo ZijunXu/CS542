@@ -53,7 +53,7 @@
                      ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
                     <label for="password">Confirm Password</label>
                     <input type="password" name="confirmpassword" id="confirmpassword" class="form-control"
-                           ng-model="vm.user.confirm_password"/>
+                           ng-model="vm.user.confirm_password" ng-init="vm.user.accept_tos=true"/>
                 </div>
 
                 <div class="form-actions">

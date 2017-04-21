@@ -33,7 +33,7 @@ class Admin(Resource):
         """
         form = RegistrationForm.from_json(request.get_json())
         if form.validate_on_submit():
-            new_user = User(name=form.username.data, email=form.email.data, password=form.password.data)
+            new_user = User(name=form.name.data, email=form.email.data, password=form.password.data)
             db.session.add(new_user)
             return jsonify({"register_status": True})
         error_message = [form.errors[n] for n in form.errors][0]

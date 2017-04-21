@@ -28,7 +28,7 @@
         }
 
         function Create(user) {
-            return $http.post('/api/admin', user).then(handleSuccess, handleError('Error updating user'));
+            return $http.post('/api/admin', user).then(handleSuccess, handleError('Error creating user'));
         }
 
         function Deletename(name) {

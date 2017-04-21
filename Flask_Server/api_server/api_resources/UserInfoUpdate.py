@@ -23,8 +23,8 @@ class UserInfoUpdate(Resource):
             print(current_user.id, current_user.name, current_user.email)
             if form.email.data:
                 current_user.email = form.email.data
-            if form.password.data:
-                current_user.password = form.password.data
+            if form.current_password.data:
+                current_user.password = form.current_password.data
             db.session.commit()
             return jsonify({"update_status": True})
         return jsonify({"update_status": False, "message": form.errors})
