@@ -19,6 +19,10 @@ class ItemSearch(Resource):
         :return: mongodb query results
         """
         form = ItemQueryForm.from_json(request.get_json())
+
+        if not g.user:
+            return jsonify({"login_staus": False, "message": "Please login"})
+
         if form.validate_on_submit():
             query_and = parser(form)
             posts = self.db.posts.find({"$and": query_and}).limit(50)

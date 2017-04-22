@@ -18,6 +18,10 @@ class UserInfoUpdate(Resource):
         name, email, password
         """
         form = UpdateForm.from_json(request.get_json())
+
+        if not g.user:
+            return jsonify({"login_staus": False, "message": "Please login"})
+
         if form.validate_on_submit():
             current_user = User.query.filter_by(id=g.user.id).first()
             if form.email.data:

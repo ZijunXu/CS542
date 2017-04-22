@@ -43,7 +43,10 @@ class UserCurrencyPostManagement(Resource):
         """
         if tid:
             return jsonify({"new_post_status": False, "message": "Wrong usage"})
-        print(request.get_json())
+
+        if not g.user:
+            return jsonify({"login_staus": False, "message": "Please login"})
+
         form = PostTradeForm.from_json(request.get_json())
         if form.validate_on_submit():
             post = Post(uid=g.user.id, c1_item=form.c1_item.data, c2_item=form.c2_item.data,
@@ -77,5 +80,8 @@ class UserCurrencyPostManagement(Resource):
         if tid:
             return jsonify({"retrieve_post_status": False, "message": "Wrong usage"})
         else:
+            if not g.user:
+                return jsonify({"login_staus": False, "message": "Please login"})
+
             history = Post.query.filter_by(uid=g.user.id)
             return jsonify([n.as_dict() for n in history])
