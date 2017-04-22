@@ -98,7 +98,6 @@
                                 var temp = $rootScope.itemsresult[i].name.split(">>");
                                 $rootScope.itemsresult[i].name = temp[temp.length - 1];
                             }
-                            $rootScope.itemsresult[i].Mods.toString();
                         }
                         $location.path('/item_result');
                     } else {

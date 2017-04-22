@@ -105,39 +105,39 @@ class get_data_api:
                                     other += 1
                             item['sockets'] = {'link': group_ans, 'socket_number': socket, 'D': D, 'S': S, 'I': I, 'Other': 0}
 
-                        # parsing the mods
-                        temp_mods = {}
-                        if 'implicitMods' in item:
-                            for n in item['implicitMods']:
-                                temp_number = re.findall("\d+\.*\d*", n)
-                                temp_string = re.sub("\d+\.*\d*","X",n)
-                                if len(temp_number) == 0:
-                                    temp_mods[temp_string] = 1
-                                else:
-                                    temp_mods[temp_string] = float(temp_number[0])
-                            item.pop('implicitMods', None)
-
-                        if 'craftedMods' in item:
-                            for n in item['craftedMods']:
-                                temp_number = re.findall("\d+\.*\d*", n)
-                                temp_string = re.sub("\d+\.*\d*","X",n)
-                                if len(temp_number) == 0:
-                                    temp_mods[temp_string] = 1
-                                else:
-                                    temp_mods[temp_string] = float(temp_number[0])
-                            item.pop('craftedMods', None)
-
-                        if 'explicitMods' in item:
-                            for n in item['explicitMods']:
-                                temp_number = re.findall("\d+\.*\d*", n)
-                                temp_string = re.sub("\d+\.*\d*","X",n)
-                                if len(temp_number) == 0:
-                                    temp_mods[temp_string] = 1
-                                else:
-                                    temp_mods[temp_string] = float(temp_number[0])
-                            item.pop('explicitMods', None)
-
-                        item['Mods'] = temp_mods
+                        # # parsing the mods
+                        # temp_mods = {}
+                        # if 'implicitMods' in item:
+                        #     for n in item['implicitMods']:
+                        #         temp_number = re.findall("\d+\.*\d*", n)
+                        #         temp_string = re.sub("\d+\.*\d*","X",n)
+                        #         if len(temp_number) == 0:
+                        #             temp_mods[temp_string] = 1
+                        #         else:
+                        #             temp_mods[temp_string] = float(temp_number[0])
+                        #     item.pop('implicitMods', None)
+                        #
+                        # if 'craftedMods' in item:
+                        #     for n in item['craftedMods']:
+                        #         temp_number = re.findall("\d+\.*\d*", n)
+                        #         temp_string = re.sub("\d+\.*\d*","X",n)
+                        #         if len(temp_number) == 0:
+                        #             temp_mods[temp_string] = 1
+                        #         else:
+                        #             temp_mods[temp_string] = float(temp_number[0])
+                        #     item.pop('craftedMods', None)
+                        #
+                        # if 'explicitMods' in item:
+                        #     for n in item['explicitMods']:
+                        #         temp_number = re.findall("\d+\.*\d*", n)
+                        #         temp_string = re.sub("\d+\.*\d*","X",n)
+                        #         if len(temp_number) == 0:
+                        #             temp_mods[temp_string] = 1
+                        #         else:
+                        #             temp_mods[temp_string] = float(temp_number[0])
+                        #     item.pop('explicitMods', None)
+                        #
+                        # item['Mods'] = temp_mods
 
                         # Parse currency
                         price = re.findall("\d+\.*\d*", item['note'])

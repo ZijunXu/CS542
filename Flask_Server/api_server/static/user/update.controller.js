@@ -8,8 +8,8 @@
         .module('app')
         .controller('UpdateController', UpdateController);
 
-    UpdateController.$inject = ['UserService', 'FlashService', '$window'];
-    function UpdateController(UserService, FlashService, $window) {
+    UpdateController.$inject = ['UserService', 'FlashService'];
+    function UpdateController(UserService, FlashService) {
         var vm = this;
 
         vm.updateinfo = updateinfo;
@@ -20,7 +20,6 @@
                 .then(function (response) {
                     if (response.update_status) {
                         FlashService.Success('Update successful', true);
-                        $window.location.reload();
                     } else {
                         FlashService.Error(response.message);
                         vm.dataLoading = false;
