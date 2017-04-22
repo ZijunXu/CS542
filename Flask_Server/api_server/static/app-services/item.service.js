@@ -15,16 +15,17 @@
         service.SearchItem = SearchItem;
         service.History = History;
         service.removeHistory = removeHistory;
-        //service.removeHistory = removeHistory;
+        service.sortPhys = sortPhys;
+        service.sortArmour = sortArmour;
 
         return service;
 
-         function SearchItem(item) {
+        function SearchItem(item) {
             return $http.post('/api/item', item).then(handleSuccess, handleError('Error updating user'));
         }
 
         function History() {
-              return $http({
+            return $http({
                 url: '/api/user/search',
                 method: 'GET',
                 headers: {
@@ -33,8 +34,8 @@
             }).then(handleSuccess, handleError('Error seeking history'));
         }
 
-         function removeHistory(sid) {
-            return $http.delete('/api/user/search/'+sid).then(handleSuccess, handleError('Error creating user'));
+        function removeHistory(sid) {
+            return $http.delete('/api/user/search/' + sid).then(handleSuccess, handleError('Error creating user'));
         }
 
         function handleSuccess(res) {
@@ -45,6 +46,28 @@
             return function () {
                 return {success: false, message: error};
             };
+        }
+
+        function sortPhys(a, b) {
+            if (a.properties['Physical Damage'] < b.properties['Physical Damage'] ||
+                typeof(a.properties['Physical Damage']) == "undefined")
+                return 1;
+            else if (a.properties['Physical Damage'] > b.properties['Physical Damage'] ||
+                typeof(b.properties['Physical Damage']) == "undefined")
+                return -1;
+            else
+                return 0;
+        }
+
+        function sortArmour(a, b) {
+            if (a.properties.Armour < b.properties.Armour ||
+                typeof(a.properties.Armour) == "undefined")
+                return 1;
+            else if (a.properties.Armour > b.properties.Armour ||
+                typeof(b.properties.Armour) == "undefined")
+                return -1;
+            else
+                return 0;
         }
     }
 

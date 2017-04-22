@@ -8,10 +8,12 @@
         .module('app')
         .controller('ItemResultController', ItemResultController);
 
-    ItemResultController.$inject = ['$location', 'AuthenticationService'];
-    function ItemResultController($location, AuthenticationService) {
+    ItemResultController.$inject = ['$location', 'AuthenticationService', '$rootScope', 'ItemService'];
+    function ItemResultController($location, AuthenticationService, $rootScope, ItemService) {
         var vm = this;
         vm.logout = logout;
+        vm.sortByPhys = sortByPhys;
+        vm.sortByArmour = sortByArmour;
 
         function logout() {
             AuthenticationService.isLogged = false;
@@ -19,6 +21,16 @@
             delete localStorage.token;
             $location.path("/");
         }
+
+        function sortByPhys() {
+            $rootScope.itemsresult.sort(ItemService.sortPhys);
+        }
+
+        function sortByArmour() {
+            $rootScope.itemsresult.sort(ItemService.sortArmour);
+        }
+
+
     }
 
 })();

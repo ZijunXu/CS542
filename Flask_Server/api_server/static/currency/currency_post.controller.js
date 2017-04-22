@@ -15,6 +15,7 @@
         vm.my_post = my_post;
         vm.post = post;
         vm.logout = logout;
+        vm.tidsort = tidsort;
 
         vm.reloadRoute = function () {
             $window.location.reload();

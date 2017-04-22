@@ -46,7 +46,7 @@
                                 <td align="middle" style="vertical-align:middle">{{item.properties.Quality}}</td>
                             </tr>
                             <tr>
-                                <th>Armour</th>
+                                <th ng-click="vm.sortByArmour()">Armour</th>
                             </tr>
                             <tr>
                                 <td align="middle" style="vertical-align:middle">{{item.properties.Armour}}</td>
@@ -56,7 +56,7 @@
                     <td align="middle" style="vertical-align:middle">
                         <table class="table table-bordered table-hover">
                             <tr>
-                                <th>Phys</th>
+                                <th ng-click="vm.sortByPhys()">Phys</th>
                             </tr>
                             <tr>
                                 <td align="middle" style="vertical-align:middle">{{item.properties['Physical

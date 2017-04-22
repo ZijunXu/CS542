@@ -16,6 +16,8 @@
         vm.my_post = my_post;
         vm.search = search;
         vm.logout = logout;
+        vm.tidsort = tidsort;
+        vm.pricesort = pricesort;
 
         vm.reloadRoute = function () {
             $window.location.reload();
