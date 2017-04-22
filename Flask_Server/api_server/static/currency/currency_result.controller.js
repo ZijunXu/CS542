@@ -12,6 +12,7 @@
     function CurrencyResultController($location,AuthenticationService) {
         var vm = this;
         vm.logout = logout;
+        vm.isAdmin=AuthenticationService.isAdmin;
 
         function logout() {
             AuthenticationService.isLogged = false;

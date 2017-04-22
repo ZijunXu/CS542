@@ -11,6 +11,7 @@
     HistoryController.$inject = ['$rootScope', 'ItemService', 'FlashService', 'AuthenticationService', '$location'];
     function HistoryController($rootScope, ItemService, FlashService, AuthenticationService, $location) {
         var vm = this;
+        vm.isAdmin=AuthenticationService.isAdmin;
 
         vm.remove = remove;
         vm.logout = logout;

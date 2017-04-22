@@ -15,6 +15,7 @@
                     <li><a href="#!/history" ng-click="vm.history()">Your History</a></li>
                     <li><a href="#!/update_info">Update info</a></li>
                     <li><a href="#!/currency_search">Currency</a></li>
+                    <li ng-if="vm.isAdmin"><a href="#!/admanage">Manage</a></li>
                 </ul>
             </li>
             <li><a ng-click="vm.logout()">Logout</a></li>

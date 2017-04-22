@@ -11,7 +11,7 @@
     CurrencySearchController.$inject = ['CurrencyService', '$rootScope', '$location', '$window', 'AuthenticationService'];
     function CurrencySearchController(CurrencyService, $rootScope, $location, $window, AuthenticationService) {
         var vm = this;
-
+        vm.isAdmin = AuthenticationService.isAdmin;
         vm.list1 = ["Legacy", "Hardcore Legacy", "Standard", "Hardcore"];
         vm.my_post = my_post;
         vm.search = search;

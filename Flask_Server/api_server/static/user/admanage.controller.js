@@ -15,6 +15,7 @@
     function AdmanageController(FlashService, AdminService, $location, AuthenticationService) {
         var vm = this;
         vm.present = true;
+        vm.isAdmin = AuthenticationService.isAdmin;
 
         vm.get = get;
         vm.Deleteuser = Deleteuser;

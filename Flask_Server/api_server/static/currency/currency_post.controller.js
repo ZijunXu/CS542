@@ -11,6 +11,7 @@
     CurrencyPostController.$inject = ['$rootScope', '$location', 'CurrencyService', '$window', 'FlashService', 'AuthenticationService'];
     function CurrencyPostController($rootScope, $location, CurrencyService, $window, FlashService, AuthenticationService) {
         var vm = this;
+        vm.isAdmin=AuthenticationService.isAdmin;
         vm.list1 = ["Legacy", "Hardcore Legacy", "Standard", "Hardcore"];
         vm.my_post = my_post;
         vm.post = post;

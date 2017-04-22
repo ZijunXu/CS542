@@ -14,6 +14,7 @@
         vm.logout = logout;
         vm.sortByPhys = sortByPhys;
         vm.sortByArmour = sortByArmour;
+        vm.sortArmour = sortArmour;
 
         function logout() {
             AuthenticationService.isLogged = false;
@@ -27,7 +28,21 @@
         }
 
         function sortByArmour() {
-            $rootScope.itemsresult.sort(ItemService.sortArmour);
+            $rootScope.itemsresult.sort(sortArmour);
+        }
+
+        function sortArmour(a, b) {
+            if (typeof(a.properties.Armour) == "undefined")
+                return 1;
+            if (typeof(b.properties.Armour) == "undefined")
+                return -1;
+
+            if (a.properties.Armour < b.properties.Armour)
+                return 1;
+            else if (a.properties.Armour > b.properties.Armour)
+                return -1;
+            else
+                return 0;
         }
 
 

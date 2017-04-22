@@ -80,13 +80,6 @@
                 access: {requiredLogin: true}
             })
 
-            .when('/manage_post', {
-                controller: 'ManagePostController',
-                templateUrl: '/static/currency/manage.view.html',
-                controllerAs: 'vm',
-                access: {requiredLogin: true}
-            })
-
             .when('/update_info', {
                 controller: 'UpdateController',
                 templateUrl: '/static/user/update.view.html',

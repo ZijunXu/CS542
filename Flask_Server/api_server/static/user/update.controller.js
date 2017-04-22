@@ -11,6 +11,7 @@
     UpdateController.$inject = ['UserService', 'FlashService', '$location', 'AuthenticationService'];
     function UpdateController(UserService, FlashService, $location, AuthenticationService) {
         var vm = this;
+        vm.isAdmin = AuthenticationService.isAdmin;
 
         vm.updateinfo = updateinfo;
         vm.logout = logout;
