@@ -29,7 +29,7 @@ class User(db.Model):
     def as_dict(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
-    def generate_auth_token(self, expiration=600):
+    def generate_auth_token(self, expiration=1800):
         s = Serializer(current_app.config['SECRET_KEY'], expires_in=expiration)
         return s.dumps({'id': self.id})
 
@@ -38,10 +38,10 @@ class User(db.Model):
         s = Serializer(current_app.config['SECRET_KEY'])
         try:
             data = s.loads(token)
-        except SignatureExpired as e:
-            return e  # valid token, but expired
-        except BadSignature as e:
-            return e  # invalid token
+        except SignatureExpired:
+            return None  # valid token, but expired
+        except BadSignature:
+            return None  # invalid token
         user = User.query.get(data['id'])
         return user
 

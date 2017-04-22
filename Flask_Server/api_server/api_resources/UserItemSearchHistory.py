@@ -14,6 +14,10 @@ class UserItemSearchHistory(Resource):
         if sid:
             return jsonify({"retrieve_search_status": False, "message": "Wrong usage"})
         else:
+
+            if not g.user:
+                return jsonify({"login_staus": False, "message": "Please login"})
+
             history = Search.query.filter_by(id=g.user.id)
             return jsonify([n.as_dict() for n in history])
 
