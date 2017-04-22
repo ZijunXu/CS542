@@ -1,3 +1,27 @@
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="#!/currency_search" class="navbar-brand">POE TRADER</a>
+        </div>
+        <div class="nav navbar-nav">
+            <li><a href="#">about</a></li>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                   aria-expanded="false">Menu <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#!/history" ng-click="vm.history()">Your History</a></li>
+                    <li><a href="#!/update_info">Update info</a></li>
+                    <li><a href="#!/item_search">Item Trade</a></li>
+                    <li><a href="#!/currency_search">Currency</a></li>
+                </ul>
+            </li>
+            <li><a ng-click="vm.logout()">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h1 class="display-3">Search result</h1>

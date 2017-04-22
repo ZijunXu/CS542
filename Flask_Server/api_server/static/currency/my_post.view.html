@@ -1,12 +1,11 @@
 <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
     <div class="container">
         <div class="navbar-header">
-            <a href="#!/" class="navbar-brand">POE</a>
+            <a href="#!/" class="navbar-brand">POE TRADER</a>
         </div>
         <div class="nav navbar-nav">
-            <li><a href="#">about</a></li>
-            <li><a href="#">contact</a></li>
-
+            <li><a href="https://www.pathofexile.com/">about</a></li>
+            <li><a href="https://www.pathofexile.com/support">contact</a></li>
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
@@ -45,18 +44,28 @@
                 <hr>
             </div>
 
-            <table class="dataintable" style="">
-                <caption>My Post</caption>
-                <tr>
-                    <th>Have</th>
-                    <th>Amount(have)</th>
-                    <th>Want</th>
-                    <th>Amount(want)</th>
-                    <th>Tid</th>
-                    <th>Time</th>
-                    <th>Uid</th>
-                </tr>
-                <tr ng-repeat="item in myposts">
+            <div class="large-8 column">
+                <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Have</th>
+                        <th>Amount(have)</th>
+                        <th>Want</th>
+                        <th>Amount(want)</th>
+                        <th>Tid	Time</th>
+                        <th>Uid</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>example</td>
+                        <td>123</td>
+                        <td>123</td>
+                        <td>123</td>
+                        <td>123</td>
+                        <td>123</td>
+                    </tr>
+                    <tr ng-repeat="item in myposts">
                     <td>{{item.c1_item}}</td>
                     <td>{{item.c1_number}}</td>
                     <td>{{item.c2_item}}</td>
@@ -65,9 +74,9 @@
                     <td>{{item.time}}</td>
                     <td>{{item.uid}}</td>
                 </tr>
-            </table>
-
-            <div Style="float:left;width:100px;"><p><a href="#!/manage_post" class="btn btn-primary">Manage</a></p>
+                </tbody>
+                </table>
+                <div><p><a href="#!/manage_post" class="btn btn-primary">Manage My Post</a></p></div>
             </div>
 
         </div>

@@ -1,19 +1,64 @@
-<h2 align="center">Search History</h2>
-<table align="center" border="2">
-    <tr>
-        <th>ID</th>
-        <th>Content</th>
-        <th>SID</th>
-        <th>Time</th>
-        <th>Delete</th>
-    </tr>
-    <tr ng-repeat="item in history">
-        <td>{{item.id}}</td>
-        <td>{{item.item}}</td>
-        <td>{{item.sid}}</td>
-        <td>{{item.time}}</td>
-        <td>
-            <button ng-click="vm.remove($index)">Remove</button>
-        </td>
-    </tr>
-</table>
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="#!/currency_search" class="navbar-brand">POE TRADER</a>
+        </div>
+        <div class="nav navbar-nav">
+            <li><a href="#">about</a></li>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                   aria-expanded="false">Menu <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#!/history" ng-click="vm.history()">Your History</a></li>
+                    <li><a href="#!/update_info">Update info</a></li>
+                    <li><a href="#!/item_search">Item Trade</a></li>
+                    <li><a href="#!/currency_search">Currency</a></li>
+                </ul>
+            </li>
+            <li><a ng-click="vm.logout()">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>POE TRADER</h1>
+        <p>Search History</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Content</th>
+                        <th>SID</th>
+                        <th>Time</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>123</td>
+                        <td>123</td>
+                        <td>123</td>
+                        <td>123</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>123</td>
+                        <td>123</td>
+                        <td>123</td>
+                        <td>123</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
