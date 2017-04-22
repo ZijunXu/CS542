@@ -1,10 +1,11 @@
 <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
     <div class="container">
         <div class="navbar-header">
-            <a href="#!/currency_search" class="navbar-brand">POE TRADER</a>
+            <a href="#!/item_search" class="navbar-brand">POE TRADER</a>
         </div>
         <div class="nav navbar-nav">
-            <li><a href="#">about</a></li>
+            <li><a href="https://www.pathofexile.com/">about</a></li>
+            <li><a href="https://www.pathofexile.com/support">contact</a></li>
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
@@ -13,7 +14,6 @@
                 <ul class="dropdown-menu">
                     <li><a href="#!/history" ng-click="vm.history()">Your History</a></li>
                     <li><a href="#!/update_info">Update info</a></li>
-                    <li><a href="#!/item_search">Item Trade</a></li>
                     <li><a href="#!/currency_search">Currency</a></li>
                 </ul>
             </li>
@@ -34,29 +34,24 @@
         <div class="col-lg-12">
             <table class="table table-bordered table-hover">
                 <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Content</th>
-                        <th>SID</th>
-                        <th>Time</th>
-                        <th>Delete</th>
-                    </tr>
+                <tr>
+                    <th>ID</th>
+                    <th>Content</th>
+                    <th>SID</th>
+                    <th>Time</th>
+                    <th>Delete</th>
+                </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                    </tr>
+                <tr ng-repeat="item in history">
+                    <td>{{item.id}}</td>
+                    <td>{{item.item}}</td>
+                    <td>{{item.sid}}</td>
+                    <td>{{item.time}}</td>
+                    <td>
+                        <button ng-click="vm.remove($index)">Remove</button>
+                    </td>
+                </tr>
                 </tbody>
             </table>
         </div>

@@ -8,10 +8,17 @@
         .module('app')
         .controller('MyPostController', MyPostController);
 
-    MyPostController.$inject = ['$rootScope','$location'];
-    function MyPostController($rootScope, $location) {
+    MyPostController.$inject = ['$location', 'AuthenticationService'];
+    function MyPostController($location, AuthenticationService) {
         var vm = this;
+        vm.logout = logout;
 
+        function logout() {
+            AuthenticationService.isLogged = false;
+            AuthenticationService.isAdmin = false;
+            delete localStorage.token;
+            $location.path("/");
+        }
     }
 
 })();

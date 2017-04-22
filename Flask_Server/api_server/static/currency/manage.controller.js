@@ -8,20 +8,21 @@
         .module('app')
         .controller('ManagePostController', ManagePostController);
 
-    ManagePostController.$inject = ['CurrencyService','$window', 'FlashService'];
-    function ManagePostController(CurrencyService, $window, FlashService) {
+    ManagePostController.$inject = ['CurrencyService', '$window', 'FlashService', 'AuthenticationService', '$location'];
+    function ManagePostController(CurrencyService, $window, FlashService, AuthenticationService, $location) {
         var vm = this;
 
         vm.update = update;
         vm.Delete = Delete;
+        vm.logout = logout;
 
         function Delete() {
             CurrencyService.Delete(vm.deleteid)
                 .then(function (response) {
-                        if (response.delete_post_status=="Success") {
+                    if (response.delete_post_status == "Success") {
                         FlashService.Success('Delete successful', true);
                         //use response to update page
-                       $window.location.reload();
+                        $window.location.reload();
                     } else {
                         FlashService.Error(response.message);
                         vm.dataLoading = false;
@@ -30,17 +31,24 @@
         }
 
         function update() {
-            CurrencyService.Update(vm.updater,vm.tid)
+            CurrencyService.Update(vm.updater, vm.tid)
                 .then(function (response) {
                     if (response.post_update_status) {
                         FlashService.Success('Update successful', true);
                         //use response to update page
-                       $window.location.reload();
+                        $window.location.reload();
                     } else {
                         FlashService.Error(response.message);
                         vm.dataLoading = false;
                     }
                 });
+        }
+
+        function logout() {
+            AuthenticationService.isLogged = false;
+            AuthenticationService.isAdmin = false;
+            delete localStorage.token;
+            $location.path("/");
         }
     }
 

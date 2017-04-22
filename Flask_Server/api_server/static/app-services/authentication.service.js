@@ -9,6 +9,7 @@
     function AuthenticationService($http) {
         var service = {};
         service.isLogged = false;
+        service.isAdmin = false;
         service.Login = Login;
 
         return service;

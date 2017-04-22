@@ -1,15 +1,15 @@
 /**
- * Created by you on 2017/3/23.
+ * Created by youzhou on 4/22/17.
  */
 (function () {
     //'use strict';
 
     angular
         .module('app')
-        .controller('ItemResultController', ItemResultController);
+        .controller('ItemResultLogController', ItemResultLogController);
 
-    ItemResultController.$inject = ['$location', 'AuthenticationService'];
-    function ItemResultController($location, AuthenticationService) {
+    ItemResultLogController.$inject = ['$location', 'AuthenticationService'];
+    function ItemResultLogController($location, AuthenticationService) {
         var vm = this;
         vm.logout = logout;
 

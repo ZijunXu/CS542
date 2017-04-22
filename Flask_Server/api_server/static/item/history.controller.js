@@ -8,11 +8,19 @@
         .module('app')
         .controller('HistoryController', HistoryController);
 
-    HistoryController.$inject = ['$rootScope', 'ItemService', 'FlashService'];
-    function HistoryController($rootScope, ItemService, FlashService) {
+    HistoryController.$inject = ['$rootScope', 'ItemService', 'FlashService', 'AuthenticationService', '$location'];
+    function HistoryController($rootScope, ItemService, FlashService, AuthenticationService, $location) {
         var vm = this;
 
         vm.remove = remove;
+        vm.logout = logout;
+
+        function logout() {
+            AuthenticationService.isLogged = false;
+            AuthenticationService.isAdmin = false;
+            delete localStorage.token;
+            $location.path("/");
+        }
 
         function remove(index) {
             var sid = $rootScope.history[index].sid;
@@ -21,7 +29,7 @@
                     if (response.delete_history_status == "Success") {
                         //use response to update page
                         FlashService.Success('Delete successful', true);
-                        $rootScope.history.splice(index,1);
+                        $rootScope.history.splice(index, 1);
                     } else {
                         FlashService.Error(response.message);
                         vm.dataLoading = false;

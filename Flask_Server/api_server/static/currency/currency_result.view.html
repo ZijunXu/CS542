@@ -1,7 +1,7 @@
 <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
     <div class="container">
         <div class="navbar-header">
-            <a href="#!/" class="navbar-brand">POE</a>
+            <a href="#!/item_search" class="navbar-brand">POE TRADER</a>
         </div>
         <div class="nav navbar-nav">
             <li><a href="https://www.pathofexile.com/">about</a></li>
@@ -9,11 +9,11 @@
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                   aria-expanded="false">Menu <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="#!/history" ng-click="vm.history()">Your History</a></li>
                     <li><a href="#!/update_info">Update info</a></li>
-                    <li><a href="#!/item_search">Item Trade</a></li>
                     <li><a href="#!/currency_search">Currency</a></li>
                 </ul>
             </li>
@@ -23,39 +23,39 @@
 </nav>
 
 <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-3">Search result</h1>
-    <p class="lead">Here is what you are looking for.</p>
-  </div>
+    <div class="container">
+        <h1 class="display-3">Search result</h1>
+        <p class="lead">Here is what you are looking for.</p>
+    </div>
 </div>
 
 <div class="container">
-	<div class="row">
-		<div class="col-lg-12">
-			<table class="table table-bordered table-hover">
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-bordered table-hover">
                 <caption>Currency</caption>
-                    <thead class="thead-default">
-                    <tr>
-                        <th>Seller ID</th>
-                        <th>League</th>
-                        <th>Have</th>
-                        <th>Want</th>
-                        <th>Amount(have)</th>
-                        <th>Amount(want)</th>
-                        <th>Time</th>
-                    </tr>
-                    </thead>
-                    <tr ng-repeat="item in posts">
-                        <td>{{item.name}}</td>
-                        <td>{{item.league}}</td>
-                        <td>{{item.c1_item}}</td>
-                        <td>{{item.c2_item}}</td>
-                        <td>{{item.c1_number}}</td>
-                        <td>{{item.c2_number}}</td>
-                        <td>{{item.time}}</td>
-                    </tr>
+                <thead class="thead-default">
+                <tr>
+                    <th>Seller ID</th>
+                    <th>League</th>
+                    <th>Have</th>
+                    <th>Want</th>
+                    <th>Amount(have)</th>
+                    <th>Amount(want)</th>
+                    <th>Time</th>
+                </tr>
+                </thead>
+                <tr ng-repeat="item in posts">
+                    <td>{{item.name}}</td>
+                    <td>{{item.league}}</td>
+                    <td>{{item.c1_item}}</td>
+                    <td>{{item.c2_item}}</td>
+                    <td>{{item.c1_number}}</td>
+                    <td>{{item.c2_number}}</td>
+                    <td>{{item.time}}</td>
+                </tr>
             </table>
-		</div>
-	</div>
+        </div>
+    </div>
 </div>
 

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
     <div class="container">
         <div class="navbar-header">
-            <a href="#!/" class="navbar-brand">POE TRADER</a>
+            <a href="#!/item_search" class="navbar-brand">POE TRADER</a>
         </div>
         <div class="nav navbar-nav">
             <li><a href="https://www.pathofexile.com/">about</a></li>
@@ -9,11 +9,11 @@
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                   aria-expanded="false">Menu <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="#!/history" ng-click="vm.history()">Your History</a></li>
                     <li><a href="#!/update_info">Update info</a></li>
-                    <li><a href="#!/item_search">Item Trade</a></li>
                     <li><a href="#!/currency_search">Currency</a></li>
                 </ul>
             </li>
@@ -46,35 +46,28 @@
 
             <div class="large-8 column">
                 <table class="table table-bordered table-hover">
-                <thead>
+                    <thead>
                     <tr>
                         <th>Have</th>
                         <th>Amount(have)</th>
                         <th>Want</th>
                         <th>Amount(want)</th>
-                        <th>Tid	Time</th>
+                        <th>Time</th>
+                        <th>Tid</th>
                         <th>Uid</th>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>example</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                    </tr>
+                    </thead>
+                    <tbody>
                     <tr ng-repeat="item in myposts">
-                    <td>{{item.c1_item}}</td>
-                    <td>{{item.c1_number}}</td>
-                    <td>{{item.c2_item}}</td>
-                    <td>{{item.c2_number}}</td>
-                    <td>{{item.tid}}</td>
-                    <td>{{item.time}}</td>
-                    <td>{{item.uid}}</td>
-                </tr>
-                </tbody>
+                        <td>{{item.c1_item}}</td>
+                        <td>{{item.c1_number}}</td>
+                        <td>{{item.c2_item}}</td>
+                        <td>{{item.c2_number}}</td>
+                        <td>{{item.time}}</td>
+                        <td>{{item.tid}}</td>
+                        <td>{{item.uid}}</td>
+                    </tr>
+                    </tbody>
                 </table>
                 <div><p><a href="#!/manage_post" class="btn btn-primary">Manage My Post</a></p></div>
             </div>

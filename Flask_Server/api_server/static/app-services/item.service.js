@@ -15,6 +15,7 @@
         service.SearchItem = SearchItem;
         service.History = History;
         service.removeHistory = removeHistory;
+        //service.removeHistory = removeHistory;
 
         return service;
 

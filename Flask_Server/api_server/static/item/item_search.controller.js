@@ -7,7 +7,7 @@
     itemController.$inject = ['ItemService', '$location', '$window', '$rootScope', 'AuthenticationService'];
     function itemController(ItemService, $location, $window, $rootScope, AuthenticationService) {
         var vm = this;
-
+        vm.isAdmin=AuthenticationService.isAdmin;
         vm.list1 = ["Legacy", "Hardcore Legacy", "Standard", "Hardcore"];
         vm.list2 = ["any", "Generic One-Handed Weapon", "Generic Two-Handed Weapon", "Bow", "Claw", "Dagger", "One Hand Axe", "One Hand Mace", "One Hand Sword"
             , "Sceptre", "Staff", "Two Hand Axe", "Two Hand Mace", "Two Hand Sword", "Wand", "Body Armour", "Boots", "Gloves", "Helmet", "Shield", "Amulet", "Belt"
@@ -42,7 +42,7 @@
                                 $rootScope.itemsresult[i].name = temp[temp.length - 1];
                             }
                         }
-                        $location.path('/item_result');
+                        $location.path('/item_resultlog');
                     } else {
                         FlashService.Error(response.message);
                         vm.dataLoading = false;
@@ -55,6 +55,7 @@
                 .then(function (response) {
                     if (typeof(response.retrieve_search_status) == "undefined") {
                         //use response to update page
+                        response.sort(sidsort);
                         $rootScope.history = response;
                         $location.path('/history');
                     } else {
@@ -65,11 +66,19 @@
         }
 
         function logout() {
-            if (AuthenticationService.isLogged) {
                 AuthenticationService.isLogged = false;
+                AuthenticationService.isAdmin = false;
                 delete localStorage.token;
                 $location.path("/");
-            }
+        }
+
+        function sidsort(a, b) {
+            if (a.sid < b.sid)
+                return 1;
+            else if (a.sid > b.sid)
+                return -1;
+            else
+                return 0;
         }
 
     }

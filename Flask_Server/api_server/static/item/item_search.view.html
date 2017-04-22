@@ -1,7 +1,7 @@
 ﻿<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
     <div class="container">
         <div class="navbar-header">
-            <a href="#!/currency_search" class="navbar-brand">POE TRADER</a>
+            <a href="#!/item_search" class="navbar-brand">POE TRADER</a>
         </div>
         <div class="nav navbar-nav">
             <li><a href="https://www.pathofexile.com/">about</a></li>
@@ -14,8 +14,8 @@
                 <ul class="dropdown-menu">
                     <li><a href="#!/history" ng-click="vm.history()">Your History</a></li>
                     <li><a href="#!/update_info">Update info</a></li>
-                    <li><a href="#!/item_search">Item Trade</a></li>
                     <li><a href="#!/currency_search">Currency</a></li>
+                    <li ng-if="vm.isAdmin"><a href="#!/admanage">Manage</a></li>
                 </ul>
             </li>
             <li><a ng-click="vm.logout()">Logout</a></li>

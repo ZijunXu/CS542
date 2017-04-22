@@ -8,9 +8,17 @@
         .module('app')
         .controller('CurrencyResultController', CurrencyResultController);
 
-    CurrencyResultController.$inject = ['$location', '$rootScope'];
-    function CurrencyResultController($rootScope) {
+    CurrencyResultController.$inject = ['$location','AuthenticationService'];
+    function CurrencyResultController($location,AuthenticationService) {
         var vm = this;
+        vm.logout = logout;
+
+        function logout() {
+            AuthenticationService.isLogged = false;
+            AuthenticationService.isAdmin = false;
+            delete localStorage.token;
+            $location.path("/");
+        }
 
     }
 

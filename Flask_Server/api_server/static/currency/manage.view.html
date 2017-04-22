@@ -1,7 +1,7 @@
 <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
     <div class="container">
         <div class="navbar-header">
-            <a href="#!/currency_search" class="navbar-brand">POE TRADER</a>
+            <a href="#!/item_search" class="navbar-brand">POE TRADER</a>
         </div>
         <div class="nav navbar-nav">
             <li><a href="https://www.pathofexile.com/">about</a></li>
@@ -14,7 +14,6 @@
                 <ul class="dropdown-menu">
                     <li><a href="#!/history" ng-click="vm.history()">Your History</a></li>
                     <li><a href="#!/update_info">Update info</a></li>
-                    <li><a href="#!/item_search">Item Trade</a></li>
                     <li><a href="#!/currency_search">Currency</a></li>
                 </ul>
             </li>
@@ -35,58 +34,60 @@
     <div class="row">
         <div class="col-lg-10">
 
-        <div class="col-lg-5">
-            <label for="id1">PostID: <input type="text" name="have" id="id1" class="form-control" ng-model="vm.tid" required/>
-            </label>
-            <form name="form" ng-submit="vm.update()" role="form">
+            <div class="col-lg-5">
+                <label for="id1">PostID: <input type="text" name="have" id="id1" class="form-control" ng-model="vm.tid"
+                                                required/>
+                </label>
+                <form name="form" ng-submit="vm.update()" role="form">
 
-                <div class="form-group">
-                    <label>Name in poe</label>
-                    <input class="form-control" ng-model="vm.updater.user_name"/>
-                </div>
+                    <div class="form-group">
+                        <label>Name in poe</label>
+                        <input class="form-control" ng-model="vm.updater.user_name"/>
+                    </div>
 
-                <div class="form-group">
-                    <label>Have</label>
-                    <input class="form-control" ng-model="vm.updater.c1_item"/>
-                </div>
+                    <div class="form-group">
+                        <label>Have</label>
+                        <input class="form-control" ng-model="vm.updater.c1_item"/>
+                    </div>
 
-                <div class="form-group">
-                    <label>Want</label>
-                    <input class="form-control" ng-model="vm.updater.c2_item"/>
-                </div>
+                    <div class="form-group">
+                        <label>Want</label>
+                        <input class="form-control" ng-model="vm.updater.c2_item"/>
+                    </div>
 
-                <div class="form-group">
-                    <label>Amount(have)</label>
-                    <input class="form-control" ng-model="vm.updater.c1_number"/>
-                </div>
+                    <div class="form-group">
+                        <label>Amount(have)</label>
+                        <input class="form-control" ng-model="vm.updater.c1_number"/>
+                    </div>
 
-                <div class="form-group">
-                    <label>Amount(want)</label>
-                    <input class="form-control" ng-model="vm.updater.c2_number"/>
-                </div>
+                    <div class="form-group">
+                        <label>Amount(want)</label>
+                        <input class="form-control" ng-model="vm.updater.c2_number"/>
+                    </div>
 
-                <div class="form-group">
-                    <label>League</label>
-                    <input class="form-control" ng-model="vm.updater.league"/>
-                </div>
+                    <div class="form-group">
+                        <label>League</label>
+                        <input class="form-control" ng-model="vm.updater.league"/>
+                    </div>
 
 
-                <div class="form-actions">
-                    <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary"
-                            style="float: middle;">Update
-                    </button>
-                    <img ng-if="vm.dataLoading"
-                         src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
-                </div>
-            </form>
-        </div>
+                    <div class="form-actions">
+                        <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary"
+                                style="float: middle;">Update
+                        </button>
+                        <img ng-if="vm.dataLoading"
+                             src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+                    </div>
+                </form>
+            </div>
 
-        <div class="col-lg-5">
-            <label for="id2">PostID: <input type="text" name="have" id="id2" class="form-control" ng-model="vm.deleteid"
-                                            required/>
-                <button class="btn btn-primary" ng-click="vm.Delete()">Delete</button>
-            </label>
-        </div>
+            <div class="col-lg-5">
+                <label for="id2">PostID: <input type="text" name="have" id="id2" class="form-control"
+                                                ng-model="vm.deleteid"
+                                                required/>
+                    <button class="btn btn-primary" ng-click="vm.Delete()">Delete</button>
+                </label>
+            </div>
 
         </div>
     </div>

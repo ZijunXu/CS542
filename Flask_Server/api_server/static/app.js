@@ -27,6 +27,13 @@
                 controllerAs: 'vm'
             })
 
+            .when('/item_resultlog', {
+                controller: 'ItemResultLogController',
+                templateUrl: '/static/item/item_resultlog.view.html',
+                controllerAs: 'vm',
+                access: {requiredLogin: true}
+            })
+
             .when('/login', {
                 controller: 'LoginController',
                 templateUrl: '/static/user/login.view.html',
@@ -48,7 +55,8 @@
             .when('/currency_result', {
                 controller: 'CurrencyResultController',
                 templateUrl: '/static/currency/currency_result.view.html',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                access: {requiredLogin: true}
             })
 
             .when('/currency_post', {
@@ -82,13 +90,6 @@
             .when('/update_info', {
                 controller: 'UpdateController',
                 templateUrl: '/static/user/update.view.html',
-                controllerAs: 'vm',
-                access: {requiredLogin: true}
-            })
-
-            .when('/admin', {
-                controller: 'AdminController',
-                templateUrl: '/static/user/admin.view.html',
                 controllerAs: 'vm',
                 access: {requiredLogin: true}
             })

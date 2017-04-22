@@ -8,12 +8,13 @@
         .module('app')
         .controller('CurrencyPostController', CurrencyPostController);
 
-    CurrencyPostController.$inject = ['$rootScope', '$location', 'CurrencyService', '$window', 'FlashService'];
-    function CurrencyPostController($rootScope, $location, CurrencyService, $window, FlashService) {
+    CurrencyPostController.$inject = ['$rootScope', '$location', 'CurrencyService', '$window', 'FlashService', 'AuthenticationService'];
+    function CurrencyPostController($rootScope, $location, CurrencyService, $window, FlashService, AuthenticationService) {
         var vm = this;
         vm.list1 = ["Legacy", "Hardcore Legacy", "Standard", "Hardcore"];
         vm.my_post = my_post;
         vm.post = post;
+        vm.logout = logout;
 
         vm.reloadRoute = function () {
             $window.location.reload();
@@ -37,6 +38,7 @@
                 .then(function (response) {
                     if (typeof(response.retrieve_post_status) == "undefined") {
                         //use response to update page
+                        response.sort(tidsort);
                         $rootScope.myposts = response;
                         $location.path('/my_post');
                     } else {
@@ -44,6 +46,22 @@
                         vm.dataLoading = false;
                     }
                 });
+        }
+
+        function tidsort(a, b) {
+            if (a.tid < b.tid)
+                return 1;
+            else if (a.tid > b.tid)
+                return -1;
+            else
+                return 0;
+        }
+
+        function logout() {
+            AuthenticationService.isLogged = false;
+            AuthenticationService.isAdmin = false;
+            delete localStorage.token;
+            $location.path("/");
         }
     }
 
