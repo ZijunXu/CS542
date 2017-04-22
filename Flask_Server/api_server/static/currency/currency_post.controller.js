@@ -11,8 +11,10 @@
     CurrencyPostController.$inject = ['$rootScope', '$location', 'CurrencyService', '$window', 'FlashService', 'AuthenticationService'];
     function CurrencyPostController($rootScope, $location, CurrencyService, $window, FlashService, AuthenticationService) {
         var vm = this;
-        vm.isAdmin=AuthenticationService.isAdmin;
+        vm.isAdmin = AuthenticationService.isAdmin;
         vm.list1 = ["Legacy", "Hardcore Legacy", "Standard", "Hardcore"];
+        vm.list4 = ["Select", "Blessed Orb", "Cartographer's Chisel", "Chaos Orb", "Chromatic Orb", "Divine Orb", "Exalted Orb", "Gemcutter's Prism", "Jeweller's Orb",
+            "Orb of Alchemy", "Orb of Alteration", "Orb of Chance", "Orb of Fusing", "Orb of Regret", "Orb of Scouring", "Regal Orb", "Vaal Orb", "Perandus Coin", "Silver Coin"];
         vm.my_post = my_post;
         vm.post = post;
         vm.logout = logout;

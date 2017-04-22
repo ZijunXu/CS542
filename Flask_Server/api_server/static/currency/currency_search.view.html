@@ -59,17 +59,21 @@
                 <div class="row">
                     <div class="col col-lg-4">
                         <h5>What Currency do you want?</h5>
-                        <label for="want1"><input type="text" name="want" id="want1" class="form-control"
-                                                  ng-model="vm.cs.c1_item"
-                                                  required/></label>
+                        <select name="buyout_currency" data-customforms="disabled"
+                                class="chosen" ng-model="vm.cs.c1_item" ng-init="vm.cs.c1_item='Select'"
+                                ng-options="x for x in vm.list4">
+                        </select>
+
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col col-lg-4">
                         <h5>What Currency do you have?</h5>
-                        <label for="have1"><input type="text" name="have" id="have1" class="form-control"
-                                                  ng-model="vm.cs.c2_item" required/></label>
+                        <select name="buyout_currency" data-customforms="disabled"
+                                class="chosen" ng-model="vm.cs.c2_item" ng-init="vm.cs.c2_item='Select'"
+                                ng-options="x for x in vm.list4">
+                        </select>
                     </div>
                 </div>
 

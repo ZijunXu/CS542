@@ -49,8 +49,8 @@
             <form class="custom" id="import" ng-submit="vm.post()" role="form">
                 <div class="row">
                     <div class="col col-lg-4">
-                            <h5>Choose League</h5>
-                            <select id="league" name="league" data-customforms="disabled"
+                        <h5>Choose League</h5>
+                        <select id="league" name="league" data-customforms="disabled"
                                 class="league chosen" ng-model="vm.cup.league" ng-init="vm.cup.league='Legacy'"
                                 ng-options="x for x in vm.list1">
                         </select>
@@ -60,30 +60,38 @@
                 <div class="row">
                     <div class="col col-lg-4">
                         <h5>Your ID in game:</h5>
-                         <label for="gameid"><input type="text" name="gameid" id="gameid" class="form-control" ng-model="vm.cup.user_name"
-                               required/></label>
+                        <label for="gameid"><input type="text" name="gameid" id="gameid" class="form-control"
+                                                   ng-model="vm.cup.user_name"
+                                                   required/></label>
                         <h5>Currency you have:</h5>
-                        <label for="have">Currency: <input type="text" name="have" id="have" class="form-control" ng-model="vm.cup.c1_item"
-                               required/></label>
-                        <label for="price1">Amount: <input type="text" name="price1" id="price1" class="form-control" ng-model="vm.cup.c1_number"
-                               required/></label>
+                        <select name="buyout_currency" data-customforms="disabled"
+                                class="chosen" ng-model="vm.cup.c1_item" ng-init="vm.cup.c1_item='Select'"
+                                ng-options="x for x in vm.list4">
+                        </select>
+                        <label for="price1">Amount: <input type="text" name="price1" id="price1" class="form-control"
+                                                           ng-model="vm.cup.c1_number"
+                                                           required/></label>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col col-lg-4"">
+                    <div class="col col-lg-4">
                         <h5>Currency you want:</h5>
-                         <label for="want">Currency: <input type="text" name="want" id="want" class="form-control" ng-model="vm.cup.c2_item"
-                               required/></label>
-                        <label for="price2">Amount: <input type="text" name="price2" id="price2" class="form-control" ng-model="vm.cup.c2_number"
-                               required/></label>
+                        <select name="buyout_currency" data-customforms="disabled"
+                                class="chosen" ng-model="vm.cup.c2_item" ng-init="vm.cup.c2_item='Select'"
+                                ng-options="x for x in vm.list4">
+                        </select>
+                        <label for="price2">Amount: <input type="text" name="price2" id="price2" class="form-control"
+                                                           ng-model="vm.cup.c2_number"
+                                                           required/></label>
                     </div>
                 </div>
 
                 <div class="row">
                     <hr>
                     <div class="large-12 columns">
-                        <div class="large-2 columns"><p class="button tiny secondary" ng-click="vm.reloadRoute()">Reset</p>
+                        <div class="large-2 columns"><p class="button tiny secondary" ng-click="vm.reloadRoute()">
+                            Reset</p>
                         </div>
                         <div class="large-2 large-offset-8 columns">
                             <input type="submit" class="search button" value="Post!">
