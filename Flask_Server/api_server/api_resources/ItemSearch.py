@@ -26,7 +26,7 @@ class ItemSearch(Resource):
             for n in posts:
                 n["_id"] = str(n["_id"])
                 ans.append(n)
-            if g.user:
+            if g.user and form.name.data:
                 self.add_to_history(form)
             return jsonify(ans)
         else:
