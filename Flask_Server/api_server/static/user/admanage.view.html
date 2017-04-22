@@ -1,12 +1,43 @@
-<div class="row">
-    <div class="large-12 columns">
-        <h2>Do whatever you want!</h2>
-        <div class="large-6 columns">
-            <label>Get all the users</label>
-            <button class="search button" ng-click="vm.get()">Get</button>
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="#!/currency_search" class="navbar-brand">POE TRADER</a>
         </div>
+        <div class="nav navbar-nav">
+            <li><a href="https://www.pathofexile.com/">about</a></li>
+            <li><a href="https://www.pathofexile.com/support">contact</a></li>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                   aria-expanded="false">Menu <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#!/history" ng-click="vm.history()">Your History</a></li>
+                    <li><a href="#!/update_info">Update info</a></li>
+                    <li><a href="#!/item_search">Item Trade</a></li>
+                    <li><a href="#!/currency_search">Currency</a></li>
+                </ul>
+            </li>
+            <li><a ng-click="vm.logout()">Logout</a></li>
+        </ul>
+    </div>
+</nav>
 
-        <table class="dataintable" style="">
+<div class="jumbotron">
+    <div class="container">
+        <h1>POE TRADER</h1>
+        <p>User Management</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+    <div class="col-lg-12">
+
+        <div class="row">
+            <div class="col-lg-8">
+                <p><button class="btn btn-info" ng-click="vm.get()">Get All User</button></p>
+                <table class="table table-bordered table-hover">
             <tr ng-hide="vm.present">
                 <th>Email</th>
                 <th>ID</th>
@@ -20,15 +51,22 @@
                 <td>{{item.password_hash}}</td>
             </tr>
         </table>
-
-        <div class="large-6 columns">
-            <label for="id1">Delete user: <input type="text" name="have" id="id1" class="form-control"
-                                                 ng-model="vm.deletename"/>
-                <button class="search button" ng-click="vm.Deleteuser()">Delete</button>
-            </label>
+            </div>
         </div>
 
-        <div class="col-sm-4 col-sm-offset-4">
+
+        <div class="row">
+            <div class="col-lg-4">
+                <label for="id1">Delete user: <input type="text" name="have" id="id1" class="form-control" ng-model="vm.deletename"/>
+                <button class="btn btn-danger" ng-click="vm.Deleteuser()">Delete</button>
+                </label>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-4">
+            <hr>
             <form name="form" ng-submit="vm.createuser()" role="form">
 
                 <div class="form-group" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required }">
@@ -64,6 +102,14 @@
                 </div>
             </form>
         </div>
+        </div>
+
+
 
     </div>
 </div>
+
+</div>
+
+
+

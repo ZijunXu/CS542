@@ -1,20 +1,38 @@
-<h1 align="center">POE TRADER</h1>
-<h2 align="center">Item Search</h2>
-<div class="btn-group">
-    <button type="button" class="btn btn-primary">Menu</button>
-    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-        <span class="caret"></span>
-        <span class="sr-only">切换下拉菜单</span>
-    </button>
-    <ul class="dropdown-menu" role="menu">
-        <li><a href="#!/history" ng-click="vm.history()">Your History</a></li>
-        <li><a href="#!/update_info">Update info</a></li>
-        <li><a href="#!/currency_search">Currency</a></li>
-        <li><a href="#!/admanage">Manage</a></li>
-        <li class="divider"></li>
-        <li><a ng-click="vm.logout()">Logout</a></li>
-    </ul>
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="#!/currency_search" class="navbar-brand">POE TRADER</a>
+        </div>
+        <div class="nav navbar-nav">
+            <li><a href="https://www.pathofexile.com/">about</a></li>
+            <li><a href="https://www.pathofexile.com/support">contact</a></li>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                   aria-expanded="false">Menu <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#!/history" ng-click="vm.history()">Your History</a></li>
+                    <li><a href="#!/update_info">Update info</a></li>
+                    <li><a href="#!/item_search">Item Trade</a></li>
+                    <li><a href="#!/currency_search">Currency</a></li>
+                </ul>
+            </li>
+            <li><a ng-click="vm.logout()">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>POE TRADER</h1>
+        <p>Item Search</p>
+    </div>
 </div>
+
+
 
 <div class="container">
     <div class="row">
