@@ -1,6 +1,7 @@
-from flask import jsonify, request
+from flask import jsonify, request, g
 from flask_restful import Resource
 from ..database import User
+from ..database import Admin as Admindb
 from ..forms import RegistrationForm
 from api_server import db
 import sys
@@ -14,12 +15,20 @@ class Admin(Resource):
 
     decorators = [auth.login_required]
 
+    def __init__(self):
+        self.admin = Admindb.query.filter_by(id=g.user.id).first()
+
+    def not_permitted(self):
+        return jsonify({"message": "Wrong Page"})
+
     def get(self, username=None):
         """
         :param username: if provide username, query that single user
                          if note provide username, query all the users
         :return: 
         """
+        if not self.admin:
+            return self.not_permitted()
         if username:
             return jsonify(User.query.filter_by(name=username).first().as_dict())
         else:
@@ -31,6 +40,8 @@ class Admin(Resource):
         register_form should has the following value
         name, email, password
         """
+        if not self.admin:
+            return self.not_permitted()
         form = RegistrationForm.from_json(request.get_json())
         if form.validate_on_submit():
             new_user = User(name=form.name.data, email=form.email.data, password=form.password.data)
@@ -45,6 +56,8 @@ class Admin(Resource):
         :param username: the username that need to be delete
         :return: 
         """
+        if not self.admin:
+            return self.not_permitted()
         user = User.query.filter_by(name=username).first()
         if user:
             try:

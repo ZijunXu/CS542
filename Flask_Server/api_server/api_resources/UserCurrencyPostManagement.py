@@ -20,11 +20,10 @@ class UserCurrencyPostManagement(Resource):
         :param tid: the post that need to be modified
         :return: 
         """
-        print(request.get_json())
         form = PostTradeForm.from_json(request.get_json())
         if form.validate_on_submit():
             old_post = Post.query.filter_by(tid=tid).first()
-            if old_post:
+            if old_post and old_post.uid == g.user.id:
                 old_post.c1_item = form.c1_item.data
                 old_post.c2_item = form.c2_item.data
                 old_post.c1_number = form.c1_number.data
@@ -64,8 +63,9 @@ class UserCurrencyPostManagement(Resource):
         """
         try:
             trade = Post.query.filter_by(tid=tid).first()
-            db.session.delete(trade)
-            db.session.commit()
+            if trade and trade.uid == g.user.id:
+                db.session.delete(trade)
+                db.session.commit()
             return jsonify({"delete_post_status": "Success"})
         except:
             return jsonify({"delete_post_status": False, "message": sys.exc_info()[0]})
