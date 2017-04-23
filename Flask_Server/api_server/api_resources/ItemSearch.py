@@ -1,7 +1,7 @@
 from flask import request, jsonify, g
 from pymongo import MongoClient
 from flask_restful import Resource
-from ..forms import ItemQueryForm, UserHistoryForm
+from ..forms import ItemQueryForm
 from ..database import Search
 from api_server import db
 from .mongoSearchFormParser import parser
@@ -19,21 +19,23 @@ class ItemSearch(Resource):
         :return: mongodb query results
         """
         form = ItemQueryForm.from_json(request.get_json())
-
-        if not g.user:
-            return jsonify({"login_staus": False, "message": "Please login"})
-
         if form.validate_on_submit():
             query_and = parser(form)
+            print(query_and)
             posts = self.db.posts.find({"$and": query_and}).limit(50)
             ans = []
             for n in posts:
                 n["_id"] = str(n["_id"])
                 ans.append(n)
-            if g.user and form.name.data:
-                self.add_to_history(form)
-            return jsonify(ans)
+            try:
+                if g.user and form.name.data:
+                    self.add_to_history(form)
+                return jsonify(ans)
+            except:
+                return jsonify(ans)
+
         else:
+            print(form.errors)
             posts = self.db.posts.find().limit(50)
             ans = []
             for n in posts:

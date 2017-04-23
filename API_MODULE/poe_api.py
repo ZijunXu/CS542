@@ -155,6 +155,20 @@ class get_data_api:
                         item['typeLine'] = item['typeLine'].replace("<<set:MS>><<set:M>><<set:S>>", "").strip()
                         item['name'] = item['name'] + " " + item['typeLine']
 
+                        # Parse type
+                        temp_type = item['icon'].split('2DItems')
+                        if len(temp_type) == 1:
+                            item['type'] = 'Flask'
+                        else:
+                            temp_type = temp_type[1].split('/')[1:]
+                            if temp_type[0] in ['Amulets', 'Rings', 'Maps', 'Gems', 'Quivers', 'Belts', 'Jewels',
+                                                'Currency', 'Divination']:
+                                item['type'] = temp_type[0]
+                            elif temp_type[0] == 'Armours':
+                                item['type'] = temp_type[1]
+                            else:
+                                item['type'] = temp_type[2]
+
                         temp.append(item)
 
         if len(temp) != 0:

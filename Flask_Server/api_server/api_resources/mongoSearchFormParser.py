@@ -15,7 +15,10 @@ def parser(form):
     if form.name.data:
         query_and.append({"name": form.name.data})
 
-    if form.typeLine.data:
+    if form.type.data:
+        query_and.append({"type": form.type.data})
+
+    if form.typeLine.data != 'any':
         query_and.append({"typeLine": form.typeLine.data})
 
     if form.league.data:
@@ -27,7 +30,7 @@ def parser(form):
     if form.verified.data:
         query_and.append({"verified": form.verified.data})
 
-    if form.identified.data:
+    if form.identified.data != 'either':
         query_and.append({"identified": form.identified.data})
 
     if form.min_ilvl.data:
@@ -45,21 +48,37 @@ def parser(form):
 
     if form.min_link_number.data:
         if form.max_link_number.data:
-            query_and.append({"sockets.link": form.max_link_number.data})
+            query_and.append({"sockets.link": {"$in": [form.max_link_number.data]}})
         else:
-            query_and.append({"sockets.link": form.min_link_number.data})
+            query_and.append({"sockets.link": {"$in": [form.min_link_number.data]}})
 
-    if form.min_str_socket:
-        query_and.append({"sockets.S": {"$gte": form.min_str_socket.data}})
+    if form.min_str_socket.data:
+        if form.max_str_socket.data:
+            query_and.append({"sockets.S": {"$gte": form.min_str_socket.data,
+                                            "$lt": form.max_str_socket.data}})
+        else:
+            query_and.append({"sockets.S": {"$gte": form.min_str_socket.data}})
 
-    if form.min_dex_socket:
-        query_and.append({"sockets.D": {"$gte": form.min_dex_socket.data}})
+    if form.min_dex_socket.data:
+        if form.max_dex_socket.data:
+            query_and.append({"sockets.D": {"$gte": form.min_dex_socket.data,
+                                            "$lt": form.max_dex_socket.data}})
+        else:
+            query_and.append({"sockets.D": {"$gte": form.min_dex_socket.data}})
 
-    if form.min_int_socket:
-        query_and.append({"sockets.I": {"$gte": form.min_int_socket.data}})
+    if form.min_int_socket.data:
+        if form.max_int_socket.data:
+            query_and.append({"sockets.I": {"$gte": form.min_int_socket.data,
+                                            "$lt": form.max_int_socket.data}})
+        else:
+            query_and.append({"sockets.I": {"$gte": form.min_int_socket.data}})
 
-    if form.min_other_socket:
-        query_and.append({"sockets.Other": {"$gte": form.min_other_socket.data}})
+    if form.min_other_socket.data:
+        if form.max_other_socket.data:
+            query_and.append({"sockets.Other": {"$gte": form.min_other_socket.data,
+                                                "$lt": form.max_other_socket.data}})
+        else:
+            query_and.append({"sockets.Other": {"$gte": form.min_other_socket.data}})
 
     # requirements
     if form.min_requirements_int.data:
@@ -104,23 +123,14 @@ def parser(form):
         query_and.append(
             {"properties.Elemental Damage": {"$gte": form.elemental_damage.data}})
 
-    if form.min_critical_strike_chance.data:
-        if form.max_critical_strike_chance.data:
-            query_and.append(
-                {"properties.Critical Strike Chance": {"$gte": form.min_critical_strike_chance.data,
-                                                       "$lt": form.max_critical_strike_chance.data}})
-        else:
-            query_and.append(
-                {"properties.Critical Strike Chance": {"$gte": form.min_critical_strike_chance.data}})
+    if form.critical_strike_chance.data:
+        query_and.append(
+            {"properties.Critical Strike Chance": {"$gte": form.critical_strike_chance.data}})
 
-    if form.min_attacks_per_second.data:
-        if form.max_attacks_per_second.data:
-            query_and.append(
-                {"properties.Attacks per Second": {"$gte": form.min_attacks_per_second.data,
-                                                   "$lt": form.max_attacks_per_second.data}})
-        else:
-            query_and.append(
-                {"properties.Attacks per Second.data": {"$gte": form.min_attacks_per_second.data}})
+    if form.attacks_per_second.data:
+        query_and.append(
+            {"properties.Attacks per Second": {"$gte": form.min_attacks_per_second.data
+                                               }})
 
     if form.min_armour.data:
         if form.max_armour.data:
