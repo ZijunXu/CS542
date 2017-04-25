@@ -132,7 +132,7 @@ def parser(form):
         else:
             damage = float(form.min_physical_damage.data)
             query_and.append(
-                {"properties.Physical Damage": {"$gte": damage / 2}})
+                {"properties.Physical Damage": {"$gte": damage}})
 
     if form.min_elemental_damage.data:
         if form.max_elemental_damage.data:
@@ -142,7 +142,7 @@ def parser(form):
         else:
             edamage = float(form.min_elemental_damage.data)
             query_and.append(
-                {"properties.Elemental Damage": {"$gte": edamage / 2}})
+                {"properties.Elemental Damage": {"$gte": edamage}})
 
     if form.min_critical_strike_chance.data:
         if form.max_critical_strike_chance.data:
@@ -152,7 +152,7 @@ def parser(form):
         else:
             crit = float(form.min_critical_strike_chance.data)
             query_and.append(
-                {"properties.Critical Strike Chance": {"$gte": crit / 2}})
+                {"properties.Critical Strike Chance": {"$gte": crit}})
 
     if form.min_attacks_per_second.data:
         if form.max_attacks_per_second.data:
@@ -162,7 +162,7 @@ def parser(form):
         else:
             aps = float(form.min_attacks_per_second.data)
             query_and.append(
-                {"properties.Attacks per Second": {"$gte": aps / 2}})
+                {"properties.Attacks per Second": {"$gte": aps}})
 
     if form.min_armour.data:
         if form.max_armour.data:

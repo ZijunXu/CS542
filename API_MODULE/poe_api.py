@@ -138,25 +138,16 @@ class get_data_api:
                                 if len(temp_number) == 0:
                                     temp_mods[temp_string] = 1
                                 else:
-                                    temp_mods[temp_string] = sum(temp_number)/len(temp_number)
+                                    temp_mods[temp_string] = sum(temp_number) / len(temp_number)
                             item.pop('explicitMods', None)
 
                         item['Mods'] = temp_mods
-
-                        # Parse currency
-                        price = re.findall("\d+\.*\d*", item['note'])
-                        if len(price) == 0:
-                            price = 0
-                        else:
-                            price = float(price[0])
-                        currency = item['note'].split(' ')[-1]
-                        item.pop('note', None)
-                        item['Price'] = {'Currency': currency, 'Number': price}
 
                         # Parse name
                         item['name'] = item['name'].replace("<<set:MS>><<set:M>><<set:S>>", "").strip()
                         item['typeLine'] = item['typeLine'].replace("<<set:MS>><<set:M>><<set:S>>", "").strip()
                         item['name'] = item['name'] + " " + item['typeLine']
+                        item['name'] = item['name'].strip()
 
                         # Parse type
                         temp_type = item['icon'].split('2DItems')
@@ -174,7 +165,18 @@ class get_data_api:
 
                         # add the idx for the data
                         item['idx'] = self.user_id
-                        temp.append(item)
+
+                        # Parse currency
+                        price = re.findall("\d+\.*\d*", item['note'])
+                        if len(price) != 0:
+                            price = float(price[0])
+                            currency = item['note'].split(' ')[-1]
+                            if currency.lower() in ["exa", "chaos", "alt", "divine", "jew", "fuse", "regret", "alch",
+                                                  "gcp", "vaal", "chance", "chisel", "chrom", "scour", "ex", "regal",
+                                                  "exalt", "blessed", "exalted"]:
+                                item.pop('note', None)
+                                item['Price'] = {'Currency': currency, 'Number': price}
+                                temp.append(item)
 
         if len(temp) != 0:
             client = MongoClient('mongodb://localhost:27017/')
