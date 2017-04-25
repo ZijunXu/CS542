@@ -22,7 +22,10 @@ def parser(form):
         query_and.append({"name": form.name.data})
 
     if form.type.data:
-        query_and.append({"type": form.type.data+"s"})
+        if form.type.data == 'Flask':
+            query_and.append({"type": form.type.data})
+        else:
+            query_and.append({"type": form.type.data+"s"})
 
     if form.typeLine.data:
         query_and.append({"typeLine": form.typeLine.data})

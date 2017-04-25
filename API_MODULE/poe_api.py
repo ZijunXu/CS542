@@ -111,31 +111,34 @@ class get_data_api:
                         if 'implicitMods' in item:
                             for n in item['implicitMods']:
                                 temp_number = re.findall("\d+\.*\d*", n)
+                                temp_number = [float(n) for n in temp_number]
                                 temp_string = re.sub("\d+\.*\d*", "X", n)
                                 if len(temp_number) == 0:
                                     temp_mods[temp_string] = 1
                                 else:
-                                    temp_mods[temp_string] = float(temp_number[0])
+                                    temp_mods[temp_string] = sum(temp_number) / len(temp_number)
                             item.pop('implicitMods', None)
 
                         if 'craftedMods' in item:
                             for n in item['craftedMods']:
                                 temp_number = re.findall("\d+\.*\d*", n)
+                                temp_number = [float(n) for n in temp_number]
                                 temp_string = re.sub("\d+\.*\d*", "X", n)
                                 if len(temp_number) == 0:
                                     temp_mods[temp_string] = 1
                                 else:
-                                    temp_mods[temp_string] = float(temp_number[0])
+                                    temp_mods[temp_string] = sum(temp_number) / len(temp_number)
                             item.pop('craftedMods', None)
 
                         if 'explicitMods' in item:
                             for n in item['explicitMods']:
                                 temp_number = re.findall("\d+\.*\d*", n)
+                                temp_number = [float(n) for n in temp_number]
                                 temp_string = re.sub("\d+\.*\d*", "X", n)
                                 if len(temp_number) == 0:
                                     temp_mods[temp_string] = 1
                                 else:
-                                    temp_mods[temp_string] = float(temp_number[0])
+                                    temp_mods[temp_string] = sum(temp_number)/len(temp_number)
                             item.pop('explicitMods', None)
 
                         item['Mods'] = temp_mods
@@ -169,6 +172,8 @@ class get_data_api:
                             else:
                                 item['type'] = temp_type[2]
 
+                        # add the idx for the data
+                        item['idx'] = self.user_id
                         temp.append(item)
 
         if len(temp) != 0:
