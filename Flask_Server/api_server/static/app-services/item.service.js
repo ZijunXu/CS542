@@ -21,7 +21,7 @@
         return service;
 
         function SearchItem(item) {
-            console.log(item.Mods_content);
+            console.log(item);
             return $http.post('/api/item', item).then(handleSuccess, handleError('Error updating user'));
         }
 
