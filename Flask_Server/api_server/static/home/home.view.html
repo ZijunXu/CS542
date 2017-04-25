@@ -122,7 +122,7 @@
                                         <li><input type="text" name="edps_min" class="num" placeholder="min"
                                                    value="" ng-model="vm.item.min_elemental_damage"></li>
                                         <li><input type="text" name="edps_max" class="num" placeholder="max"
-                                                   value="" ng-model="vm.item.max_elemental_damage"></li>
+                                                   value="" ng-model="vm.item.min_elemental_damage"></li>
                                     </ul>
                                 </div>
                             </div>
@@ -323,18 +323,6 @@
                                         ng-options="x for x in vm.list8">
                                 </select>
                             </div>
-                            <div class="large-4 columns">
-                                <div class="large-6 columns">
-                                    <ul class="button-group ul-2">
-                                        <li><input type="text" class="num" placeholder="min" value=""
-                                                   ng-model="vm.item.min_price">
-                                        </li>
-                                        <li><input type="text" class="num" placeholder="max" value=""
-                                                   ng-model="vm.item.max_price">
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
                             <div class="large-4 columns"></div>
                         </div>
 
@@ -358,6 +346,19 @@
                                             ng-init="vm.item.currency_name='Select'"
                                             ng-options="x for x in vm.list4">
                                     </select>
+                                </div>
+                            </div>
+                            <div class="large-4 columns">
+                                <div class="large-6 columns"><label class="right inline">Price</label></div>
+                                <div class="large-6 columns">
+                                    <ul class="button-group ul-2">
+                                        <li><input type="text" name="level_min" class="num" placeholder="min" value=""
+                                                   ng-model="vm.item.min_price">
+                                        </li>
+                                        <li><input type="text" name="level_max" class="num" placeholder="max" value=""
+                                                   ng-model="vm.item.max_price">
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                             <div class="large-4 columns"></div>
