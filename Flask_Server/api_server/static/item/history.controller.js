@@ -11,10 +11,11 @@
     HistoryController.$inject = ['$rootScope', 'ItemService', 'FlashService', 'AuthenticationService', '$location'];
     function HistoryController($rootScope, ItemService, FlashService, AuthenticationService, $location) {
         var vm = this;
-        vm.isAdmin=AuthenticationService.isAdmin;
+        vm.isAdmin = AuthenticationService.isAdmin;
 
         vm.remove = remove;
         vm.logout = logout;
+        vm.timesort = timesort;
 
         function logout() {
             AuthenticationService.isLogged = false;
@@ -36,6 +37,12 @@
                         vm.dataLoading = false;
                     }
                 });
+        }
+
+        function timesort() {
+            $rootScope.history.sort(function (a, b) {
+                return a.time < b.time ? 1 : -1;
+            });
         }
 
     }

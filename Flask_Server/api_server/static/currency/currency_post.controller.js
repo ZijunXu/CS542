@@ -29,8 +29,8 @@
                 .then(function (response) {
                     //use response to update page
                     if (response.post_status) {
-                        FlashService.Success('Post successful', true);
                         $window.location.reload();
+                        FlashService.Success('Post successful', true);
                     } else {
                         FlashService.Error(response.message);
                         vm.dataLoading = false;

@@ -49,13 +49,13 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                     <tr>
-                        <th>Name in poe</th>
+                        <th>In-game Name</th>
+                        <th>League</th>
                         <th>Have</th>
                         <th>Amount(have)</th>
                         <th>Want</th>
                         <th>Amount(want)</th>
-                        <th>Time</th>
-                        <th>League</th>
+                        <th ng-click="vm.timesort()">Time</th>
                         <th>Update</th>
                         <th>Remove</th>
                     </tr>
@@ -63,12 +63,12 @@
                     <tbody>
                     <tr ng-repeat="item in myposts">
                         <td>{{item.name}}</td>
+                        <td>{{item.league}}</td>
                         <td>{{item.c1_item}}</td>
                         <td>{{item.c1_number}}</td>
                         <td>{{item.c2_item}}</td>
                         <td>{{item.c2_number}}</td>
                         <td>{{item.time}}</td>
-                        <td>{{item.league}}</td>
                         <td>
                             <button ng-click="vm.update1($index)">Update</button>
                         </td>
@@ -80,36 +80,52 @@
                 </table>
                 <div class="col-lg-5" ng-hide="vm.pre">
                     <form name="form" ng-submit="vm.update()" role="form">
+                        <div class="row">
+                            <div class="col col-lg-8">
+                                <h5>League</h5>
+                                <select id="league" name="league" data-customforms="disabled"
+                                        class="league chosen" ng-model="vm.updater.league"
+                                        ng-init="vm.updater.league='Legacy'"
+                                        ng-options="x for x in vm.list1">
+                                </select>
+                            </div>
+                        </div>
 
                         <div class="form-group">
-                            <label>In-</label>
+                            <label>In-game Name</label>
                             <input class="form-control" ng-model="vm.updater.user_name"/>
                         </div>
 
-                        <div class="form-group">
-                            <label>Have</label>
-                            <input class="form-control" ng-model="vm.updater.c1_item"/>
+                        <div class="row">
+                            <div class="col col-lg-8">
+                                <h5>Have</h5>
+                                <select name="league" data-customforms="disabled"
+                                        class="league chosen" ng-model="vm.updater.c1_item"
+                                        ng-init="vm.updater.c1_item='Select'"
+                                        ng-options="x for x in vm.list4">
+                                </select>
+                            </div>
                         </div>
-
 
                         <div class="form-group">
                             <label>Amount(have)</label>
                             <input class="form-control" ng-model="vm.updater.c1_number"/>
                         </div>
 
-                        <div class="form-group">
-                            <label>Want</label>
-                            <input class="form-control" ng-model="vm.updater.c2_item"/>
+                        <div class="row">
+                            <div class="col col-lg-8">
+                                <h5>Want</h5>
+                                <select name="league" data-customforms="disabled"
+                                        class="league chosen" ng-model="vm.updater.c2_item"
+                                        ng-init="vm.updater.c2_item='Select'"
+                                        ng-options="x for x in vm.list4">
+                                </select>
+                            </div>
                         </div>
 
                         <div class="form-group">
                             <label>Amount(want)</label>
                             <input class="form-control" ng-model="vm.updater.c2_number"/>
-                        </div>
-
-                        <div class="form-group">
-                            <label>League</label>
-                            <input class="form-control" ng-model="vm.updater.league"/>
                         </div>
 
                         <div class="form-actions">

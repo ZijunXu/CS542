@@ -26,6 +26,10 @@
         };
 
         function search() {
+            if (vm.cs.c1_item == "Select")
+                delete vm.cs.c1_item;
+            if (vm.cs.c2_item == "Select")
+                delete vm.cs.c2_item;
             console.log(vm.cs);
             CurrencyService.SearchCurrency(vm.cs)
                 .then(function (response) {
