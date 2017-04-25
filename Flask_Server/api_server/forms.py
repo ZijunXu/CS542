@@ -31,7 +31,9 @@ class RegistrationForm(FlaskForm):
 class UpdateForm(FlaskForm):
     email = StringField('Email Address', validators=[Length(1, 64), Email(), Optional()])
     current_password = PasswordField('Current Password', validators=[DataRequired()])
-    new_password = PasswordField('New Password', validators=[EqualTo('confirm_new_password', message='Passwords must match'), Optional()])
+    new_password = PasswordField('New Password',
+                                 validators=[EqualTo('confirm_new_password', message='Passwords must match'),
+                                             Optional()])
     confirm_new_password = PasswordField('Repeat Password')
 
     def validate_email(self, field):
@@ -96,26 +98,41 @@ class ItemQueryForm(FlaskForm):
     min_str_socket = IntegerField('Min STR Sockets Number', validators=[NumberRange(0, 6), Optional()], default=None)
     min_dex_socket = IntegerField('Min DEX Sockets Number', validators=[NumberRange(0, 6), Optional()], default=None)
     min_int_socket = IntegerField('Min INT Sockets Number', validators=[NumberRange(0, 6), Optional()], default=None)
-    min_other_socket = IntegerField('Min White Sockets Number', validators=[NumberRange(0, 6), Optional()], default=None)
+    min_other_socket = IntegerField('Min White Sockets Number', validators=[NumberRange(0, 6), Optional()],
+                                    default=None)
 
     supported = BooleanField('Support Skill Gem', validators=[Optional()], default=None)
 
     # inside the requirement of the document in mongodb
-    min_requirements_int = IntegerField('Min INT Requirement', validators=[NumberRange(0, 500), Optional()], default=None)
-    max_requirements_int = IntegerField('Max INT Requirement', validators=[NumberRange(0, 500), Optional()], default=None)
-    min_requirements_dex = IntegerField('Min DEX Requirement', validators=[NumberRange(0, 500), Optional()], default=None)
-    max_requirements_dex = IntegerField('Max DEX Requirement', validators=[NumberRange(0, 500), Optional()], default=None)
-    min_requirements_str = IntegerField('Min STR Requirement', validators=[NumberRange(0, 500), Optional()], default=None)
-    max_requirements_str = IntegerField('Max STR Requirement', validators=[NumberRange(0, 500), Optional()], default=None)
-    min_requirements_lvl = IntegerField('Min Level Requirement', validators=[NumberRange(0, 100), Optional()], default=None)
-    max_requirements_lvl = IntegerField('Max Level Requirement', validators=[NumberRange(0, 100), Optional()], default=None)
+    min_requirements_int = IntegerField('Min INT Requirement', validators=[NumberRange(0, 500), Optional()],
+                                        default=None)
+    max_requirements_int = IntegerField('Max INT Requirement', validators=[NumberRange(0, 500), Optional()],
+                                        default=None)
+    min_requirements_dex = IntegerField('Min DEX Requirement', validators=[NumberRange(0, 500), Optional()],
+                                        default=None)
+    max_requirements_dex = IntegerField('Max DEX Requirement', validators=[NumberRange(0, 500), Optional()],
+                                        default=None)
+    min_requirements_str = IntegerField('Min STR Requirement', validators=[NumberRange(0, 500), Optional()],
+                                        default=None)
+    max_requirements_str = IntegerField('Max STR Requirement', validators=[NumberRange(0, 500), Optional()],
+                                        default=None)
+    min_requirements_lvl = IntegerField('Min Level Requirement', validators=[NumberRange(0, 100), Optional()],
+                                        default=None)
+    max_requirements_lvl = IntegerField('Max Level Requirement', validators=[NumberRange(0, 100), Optional()],
+                                        default=None)
 
     # inside the properties of the document in mongodb
     # for weapon
-    physical_damage = FloatField('Physical Damage', validators=[NumberRange(0, 1000), Optional()], default=None)
-    elemental_damage = FloatField('Elemental Damage', validators=[NumberRange(0, 1000), Optional()], default=None)
-    critical_strike_chance = FloatField('Critical Strike Chance', validators=[NumberRange(0, 100), Optional()], default=None)
-    attacks_per_second = FloatField('Attacks per Second', validators=[NumberRange(0, 10), Optional()], default=None)
+    min_physical_damage = FloatField('Physical Damage', validators=[NumberRange(0, 1000), Optional()], default=None)
+    max_physical_damage = FloatField('Physical Damage', validators=[NumberRange(0, 1000), Optional()], default=None)
+    min_elemental_damage = FloatField('Elemental Damage', validators=[NumberRange(0, 1000), Optional()], default=None)
+    max_elemental_damage = FloatField('Elemental Damage', validators=[NumberRange(0, 1000), Optional()], default=None)
+    min_critical_strike_chance = FloatField('Critical Strike Chance', validators=[NumberRange(0, 100), Optional()],
+                                            default=None)
+    max_critical_strike_chance = FloatField('Critical Strike Chance', validators=[NumberRange(0, 100), Optional()],
+                                            default=None)
+    min_attacks_per_second = FloatField('Attacks per Second', validators=[NumberRange(0, 10), Optional()], default=None)
+    max_attacks_per_second = FloatField('Attacks per Second', validators=[NumberRange(0, 10), Optional()], default=None)
 
     # for armour
     min_armour = FloatField('Min Armour', validators=[NumberRange(0, 1500), Optional()], default=None)

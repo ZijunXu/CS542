@@ -18,6 +18,7 @@ class ItemSearch(Resource):
         how to parse the form is tricky
         :return: mongodb query results
         """
+        print(request.get_json())
         form = ItemQueryForm.from_json(request.get_json())
         if form.validate_on_submit():
             query_and = parser(form)
@@ -35,7 +36,6 @@ class ItemSearch(Resource):
                 return jsonify(ans)
 
         else:
-            print(form.errors)
             posts = self.db.posts.find().limit(50)
             ans = []
             for n in posts:

@@ -83,5 +83,7 @@ class UserCurrencyPostManagement(Resource):
             if not g.user:
                 return jsonify({"login_staus": False, "message": "Please login"})
 
-            history = Post.query.filter_by(uid=g.user.id)
+            history = Post.query.filter_by(uid=g.user.id).order_by(Post.time.desc())
+            for n in history:
+                print(n.time)
             return jsonify([n.as_dict() for n in history])

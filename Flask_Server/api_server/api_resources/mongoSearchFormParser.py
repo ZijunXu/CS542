@@ -1,24 +1,30 @@
 def parser(form):
     query_and = []
+    price_name = {"Blessed Orb": "bless",
+                  "Cartographer's Chisel": "chisel", "Chaos Orb": "chaos", "Chromatic Orb": "chrome",
+                  "Divine Orb": "div", "Exalted Orb": "exa", "Gemcutter's Prism": "gem", "Jeweller's Orb": "jew",
+                  "Orb of Alchemy": "alch", "Orb of Alteration": "alt", "Orb of Chance": "chance",
+                  "Orb of Fusing": "fus", "Orb of Regret": "regret", "Orb of Scouring": "scour", "Regal Orb": "regal",
+                  "Vaal Orb": "vaal", "Perandus Coin": "perandus", "Silver Coin": "silver"}
 
     if form.currency_name.data:
         if form.min_price.data:
             if form.max_price.data:
-                query_and.append({"Price.Currency": form.currency_name.data,
+                query_and.append({"Price.Currency": price_name[form.currency_name.data],
                                   "Price.Number": {"$gte": form.min_price.data, "$lt": form.max_price.data}})
             else:
-                query_and.append({"Price.Currency": form.currency_name.data,
+                query_and.append({"Price.Currency": price_name[form.currency_name.data],
                                   "Price.Number": {"$gte": form.min_price.data}})
         else:
-            query_and.append({"Price.Currency": form.currency_name.data})
+            query_and.append({"Price.Currency": price_name[form.currency_name.data]})
 
     if form.name.data:
         query_and.append({"name": form.name.data})
 
     if form.type.data:
-        query_and.append({"type": form.type.data})
+        query_and.append({"type": form.type.data+"s"})
 
-    if form.typeLine.data != 'any':
+    if form.typeLine.data:
         query_and.append({"typeLine": form.typeLine.data})
 
     if form.league.data:
@@ -30,7 +36,7 @@ def parser(form):
     if form.verified.data:
         query_and.append({"verified": form.verified.data})
 
-    if form.identified.data != 'either':
+    if form.identified.data:
         query_and.append({"identified": form.identified.data})
 
     if form.min_ilvl.data:
@@ -115,22 +121,45 @@ def parser(form):
                 {"requirements.Level": {"$gte": form.min_requirements_lvl.data}})
 
     # properties
-    if form.physical_damage.data:
-        query_and.append(
-            {"properties.Physical Damage": {"$gte": form.physical_damage.data}})
+    if form.min_physical_damage.data:
+        if form.max_physical_damage.data:
+            damage = float(form.min_physical_damage.data) + float(form.max_physical_damage.data)
+            query_and.append(
+                {"properties.Physical Damage": {"$gte": damage / 2}})
+        else:
+            damage = float(form.min_physical_damage.data)
+            query_and.append(
+                {"properties.Physical Damage": {"$gte": damage / 2}})
 
-    if form.elemental_damage.data:
-        query_and.append(
-            {"properties.Elemental Damage": {"$gte": form.elemental_damage.data}})
+    if form.min_elemental_damage.data:
+        if form.max_elemental_damage.data:
+            edamage = float(form.min_elemental_damage.data) + float(form.max_elemental_damage.data)
+            query_and.append(
+                {"properties.Physical Damage": {"$gte": edamage / 2}})
+        else:
+            edamage = float(form.min_elemental_damage.data)
+            query_and.append(
+                {"properties.Physical Damage": {"$gte": edamage / 2}})
 
-    if form.critical_strike_chance.data:
-        query_and.append(
-            {"properties.Critical Strike Chance": {"$gte": form.critical_strike_chance.data}})
+    if form.min_critical_strike_chance.data:
+        if form.max_critical_strike_chance.data:
+            crit = float(form.min_critical_strike_chance.data) + float(form.max_critical_strike_chance.data)
+            query_and.append(
+                {"properties.Physical Damage": {"$gte": crit / 2}})
+        else:
+            crit = float(form.min_critical_strike_chance.data)
+            query_and.append(
+                {"properties.Physical Damage": {"$gte": crit / 2}})
 
-    if form.attacks_per_second.data:
-        query_and.append(
-            {"properties.Attacks per Second": {"$gte": form.min_attacks_per_second.data
-                                               }})
+    if form.min_attacks_per_second.data:
+        if form.max_attacks_per_second.data:
+            aps = float(form.min_attacks_per_second.data) + float(form.max_attacks_per_second.data)
+            query_and.append(
+                {"properties.Physical Damage": {"$gte": aps / 2}})
+        else:
+            aps = float(form.min_attacks_per_second.data)
+            query_and.append(
+                {"properties.Physical Damage": {"$gte": aps / 2}})
 
     if form.min_armour.data:
         if form.max_armour.data:
