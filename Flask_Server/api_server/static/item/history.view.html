@@ -36,15 +36,13 @@
             <table class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Content</th>
-                    <th ng-click="vm.timesort()">Time(click to sort)</th>
+                    <th>Time</th>
                     <th>Delete</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr ng-repeat="item in history">
-                    <td>{{item.id}}</td>
                     <td>{{item.item}}</td>
                     <td>{{item.time}}</td>
                     <td>

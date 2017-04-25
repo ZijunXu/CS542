@@ -37,13 +37,12 @@
                 <tbody>
                 <tr style="height:220px" ng-repeat="item in itemsresultlog">
                     <td><img src={{item.icon}}></td>
-                    <td><b>Name: {{item.name}}</b><br>
-                        <b>Level: {{item.properties.Level}}&nbsp&nbsp Strength: {{item.requirements.Str}}</b><br>
-                        <b>Int: {{item.requirements.Int}}&nbsp&nbsp Ilvl: {{item.ilvl}}</b><br>
-                        <b>Currency: {{item.Price.Currency}}&nbsp&nbsp Price: {{item.Price.Number}}</b><br>
-                        <b>Mods: </b><br>
-                        <div ng-repeat="it in item.explicitMods track by $index">
-                            <b>{{it}}</b><br>
+                    <td><b style="color:purple">Name: {{item.name}}</b><br>
+                        <b>Level: {{item.properties.Level}}&nbsp&nbsp Strength: {{item.requirements.Str}}&nbsp&nbsp Int: {{item.requirements.Int}}&nbsp&nbsp Ilvl: {{item.ilvl}}</b><br>
+                        <b>Currency: {{item.Price.Currency}}&nbsp&nbsp&nbsp&nbsp Price: {{item.Price.Number}}</b><br>
+                        <b style="color:gold">Mods: </b><br>
+                        <div ng-repeat="(key,value) in item.Mods">
+                            <b style="color:green">{{key}} : {{value}}</b><br>
                         </div>
                     </td>
                     <td align="middle" style="vertical-align:middle">
@@ -65,17 +64,17 @@
                     <td align="middle" style="vertical-align:middle">
                         <table class="table table-bordered table-hover">
                             <tr>
-                                <th>Phys</th>
+                                <th>Level</th>
                             </tr>
                             <tr>
-                                <td align="middle" style="vertical-align:middle" height="30">{{item.properties['Physical Damage']}}
+                                <td align="middle" style="vertical-align:middle" height="30">{{item.properties.Level}}
                                 </td>
                             </tr>
                             <tr>
                                 <th>Evasion</th>
                             </tr>
                             <tr>
-                                <td align="middle" style="vertical-align:middle" height="30"></td>
+                                <td align="middle" style="vertical-align:middle" height="30">{{item.properties['Evasion Rating']}}</td>
                             </tr>
                         </table>
                     </td>
@@ -121,7 +120,7 @@
                                 <th>DPS</th>
                             </tr>
                             <tr>
-                                <td align="middle" style="vertical-align:middle" height="30">{{item.properties['Damage Effectiveness']}}
+                                <td align="middle" style="vertical-align:middle" height="30">{{item.properties['Physical Damage']}}
                                 </td>
                             </tr>
                             <tr>
@@ -136,32 +135,17 @@
                     <td align="middle" style="vertical-align:middle">
                         <table class="table table-bordered table-hover">
                             <tr>
-                                <th>pDPS</th>
-                            </tr>
-                            <tr>
-                                <td align="middle" style="vertical-align:middle" height="30"></td>
-                            </tr>
-                            <tr>
-                                <th>Level</th>
-                            </tr>
-                            <tr>
-                                <td align="middle" style="vertical-align:middle" height="30">{{item.properties.Level}}</td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td align="middle" style="vertical-align:middle">
-                        <table class="table table-bordered table-hover">
-                            <tr>
                                 <th>eDPS</th>
                             </tr>
                             <tr>
-                                <td align="middle" style="vertical-align:middle" height="30"></td>
+                                <td align="middle" style="vertical-align:middle" height="30">{{item.properties['Damage Effectiveness']}}
+                                </td>
                             </tr>
                             <tr>
                                 <th>Owner</th>
                             </tr>
                             <tr>
-                                <td align="middle" style="vertical-align:middle" height="30">{{item.owner}}</td>
+                                <td style="color:blue" align="middle" style="vertical-align:middle" height="30">{{item.owner}}</td>
                             </tr>
                         </table>
                     </td>

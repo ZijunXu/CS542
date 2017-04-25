@@ -22,6 +22,7 @@
         vm.createuser = createuser;
         vm.logout = logout;
         vm.sortid = sortid;
+        vm.sortname = sortname;
 
         function logout() {
             AuthenticationService.isLogged = false;
@@ -79,6 +80,12 @@
         function sortid() {
             vm.users.sort(function (a, b) {
                 return a.id > b.id ? 1 : -1;
+            });
+        }
+
+        function sortname() {
+            vm.users.sort(function (p1, p2) {
+                return p1.name.localeCompare(p2.name)
             });
         }
     }

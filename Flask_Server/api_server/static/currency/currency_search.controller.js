@@ -50,7 +50,7 @@
                 .then(function (response) {
                     if (typeof(response.retrieve_post_status) == "undefined") {
                         //use response to update page
-                        response.sort(tidsort);
+                        //response.sort(tidsort);
                         $rootScope.myposts = response;
                         $location.path('/my_post');
                     } else {
