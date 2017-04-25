@@ -28,8 +28,8 @@
             UserService.Update(vm.update)
                 .then(function (response) {
                     if (response.update_status) {
-                        FlashService.Success('Update successful', true);
                         $window.location.reload();
+                        FlashService.Success('Update successful', true);
                     } else {
                         FlashService.Error(response.message);
                         vm.dataLoading = false;

@@ -15,11 +15,16 @@
         vm.pre = true;
         vm.index1 = 0;
 
+        vm.list1 = ["Legacy", "Hardcore Legacy", "Standard", "Hardcore"];
+
+        vm.list4 = ["Select", "Blessed Orb", "Cartographer's Chisel", "Chaos Orb", "Chromatic Orb", "Divine Orb", "Exalted Orb", "Gemcutter's Prism", "Jeweller's Orb",
+            "Orb of Alchemy", "Orb of Alteration", "Orb of Chance", "Orb of Fusing", "Orb of Regret", "Orb of Scouring", "Regal Orb", "Vaal Orb", "Perandus Coin", "Silver Coin"];
         vm.update = update;
         vm.update1 = update1;
         vm.Delete = Delete;
         vm.logout = logout;
         vm.createObj = createObj;
+        vm.timesort = timesort;
 
         function Delete(index) {
             var tid = $rootScope.myposts[index].tid;
@@ -81,6 +86,12 @@
             obj.league = ob.league;
 
             return obj;
+        }
+
+        function timesort() {
+            $rootScope.myposts.sort(function (a, b) {
+                return a.time < b.time ? 1 : -1;
+            });
         }
     }
 

@@ -21,6 +21,7 @@
         vm.Deleteuser = Deleteuser;
         vm.createuser = createuser;
         vm.logout = logout;
+        vm.sortid = sortid;
 
         function logout() {
             AuthenticationService.isLogged = false;
@@ -30,16 +31,20 @@
         }
 
         function Deleteuser() {
-            AdminService.Deletename(vm.deletename)
-                .then(function (response) {
-                    if (response.delete_status == "Success") {
-                        FlashService.Success('Delete successful', true);
-                        //use response to update page
-                    } else {
-                        FlashService.Error(response.message);
-                        vm.dataLoading = false;
-                    }
-                });
+            if (typeof(vm.deletename) == "undefined" || vm.deletename == "")
+                FlashService.Error('Please type the username', true);
+            else {
+                AdminService.Deletename(vm.deletename)
+                    .then(function (response) {
+                        if (response.delete_status == "Success") {
+                            FlashService.Success('Delete successful', true);
+                            //use response to update page
+                        } else {
+                            FlashService.Error(response.message);
+                            vm.dataLoading = false;
+                        }
+                    });
+            }
         }
 
         function createuser() {
@@ -69,6 +74,12 @@
                         vm.dataLoading = false;
                     }
                 });
+        }
+
+        function sortid() {
+            vm.users.sort(function (a, b) {
+                return a.id > b.id ? 1 : -1;
+            });
         }
     }
 
