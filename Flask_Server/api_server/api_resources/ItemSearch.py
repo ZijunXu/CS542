@@ -36,6 +36,7 @@ class ItemSearch(Resource):
                 return jsonify(ans)
 
         else:
+            print(form.errors)
             posts = self.db.posts.find().limit(50)
             ans = []
             for n in posts:

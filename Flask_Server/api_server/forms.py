@@ -127,12 +127,12 @@ class ItemQueryForm(FlaskForm):
     max_physical_damage = FloatField('Physical Damage', validators=[NumberRange(0, 1000), Optional()], default=None)
     min_elemental_damage = FloatField('Elemental Damage', validators=[NumberRange(0, 1000), Optional()], default=None)
     max_elemental_damage = FloatField('Elemental Damage', validators=[NumberRange(0, 1000), Optional()], default=None)
-    min_critical_strike_chance = FloatField('Critical Strike Chance', validators=[NumberRange(0, 100), Optional()],
+    min_critical_strike_chance = FloatField('Critical Strike Chance', validators=[NumberRange(0, 1000), Optional()],
                                             default=None)
-    max_critical_strike_chance = FloatField('Critical Strike Chance', validators=[NumberRange(0, 100), Optional()],
+    max_critical_strike_chance = FloatField('Critical Strike Chance', validators=[NumberRange(0, 1000), Optional()],
                                             default=None)
-    min_attacks_per_second = FloatField('Attacks per Second', validators=[NumberRange(0, 10), Optional()], default=None)
-    max_attacks_per_second = FloatField('Attacks per Second', validators=[NumberRange(0, 10), Optional()], default=None)
+    min_attacks_per_second = FloatField('Attacks per Second', validators=[NumberRange(0, 1000), Optional()], default=None)
+    max_attacks_per_second = FloatField('Attacks per Second', validators=[NumberRange(0, 1000), Optional()], default=None)
 
     # for armour
     min_armour = FloatField('Min Armour', validators=[NumberRange(0, 1500), Optional()], default=None)
