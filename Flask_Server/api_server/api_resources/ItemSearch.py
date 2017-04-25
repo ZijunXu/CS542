@@ -1,5 +1,5 @@
 from flask import request, jsonify, g
-from pymongo import MongoClient
+from pymongo import MongoClient, ASCENDING
 from flask_restful import Resource
 from ..forms import ItemQueryForm
 from ..database import Search
@@ -23,7 +23,7 @@ class ItemSearch(Resource):
         if form.validate_on_submit():
             query_and = parser(form)
             print(query_and)
-            posts = self.db.posts.find({"$and": query_and}).limit(50)
+            posts = self.db.posts.find({"$and": query_and}).limit(50).sort("Price.Number", ASCENDING)
             ans = []
             for n in posts:
                 n["_id"] = str(n["_id"])

@@ -107,7 +107,7 @@ class get_data_api:
                                                'Other': 0}
 
                         # parsing the mods
-                        temp_mods = {}
+                        temp_mods = {"Original":[]}
                         if 'implicitMods' in item:
                             for n in item['implicitMods']:
                                 temp_number = re.findall("\d+\.*\d*", n)
@@ -117,6 +117,7 @@ class get_data_api:
                                     temp_mods[temp_string] = 1
                                 else:
                                     temp_mods[temp_string] = sum(temp_number) / len(temp_number)
+                                temp_mods["Original"].append(n)
                             item.pop('implicitMods', None)
 
                         if 'craftedMods' in item:
@@ -128,6 +129,7 @@ class get_data_api:
                                     temp_mods[temp_string] = 1
                                 else:
                                     temp_mods[temp_string] = sum(temp_number) / len(temp_number)
+                                    temp_mods["Original"].append(n)
                             item.pop('craftedMods', None)
 
                         if 'explicitMods' in item:
@@ -139,6 +141,7 @@ class get_data_api:
                                     temp_mods[temp_string] = 1
                                 else:
                                     temp_mods[temp_string] = sum(temp_number) / len(temp_number)
+                                    temp_mods["Original"].append(n)
                             item.pop('explicitMods', None)
 
                         item['Mods'] = temp_mods

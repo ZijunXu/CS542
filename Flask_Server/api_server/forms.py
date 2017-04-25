@@ -96,9 +96,14 @@ class ItemQueryForm(FlaskForm):
     max_link_number = IntegerField('Max Link Number', validators=[NumberRange(0, 6), Optional()], default=None)
 
     min_str_socket = IntegerField('Min STR Sockets Number', validators=[NumberRange(0, 6), Optional()], default=None)
+    max_str_socket = IntegerField('Max STR Sockets Number', validators=[NumberRange(0, 6), Optional()], default=None)
     min_dex_socket = IntegerField('Min DEX Sockets Number', validators=[NumberRange(0, 6), Optional()], default=None)
+    max_dex_socket = IntegerField('Max DEX Sockets Number', validators=[NumberRange(0, 6), Optional()], default=None)
     min_int_socket = IntegerField('Min INT Sockets Number', validators=[NumberRange(0, 6), Optional()], default=None)
+    max_int_socket = IntegerField('Max DEX Sockets Number', validators=[NumberRange(0, 6), Optional()], default=None)
     min_other_socket = IntegerField('Min White Sockets Number', validators=[NumberRange(0, 6), Optional()],
+                                    default=None)
+    max_other_socket = IntegerField('Max White Sockets Number', validators=[NumberRange(0, 6), Optional()],
                                     default=None)
 
     supported = BooleanField('Support Skill Gem', validators=[Optional()], default=None)
@@ -131,8 +136,10 @@ class ItemQueryForm(FlaskForm):
                                             default=None)
     max_critical_strike_chance = FloatField('Critical Strike Chance', validators=[NumberRange(0, 1000), Optional()],
                                             default=None)
-    min_attacks_per_second = FloatField('Attacks per Second', validators=[NumberRange(0, 1000), Optional()], default=None)
-    max_attacks_per_second = FloatField('Attacks per Second', validators=[NumberRange(0, 1000), Optional()], default=None)
+    min_attacks_per_second = FloatField('Attacks per Second', validators=[NumberRange(0, 1000), Optional()],
+                                        default=None)
+    max_attacks_per_second = FloatField('Attacks per Second', validators=[NumberRange(0, 1000), Optional()],
+                                        default=None)
 
     # for armour
     min_armour = FloatField('Min Armour', validators=[NumberRange(0, 1500), Optional()], default=None)
@@ -141,6 +148,9 @@ class ItemQueryForm(FlaskForm):
     max_evasion = FloatField('Max Evasion', validators=[NumberRange(0, 1500), Optional()], default=None)
     min_shield = FloatField('Min Shield', validators=[NumberRange(0, 1500), Optional()])
     max_shield = FloatField('Max Shield', validators=[NumberRange(0, 1500), Optional()])
+
+    min_quality = FloatField('Min Quality', validators=[NumberRange(0, 100), Optional()], default=None)
+    max_quality = FloatField('Max Quality', validators=[NumberRange(0, 100), Optional()], default=None)
 
     # there is a lot of them
     Mods_content = FieldList(FormField(Mods), min_entries=0)
