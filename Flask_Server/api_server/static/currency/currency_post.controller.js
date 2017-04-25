@@ -30,6 +30,7 @@
                     //use response to update page
                     if (response.post_status) {
                         FlashService.Success('Post successful', true);
+                        $window.location.reload();
                     } else {
                         FlashService.Error(response.message);
                         vm.dataLoading = false;

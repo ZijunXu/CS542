@@ -8,8 +8,8 @@
         .module('app')
         .controller('UpdateController', UpdateController);
 
-    UpdateController.$inject = ['UserService', 'FlashService', '$location', 'AuthenticationService'];
-    function UpdateController(UserService, FlashService, $location, AuthenticationService) {
+    UpdateController.$inject = ['UserService', 'FlashService', '$location', 'AuthenticationService', '$window'];
+    function UpdateController(UserService, FlashService, $location, AuthenticationService, $window) {
         var vm = this;
         vm.isAdmin = AuthenticationService.isAdmin;
 
@@ -29,6 +29,7 @@
                 .then(function (response) {
                     if (response.update_status) {
                         FlashService.Success('Update successful', true);
+                        $window.location.reload();
                     } else {
                         FlashService.Error(response.message);
                         vm.dataLoading = false;

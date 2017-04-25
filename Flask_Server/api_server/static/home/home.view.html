@@ -40,7 +40,7 @@
                         <div class="large-1 columns"><label class="right inline" for="type">Type</label></div>
                         <div class="large-3 columns">
                             <select id="type" name="type" data-customforms="disabled"
-                                    class="league chosen" ng-model="vm.item.typeLine" ng-init="vm.item.typeLine='any'"
+                                    class="league chosen" ng-model="vm.item.typeLine"
                                     ng-options="x for x in vm.list2">
                             </select>
                         </div>
@@ -76,9 +76,9 @@
                                 <div class="large-6 columns" id="prop-dmg">
                                     <ul class="button-group ul-2">
                                         <li><input type="text" name="dmg_min" class="num" placeholder="min"
-                                                   value="" ng-model="vm.item.damage_min"></li>
+                                                   value="" ng-model="vm.item.physical_damage"></li>
                                         <li><input type="text" name="dmg_max" class="num" placeholder="max"
-                                                   value="" ng-model="vm.item.damage_max"></li>
+                                                   value="" ng-model="vm.item.physical_damage"></li>
                                     </ul>
                                 </div>
                             </div>
@@ -87,9 +87,9 @@
                                 <div class="large-6 columns" id="prop-aps">
                                     <ul class="button-group ul-2">
                                         <li><input type="text" name="aps_min" class="num" placeholder="min"
-                                                   value="" ng-model="vm.item.APS_min"></li>
+                                                   value="" ng-model="vm.item.min_attacks_per_second"></li>
                                         <li><input type="text" name="aps_max" class="num" placeholder="max"
-                                                   value="" ng-model="vm.item.APS_max"></li>
+                                                   value="" ng-model="vm.item.max_attacks_per_second"></li>
                                     </ul>
                                 </div>
                             </div>
@@ -99,9 +99,9 @@
                                 <div class="large-6 columns" id="prop-crit">
                                     <ul class="button-group ul-2">
                                         <li><input type="text" name="crit_min" class="num" placeholder="min"
-                                                   value="" ng-model="vm.item.crit_min"></li>
+                                                   value="" ng-model="vm.item.min_critical_strike_chance"></li>
                                         <li><input type="text" name="crit_max" class="num" placeholder="max"
-                                                   value="" ng-model="vm.item.crit_max"></li>
+                                                   value="" ng-model="vm.item.max_critical_strike_chance"></li>
                                     </ul>
                                 </div>
                             </div>
@@ -113,9 +113,9 @@
                                 <div class="large-6 columns" id="prop-dps">
                                     <ul class="button-group ul-2">
                                         <li><input type="text" name="dps_min" class="num" placeholder="min"
-                                                   value="" ng-model="vm.item.dps_min"></li>
+                                                   value="" ng-model="vm.item.min_physical_damage"></li>
                                         <li><input type="text" name="dps_max" class="num" placeholder="max"
-                                                   value="" ng-model="vm.item.dps_max"></li>
+                                                   value="" ng-model="vm.item.max_physical_damage"></li>
                                     </ul>
                                 </div>
                             </div>
@@ -124,9 +124,9 @@
                                 <div class="large-6 columns" id="prop-edps">
                                     <ul class="button-group ul-2">
                                         <li><input type="text" name="edps_min" class="num" placeholder="min"
-                                                   value="" ng-model="vm.item.edps_min"></li>
+                                                   value="" ng-model="vm.item.min_elemental_damage"></li>
                                         <li><input type="text" name="edps_max" class="num" placeholder="max"
-                                                   value="" ng-model="vm.item.edps_max"></li>
+                                                   value="" ng-model="vm.item.max_elemental_damage"></li>
                                     </ul>
                                 </div>
                             </div>
@@ -339,8 +339,8 @@
                                 <div class="large-4 columns"><label class="right inline">Currency</label></div>
                                 <div class="large-8 columns">
                                     <select name="buyout_currency" data-customforms="disabled"
-                                            class="chosen" ng-model="vm.item.currency"
-                                            ng-init="vm.item.currency='Select'"
+                                            class="chosen" ng-model="vm.item.currency_name"
+                                            ng-init="vm.item.currency_name='Select'"
                                             ng-options="x for x in vm.list4">
                                     </select>
                                 </div>
@@ -402,7 +402,6 @@
                                 <div class="large-6 columns">
                                     <select name="identified" data-customforms="disabled"
                                             class="chosen" ng-model="vm.item.identified"
-                                            ng-init="vm.item.identified='either'"
                                             ng-options="x for x in vm.list6">
                                     </select>
                                 </div>
@@ -412,7 +411,6 @@
                                 <div class="large-6 columns">
                                     <select name="corrupted" data-customforms="disabled"
                                             class="chosen" ng-model="vm.item.corrupted"
-                                            ng-init="vm.item.corrupted='either'"
                                             ng-options="x for x in vm.list7">
                                     </select>
                                 </div>
