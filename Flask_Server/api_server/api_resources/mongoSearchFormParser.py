@@ -69,45 +69,17 @@ def parser(form):
         if form.max_link_number.data:
             query_and.append({"sockets.link": {"$in": [i for i in range(0, form.max_link_number.data)]}})
 
-    if form.min_str_socket.data:
-        if form.max_str_socket.data:
-            query_and.append({"sockets.S": {"$gte": form.min_str_socket.data,
-                                            "$lte": form.max_str_socket.data}})
-        else:
-            query_and.append({"sockets.S": {"$gte": form.min_str_socket.data}})
-    else:
-        if form.max_str_socket.data:
-            query_and.append({"sockets.S": {"$lte": form.max_str_socket.data}})
+    if form.str_socket.data:
+        query_and.append({"sockets.S": {"$gte": form.str_socket.data}})
 
-    if form.min_dex_socket.data:
-        if form.max_dex_socket.data:
-            query_and.append({"sockets.D": {"$gte": form.min_dex_socket.data,
-                                            "$lte": form.max_dex_socket.data}})
-        else:
-            query_and.append({"sockets.D": {"$gte": form.min_dex_socket.data}})
-    else:
-        if form.max_dex_socket.data:
-            query_and.append({"sockets.D": {"$lte": form.max_dex_socket.data}})
+    if form.dex_socket.data:
+        query_and.append({"sockets.D": {"$gte": form.dex_socket.data}})
 
-    if form.min_int_socket.data:
-        if form.max_int_socket.data:
-            query_and.append({"sockets.I": {"$gte": form.min_int_socket.data,
-                                            "$lte": form.max_int_socket.data}})
-        else:
-            query_and.append({"sockets.I": {"$gte": form.min_int_socket.data}})
-    else:
-        if form.max_int_socket.data:
-            query_and.append({"sockets.I": {"$lte": form.max_int_socket.data}})
+    if form.int_socket.data:
+        query_and.append({"sockets.I": {"$gte": form.int_socket.data}})
 
-    if form.min_other_socket.data:
-        if form.max_other_socket.data:
-            query_and.append({"sockets.Other": {"$gte": form.min_other_socket.data,
-                                                "$lte": form.max_other_socket.data}})
-        else:
-            query_and.append({"sockets.Other": {"$gte": form.min_other_socket.data}})
-    else:
-        if form.max_other_socket.data:
-            query_and.append({"sockets.Other": {"$lte": form.max_other_socket.data}})
+    if form.other_socket.data:
+        query_and.append({"sockets.Other": {"$gte": form.other_socket.data}})
 
     # requirements
     if form.min_requirements_int.data:

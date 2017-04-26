@@ -47,7 +47,7 @@ class ItemSearch(Resource):
             ans = []
             for n in posts:
                 n["_id"] = str(n["_id"])
-                n["Price"]['icon'] = self.dic[n["Price"]['Currency']]
+                n["Price"]['icon'] = self.dic[n["Price"]['Currency'].lower()]
                 ans.append(n)
             if 'Authorization' in request.headers:
                 if verify_token(request.headers['Authorization'].split(" ")[1]) and form.name.data:

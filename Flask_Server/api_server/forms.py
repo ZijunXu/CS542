@@ -95,15 +95,10 @@ class ItemQueryForm(FlaskForm):
     min_link_number = IntegerField('Min Link Number', validators=[NumberRange(0, 6), Optional()], default=None)
     max_link_number = IntegerField('Max Link Number', validators=[NumberRange(0, 6), Optional()], default=None)
 
-    min_str_socket = IntegerField('Min STR Sockets Number', validators=[NumberRange(0, 6), Optional()], default=None)
-    max_str_socket = IntegerField('Max STR Sockets Number', validators=[NumberRange(0, 6), Optional()], default=None)
-    min_dex_socket = IntegerField('Min DEX Sockets Number', validators=[NumberRange(0, 6), Optional()], default=None)
-    max_dex_socket = IntegerField('Max DEX Sockets Number', validators=[NumberRange(0, 6), Optional()], default=None)
-    min_int_socket = IntegerField('Min INT Sockets Number', validators=[NumberRange(0, 6), Optional()], default=None)
-    max_int_socket = IntegerField('Max DEX Sockets Number', validators=[NumberRange(0, 6), Optional()], default=None)
-    min_other_socket = IntegerField('Min White Sockets Number', validators=[NumberRange(0, 6), Optional()],
-                                    default=None)
-    max_other_socket = IntegerField('Max White Sockets Number', validators=[NumberRange(0, 6), Optional()],
+    str_socket = IntegerField('STR Sockets Number', validators=[NumberRange(0, 6), Optional()], default=None)
+    dex_socket = IntegerField('DEX Sockets Number', validators=[NumberRange(0, 6), Optional()], default=None)
+    int_socket = IntegerField('INT Sockets Number', validators=[NumberRange(0, 6), Optional()], default=None)
+    other_socket = IntegerField('White Sockets Number', validators=[NumberRange(0, 6), Optional()],
                                     default=None)
 
     supported = BooleanField('Support Skill Gem', validators=[Optional()], default=None)
