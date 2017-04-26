@@ -38,7 +38,7 @@
                 <tr style="height:220px" ng-repeat="item in itemsresultlog">
                     <td style="text-align:center;vertical-align:middle;"><img src={{item.icon}}></td>
                     <td width="400"><b style="color:purple">Name: {{item.name}}</b><br>
-                        <b>Level: {{item.properties.Level}}&nbsp&nbsp Strength: {{item.requirements.Str}}&nbsp&nbsp Int: {{item.requirements.Int}}</b><br>
+                        
                         <b style="color:red">Currency: <img style="width:30px;height:30px;" src={{item.Price.icon}}>&nbsp&nbsp&nbsp&nbsp Price: {{item.Price.Number}}</b><br>
                         <b style="color:gold">Mods: </b><br>
                         <div ng-repeat="it in item.Mods.Original">
@@ -83,6 +83,25 @@
                     			<td align="middle" style="vertical-align:middle" height="30">{{item.properties['Critical Strike Chance']}}</td>
                     			<td style="color:blue" align="middle" style="vertical-align:middle" height="30">{{item.owner}}</td>
                     		</tr>
+
+                    		<tr>
+                    			<th rowspan="2" align="middle" style="vertical-align:middle">Requirement</th>
+                    			<th>Level</th>
+                    			<th>Strength</th>
+                    			<th>Intelligence</th>
+                    			<th>Dexterity</th>
+                    		</tr>
+                    		<tr>
+                    			<td align="middle" style="vertical-align:middle" height="30">{{item.properties.Level}}</td>
+                    			<td align="middle" style="vertical-align:middle" height="30">{{item.requirements.Str}}</td>
+                    			<td align="middle" style="vertical-align:middle" height="30">{{item.requirements.Int}}</td>
+                    			<td align="middle" style="vertical-align:middle" height="30">{{item.requirements.Dex}}</td>
+
+                    			 
+                    		</tr>
+
+
+
                     	</table>
                     </td>
                 </tr>
