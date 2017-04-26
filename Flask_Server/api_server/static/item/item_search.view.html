@@ -38,30 +38,8 @@
 
             <form id="search" class="custom" ng-submit="vm.search()" role="form">
                 <div class="row">
-                    <div class="large-6 columns">
-                        <div class="large-4 columns"><label class="right inline">League</label></div>
-                        <div class="large-8 columns">
-                            <select name="buyout_currency" data-customforms="disabled"
-                                    class="chosen" ng-model="vm.item.league"
-                                    ng-init="vm.item.league='Legacy'"
-                                    ng-options="x for x in vm.list1">
-                            </select>
-                        </div>
-                    </div>
 
-                    <div class="large-6 columns">
-                        <div class="large-6 columns"><label class="right inline">Type</label></div>
-                        <div class="large-6 columns">
-                            <select name="identified" data-customforms="disabled"
-                                    class="chosen" ng-model="vm.item.type"
-                                    ng-init="vm.item.type='any'"
-                                    ng-options="x for x in vm.list2">
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="large-6 columns">
+                    <div class="large-4 columns">
                         <div class="large-4 columns"><label class="right inline">Name</label></div>
                         <div class="large-8 columns"><input type="text" name="name" ng-model="vm.item.name"
                                                              id="name" ng-change="changeKeyValue(vm.item.name)"
@@ -73,7 +51,33 @@
                             </div>
                         </div>
                     </div>
+
+
+
+                    <div class="large-4 columns">
+                        <div class="large-4 columns"><label class="right inline">League</label></div>
+                        <div class="large-8 columns">
+                            <select name="buyout_currency" data-customforms="disabled"
+                                    class="chosen" ng-model="vm.item.league"
+                                    ng-init="vm.item.league='Legacy'"
+                                    ng-options="x for x in vm.list1">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="large-4 columns">
+                        <div class="large-6 columns"><label class="right inline">Type</label></div>
+                        <div class="large-6 columns">
+                            <select name="identified" data-customforms="disabled"
+                                    class="chosen" ng-model="vm.item.type"
+                                    ng-init="vm.item.type='any'"
+                                    ng-options="x for x in vm.list2">
+                            </select>
+                        </div>
+                    </div>
+
                 </div>
+                
                 <div class="row">
                     <div class="large-12 column">
                         <!--Offense-->
@@ -304,14 +308,18 @@
                         </div>
 
                         <div class="row">
-                            <div class="large-7 columns">
+                            <div class="large-6 column">
+                                <div class="large-2 column"></div>
+                                <div class="large-10 column">
                                 <select name="buyout_currency" data-customforms="disabled"
                                         class="chosen" ng-model="vm.item.Mods_content"
                                         ng-init="vm.item.Mods_content='Select'"
                                         ng-options="x for x in vm.list8">
                                 </select>
+                                </div>
                             </div>
-                            <div class="large-4 columns"></div>
+                            <div class="large-6 column"></div>
+
                         </div>
 
                         <div class="row">
@@ -322,8 +330,8 @@
 
                         <div class="row">
                             <div class="large-4 columns">
-                                <div class="large-4 columns"><label class="right inline">Currency</label></div>
-                                <div class="large-8 columns">
+                                <div class="large-6 columns"><label class="right inline">Currency</label></div>
+                                <div class="large-6 columns">
                                     <select name="buyout_currency" data-customforms="disabled"
                                             class="chosen" ng-model="vm.item.currency_name"
                                             ng-init="vm.item.currency_name='Select'"
@@ -354,7 +362,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="large-4 columns"></div>
                     </div>
 
                     <div class="row">
