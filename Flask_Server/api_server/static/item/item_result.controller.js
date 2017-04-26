@@ -23,6 +23,10 @@
         vm.sortByDPS = sortByDPS;
         vm.sortByCrit = sortByCrit;
         vm.sortByeDPS = sortByeDPS;
+        vm.sortByLevel1 = sortByLevel1;
+        vm.sortByStrength = sortByStrength;
+        vm.sortByIntelligence = sortByIntelligence;
+        vm.sortByDexterity = sortByDexterity;
 
         function logout() {
             AuthenticationService.isLogged = false;
@@ -31,6 +35,85 @@
             $location.path("/");
         }
 
+        function sortByStrength() {
+            $rootScope.itemsresult.sort(function (a, b) {
+                if (typeof(a.requirements) == "undefined")
+                    return 1;
+                if (typeof(b.requirements) == "undefined")
+                    return -1;
+                if (typeof(a.requirements.Str) == "undefined")
+                    return 1;
+                if (typeof(b.requirements.Str) == "undefined")
+                    return -1;
+
+                if (a.requirements.Str < b.requirements.Str)
+                    return 1;
+                else if (a.requirements.Str > b.requirements.Str)
+                    return -1;
+                else
+                    return 0;
+            });
+        }
+
+        function sortByLevel1() {
+            $rootScope.itemsresult.sort(function (a, b) {
+                if (typeof(a.requirements) == "undefined")
+                    return 1;
+                if (typeof(b.requirements) == "undefined")
+                    return -1;
+                if (typeof(a.requirements.Level) == "undefined")
+                    return 1;
+                if (typeof(b.requirements.Level) == "undefined")
+                    return -1;
+
+                if (a.requirements.Level < b.requirements.Level)
+                    return 1;
+                else if (a.requirements.Level > b.requirements.Level)
+                    return -1;
+                else
+                    return 0;
+            });
+        }
+
+        function sortByIntelligence() {
+            $rootScope.itemsresult.sort(function (a, b) {
+                if (typeof(a.requirements) == "undefined")
+                    return 1;
+                if (typeof(b.requirements) == "undefined")
+                    return -1;
+                if (typeof(a.requirements.Int) == "undefined")
+                    return 1;
+                if (typeof(b.requirements.Int) == "undefined")
+                    return -1;
+
+                if (a.requirements.Int < b.requirements.Int)
+                    return 1;
+                else if (a.requirements.Int > b.requirements.Int)
+                    return -1;
+                else
+                    return 0;
+            });
+        }
+
+        function sortByDexterity() {
+            $rootScope.itemsresult.sort(function (a, b) {
+                if (typeof(a.requirements) == "undefined")
+                    return 1;
+                if (typeof(b.requirements) == "undefined")
+                    return -1;
+                if (typeof(a.requirements.Dex) == "undefined")
+                    return 1;
+                if (typeof(b.requirements.Dex) == "undefined")
+                    return -1;
+
+                if (a.requirements.Dex < b.requirements.Dex)
+                    return 1;
+                else if (a.requirements.Dex > b.requirements.Dex)
+                    return -1;
+                else
+                    return 0;
+            });
+        }
 
         function sortByQuality() {
             $rootScope.itemsresult.sort(function (a, b) {
