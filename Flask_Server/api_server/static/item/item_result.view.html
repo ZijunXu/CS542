@@ -29,115 +29,71 @@
                 <tr style="height:220px" ng-repeat="item in itemsresult">
                     <td style="text-align:center;vertical-align:middle;"><img src={{item.icon}}></td>
                     <td width="400"><b style="color:purple">Name: {{item.name}}</b><br>
-                        <b>Level: {{item.properties.Level}}&nbsp&nbsp Strength: {{item.requirements.Str}}&nbsp&nbsp Int: {{item.requirements.Int}}</b><br>
+
                         <b style="color:red">Currency: <img style="width:30px;height:30px;" src={{item.Price.icon}}>&nbsp&nbsp&nbsp&nbsp Price: {{item.Price.Number}}</b><br>
                         <b style="color:gold">Mods: </b><br>
                         <div ng-repeat="it in item.Mods.Original">
                             <b style="color:green">{{it}}</b><br>
                         </div>
                     </td>
-                    <td align="middle" style="vertical-align:middle">
-                        <table class="table table-bordered table-hover">
-                            <tr>
-                                <th>Quality</th>
-                            <tr>
-                                <td align="middle" style="vertical-align:middle" height="30">{{item.properties.Quality}}</td>
-                            </tr>
-                            <tr>
-                                <th ng-click="vm.sortByArmour()">Armour</th>
-                            </tr>
-                            <tr>
-                                <td align="middle" style="vertical-align:middle" height="30">{{item.properties.Armour}}</td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td align="middle" style="vertical-align:middle">
-                        <table class="table table-bordered table-hover">
-                            <tr>
-                                <th>Level</th>
-                            </tr>
-                            <tr>
-                                <td align="middle" style="vertical-align:middle" height="30">{{item.properties.Level}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Evasion</th>
-                            </tr>
-                            <tr>
-                                <td align="middle" style="vertical-align:middle" height="30">{{item.properties['Evasion Rating']}}</td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td align="middle" style="vertical-align:middle">
-                        <table class="table table-bordered table-hover">
-                            <tr>
-                                <th>Ilvl</th>
-                            </tr>
-                            <tr>
-                                <td align="middle" style="vertical-align:middle" height="30">{{item.ilvl}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Shield</th>
-                            </tr>
-                            <tr>
-                                <td align="middle" style="vertical-align:middle" height="30">{{item.properties['Energy Shield']}}
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td align="middle" style="vertical-align:middle">
-                        <table class="table table-bordered table-hover">
-                            <tr>
-                                <th>APS</th>
-                            </tr>
-                            <tr>
-                                <td align="middle" style="vertical-align:middle" height="30">{{item.properties['Attacks per Second']}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Block</th>
-                            </tr>
-                            <tr>
-                                <td align="middle" style="vertical-align:middle" height="30">{{item.properties['Chance to Block']}}
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td align="middle" style="vertical-align:middle">
-                        <table class="table table-bordered table-hover">
-                            <tr>
-                                <th>DPS</th>
-                            </tr>
-                            <tr>
-                                <td align="middle" style="vertical-align:middle" height="30">{{item.properties['Physical Damage']}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Crit</th>
-                            </tr>
-                            <tr>
-                                <td align="middle" style="vertical-align:middle" height="30">{{item.properties['Critical Strike Chance']}}
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td align="middle" style="vertical-align:middle">
-                        <table class="table table-bordered table-hover">
-                            <tr>
-                                <th>eDPS</th>
-                            </tr>
-                            <tr>
-                                <td align="middle" style="vertical-align:middle" height="30">{{item.properties['Elemental Damage']}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Owner</th>
-                            </tr>
-                            <tr>
-                                <td style="color:blue" align="middle" style="vertical-align:middle" height="30">{{item.owner}}</td>
-                            </tr>
-                        </table>
+
+                    <td>
+                    	<table class="table table-bordered">
+                    		<tr>
+                    			<th align="middle" ng-click="vm.sortByQuality()">Quality</th>
+                    			<th align="middle" ng-click="vm.sortByLevel()">Level</th>
+                    			<th align="middle" ng-click="vm.sortByIlvl()">Ilvl</th>
+                    			<th align="middle" ng-click="vm.sortByAPS()">APS</th>
+                    			<th align="middle" ng-click="vm.sortByDPS()">DPS</th>
+                    			<th align="middle" ng-click="vm.sortByeDPS()">eDPS</th>
+                    		</tr>
+
+                    		<tr>
+                    			<td align="middle" style="vertical-align:middle" height="30">{{item.properties.Quality}}</td>
+                    			<td align="middle" style="vertical-align:middle" height="30">{{item.properties.Level}}</td>
+                    			<td align="middle" style="vertical-align:middle" height="30">{{item.ilvl}}</td>
+                    			<td align="middle" style="vertical-align:middle" height="30">{{item.properties['Attacks per Second']}}</td>
+                    			<td align="middle" style="vertical-align:middle" height="30">{{item.properties['Physical Damage']}}</td>
+                    			<td align="middle" style="vertical-align:middle" height="30">{{item.properties['Elemental Damage']}}</td>
+                    		</tr>
+
+                    		<tr>
+                    			<th align="middle" ng-click="vm.sortByArmour()">Armour</th>
+                    			<th align="middle" ng-click="vm.sortByEvasion()">Evasion</th>
+                    			<th align="middle" ng-click="vm.sortByShield()">Shield</th>
+                    			<th align="middle" ng-click="vm.sortByBlock()">Block</th>
+                    			<th align="middle" ng-click="vm.sortByCrit()">Crit</th>
+                    			<th align="middle">Owner</th>
+                    		</tr>
+
+                    		<tr>
+                    			<td align="middle" style="vertical-align:middle" height="30">{{item.properties.Armour}}</td>
+                    			<td align="middle" style="vertical-align:middle" height="30">{{item.properties['Evasion Rating']}}</td>
+                    			<td align="middle" style="vertical-align:middle" height="30">{{item.properties['Energy Shield']}}</td>
+                    			<td align="middle" style="vertical-align:middle" height="30">{{item.properties['Chance to Block']}}</td>
+                    			<td align="middle" style="vertical-align:middle" height="30">{{item.properties['Critical Strike Chance']}}</td>
+                    			<td style="color:blue" align="middle" style="vertical-align:middle" height="30">{{item.owner}}</td>
+                    		</tr>
+
+                    		<tr>
+                    			<th rowspan="2" align="middle" style="vertical-align:middle">Requirement</th>
+                    			<th>Level</th>
+                    			<th>Strength</th>
+                    			<th>Intelligence</th>
+                    			<th>Dexterity</th>
+                    		</tr>
+                    		<tr>
+                    			<td align="middle" style="vertical-align:middle" height="30">{{item.properties.Level}}</td>
+                    			<td align="middle" style="vertical-align:middle" height="30">{{item.requirements.Str}}</td>
+                    			<td align="middle" style="vertical-align:middle" height="30">{{item.requirements.Int}}</td>
+                    			<td align="middle" style="vertical-align:middle" height="30">{{item.requirements.Dex}}</td>
+
+
+                    		</tr>
+
+
+
+                    	</table>
                     </td>
                 </tr>
                 </tbody>

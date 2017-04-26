@@ -49,12 +49,12 @@
                     <td>
                     	<table class="table table-bordered">
                     		<tr>
-                    			<th align="middle">Quality</th>
-                    			<th align="middle">Level</th>
-                    			<th align="middle">Ilvl</th>
-                    			<th align="middle">APS</th>
-                    			<th align="middle">DPS</th>
-                    			<th align="middle">eDPS</th>
+                    			<th align="middle" ng-click="vm.sortByQuality()">Quality</th>
+                    			<th align="middle" ng-click="vm.sortByLevel()">Level</th>
+                    			<th align="middle" ng-click="vm.sortByIlvl()">Ilvl</th>
+                    			<th align="middle" ng-click="vm.sortByAPS()">APS</th>
+                    			<th align="middle" ng-click="vm.sortByDPS()">DPS</th>
+                    			<th align="middle" ng-click="vm.sortByeDPS()">eDPS</th>
                     		</tr>
 
                     		<tr>
@@ -67,11 +67,11 @@
                     		</tr>
 
                     		<tr>
-                    			<th align="middle">Armour</th>
-                    			<th align="middle">Evasion</th>
-                    			<th align="middle">Shield</th>
-                    			<th align="middle">Block</th>
-                    			<th align="middle">Crit</th>
+                    			<th align="middle" ng-click="vm.sortByArmour()">Armour</th>
+                    			<th align="middle" ng-click="vm.sortByEvasion()">Evasion</th>
+                    			<th align="middle" ng-click="vm.sortByShield()">Shield</th>
+                    			<th align="middle" ng-click="vm.sortByBlock()">Block</th>
+                    			<th align="middle" ng-click="vm.sortByCrit()">Crit</th>
                     			<th align="middle">Owner</th>
                     		</tr>
 
