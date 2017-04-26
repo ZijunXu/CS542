@@ -33,11 +33,6 @@
                         <div class="large-8 columns"><input type="text" name="name" ng-model="vm.item.name"
                                                             id="name" ng-change="changeKeyValue(vm.item.name)"
                                                             ng-click='vm.hidden=!vm.hidden' value="{{vm.item.name}}"/>
-                            <div ng-hide="vm.hidden">
-                                <select style='width:200px' ng-change="change(x)" ng-model="x" multiple>
-                                    <option ng-repeat="data in vm.list1">{{data}}</option>
-                                </select>
-                            </div>
                         </div>
                     </div>
 
