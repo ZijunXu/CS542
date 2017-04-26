@@ -8,8 +8,8 @@
         .module('app')
         .controller('CurrencyPostController', CurrencyPostController);
 
-    CurrencyPostController.$inject = ['$rootScope', '$location', 'CurrencyService', '$window', 'FlashService', 'AuthenticationService'];
-    function CurrencyPostController($rootScope, $location, CurrencyService, $window, FlashService, AuthenticationService) {
+    CurrencyPostController.$inject = ['$rootScope', '$location', 'CurrencyService', '$window', 'FlashService', 'AuthenticationService', 'ItemService'];
+    function CurrencyPostController($rootScope, $location, CurrencyService, $window, FlashService, AuthenticationService, ItemService) {
         var vm = this;
         vm.isAdmin = AuthenticationService.isAdmin;
         vm.list1 = ["Legacy", "Hardcore Legacy", "Standard", "Hardcore"];
@@ -19,6 +19,8 @@
         vm.post = post;
         vm.logout = logout;
         vm.tidsort = tidsort;
+        vm.history = history;
+        vm.sidsort = sidsort;
 
         vm.reloadRoute = function () {
             $window.location.reload();
@@ -67,6 +69,31 @@
             AuthenticationService.isAdmin = false;
             delete localStorage.token;
             $location.path("/");
+        }
+
+        function history() {
+            ItemService.History()
+                .then(function (response) {
+                    if (typeof(response.retrieve_search_status) == "undefined") {
+                        //use response to update page
+                        //console.log("adadfads");
+                        response.sort(sidsort);
+                        $rootScope.history = response;
+                        $location.path('/history');
+                    } else {
+                        FlashService.Error(response.message);
+                        vm.dataLoading = false;
+                    }
+                });
+        }
+
+        function sidsort(a, b) {
+            if (a.sid < b.sid)
+                return 1;
+            else if (a.sid > b.sid)
+                return -1;
+            else
+                return 0;
         }
     }
 

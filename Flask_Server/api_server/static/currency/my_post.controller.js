@@ -8,8 +8,8 @@
         .module('app')
         .controller('MyPostController', MyPostController);
 
-    MyPostController.$inject = ['CurrencyService', 'FlashService', 'AuthenticationService', '$location', '$rootScope'];
-    function MyPostController(CurrencyService, FlashService, AuthenticationService, $location, $rootScope) {
+    MyPostController.$inject = ['CurrencyService', 'FlashService', 'AuthenticationService', '$location', '$rootScope', 'ItemService'];
+    function MyPostController(CurrencyService, FlashService, AuthenticationService, $location, $rootScope, ItemService) {
         var vm = this;
         vm.isAdmin = AuthenticationService.isAdmin;
         vm.pre = true;
@@ -25,6 +25,8 @@
         vm.logout = logout;
         vm.createObj = createObj;
         vm.timesort = timesort;
+        vm.history = history;
+        vm.sidsort = sidsort;
 
         function Delete(index) {
             var tid = $rootScope.myposts[index].tid;
@@ -92,6 +94,31 @@
             $rootScope.myposts.sort(function (a, b) {
                 return a.time < b.time ? 1 : -1;
             });
+        }
+
+        function history() {
+            ItemService.History()
+                .then(function (response) {
+                    if (typeof(response.retrieve_search_status) == "undefined") {
+                        //use response to update page
+                        //console.log("adadfads");
+                        response.sort(sidsort);
+                        $rootScope.history = response;
+                        $location.path('/history');
+                    } else {
+                        FlashService.Error(response.message);
+                        vm.dataLoading = false;
+                    }
+                });
+        }
+
+        function sidsort(a, b) {
+            if (a.sid < b.sid)
+                return 1;
+            else if (a.sid > b.sid)
+                return -1;
+            else
+                return 0;
         }
     }
 

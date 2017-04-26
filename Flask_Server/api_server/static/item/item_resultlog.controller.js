@@ -8,10 +8,12 @@
         .module('app')
         .controller('ItemResultLogController', ItemResultLogController);
 
-    ItemResultLogController.$inject = ['$location', 'AuthenticationService', '$rootScope'];
-    function ItemResultLogController($location, AuthenticationService, $rootScope) {
+    ItemResultLogController.$inject = ['$location', 'AuthenticationService', '$rootScope', 'ItemService'];
+    function ItemResultLogController($location, AuthenticationService, $rootScope, ItemService) {
         var vm = this;
         vm.logout = logout;
+        vm.history = history;
+        vm.sidsort = sidsort;
         vm.sortByQuality = sortByQuality;
         vm.sortByArmour = sortByArmour;
         vm.sortByLevel = sortByLevel;
@@ -34,6 +36,30 @@
             AuthenticationService.isAdmin = false;
             delete localStorage.token;
             $location.path("/");
+        }
+
+        function sidsort(a, b) {
+            if (a.sid < b.sid)
+                return 1;
+            else if (a.sid > b.sid)
+                return -1;
+            else
+                return 0;
+        }
+
+        function history() {
+            ItemService.History1()
+                .then(function (response) {
+                    if (typeof(response.retrieve_search_status) == "undefined") {
+                        //use response to update page
+                        response.sort(sidsort);
+                        $rootScope.history = response;
+                        $location.path('/history');
+                    } else {
+                        FlashService.Error(response.message);
+                        vm.dataLoading = false;
+                    }
+                });
         }
 
         function sortByStrength() {

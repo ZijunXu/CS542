@@ -11,8 +11,8 @@
         .module('app')
         .controller('AdmanageController', AdmanageController);
 
-    AdmanageController.$inject = ['FlashService', 'AdminService', '$location', 'AuthenticationService'];
-    function AdmanageController(FlashService, AdminService, $location, AuthenticationService) {
+    AdmanageController.$inject = ['FlashService', 'AdminService', '$location', 'AuthenticationService', 'ItemService'];
+    function AdmanageController(FlashService, AdminService, $location, AuthenticationService, ItemService) {
         var vm = this;
         vm.present = true;
         vm.isAdmin = AuthenticationService.isAdmin;
@@ -23,6 +23,33 @@
         vm.logout = logout;
         vm.sortid = sortid;
         vm.sortname = sortname;
+        vm.history = history;
+        vm.sidsort = sidsort;
+
+        function sidsort(a, b) {
+            if (a.sid < b.sid)
+                return 1;
+            else if (a.sid > b.sid)
+                return -1;
+            else
+                return 0;
+        }
+
+        function history() {
+            ItemService.History()
+                .then(function (response) {
+                    if (typeof(response.retrieve_search_status) == "undefined") {
+                        //use response to update page
+                        //console.log("adadfads");
+                        response.sort(sidsort);
+                        $rootScope.history = response;
+                        $location.path('/history');
+                    } else {
+                        FlashService.Error(response.message);
+                        vm.dataLoading = false;
+                    }
+                });
+        }
 
         function logout() {
             AuthenticationService.isLogged = false;
