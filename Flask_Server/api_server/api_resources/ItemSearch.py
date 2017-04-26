@@ -13,24 +13,25 @@ class ItemSearch(Resource):
     def __init__(self):
         client = MongoClient("mongodb://localhost:27017/")
         self.db = client.project_542
-        self.dic = {"blessed": "poe.trade/static/currency/blessed.png",
-                    "chisel": "poe.trade/static/currency/chisel.png",
-                    "chaos": "poe.trade/static/currency/chaos.png",
-                    "chrom": "poe.trade/static/currency/chromatic.png",
-                    "divine": "poe.trade/static/currency/divine.png",
-                    "exalted": "poe.trade/static/currency/exalted.png",
-                    "exa": "poe.trade/static/currency/exalted.png",
-                    "exalt": "poe.trade/static/currency/exalted.png",
+        self.dic = {"blessed": "http://poe.trade/static/currency/blessed.png",
+                    "chisel": "http://poe.trade/static/currency/chisel.png",
+                    "chaos": "http://poe.trade/static/currency/chaos.png",
+                    "chrom": "http://poe.trade/static/currency/chromatic.png",
+                    "divine": "http://poe.trade/static/currency/divine.png",
+                    "exalted": "http://poe.trade/static/currency/exalted.png",
+                    "exa": "http://poe.trade/static/currency/exalted.png",
+                    "ex": "http://poe.trade/static/currency/exalted.png",
+                    "exalt": "http://poe.trade/static/currency/exalted.png",
                     "gcp": "http://poe.trade/static/currency/gcp.png",
-                    "jew": "poe.trade/static/currency/jewellers.png",
-                    "alch": "poe.trade/static/currency/alchemy.png",
-                    "alt": "poe.trade/static/currency/alteration.png",
-                    "chance": "poe.trade/static/currency/chance.png",
-                    "fuse": "poe.trade/static/currency/fusing.png",
-                    "regret": "poe.trade/static/currency/regret.png",
-                    "scour": "poe.trade/static/currency/scouring.png",
-                    "regal": "poe.trade/static/currency/regal.png",
-                    "vaal": "poe.trade/static/currency/vaal.png"}
+                    "jew": "http://poe.trade/static/currency/jewellers.png",
+                    "alch": "http://poe.trade/static/currency/alchemy.png",
+                    "alt": "http://poe.trade/static/currency/alteration.png",
+                    "chance": "http://poe.trade/static/currency/chance.png",
+                    "fuse": "http://poe.trade/static/currency/fusing.png",
+                    "regret": "http://poe.trade/static/currency/regret.png",
+                    "scour": "http://poe.trade/static/currency/scouring.png",
+                    "regal": "http://poe.trade/static/currency/regal.png",
+                    "vaal": "http://poe.trade/static/currency/vaal.png"}
 
     def post(self):
         """
@@ -57,7 +58,7 @@ class ItemSearch(Resource):
             ans = []
             for n in posts:
                 n["_id"] = str(n["_id"])
-                n["Price"]['icon'] = self.dic[n["Price"]['Currency']]
+                n["Price"]['icon'] = self.dic[n["Price"]['Currency'].lower()]
                 ans.append(n)
             return jsonify(ans)
 

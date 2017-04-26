@@ -10,7 +10,7 @@
     HomeController.$inject = ['ItemService', '$rootScope', '$location', '$window'];
     function HomeController(ItemService, $rootScope, $location, $window) {
         var vm = this;
-
+        vm.hidden=true;
         vm.list1 = ["Legacy", "Hardcore Legacy", "Standard", "Hardcore"];
         vm.list2 = ["any", "Bow", "Claw", "Dagger", "One Hand Axe", "One Hand Mace", "One Hand Sword"
             , "Sceptre", "Staff", "Two Hand Axe", "Two Hand Mace", "Two Hand Sword", "Wand", "Body Armour", "Boots", "Gloves", "Helmet", "Shield", "Amulet", "Belt"
