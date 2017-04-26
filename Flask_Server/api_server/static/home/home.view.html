@@ -295,11 +295,19 @@
                                 <div class="large-2 column"></div>
                                 <div class="large-10 column">
                                     <select name="buyout_currency" data-customforms="disabled"
-                                            class="chosen" ng-model="vm.item.Mods_content"
-                                            ng-init="vm.item.Mods_content='Select'"
+                                            class="chosen" ng-model="vm.item.mods_name"
+                                            ng-init="vm.item.mods_name='Select'"
                                             ng-options="x for x in vm.list8">
                                     </select>
                                 </div>
+                            </div>
+                            <div class="large-2 columns">
+                                <ul class="button-group ul-2">
+                                    <li><input type="text" name="block_min" class="num" placeholder="min"
+                                               value="" ng-model="vm.item.mods_lower_bound"></li>
+                                    <li><input type="text" name="block_max" class="num" placeholder="max"
+                                               value="" ng-model="vm.item.mods_upper_bound"></li>
+                                </ul>
                             </div>
                             <div class="large-6 column"></div>
 
