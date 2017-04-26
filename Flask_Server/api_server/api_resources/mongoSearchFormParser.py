@@ -117,9 +117,9 @@ def parser(form):
             query_and.append(
                 {"requirements.Str": {"$gte": form.min_requirements_str.data}})
     else:
-        if form.min_requirements_str.data:
+        if form.max_requirements_str.data:
             query_and.append(
-                {"requirements.Str": {"$lte": form.min_requirements_str.data}})
+                {"requirements.Str": {"$lte": form.max_requirements_str.data}})
 
     if form.min_requirements_lvl.data:
         if form.max_requirements_lvl.data:
