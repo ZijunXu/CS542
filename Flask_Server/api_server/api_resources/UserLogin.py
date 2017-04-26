@@ -26,4 +26,4 @@ class UserLogin(Resource):
             else:
                 return jsonify({"login_status": False, "message": "Wrong password"})
         else:
-            return jsonify({"login_status": False, "message": "Something wrong with your submit data"})
+            return jsonify({"login_status": False, "message": form.errors})
