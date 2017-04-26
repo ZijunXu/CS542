@@ -6,6 +6,7 @@ from ..database import Search
 from api_server import db
 from .mongoSearchFormParser import parser
 import datetime
+from .GetToken import verify_token
 
 
 class ItemSearch(Resource):
@@ -28,15 +29,10 @@ class ItemSearch(Resource):
             for n in posts:
                 n["_id"] = str(n["_id"])
                 ans.append(n)
-            try:
-                if g.user and form.name.data:
-                    self.add_to_history(form)
-                return jsonify(ans)
-            except:
-                return jsonify(ans)
-
+            if verify_token(request.headers['Authorization'].split(" ")[1]) and form.name.data:
+                self.add_to_history(form)
+            return jsonify(ans)
         else:
-            print(form.errors)
             posts = self.db.posts.find().limit(50)
             ans = []
             for n in posts:
@@ -46,7 +42,7 @@ class ItemSearch(Resource):
 
     def add_to_history(self, form):
             if form.validate():
-                search_history = Search(item=form.item_name.data, time=datetime.datetime.now(), id=g.user.id)
+                search_history = Search(item=form.name.data, time=datetime.datetime.now(), id=g.user.id)
                 db.session.add(search_history)
                 db.session.commit()
                 return True

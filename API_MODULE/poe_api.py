@@ -129,7 +129,7 @@ class get_data_api:
                                     temp_mods[temp_string] = 1
                                 else:
                                     temp_mods[temp_string] = sum(temp_number) / len(temp_number)
-                                    temp_mods["Original"].append(n)
+                                temp_mods["Original"].append(n)
                             item.pop('craftedMods', None)
 
                         if 'explicitMods' in item:
@@ -141,7 +141,7 @@ class get_data_api:
                                     temp_mods[temp_string] = 1
                                 else:
                                     temp_mods[temp_string] = sum(temp_number) / len(temp_number)
-                                    temp_mods["Original"].append(n)
+                                temp_mods["Original"].append(n)
                             item.pop('explicitMods', None)
 
                         item['Mods'] = temp_mods
