@@ -1,6 +1,6 @@
 from flask import jsonify, request, g
 from flask_restful import Resource
-from ..database import User
+from ..database import User, Post, Search
 from ..database import Admin as Admindb
 from ..forms import RegistrationForm
 from api_server import db
@@ -61,9 +61,18 @@ class Admin(Resource):
         user = User.query.filter_by(name=username).first()
         if user:
             try:
+                self.delete_other_user_related_info(user.id)
                 db.session.delete(user)
+                db.session.commit()
                 return jsonify({"delete_status": "Success"})
             except:
-                return jsonify({"delete_status": "Success", "message": sys.exc_info()[0]})
+                return jsonify({"delete_status": "Fail"})
         else:
-            return jsonify({"delete_status": "Success", "message": "User not exist"})
+            return jsonify({"delete_status": "Fail", "message": "User not exist"})
+
+    def delete_other_user_related_info(self, userid):
+        if not self.admin:
+            return self.not_permitted()
+        Post.query.filter_by(uid=userid).delete()
+        Search.query.filter_by(id=userid).delete()
+        db.session.commit()
