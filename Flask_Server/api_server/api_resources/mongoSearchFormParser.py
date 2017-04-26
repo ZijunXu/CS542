@@ -23,7 +23,7 @@ def parser(form):
                 query_and.append({"Price.Currency": price_name[form.currency_name.data]})
 
     if form.name.data:
-        query_and.append({"name": form.name.data})
+        query_and.append({"name": {"$regex":form.name.data, "$options":"gi"}})
 
     if form.type.data:
         if form.type.data == 'Flask':
