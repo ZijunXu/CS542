@@ -38,7 +38,7 @@
                 <tr style="height:220px" ng-repeat="item in itemsresultlog">
                     <td style="text-align:center;vertical-align:middle;"><img src={{item.icon}}></td>
                     <td width="400"><b style="color:purple">Name: {{item.name}}</b><br>
-                        <b>Level: {{item.properties.Level}}&nbsp&nbsp Strength: {{item.requirements.Str}}&nbsp&nbsp Int: {{item.requirements.Int}}&nbsp&nbsp Ilvl: {{item.ilvl}}</b><br>
+                        <b>Level: {{item.properties.Level}}&nbsp&nbsp Strength: {{item.requirements.Str}}&nbsp&nbsp Int: {{item.requirements.Int}}</b><br>
                         <b style="color:red">Currency: <img style="width:30px;height:30px;" src={{item.Price.icon}}>&nbsp&nbsp&nbsp&nbsp Price: {{item.Price.Number}}</b><br>
                         <b style="color:gold">Mods: </b><br>
                         <div ng-repeat="it in item.Mods.Original">
@@ -53,7 +53,7 @@
                                 <td align="middle" style="vertical-align:middle" height="30">{{item.properties.Quality}}</td>
                             </tr>
                             <tr>
-                                <th>Armour</th>
+                                <th ng-click="vm.sortByArmour()">Armour</th>
                             </tr>
                             <tr>
                                 <td align="middle" style="vertical-align:middle" height="30">{{item.properties.Armour}}</td>
@@ -80,10 +80,10 @@
                     <td align="middle" style="vertical-align:middle">
                         <table class="table table-bordered table-hover">
                             <tr>
-                                <th>Elem</th>
+                                <th>Ilvl</th>
                             </tr>
                             <tr>
-                                <td align="middle" style="vertical-align:middle" height="30">{{item.properties['Elemental Damage']}}
+                                <td align="middle" style="vertical-align:middle" height="30">{{item.ilvl}}
                                 </td>
                             </tr>
                             <tr>
@@ -137,7 +137,7 @@
                                 <th>eDPS</th>
                             </tr>
                             <tr>
-                                <td align="middle" style="vertical-align:middle" height="30">{{item.properties['Damage Effectiveness']}}
+                                <td align="middle" style="vertical-align:middle" height="30">{{item.properties['Elemental Damage']}}
                                 </td>
                             </tr>
                             <tr>
