@@ -77,13 +77,13 @@
 
                     		<tr>
                     			<th rowspan="2" align="middle" style="vertical-align:middle">Requirement</th>
-                    			<th>Level</th>
-                    			<th>Strength</th>
-                    			<th>Intelligence</th>
-                    			<th>Dexterity</th>
+                    			<th ng-click="vm.sortByLevel1()">Level</th>
+                    			<th ng-click="vm.sortByStrength()">Strength</th>
+                    			<th ng-click="vm.sortByIntelligence()">Intelligence</th>
+                    			<th ng-click="vm.sortByDexterity()">Dexterity</th>
                     		</tr>
                     		<tr>
-                    			<td align="middle" style="vertical-align:middle" height="30">{{item.properties.Level}}</td>
+                    			<td align="middle" style="vertical-align:middle" height="30">{{item.requirements.Level}}</td>
                     			<td align="middle" style="vertical-align:middle" height="30">{{item.requirements.Str}}</td>
                     			<td align="middle" style="vertical-align:middle" height="30">{{item.requirements.Int}}</td>
                     			<td align="middle" style="vertical-align:middle" height="30">{{item.requirements.Dex}}</td>
