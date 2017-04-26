@@ -26,10 +26,10 @@ def parser(form):
         query_and.append({"name": {"$regex":form.name.data, "$options":"gi"}})
 
     if form.type.data:
-        if form.type.data == 'Flask':
+        if form.type.data == 'Flask' or form.type.data[-1] == 's':
             query_and.append({"type": form.type.data})
         else:
-            query_and.append({"type": form.type.data + "s"})
+            query_and.append({"type": form.type.data.replace(" ","") + "s"})
 
     if form.typeLine.data:
         query_and.append({"typeLine": form.typeLine.data})
