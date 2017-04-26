@@ -54,6 +54,7 @@ class ItemSearch(Resource):
                     self.add_to_history(form)
             return jsonify(ans)
         else:
+            print(form.errors)
             posts = self.db.posts.find().limit(50)
             ans = []
             for n in posts:

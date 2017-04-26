@@ -149,3 +149,6 @@ class ItemQueryForm(FlaskForm):
 
     # there is a lot of them
     Mods_content = FieldList(FormField(Mods), min_entries=0)
+    mods_name = StringField('Mods Name', validators=[Length(1, 64), Optional()], default=None)
+    mods_upper_bound = FloatField('Min', validators=[NumberRange(0, 1500), Optional()], default=None)
+    mods_lower_bound = FloatField('Max', validators=[NumberRange(0, 1500), Optional()], default=None)

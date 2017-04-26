@@ -248,4 +248,24 @@ def parser(form):
             query_and.append(
                 {"properties.Quality": {"$lte": form.max_quality.data}})
 
+
+
+    if form.mods_name.data:
+        if form.mods_lower_bound.data:
+            if form.mods_upper_bound.data:
+                query_and.append(
+                    {"Mods."+form.mods_name.data: {"$gte": form.mods_lower_bound.data,
+                                            "$lte": form.mods_upper_bound.data}})
+            else:
+                query_and.append(
+                    {"Mods."+form.mods_name.data: {"$gte": form.mods_lower_bound.data}})
+
+        elif form.mods_upper_bound.data:
+            query_and.append(
+                {"Mods." + form.mods_name.data: {"$lte": form.mods_upper_bound.data}})
+        else:
+            query_and.append(
+                {"Mods." + form.mods_name.data: {"$exists": True}})
+
+
     return query_and
