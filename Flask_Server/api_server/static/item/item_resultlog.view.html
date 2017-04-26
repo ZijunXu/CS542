@@ -39,9 +39,9 @@
                     <td style="text-align:center;vertical-align:middle;"><img src={{item.icon}}></td>
                     <td width="400"><b style="color:purple">Name: {{item.name}}</b><br>
                         <b>Level: {{item.properties.Level}}&nbsp&nbsp Strength: {{item.requirements.Str}}&nbsp&nbsp Int: {{item.requirements.Int}}&nbsp&nbsp Ilvl: {{item.ilvl}}</b><br>
-                        <b style="color:red">Currency: {{item.Price.Currency}}&nbsp&nbsp&nbsp&nbsp Price: {{item.Price.Number}}</b><br>
+                        <b style="color:red">Currency: <img style="width:30px;height:30px;" src={{item.Price.icon}}>&nbsp&nbsp&nbsp&nbsp Price: {{item.Price.Number}}</b><br>
                         <b style="color:gold">Mods: </b><br>
-                         <div ng-repeat="it in item.Mods.Original">
+                        <div ng-repeat="it in item.Mods.Original">
                             <b style="color:green">{{it}}</b><br>
                         </div>
                     </td>
@@ -49,7 +49,6 @@
                         <table class="table table-bordered table-hover">
                             <tr>
                                 <th>Quality</th>
-                            </tr>
                             <tr>
                                 <td align="middle" style="vertical-align:middle" height="30">{{item.properties.Quality}}</td>
                             </tr>
