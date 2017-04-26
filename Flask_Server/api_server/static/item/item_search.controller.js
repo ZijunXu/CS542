@@ -127,6 +127,8 @@
                 delete vm.item.identified;
             if (vm.item.corrupted == "either")
                 delete vm.item.corrupted;
+            if (vm.item.mods_name == "Select")
+                delete vm.item.mods_name;
         }
 
     }

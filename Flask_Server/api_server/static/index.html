@@ -28,7 +28,7 @@
 <div ng-view></div>
 
 <div class="container">
-    <div align="center" class="col-lg-6">
+    <div class="col-lg-6 col-lg-offset-3">
         <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }"
              ng-if="flash" ng-bind="flash.message"></div>
 
