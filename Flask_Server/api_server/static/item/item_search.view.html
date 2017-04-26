@@ -38,7 +38,7 @@
 
             <form id="search" class="custom" ng-submit="vm.search()" role="form">
                 <div class="row">
-                    <div class="large-4 columns">
+                    <div class="large-6 columns">
                         <div class="large-4 columns"><label class="right inline">League</label></div>
                         <div class="large-8 columns">
                             <select name="buyout_currency" data-customforms="disabled"
@@ -49,7 +49,7 @@
                         </div>
                     </div>
 
-                    <div class="large-4 columns">
+                    <div class="large-6 columns">
                         <div class="large-6 columns"><label class="right inline">Type</label></div>
                         <div class="large-6 columns">
                             <select name="identified" data-customforms="disabled"
@@ -59,12 +59,11 @@
                             </select>
                         </div>
                     </div>
-                    <div class="large-4 columns"></div>
                 </div>
                 <div class="row">
-                    <div class="large-12 columns">
-                        <div class="large-1 columns"><label class="right inline">Name</label></div>
-                        <div class="large-11 columns"><input type="text" name="name" ng-model="vm.item.name"
+                    <div class="large-6 columns">
+                        <div class="large-4 columns"><label class="right inline">Name</label></div>
+                        <div class="large-8 columns"><input type="text" name="name" ng-model="vm.item.name"
                                                              id="name" ng-change="changeKeyValue(vm.item.name)"
                                                              ng-click='hidden=!hidden' value="{{vm.item.name}}"/>
                             <div ng-hide="hidden">
