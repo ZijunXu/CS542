@@ -48,7 +48,7 @@
         }
 
         function history() {
-            ItemService.History1()
+            ItemService.History()
                 .then(function (response) {
                     if (typeof(response.retrieve_search_status) == "undefined") {
                         //use response to update page

@@ -24,8 +24,10 @@ class UserItemSearchHistory(Resource):
     def delete(self, sid):
         try:
             search_history = Search.query.filter_by(sid=sid).first()
+            print(search_history)
             db.session.delete(search_history)
             db.session.commit()
             return jsonify({"delete_history_status": "Success"})
         except:
+            print(sys.exc_info())
             return jsonify({"delete_history_status": False, "message": sys.exc_info()[1]})
