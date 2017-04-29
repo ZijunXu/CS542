@@ -8,8 +8,8 @@
         .module('app')
         .controller('CurrencyPostController', CurrencyPostController);
 
-    CurrencyPostController.$inject = ['$rootScope', '$location', 'CurrencyService', '$window', 'FlashService', 'AuthenticationService', 'ItemService'];
-    function CurrencyPostController($rootScope, $location, CurrencyService, $window, FlashService, AuthenticationService, ItemService) {
+    CurrencyPostController.$inject = ['$rootScope', '$location', 'CurrencyService', 'FlashService', 'AuthenticationService', 'ItemService'];
+    function CurrencyPostController($rootScope, $location, CurrencyService, FlashService, AuthenticationService, ItemService) {
         var vm = this;
 
         vm.isAdmin = AuthenticationService.isAdmin;
@@ -25,7 +25,10 @@
         vm.sidsort = sidsort;
 
         vm.reloadRoute = function () {
-            $window.location.reload();
+            vm.cup = {};
+            vm.cup.league = 'Legacy';
+            vm.cup.c1_item = 'Select';
+            vm.cup.c2_item = 'Select';
         };
 
         function post() {
@@ -33,7 +36,7 @@
                 .then(function (response) {
                     //use response to update page
                     if (response.post_status) {
-                        $window.location.reload();
+                        vm.reloadRoute();
                         FlashService.Success('Post successful', true);
                     } else {
                         FlashService.Error(response.message);

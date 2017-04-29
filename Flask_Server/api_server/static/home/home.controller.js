@@ -7,8 +7,8 @@
         .module('app')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['ItemService', '$rootScope', '$location', '$window'];
-    function HomeController(ItemService, $rootScope, $location, $window) {
+    HomeController.$inject = ['ItemService', '$rootScope', '$location'];
+    function HomeController(ItemService, $rootScope, $location) {
         var vm = this;
 
         vm.hidden = true;
@@ -29,7 +29,13 @@
         vm.search = search;
 
         vm.reloadRoute = function () {
-            $window.location.reload();
+            vm.item = {};
+            vm.item.league = 'Legacy';
+            vm.item.type = 'any';
+            vm.item.mods_name = 'Select';
+            vm.item.currency_name = 'Select';
+            vm.item.identified = 'either';
+            vm.item.corrupted = 'either';
         };
 
         function search() {

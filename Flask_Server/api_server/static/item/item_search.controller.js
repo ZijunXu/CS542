@@ -4,8 +4,8 @@
         .module('app')
         .controller('itemController', itemController);
 
-    itemController.$inject = ['ItemService', '$location', '$window', '$rootScope', 'AuthenticationService'];
-    function itemController(ItemService, $location, $window, $rootScope, AuthenticationService) {
+    itemController.$inject = ['ItemService', '$location', '$rootScope', 'AuthenticationService'];
+    function itemController(ItemService, $location, $rootScope, AuthenticationService) {
         var vm = this;
 
         vm.isAdmin = AuthenticationService.isAdmin;
@@ -53,7 +53,13 @@
         // }
 
         vm.reloadRoute = function () {
-            $window.location.reload();
+            vm.item = {};
+            vm.item.league = 'Legacy';
+            vm.item.type = 'any';
+            vm.item.mods_name = 'Select';
+            vm.item.currency_name = 'Select';
+            vm.item.identified = 'either';
+            vm.item.corrupted = 'either';
         };
 
         function search() {

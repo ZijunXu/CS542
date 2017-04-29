@@ -19,15 +19,6 @@
         vm.logout = logout;
         vm.sidsort = sidsort;
 
-        function sidsort(a, b) {
-            if (a.sid < b.sid)
-                return 1;
-            else if (a.sid > b.sid)
-                return -1;
-            else
-                return 0;
-        }
-
         function logout() {
             AuthenticationService.isLogged = false;
             AuthenticationService.isAdmin = false;
@@ -40,7 +31,7 @@
             UserService.Update(vm.update)
                 .then(function (response) {
                     if (response.update_status) {
-                        $window.location.reload();
+                        vm.update = {};
                         FlashService.Success('Update successful', true);
                     } else {
                         FlashService.Error(response.message);
@@ -62,6 +53,15 @@
                         vm.dataLoading = false;
                     }
                 });
+        }
+
+        function sidsort(a, b) {
+            if (a.sid < b.sid)
+                return 1;
+            else if (a.sid > b.sid)
+                return -1;
+            else
+                return 0;
         }
     }
 

@@ -8,8 +8,8 @@
         .module('app')
         .controller('CurrencySearchController', CurrencySearchController);
 
-    CurrencySearchController.$inject = ['CurrencyService', '$rootScope', '$location', '$window', 'AuthenticationService', 'ItemService'];
-    function CurrencySearchController(CurrencyService, $rootScope, $location, $window, AuthenticationService, ItemService) {
+    CurrencySearchController.$inject = ['CurrencyService', '$rootScope', '$location', 'AuthenticationService', 'ItemService'];
+    function CurrencySearchController(CurrencyService, $rootScope, $location, AuthenticationService, ItemService) {
         var vm = this;
 
         vm.isAdmin = AuthenticationService.isAdmin;
@@ -25,7 +25,10 @@
         vm.sidsort = sidsort;
 
         vm.reloadRoute = function () {
-            $window.location.reload();
+            vm.cs = {};
+            vm.cs.league = 'Legacy'
+            vm.cs.c1_item = 'Select'
+            vm.cs.c2_item = 'Select'
         };
 
         function sidsort(a, b) {
