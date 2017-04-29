@@ -11,20 +11,20 @@
     MyPostController.$inject = ['CurrencyService', 'FlashService', 'AuthenticationService', '$location', '$rootScope', 'ItemService'];
     function MyPostController(CurrencyService, FlashService, AuthenticationService, $location, $rootScope, ItemService) {
         var vm = this;
+
         vm.isAdmin = AuthenticationService.isAdmin;
         vm.pre = true;
         vm.index1 = 0;
 
         vm.list1 = ["Legacy", "Hardcore Legacy", "Standard", "Hardcore"];
-
         vm.list4 = ["Select", "Blessed Orb", "Cartographer's Chisel", "Chaos Orb", "Chromatic Orb", "Divine Orb", "Exalted Orb", "Gemcutter's Prism", "Jeweller's Orb",
             "Orb of Alchemy", "Orb of Alteration", "Orb of Chance", "Orb of Fusing", "Orb of Regret", "Orb of Scouring", "Regal Orb", "Vaal Orb", "Perandus Coin", "Silver Coin"];
+
         vm.update = update;
         vm.update1 = update1;
         vm.Delete = Delete;
         vm.logout = logout;
         vm.createObj = createObj;
-        vm.timesort = timesort;
         vm.history = history;
         vm.sidsort = sidsort;
 
@@ -35,7 +35,6 @@
                     if (response.delete_post_status == "Success") {
                         FlashService.Success('Delete successful', true);
                         $rootScope.myposts.splice(index, 1);
-                        //use response to update page
                     } else {
                         FlashService.Error(response.message);
                         vm.dataLoading = false;
@@ -57,7 +56,6 @@
                         $rootScope.myposts[vm.index1].c2_item = temp.c2_item;
                         $rootScope.myposts[vm.index1].c2_number = temp.c2_number;
                         $rootScope.myposts[vm.index1].league = temp.league;
-                        //use response to update page
                     } else {
                         FlashService.Error(response.message);
                         vm.dataLoading = false;
@@ -90,18 +88,11 @@
             return obj;
         }
 
-        function timesort() {
-            $rootScope.myposts.sort(function (a, b) {
-                return a.time < b.time ? 1 : -1;
-            });
-        }
-
         function history() {
             ItemService.History()
                 .then(function (response) {
                     if (typeof(response.retrieve_search_status) == "undefined") {
                         //use response to update page
-                        //console.log("adadfads");
                         response.sort(sidsort);
                         $rootScope.history = response;
                         $location.path('/history');

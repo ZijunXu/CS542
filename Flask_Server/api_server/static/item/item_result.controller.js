@@ -8,9 +8,10 @@
         .module('app')
         .controller('ItemResultController', ItemResultController);
 
-    ItemResultController.$inject = ['$location', 'AuthenticationService', '$rootScope', 'ItemService'];
-    function ItemResultController($location, AuthenticationService, $rootScope, ItemService) {
+    ItemResultController.$inject = ['$location', 'AuthenticationService', '$rootScope'];
+    function ItemResultController($location, AuthenticationService, $rootScope) {
         var vm = this;
+
         vm.logout = logout;
         vm.sortByQuality = sortByQuality;
         vm.sortByArmour = sortByArmour;

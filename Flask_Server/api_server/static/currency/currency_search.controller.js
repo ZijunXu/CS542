@@ -11,15 +11,15 @@
     CurrencySearchController.$inject = ['CurrencyService', '$rootScope', '$location', '$window', 'AuthenticationService', 'ItemService'];
     function CurrencySearchController(CurrencyService, $rootScope, $location, $window, AuthenticationService, ItemService) {
         var vm = this;
+
         vm.isAdmin = AuthenticationService.isAdmin;
         vm.list1 = ["Legacy", "Hardcore Legacy", "Standard", "Hardcore"];
         vm.list4 = ["Select", "Blessed Orb", "Cartographer's Chisel", "Chaos Orb", "Chromatic Orb", "Divine Orb", "Exalted Orb", "Gemcutter's Prism", "Jeweller's Orb",
             "Orb of Alchemy", "Orb of Alteration", "Orb of Chance", "Orb of Fusing", "Orb of Regret", "Orb of Scouring", "Regal Orb", "Vaal Orb", "Perandus Coin", "Silver Coin"];
+
         vm.my_post = my_post;
         vm.search = search;
         vm.logout = logout;
-        vm.tidsort = tidsort;
-        vm.pricesort = pricesort;
         vm.pricesort = pricesort;
         vm.history = history;
         vm.sidsort = sidsort;
@@ -57,7 +57,6 @@
                 delete vm.cs.c1_item;
             if (vm.cs.c2_item == "Select")
                 delete vm.cs.c2_item;
-            console.log(vm.cs);
             CurrencyService.SearchCurrency(vm.cs)
                 .then(function (response) {
                     if (response != null) {
@@ -77,7 +76,6 @@
                 .then(function (response) {
                     if (typeof(response.retrieve_post_status) == "undefined") {
                         //use response to update page
-                        //response.sort(tidsort);
                         $rootScope.myposts = response;
                         $location.path('/my_post');
                     } else {
@@ -85,15 +83,6 @@
                         vm.dataLoading = false;
                     }
                 });
-        }
-
-        function tidsort(a, b) {
-            if (a.tid < b.tid)
-                return 1;
-            else if (a.tid > b.tid)
-                return -1;
-            else
-                return 0;
         }
 
         function pricesort(a, b) {

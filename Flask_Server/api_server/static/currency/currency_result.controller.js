@@ -11,24 +11,19 @@
     CurrencyResultController.$inject = ['$location', 'AuthenticationService', '$rootScope', 'ItemService'];
     function CurrencyResultController($location, AuthenticationService, $rootScope, ItemService) {
         var vm = this;
+
+        vm.isAdmin = AuthenticationService.isAdmin;
+
         vm.logout = logout;
-        vm.timesort = timesort;
         vm.amountsort = amountsort;
         vm.history = history;
         vm.sidsort = sidsort;
-        vm.isAdmin = AuthenticationService.isAdmin;
 
         function logout() {
             AuthenticationService.isLogged = false;
             AuthenticationService.isAdmin = false;
             delete localStorage.token;
             $location.path("/");
-        }
-
-        function timesort() {
-            $rootScope.posts.sort(function (a, b) {
-                return a.time < b.time ? 1 : -1;
-            });
         }
 
         function amountsort() {
@@ -49,7 +44,6 @@
                 .then(function (response) {
                     if (typeof(response.retrieve_search_status) == "undefined") {
                         //use response to update page
-                        //console.log("adadfads");
                         response.sort(sidsort);
                         $rootScope.history = response;
                         $location.path('/history');

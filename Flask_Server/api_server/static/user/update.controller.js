@@ -11,6 +11,7 @@
     UpdateController.$inject = ['UserService', 'FlashService', '$location', 'AuthenticationService', '$window', 'ItemService'];
     function UpdateController(UserService, FlashService, $location, AuthenticationService, $window, ItemService) {
         var vm = this;
+
         vm.isAdmin = AuthenticationService.isAdmin;
 
         vm.history = history;
@@ -53,7 +54,6 @@
                 .then(function (response) {
                     if (typeof(response.retrieve_search_status) == "undefined") {
                         //use response to update page
-                        //console.log("adadfads");
                         response.sort(sidsort);
                         $rootScope.history = response;
                         $location.path('/history');

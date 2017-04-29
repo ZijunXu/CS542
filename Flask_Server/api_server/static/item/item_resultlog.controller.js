@@ -11,6 +11,9 @@
     ItemResultLogController.$inject = ['$location', 'AuthenticationService', '$rootScope', 'ItemService'];
     function ItemResultLogController($location, AuthenticationService, $rootScope, ItemService) {
         var vm = this;
+
+        vm.isAdmin = AuthenticationService.isAdmin;
+
         vm.logout = logout;
         vm.history = history;
         vm.sidsort = sidsort;
@@ -29,7 +32,6 @@
         vm.sortByStrength = sortByStrength;
         vm.sortByIntelligence = sortByIntelligence;
         vm.sortByDexterity = sortByDexterity;
-        vm.isAdmin = AuthenticationService.isAdmin;
 
         function logout() {
             AuthenticationService.isLogged = false;

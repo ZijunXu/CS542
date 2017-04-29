@@ -24,11 +24,11 @@
             return $http.post('/api/currency', currency).then(handleSuccess, handleError('Error searching currency'));
         }
 
-         function PostCurrency(currency) {
+        function PostCurrency(currency) {
             return $http.post('/api/user/post', currency).then(handleSuccess, handleError('Error posting currency'));
         }
 
-         function MyPost() {
+        function MyPost() {
             return $http({
                 url: '/api/user/post',
                 method: 'GET',
@@ -38,14 +38,13 @@
             }).then(handleSuccess, handleError('Error seeking mypost'));
         }
 
-         function Update(post,tid) {
-             console.log(post);
-            return $http.put('/api/user/post/'+tid, post).then(handleSuccess, handleError('Error updating your post'));
+        function Update(post, tid) {
+            return $http.put('/api/user/post/' + tid, post).then(handleSuccess, handleError('Error updating your post'));
         }
 
         function Delete(id) {
             return $http({
-                url: '/api/user/post/'+id,
+                url: '/api/user/post/' + id,
                 method: 'DELETE',
             }).then(handleSuccess, handleError('Error deleting your post'));
         }

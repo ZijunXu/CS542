@@ -1,9 +1,6 @@
 /**
  * Created by you on 2017/4/14.
  */
-/**
- * Created by you on 2017/4/4.
- */
 (function () {
     'use strict';
 
@@ -14,6 +11,7 @@
     AdmanageController.$inject = ['FlashService', 'AdminService', '$location', 'AuthenticationService', 'ItemService'];
     function AdmanageController(FlashService, AdminService, $location, AuthenticationService, ItemService) {
         var vm = this;
+
         vm.present = true;
         vm.isAdmin = AuthenticationService.isAdmin;
 
@@ -40,7 +38,6 @@
                 .then(function (response) {
                     if (typeof(response.retrieve_search_status) == "undefined") {
                         //use response to update page
-                        //console.log("adadfads");
                         response.sort(sidsort);
                         $rootScope.history = response;
                         $location.path('/history');
@@ -66,7 +63,6 @@
                     .then(function (response) {
                         if (response.delete_status == "Success") {
                             FlashService.Success('Delete successful', true);
-                            //use response to update page
                         } else {
                             FlashService.Error(response.message);
                             vm.dataLoading = false;
@@ -80,7 +76,6 @@
                 .then(function (response) {
                     if (response.register_status) {
                         FlashService.Success('Create successful', true);
-                        //use response to update page
                     } else {
                         FlashService.Error(response.message);
                         vm.dataLoading = false;

@@ -4,7 +4,7 @@
 (function () {
     'use strict';
 
-     angular
+    angular
         .module('app')
         .config(['$httpProvider', function ($httpProvider) {
             $httpProvider.interceptors.push(HttpInterceptor);
@@ -19,8 +19,7 @@
             // 请求发出之前，可以用于添加各种身份验证信息
             request: function (config) {
                 if (localStorage.token) {
-                    config.headers.Authorization = "Bearer "+localStorage.token;
-                    console.log(config.headers.Authorization);
+                    config.headers.Authorization = "Bearer " + localStorage.token;
                 }
                 return config;
             },

@@ -11,14 +11,16 @@
     CurrencyPostController.$inject = ['$rootScope', '$location', 'CurrencyService', '$window', 'FlashService', 'AuthenticationService', 'ItemService'];
     function CurrencyPostController($rootScope, $location, CurrencyService, $window, FlashService, AuthenticationService, ItemService) {
         var vm = this;
+
         vm.isAdmin = AuthenticationService.isAdmin;
+
         vm.list1 = ["Legacy", "Hardcore Legacy", "Standard", "Hardcore"];
         vm.list4 = ["Select", "Blessed Orb", "Cartographer's Chisel", "Chaos Orb", "Chromatic Orb", "Divine Orb", "Exalted Orb", "Gemcutter's Prism", "Jeweller's Orb",
             "Orb of Alchemy", "Orb of Alteration", "Orb of Chance", "Orb of Fusing", "Orb of Regret", "Orb of Scouring", "Regal Orb", "Vaal Orb", "Perandus Coin", "Silver Coin"];
+
         vm.my_post = my_post;
         vm.post = post;
         vm.logout = logout;
-        vm.tidsort = tidsort;
         vm.history = history;
         vm.sidsort = sidsort;
 
@@ -45,7 +47,6 @@
                 .then(function (response) {
                     if (typeof(response.retrieve_post_status) == "undefined") {
                         //use response to update page
-                        response.sort(tidsort);
                         $rootScope.myposts = response;
                         $location.path('/my_post');
                     } else {
@@ -53,15 +54,6 @@
                         vm.dataLoading = false;
                     }
                 });
-        }
-
-        function tidsort(a, b) {
-            if (a.tid < b.tid)
-                return 1;
-            else if (a.tid > b.tid)
-                return -1;
-            else
-                return 0;
         }
 
         function logout() {
@@ -76,7 +68,6 @@
                 .then(function (response) {
                     if (typeof(response.retrieve_search_status) == "undefined") {
                         //use response to update page
-                        //console.log("adadfads");
                         response.sort(sidsort);
                         $rootScope.history = response;
                         $location.path('/history');

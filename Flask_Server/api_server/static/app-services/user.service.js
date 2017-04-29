@@ -19,7 +19,6 @@
         }
 
         function Update(update) {
-             console.log(update);
             return $http.put('/api/user/update', update).then(handleSuccess, handleError('Error updating user'));
         }
 

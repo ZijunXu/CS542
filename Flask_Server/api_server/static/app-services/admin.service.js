@@ -13,7 +13,6 @@
         var service = {};
 
         service.GetAll = GetAll;
-        service.GetByUsername = GetByUsername;
         service.Create = Create;
         service.Deletename = Deletename;
 
@@ -21,10 +20,6 @@
 
         function GetAll() {
             return $http.get('/api/admin').then(handleSuccess, handleError('Error getting all users'));
-        }
-
-        function GetByUsername(username) {
-            return $http.get('/api/admin' + username).then(handleSuccess, handleError('Error getting user by username'));
         }
 
         function Create(user) {
@@ -43,7 +38,7 @@
 
         function handleError(error) {
             return function () {
-                return { success: false, message: error };
+                return {success: false, message: error};
             };
         }
     }
